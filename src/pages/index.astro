@@ -20,32 +20,43 @@ import Layout from '../layouts/Layout.astro';
         class="absolute inset-0 w-full h-full object-cover -z-10"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-      <div class="absolute bottom-[30px] left-[30px] z-10 max-w-3xl">
-        <h2 class="!text-white font-heading text-[34px] md:text-[72px] lg:text-[100px] leading-none tracking-[-2px] md:tracking-[-4px]">
+      <div class="absolute bottom-[30px] left-[30px] md:bottom-[50px] md:left-[50px] z-10 max-w-3xl">
+        <h2 class="!text-white">
           Ditt lokala tryckeri i Stockholm.
         </h2>
       </div>
     </div>
   </section>
 
-  <!-- ═══ LOGO BAR ═══ -->
-  <section class="py-[10px] px-[30px] overflow-hidden">
-    <div class="flex items-center gap-[20px]">
-      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-90" />
-      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-90" />
-      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-90" />
-      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-90" />
-      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-90" />
-      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-90" />
-      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 w-[46px] h-auto opacity-90" />
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-90" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-90" />
+  <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
+  <section class="py-[20px] overflow-hidden">
+    <div class="logo-carousel-track">
+      <!-- First set -->
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 w-[46px] h-auto opacity-80" />
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
+      <!-- Duplicate set for seamless loop -->
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 w-[46px] h-auto opacity-80" />
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
     </div>
   </section>
 
   <!-- ═══ PRODUCT CAROUSEL ═══ -->
-  <section class="py-[80px]">
-    <h2 class="ml-[30px] mb-[20px] font-heading text-[48px] tracking-[-2px] text-[#222]">Vad vill du trycka?</h2>
+  <section class="pt-[40px] pb-[80px]">
+    <h2 class="ml-[30px] mb-[20px]">Vad vill du trycka?</h2>
     <div id="product-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
       {[
         { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg' },
@@ -57,18 +68,20 @@ import Layout from '../layouts/Layout.astro';
         { label: 'Böcker', icon: 'bocker-1.svg' },
         { label: 'Storformat', icon: 'storformat-1.svg' },
       ].map((product) => (
-        <div class="shrink-0 w-[380px] min-h-[387px] bg-[#F5F5F5] rounded-[16px] p-[30px] flex flex-col items-center text-center">
+        <a href={`/produkter/${product.icon.replace('-1.svg', '').replace('.svg', '')}`} class="shrink-0 w-[380px] min-h-[387px] bg-[#F5F5F5] rounded-[16px] p-[30px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline">
           <img src={`/images/icons/${product.icon}`} alt={product.label} class="w-[90px] h-[90px] mb-[20px]" />
-          <span class="font-heading text-[32px] md:text-[48px] text-[#222] leading-none tracking-[-2px] whitespace-pre-line">{product.label}</span>
-          <button class="mt-auto w-[45px] h-[45px] rounded-full bg-[#222] text-white flex items-center justify-center text-[25px]">+</button>
-        </div>
+          <span class="font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] text-[#222] leading-none tracking-[-0.02em] whitespace-pre-line">{product.label}</span>
+          <span class="mt-auto w-[45px] h-[45px] rounded-full bg-[#222] flex items-center justify-center text-white">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </span>
+        </a>
       ))}
     </div>
     <div class="flex justify-end gap-2 mt-4 mr-[30px]">
-      <button id="carousel-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300" aria-label="Föregående">
+      <button id="carousel-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors" aria-label="Föregående">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
-      <button id="carousel-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222]" aria-label="Nästa">
+      <button id="carousel-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors" aria-label="Nästa">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
@@ -77,7 +90,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ QUOTE SECTION ═══ -->
   <section class="py-[80px] md:py-[121px]">
     <div class="section-boxed">
-      <h3 class="font-heading text-[36px] md:text-[48px] lg:text-[72px] leading-[1.05] tracking-[-0.03em] text-[#222]">
+      <h3 class="text-[#222]">
         Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
       </h3>
     </div>
@@ -88,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-[1163px] mx-auto px-[30px] py-[80px]">
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
         <div>
-          <h2 class="font-heading text-[36px] md:text-[64px] leading-none tracking-[-3px] text-[#222]">
+          <h2 class="text-[#222]">
             Varför trycksaker fortfarande gör skillnad.
           </h2>
         </div>
@@ -111,23 +124,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ PROCESS SECTION ═══ -->
   <section class="py-[76px] md:py-[121px]">
     <div class="section-boxed">
-      <h2 class="text-center font-heading text-[36px] md:text-[64px] tracking-[-3px] text-[#222] mb-[60px] md:mb-[80px]">
+      <h2 class="text-center text-[#222] mb-[60px] md:mb-[80px]">
         Enkel process för ett grymt resultat.
       </h2>
       <div class="grid md:grid-cols-3 gap-[20px]">
         <div>
-          <span class="block font-heading text-[100px] md:text-[120px] lg:text-[146px] text-[#222] leading-none tracking-[-1px]">1.</span>
-          <h4 class="font-heading text-[24px] md:text-[32px] text-[#222] tracking-[-1px] mb-[12px]">Offertförfrågan:</h4>
+          <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">1.</span>
+          <h4 class="text-[#222] mb-[12px]">Offertförfrågan:</h4>
           <p>Skicka en förfrågan till oss med dina önskemål och tryckbehov, så kommer vi att erbjuda en skräddarsydd och konkurrenskraftig offert.</p>
         </div>
         <div>
-          <span class="block font-heading text-[100px] md:text-[120px] lg:text-[146px] text-[#222] leading-none tracking-[-1px]">2.</span>
-          <h4 class="font-heading text-[24px] md:text-[32px] text-[#222] tracking-[-1px] mb-[12px]">Design/korrektur:</h4>
+          <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">2.</span>
+          <h4 class="text-[#222] mb-[12px]">Design/korrektur:</h4>
           <p>Vi samarbetar med dig för att skapa ditt perfekta tryck. Vi skickar ett korrektur för att du ska kunna granska och godkänna ditt tryck innan vi fortsätter till tryckning.</p>
         </div>
         <div>
-          <span class="block font-heading text-[100px] md:text-[120px] lg:text-[146px] text-[#222] leading-none tracking-[-1px]">3.</span>
-          <h4 class="font-heading text-[24px] md:text-[32px] text-[#222] tracking-[-1px] mb-[12px]">Tryck/leverans:</h4>
+          <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">3.</span>
+          <h4 class="text-[#222] mb-[12px]">Tryck/leverans:</h4>
           <p>När du godkänt korrektur sköter vi tryckningen med hjälp av våra högkvalitativa och miljövänliga processer. Därefter levererar vi dina trycksaker i rätt tid.</p>
         </div>
       </div>
@@ -152,151 +165,46 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ FAQ SECTION ═══ -->
+  <!-- ═══ FAQ SECTION (Accordion) ═══ -->
   <section class="section-boxed pb-[80px]">
     <div id="faq-accordion">
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Varför ska man anlita ett lokalt tryckeri?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Att välja ett lokalt tryckeri innebär kortare leveranstider, personlig service och möjlighet att besöka produktionen. Du får en direktkontakt med projektledaren som förstår dina behov och kan anpassa lösningen efter ditt projekt.</p>
+      {[
+        { q: 'Varför ska man anlita ett lokalt tryckeri?', a: 'Att välja ett lokalt tryckeri innebär kortare leveranstider, personlig service och möjlighet att besöka produktionen. Du får en direktkontakt med projektledaren som förstår dina behov och kan anpassa lösningen efter ditt projekt.' },
+        { q: 'Vad innebär lokal produktion i praktiken?', a: 'Lokal produktion betyder att dina trycksaker produceras i vår anläggning i Sollentuna, nära Stockholm. Det ger kortare transporter, mindre miljöpåverkan och snabbare leveranser.' },
+        { q: 'Vad används offsettryck till?', a: 'Offsettryck är perfekt för större upplagor – från ett par hundra till flera tusen exemplar. Metoden ger mycket hög och jämn kvalitet, och styckekostnaden sjunker med upplagan. Vanliga produkter är broschyrer, kataloger, affischer och böcker.' },
+        { q: 'Vad är fördelarna med digitaltryck?', a: 'Digitaltryck är idealiskt för kortare upplagor och snabba leveranser. Du slipper startkostnader för tryckplåtar, kan personalisera varje exemplar med variabeldata och har möjlighet att trycka on-demand.' },
+        { q: 'Hur hanterar ni filer och färghantering?', a: 'Vi tar emot filer i de flesta format – PDF, InDesign, Illustrator med mera. Vår prepress-avdelning granskar alla filer före tryck och kontrollerar upplösning, färgprofiler och beskärningsmarker. Vi använder ICC-profiler för exakt färgåtergivning.' },
+        { q: 'Vilka kvalitetsskillnader finns det mellan tryckmetoderna?', a: 'Offsettryck ger generellt den mest exakta färgåtergivningen och finaste detaljerna, särskilt vid stora upplagor. Digitaltryck har kommit mycket nära offset i kvalitet och erbjuder fördelar som variabeldata och snabbare leverans.' },
+        { q: 'Hur väljer jag rätt tryckmetod?', a: 'Det beror på upplaga, budget, leveranstid och produkt. Generellt gäller: digitaltryck för korta upplagor (1–500 ex) och offsettryck för större upplagor (500+ ex). Vi hjälper dig gärna att välja rätt.' },
+        { q: 'Vad är hybridtryck?', a: 'Hybridtryck kombinerar offset och digitaltryck i samma produkt. Till exempel kan du trycka en basupplaga i offset och sedan personalisera med digitaltryck. Det ger bästa av två världar.' },
+        { q: 'Vilka leveranstider erbjuder ni?', a: 'Normala leveranstider är 5–7 arbetsdagar för offsettryck och 2–3 arbetsdagar för digitaltryck. Vi erbjuder även expressproduktion vid behov. Kontakta oss för exakta tider för ditt projekt.' },
+        { q: 'Erbjuder ni budgetanpassade tjänster?', a: 'Ja, vi anpassar alltid lösningen efter din budget. Vi kan föreslå alternativa papper, format eller tryckmetoder som håller nere kostnaden utan att kompromissa med kvaliteten.' },
+        { q: 'Vad innebär personalisering och variabeldata?', a: 'Med variabeldata kan varje tryckt exemplar ha unikt innehåll – namn, adresser, bilder eller erbjudanden. Perfekt för direktreklam, personliga inbjudningar eller skräddarsydda kataloger.' },
+        { q: 'Vilka miljöcertifieringar har ni?', a: 'Vi är Svanenmärkta, vilket innebär att vår produktion uppfyller Nordisk Miljömärknings krav på kemikalier, pappersval och produktionsprocesser. Vi arbetar kontinuerligt med att minska vår miljöpåverkan.' },
+        { q: 'Hur hållbara är era material?', a: 'Vi erbjuder ett brett urval av miljömärkta och FSC-certifierade papper. Vi väljer alltid det mest hållbara alternativet som möter dina kvalitetskrav och ger råd om materialval.' },
+        { q: 'Hur effektiva är trycksaker jämfört med digitalt?', a: 'Studier visar att fysiska trycksaker skapar starkare minnesbilder och högre uppmärksamhet än digitala budskap. Tryckt material upplevs som mer trovärdigt och stannar kvar längre hos mottagaren.' },
+        { q: 'Hur integrerar jag tryck med digital marknadsföring?', a: 'Trycksaker och digital marknadsföring kompletterar varandra utmärkt. Använd QR-koder, personliga URL:er eller augmented reality för att koppla tryck till digitala upplevelser och mäta resultat.' },
+      ].map((item) => (
+        <div class="border-b border-[#D5D8DC]">
+          <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left cursor-pointer">
+            <span class="font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] text-[#222] pr-4"><strong>Fråga:</strong> {item.q}</span>
+            <span class="faq-icon shrink-0 w-[25px] h-[25px] flex items-center justify-center text-[#222] transition-transform duration-300">
+              <svg class="faq-plus" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+              <svg class="faq-minus hidden" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] leading-[1.7] pb-[20px] px-[10px]">
+            <p>{item.a}</p>
+          </div>
         </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vad innebär lokal produktion i praktiken?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Lokal produktion betyder att dina trycksaker produceras i vår anläggning i Sollentuna, nära Stockholm. Det ger kortare transporter, mindre miljöpåverkan och snabbare leveranser.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vad används offsettryck till?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Offsettryck är perfekt för större upplagor – från ett par hundra till flera tusen exemplar. Metoden ger mycket hög och jämn kvalitet, och styckekostnaden sjunker med upplagan. Vanliga produkter är broschyrer, kataloger, affischer och böcker.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vad är fördelarna med digitaltryck?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Digitaltryck är idealiskt för kortare upplagor och snabba leveranser. Du slipper startkostnader för tryckplåtar, kan personalisera varje exemplar med variabeldata och har möjlighet att trycka on-demand.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Hur hanterar ni filer och färghantering?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Vi tar emot filer i de flesta format – PDF, InDesign, Illustrator med mera. Vår prepress-avdelning granskar alla filer före tryck och kontrollerar upplösning, färgprofiler och beskärningsmarker. Vi använder ICC-profiler för exakt färgåtergivning.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vilka kvalitetsskillnader finns det mellan tryckmetoderna?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Offsettryck ger generellt den mest exakta färgåtergivningen och finaste detaljerna, särskilt vid stora upplagor. Digitaltryck har kommit mycket nära offset i kvalitet och erbjuder fördelar som variabeldata och snabbare leverans.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Hur väljer jag rätt tryckmetod?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Det beror på upplaga, budget, leveranstid och produkt. Generellt gäller: digitaltryck för korta upplagor (1–500 ex) och offsettryck för större upplagor (500+ ex). Vi hjälper dig gärna att välja rätt.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vad är hybridtryck?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Hybridtryck kombinerar offset och digitaltryck i samma produkt. Till exempel kan du trycka en basupplaga i offset och sedan personalisera med digitaltryck. Det ger bästa av två världar.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vilka leveranstider erbjuder ni?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Normala leveranstider är 5–7 arbetsdagar för offsettryck och 2–3 arbetsdagar för digitaltryck. Vi erbjuder även expressproduktion vid behov. Kontakta oss för exakta tider för ditt projekt.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Erbjuder ni budgetanpassade tjänster?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Ja, vi anpassar alltid lösningen efter din budget. Vi kan föreslå alternativa papper, format eller tryckmetoder som håller nere kostnaden utan att kompromissa med kvaliteten.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vad innebär personalisering och variabeldata?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Med variabeldata kan varje tryckt exemplar ha unikt innehåll – namn, adresser, bilder eller erbjudanden. Perfekt för direktreklam, personliga inbjudningar eller skräddarsydda kataloger.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Vilka miljöcertifieringar har ni?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Vi är Svanenmärkta, vilket innebär att vår produktion uppfyller Nordisk Miljömärknings krav på kemikalier, pappersval och produktionsprocesser. Vi arbetar kontinuerligt med att minska vår miljöpåverkan.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Hur hållbara är era material?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Vi erbjuder ett brett urval av miljömärkta och FSC-certifierade papper. Vi väljer alltid det mest hållbara alternativet som möter dina kvalitetskrav och ger råd om materialval.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Hur effektiva är trycksaker jämfört med digitalt?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Studier visar att fysiska trycksaker skapar starkare minnesbilder och högre uppmärksamhet än digitala budskap. Tryckt material upplevs som mer trovärdigt och stannar kvar längre hos mottagaren.</p>
-        </div>
-      </div>
-      <div class="border-b border-[#D5D8DC]">
-        <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left">
-          <span class="font-body text-[18px] text-[#222] pr-4"><span class="font-bold">Fråga:</span> Hur integrerar jag tryck med digital marknadsföring?</span>
-          <span class="shrink-0 w-[25px] h-[25px] border border-gray-400 rounded-full flex items-center justify-center text-gray-500 text-sm transition-transform duration-300">+</span>
-        </button>
-        <div class="faq-answer hidden text-[18px] leading-[1.7] pb-[20px] px-[10px]">
-          <p>Trycksaker och digital marknadsföring kompletterar varandra utmärkt. Använd QR-koder, personliga URL:er eller augmented reality för att koppla tryck till digitala upplevelser och mäta resultat.</p>
-        </div>
-      </div>
+      ))}
     </div>
   </section>
 
   <!-- ═══ HJÄLP? CTA ═══ -->
   <section class="py-[80px]">
     <div class="section-boxed">
-      <h2 class="font-heading text-[72px] md:text-[100px] tracking-[-4px] text-[#222] mb-[30px]">Hjälp?</h2>
+      <h1 class="text-[#222] mb-[30px]">Hjälp?</h1>
       <p class="mb-4 max-w-2xl leading-relaxed">
         Vi hjälper dig från första fil till leverans med smarta beslut, tydliga råd och kvalitet från tryckbord till leveranskartong.
       </p>
@@ -314,7 +222,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ═══ KUNDREFERENSER CAROUSEL ═══ -->
   <section class="py-[80px]">
-    <h2 class="ml-[30px] mb-[20px] font-heading text-[48px] tracking-[-2px] text-[#222]">Kundreferenser.</h2>
+    <h2 class="ml-[30px] mb-[20px]">Kundreferenser.</h2>
     <div class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
       {[
         { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
@@ -327,8 +235,10 @@ import Layout from '../layouts/Layout.astro';
           <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-            <span class="text-white font-heading text-[32px] md:text-[48px] leading-none tracking-[-2px]">{ref.name}</span>
-            <span class="w-[50px] h-[50px] bg-[#222]/60 rounded-full flex items-center justify-center text-white text-xl">+</span>
+            <span class="text-white font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] leading-none tracking-[-0.02em]">{ref.name}</span>
+            <span class="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center text-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
           </div>
         </a>
       ))}
@@ -338,14 +248,14 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ NEWS SECTION (RED) ═══ -->
   <section class="mx-[30px] rounded-[50px] bg-[#D9222A] overflow-hidden">
     <div class="max-w-[1140px] mx-auto px-[30px] py-[60px] md:py-[80px]">
-      <h2 class="text-white font-heading italic text-[48px] tracking-[-2px] mb-[40px]">Nyheter.</h2>
+      <h2 class="!text-white italic mb-[40px]">Nyheter.</h2>
       <div class="grid md:grid-cols-3 gap-[20px]">
         <a href="/nyheter/trycksaker-digital-varld" class="group">
           <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
             <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
-          <h4 class="text-white font-heading text-[24px] leading-[1.3] tracking-[-0.5px] mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
-          <span class="text-white/80 font-ui text-base font-medium group-hover:text-white transition-colors">
+          <h4 class="!text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
             Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </span>
         </a>
@@ -353,8 +263,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
             <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
-          <h4 class="text-white font-heading text-[24px] leading-[1.3] tracking-[-0.5px] mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
-          <span class="text-white/80 font-ui text-base font-medium group-hover:text-white transition-colors">
+          <h4 class="!text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
             Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </span>
         </a>
@@ -362,8 +272,8 @@ import Layout from '../layouts/Layout.astro';
           <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
             <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
-          <h4 class="text-white font-heading text-[24px] leading-[1.3] tracking-[-0.5px] mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
-          <span class="text-white/80 font-ui text-base font-medium group-hover:text-white transition-colors">
+          <h4 class="!text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
             Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </span>
         </a>
@@ -375,37 +285,47 @@ import Layout from '../layouts/Layout.astro';
 
 <!-- ═══ SCRIPTS ═══ -->
 <script>
-  // FAQ Accordion
-  document.querySelectorAll('.faq-toggle').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const answer = btn.nextElementSibling as HTMLElement;
-      const icon = btn.querySelector('span:last-child') as HTMLElement;
-      const isOpen = !answer.classList.contains('hidden');
+  function initHomepage() {
+    // FAQ Accordion with smooth animation
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        const isOpen = answer.classList.contains('is-open');
 
-      // Close all
-      document.querySelectorAll('.faq-answer').forEach((a) => a.classList.add('hidden'));
-      document.querySelectorAll('.faq-toggle span:last-child').forEach((i) => {
-        (i as HTMLElement).style.transform = '';
+        // Close all
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+
+        // Toggle current
+        if (!isOpen) {
+          answer.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon.classList.add('hidden');
+          minusIcon.classList.remove('hidden');
+        }
       });
-
-      // Toggle current
-      if (!isOpen) {
-        answer.classList.remove('hidden');
-        icon.style.transform = 'rotate(45deg)';
-      }
     });
-  });
 
-  // Product Carousel scroll
-  const carousel = document.getElementById('product-carousel');
-  const prevBtn = document.getElementById('carousel-prev');
-  const nextBtn = document.getElementById('carousel-next');
-  const scrollAmount = 400;
+    // Product Carousel scroll
+    const carousel = document.getElementById('product-carousel');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const scrollAmount = 400;
 
-  prevBtn?.addEventListener('click', () => {
-    carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-  nextBtn?.addEventListener('click', () => {
-    carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
+    prevBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    nextBtn?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+
+  initHomepage();
+  document.addEventListener('astro:after-swap', initHomepage);
 </script>
