@@ -29,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
-  <section class="py-[20px] overflow-hidden">
+  <section class="py-[20px] mx-[30px] overflow-hidden">
     <div class="logo-carousel-track">
       <!-- First set -->
       <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
@@ -56,7 +56,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ═══ PRODUCT CAROUSEL ═══ -->
   <section class="pt-[40px] pb-[80px]">
-    <h2 class="ml-[30px] mb-[20px]">Vad vill du trycka?</h2>
+    <h3 class="ml-[30px] mb-[20px]">Vad vill du trycka?</h3>
     <div id="product-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
       {[
         { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg' },
@@ -90,9 +90,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ QUOTE SECTION ═══ -->
   <section class="py-[80px] md:py-[121px]">
     <div class="section-boxed">
-      <h3 class="text-[#222]">
+      <h2 class="text-[#222]">
         Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
-      </h3>
+      </h2>
     </div>
   </section>
 
@@ -101,7 +101,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-[1163px] mx-auto px-[30px] py-[80px]">
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
         <div>
-          <h2 class="text-[#222]">
+          <h2 class="text-[#222]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
             Varför trycksaker fortfarande gör skillnad.
           </h2>
         </div>
@@ -124,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ PROCESS SECTION ═══ -->
   <section class="py-[76px] md:py-[121px]">
     <div class="section-boxed">
-      <h2 class="text-center text-[#222] mb-[60px] md:mb-[80px]">
+      <h2 class="text-center text-[#222] mb-[60px] md:mb-[80px]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
         Enkel process för ett grymt resultat.
       </h2>
       <div class="grid md:grid-cols-3 gap-[20px]">
@@ -222,7 +222,7 @@ import Layout from '../layouts/Layout.astro';
 
   <!-- ═══ KUNDREFERENSER CAROUSEL ═══ -->
   <section class="py-[80px]">
-    <h2 class="ml-[30px] mb-[20px]">Kundreferenser.</h2>
+    <h3 class="ml-[30px] mb-[20px]">Kundreferenser.</h3>
     <div class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
       {[
         { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
@@ -248,7 +248,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ═══ NEWS SECTION (RED) ═══ -->
   <section class="mx-[30px] rounded-[50px] bg-[#D9222A] overflow-hidden">
     <div class="max-w-[1140px] mx-auto px-[30px] py-[60px] md:py-[80px]">
-      <h2 class="!text-white italic mb-[40px]">Nyheter.</h2>
+      <h3 class="!text-white mb-[40px]">Nyheter.</h3>
       <div class="grid md:grid-cols-3 gap-[20px]">
         <a href="/nyheter/trycksaker-digital-varld" class="group">
           <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
