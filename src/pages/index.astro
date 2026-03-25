@@ -4,9 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Norrmalmstryckeriet – Ditt lokala tryckeri i Stockholm">
 
-  <!-- ═══ HERO SECTION ═══ -->
+  <!-- ═══ 1. HERO — full viewport, one statement ═══ -->
   <section class="relative">
-    <div class="w-[96%] mx-auto mt-[48px] rounded-[50px] overflow-hidden relative aspect-[2.86/1] max-h-[85vh] bg-[#222]">
+    <div class="w-[96%] mx-auto mt-[48px] rounded-[50px] overflow-hidden relative min-h-[80vh] bg-[#222]">
       <iframe
         src="https://www.youtube.com/embed/kJhvwU8M1Ew?autoplay=1&mute=1&loop=1&playlist=kJhvwU8M1Ew&controls=0&showinfo=0&modestbranding=1&playsinline=1"
         title="Norrmalmstryckeriet"
@@ -19,19 +19,21 @@ import Layout from '../layouts/Layout.astro';
         alt="Tryckpress på Norrmalmstryckeriet"
         class="absolute inset-0 w-full h-full object-cover -z-10"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-      <div class="absolute bottom-[30px] left-[30px] md:bottom-[50px] md:left-[50px] z-10 max-w-3xl">
-        <h2 class="!text-white">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
+      <div class="absolute bottom-[40px] left-[40px] md:bottom-[60px] md:left-[60px] z-10 max-w-3xl">
+        <h2 class="!text-white mb-[24px]">
           Ditt lokala tryckeri i Stockholm.
         </h2>
+        <a href="/offert" class="btn-pill btn-red">
+          Begär offert<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
-  <section class="py-[20px] mx-[30px] overflow-hidden">
+  <!-- ═══ 2. LOGO BAR — social proof, subtle ═══ -->
+  <section class="py-[24px] mx-[30px] overflow-hidden">
     <div class="logo-carousel-track">
-      <!-- First set -->
       <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
       <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
       <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-80" />
@@ -54,9 +56,18 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ PRODUCT CAROUSEL ═══ -->
-  <section class="pt-[40px] pb-[80px]">
-    <h3 class="ml-[30px] mb-[20px]">Vad vill du trycka?</h3>
+  <!-- ═══ 3. QUOTE — the big statement, centered, full screen ═══ -->
+  <section class="flex items-center min-h-[70vh] py-[100px] md:py-[140px]">
+    <div class="section-boxed">
+      <h2 class="text-[#222] text-center">
+        Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
+      </h2>
+    </div>
+  </section>
+
+  <!-- ═══ 4. PRODUCTS — what we offer ═══ -->
+  <section class="pt-[60px] pb-[100px] md:pt-[80px] md:pb-[140px]">
+    <h3 class="ml-[30px] mb-[30px] md:mb-[40px]">Vad vill du trycka?</h3>
     <div id="product-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
       {[
         { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg' },
@@ -87,19 +98,10 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ QUOTE SECTION ═══ -->
-  <section class="py-[80px] md:py-[121px]">
-    <div class="section-boxed">
-      <h2 class="text-[#222]">
-        Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
-      </h2>
-    </div>
-  </section>
-
-  <!-- ═══ VARFÖR TRYCKSAKER ═══ -->
+  <!-- ═══ 5. VARFÖR TRYCKSAKER — the argument, own screen ═══ -->
   <section class="bg-[#F3F3F3]">
-    <div class="max-w-[1163px] mx-auto px-[30px] py-[80px]">
-      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
+    <div class="max-w-[1163px] mx-auto px-[30px] py-[100px] md:py-[140px]">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[100px] items-center">
         <div>
           <h2 class="text-[#222]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
             Varför trycksaker fortfarande gör skillnad.
@@ -109,42 +111,43 @@ import Layout from '../layouts/Layout.astro';
           <p class="mb-8 leading-relaxed">
             I en digital värld gör trycksaker att ditt budskap känns. Genom att kombinera digital kommunikation med något fysiskt och påtagligt når du fram tydligare och skapar starkare relationer med dina kunder.
           </p>
-          <a href="/nyheter/trycksaker-digital-varld" class="btn-pill btn-ghost mb-4">
-            Läs mer här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </a>
-          <br />
-          <a href="#" class="btn-pill btn-dark mt-4">
-            Varför välja trycksaker Infografik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </a>
+          <div class="flex flex-col gap-4">
+            <a href="/nyheter/trycksaker-digital-varld" class="btn-pill btn-ghost">
+              Läs mer här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+            <a href="#" class="btn-pill btn-dark">
+              Varför välja trycksaker Infografik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ PROCESS SECTION ═══ -->
-  <section class="py-[76px] md:py-[121px]">
+  <!-- ═══ 6. PROCESS — how it works, generous spacing ═══ -->
+  <section class="py-[100px] md:py-[160px]">
     <div class="section-boxed">
-      <h2 class="text-center text-[#222] mb-[60px] md:mb-[80px]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
+      <h2 class="text-center text-[#222] mb-[80px] md:mb-[120px]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
         Enkel process för ett grymt resultat.
       </h2>
-      <div class="grid md:grid-cols-3 gap-[20px]">
+      <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">1.</span>
-          <h4 class="text-[#222] mb-[12px]">Offertförfrågan:</h4>
+          <h4 class="text-[#222] mb-[16px]">Offertförfrågan:</h4>
           <p>Skicka en förfrågan till oss med dina önskemål och tryckbehov, så kommer vi att erbjuda en skräddarsydd och konkurrenskraftig offert.</p>
         </div>
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">2.</span>
-          <h4 class="text-[#222] mb-[12px]">Design/korrektur:</h4>
+          <h4 class="text-[#222] mb-[16px]">Design/korrektur:</h4>
           <p>Vi samarbetar med dig för att skapa ditt perfekta tryck. Vi skickar ett korrektur för att du ska kunna granska och godkänna ditt tryck innan vi fortsätter till tryckning.</p>
         </div>
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">3.</span>
-          <h4 class="text-[#222] mb-[12px]">Tryck/leverans:</h4>
+          <h4 class="text-[#222] mb-[16px]">Tryck/leverans:</h4>
           <p>När du godkänt korrektur sköter vi tryckningen med hjälp av våra högkvalitativa och miljövänliga processer. Därefter levererar vi dina trycksaker i rätt tid.</p>
         </div>
       </div>
-      <div class="mt-[40px]">
+      <div class="mt-[60px] text-center">
         <a href="/begar-offert" class="btn-pill btn-red">
           Offertförfrågan<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
@@ -152,9 +155,35 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ SERVICE PILLS ═══ -->
-  <section class="section-boxed pb-[80px]">
-    <div class="flex flex-wrap gap-[10px]">
+  <!-- ═══ 7. KUNDREFERENSER — visual proof, before FAQ ═══ -->
+  <section class="py-[80px] md:py-[120px]">
+    <h3 class="ml-[30px] mb-[30px] md:mb-[40px]">Kundreferenser.</h3>
+    <div class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+            <span class="text-white font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] leading-none tracking-[-0.02em]">{ref.name}</span>
+            <span class="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center text-white">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ 8. SERVICE PILLS + FAQ — knowledge section ═══ -->
+  <section class="section-boxed py-[80px] md:py-[120px]">
+    <h3 class="text-[#222] mb-[30px] md:mb-[40px]">Våra tjänster.</h3>
+    <div class="flex flex-wrap gap-[10px] mb-[60px] md:mb-[80px]">
       <a href="#" class="tab-pill tab-pill-active">Lokalt tryckeri i Stockholm</a>
       <a href="#" class="tab-pill tab-pill-inactive">Tryckmetoder – Offset & Digitaltryck</a>
       <a href="#" class="tab-pill tab-pill-inactive">Efterbehandling & Materialval</a>
@@ -163,10 +192,8 @@ import Layout from '../layouts/Layout.astro';
       <a href="#" class="tab-pill tab-pill-inactive">Miljö, certifieringar & hållbarhet</a>
       <a href="#" class="tab-pill tab-pill-inactive">Tryck & digital kommunikation</a>
     </div>
-  </section>
 
-  <!-- ═══ FAQ SECTION (Accordion) ═══ -->
-  <section class="section-boxed pb-[80px]">
+    <h3 class="text-[#222] mb-[30px]">Vanliga frågor.</h3>
     <div id="faq-accordion">
       {[
         { q: 'Varför ska man anlita ett lokalt tryckeri?', a: 'Att välja ett lokalt tryckeri innebär kortare leveranstider, personlig service och möjlighet att besöka produktionen. Du får en direktkontakt med projektledaren som förstår dina behov och kan anpassa lösningen efter ditt projekt.' },
@@ -201,54 +228,10 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ HJÄLP? CTA ═══ -->
-  <section class="py-[80px]">
-    <div class="section-boxed">
-      <h1 class="text-[#222] mb-[30px]">Hjälp?</h1>
-      <p class="mb-4 max-w-2xl leading-relaxed">
-        Vi hjälper dig från första fil till leverans med smarta beslut, tydliga råd och kvalitet från tryckbord till leveranskartong.
-      </p>
-      <p class="font-bold mb-2 max-w-2xl text-[#222]">
-        Kontakta oss idag för en kostnadsfri offert eller rådgivning.
-      </p>
-      <p class="text-gray-500 mb-8 max-w-2xl">
-        Ingen gissning, bara smarta val – och trycksaker du kan vara stolt över.
-      </p>
-      <a href="/kontakta-oss" class="btn-pill btn-red">
-        Kontakta oss<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </a>
-    </div>
-  </section>
-
-  <!-- ═══ KUNDREFERENSER CAROUSEL ═══ -->
-  <section class="py-[80px]">
-    <h3 class="ml-[30px] mb-[20px]">Kundreferenser.</h3>
-    <div class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
-      {[
-        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
-        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
-        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
-        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
-        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
-      ].map((ref) => (
-        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
-          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-            <span class="text-white font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] leading-none tracking-[-0.02em]">{ref.name}</span>
-            <span class="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center text-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            </span>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- ═══ NEWS SECTION (RED) ═══ -->
+  <!-- ═══ 9. NEWS — red section ═══ -->
   <section class="mx-[30px] rounded-[50px] bg-[#D9222A] overflow-hidden">
-    <div class="max-w-[1140px] mx-auto px-[30px] py-[60px] md:py-[80px]">
-      <h3 class="!text-white mb-[40px]">Nyheter.</h3>
+    <div class="max-w-[1140px] mx-auto px-[30px] py-[80px] md:py-[100px]">
+      <h3 class="!text-white mb-[40px] md:mb-[60px]">Nyheter.</h3>
       <div class="grid md:grid-cols-3 gap-[20px]">
         <a href="/nyheter/trycksaker-digital-varld" class="group">
           <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
@@ -278,6 +261,25 @@ import Layout from '../layouts/Layout.astro';
           </span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ 10. HJÄLP? CTA — final close, Apple-style ending ═══ -->
+  <section class="flex items-center min-h-[60vh] py-[100px] md:py-[160px]">
+    <div class="section-boxed">
+      <h1 class="text-[#222] mb-[30px]">Hjälp?</h1>
+      <p class="mb-6 max-w-2xl leading-relaxed">
+        Vi hjälper dig från första fil till leverans med smarta beslut, tydliga råd och kvalitet från tryckbord till leveranskartong.
+      </p>
+      <p class="font-bold mb-2 max-w-2xl text-[#222]">
+        Kontakta oss idag för en kostnadsfri offert eller rådgivning.
+      </p>
+      <p class="text-gray-500 mb-10 max-w-2xl">
+        Ingen gissning, bara smarta val – och trycksaker du kan vara stolt över.
+      </p>
+      <a href="/kontakta-oss" class="btn-pill btn-red">
+        Kontakta oss<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
     </div>
   </section>
 
