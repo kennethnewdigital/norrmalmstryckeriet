@@ -1,12 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const faqTabs = [
+  {
+    tab: 'Lokalt tryckeri i Stockholm',
+    qs: [
+      { q: 'Varför ska man anlita ett lokalt tryckeri?', a: 'För att det sparar tid, ger dig bättre kontroll och minskar risken för missförstånd. Våra kunder säger ofta: \u201CSkönt att kunna svänga förbi, titta på ett prov och få ett snabbt beslut.\u201D När du jobbar lokalt får du ett tryggare projekt – och ett bättre resultat.' },
+      { q: 'Vad innebär lokal produktion i praktiken?', a: 'Det är en fråga fler ställer idag – med rätta. När ett lokalt tryckeri köps upp, flyttas ofta produktionen till andra orter eller länder. Du förlorar den personliga kontakten, dialogen försvinner och du blir en beställare bland tusentals andra. Flera av våra kunder har upplevt just detta: ett samarbete som tidigare byggde på närhet och förståelse, blir plötsligt opersonligt och svårstyrt. Vi finns kvar där vi alltid har varit – i Stockholm, tillgängliga, lyhörda och engagerade.' },
+    ],
+  },
+  {
+    tab: 'Tryckmetoder – Offset & Digitaltryck',
+    qs: [
+      { q: 'Vad är offsettryck och när passar det bäst?', a: 'När du trycker stora upplagor – en katalog, broschyr eller årsredovisning – och vill att färgerna ska bli exakt rätt varje gång, då är offsettryck rätt val. Metoden ger hög kvalitet, jämn färgåtergivning och ett lägre styckpris vid större volymer.' },
+      { q: 'När ska man välja digitaltryck?', a: 'Digitaltryck är din bästa vän vid kortare upplagor, snabba leveranser och personaliserat innehåll. Du slipper startkostnader för tryckplåtar och kan anpassa varje exemplar med variabeldata.' },
+      { q: 'Hur hanterar ni filer och färghantering?', a: 'Vi tar emot filer i alla vanliga format – PDF, InDesign, Illustrator och fler. Vår prepress-avdelning granskar alla filer före tryck och kontrollerar upplösning, färgprofiler och beskärningar. Vi använder ICC-profiler för exakt färgåtergivning.' },
+      { q: 'Finns det kvalitetsskillnader mellan offset och digitaltryck?', a: 'Offset ger generellt den mest exakta färgåtergivningen, särskilt vid stora upplagor. Digitaltryck har kommit mycket nära offset i kvalitet och erbjuder fördelar som variabeldata och snabbare leverans.' },
+      { q: 'Hur väljer jag rätt tryckmetod?', a: 'Det beror på upplaga, budget, leveranstid och produkt. Generellt: digitaltryck för korta upplagor (1–500 ex) och offsettryck för större (500+ ex). Vi hjälper dig gärna att välja rätt.' },
+      { q: 'Vad är hybridtryck?', a: 'Hybridtryck kombinerar offset och digitaltryck i samma produkt. Till exempel kan du trycka en basupplaga i offset och sedan personalisera med digitaltryck. Det ger bästa av två världar.' },
+      { q: 'Kan ni hantera specialfärger som Pantone?', a: 'Absolut. Vi arbetar med Pantone-färger för exakt färgmatchning, särskilt vid varumärkeskritiska projekt där färgerna måste stämma perfekt.' },
+    ],
+  },
+  {
+    tab: 'Efterbehandling & Materialval',
+    qs: [
+      { q: 'Vad är efterbehandling av trycksaker?', a: 'Efterbehandling är det som gör trycksaken levande. Det kan vara falsning för att vika, laminering för att skydda, prägling för att ge djup eller stansning för att skapa en unik form. Rätt finish skapar både känsla och funktion – och gör att ditt material står ut.' },
+      { q: 'Vilka papperstyper kan jag välja?', a: 'Vi erbjuder ett brett urval av återvunna och hållbarhetscertifierade pappersalternativ. Säg till så guidar vi till rätt kvalitet och lägsta möjliga klimatpåverkan.' },
+      { q: 'Hur påverkar finish som laminat och lack miljön?', a: 'Det beror på vad du väljer – men vi vägleder dig. Vattenbaserade lacker och återvinningsbara laminat är vår standard. Vi ser till att din trycksak ser bra ut, håller, och fortfarande går att återvinna.' },
+    ],
+  },
+  {
+    tab: 'Personlig tryckproduktion & variabeldata',
+    qs: [
+      { q: 'Vad är variabeldata i tryck?', a: 'Tänk dig att varje trycksak pratar direkt med mottagaren. Med variabeldata kan varje exemplar ha eget namn, unika budskap, QR-kod eller bild. Det skapar närvaro och ökar responsen markant jämfört med generiska utskick.' },
+      { q: 'Kan ni personalisera hela trycksaker – inte bara namn?', a: 'Ja. Vi kan anpassa bilder, budskap, erbjudanden och layout per mottagare. Det ger en helt personlig upplevelse som både stärker varumärket och ökar engagemanget.' },
+    ],
+  },
+  {
+    tab: 'Leverans & Distribution',
+    qs: [
+      { q: 'Vilka leveranstider erbjuder ni?', a: 'Normala leveranstider är 5–7 arbetsdagar för offsettryck och 2–3 arbetsdagar för digitaltryck. Vi erbjuder även expressproduktion vid behov. Kontakta oss för exakta tider för ditt projekt.' },
+      { q: 'Kan ni distribuera direkt till flera adresser?', a: 'Ja. Vi hanterar lager, plock och distribution till flera mottagare – oavsett om det är kontor, butiker eller slutkunder. Vi skräddarsyr logistiken efter dina behov.' },
+      { q: 'Erbjuder ni lagring och print-on-demand?', a: 'Absolut. Vi lagrar ditt material hos oss och trycker och levererar vid behov. Perfekt för företag som vill ha flexibel tillgång utan att binda upp stora volymer.' },
+    ],
+  },
+  {
+    tab: 'Miljö, certifieringar & hållbarhet',
+    qs: [
+      { q: 'Vilka miljöcertifieringar har ni?', a: 'Vi är Svanenmärkta, vilket innebär att vår produktion uppfyller Nordisk Miljömärknings krav på kemikalier, pappersval och produktionsprocesser. Vi arbetar kontinuerligt med att minska vår miljöpåverkan.' },
+      { q: 'Hur hållbara är era material?', a: 'Vi erbjuder ett brett urval av miljömärkta och FSC-certifierade papper. Vi väljer alltid det mest hållbara alternativet som möter dina kvalitetskrav och ger råd om materialval.' },
+    ],
+  },
+  {
+    tab: 'Tryck & digital kommunikation',
+    qs: [
+      { q: 'Hur effektiva är trycksaker jämfört med digitalt?', a: 'Studier visar att fysiska trycksaker skapar starkare minnesbilder och högre uppmärksamhet än digitala budskap. Tryckt material upplevs som mer trovärdigt och stannar kvar längre hos mottagaren.' },
+      { q: 'Hur integrerar jag tryck med digital marknadsföring?', a: 'Trycksaker och digital marknadsföring kompletterar varandra utmärkt. Använd QR-koder, personliga URL:er eller augmented reality för att koppla tryck till digitala upplevelser och mäta resultat.' },
+    ],
+  },
+];
 ---
 
-<Layout title="Norrmalmstryckeriet – Ditt lokala tryckeri i Stockholm">
+<Layout title="Norrmalmstryckeriet – Tryckeriet där passion möter precision.">
 
-  <!-- ═══ 1. HERO — full viewport, one statement ═══ -->
+  <!-- ═══ HERO SECTION ═══ -->
   <section class="relative">
-    <div class="w-[96%] mx-auto mt-[48px] rounded-[50px] overflow-hidden relative min-h-[80vh] bg-[#222]">
+    <div class="ml-[34px] mt-[51px] mr-0 rounded-[50px] overflow-hidden relative" style="width:calc(100% - 34px); aspect-ratio:1.75/1; max-height:85vh; background:#000;">
       <iframe
         src="https://www.youtube.com/embed/kJhvwU8M1Ew?autoplay=1&mute=1&loop=1&playlist=kJhvwU8M1Ew&controls=0&showinfo=0&modestbranding=1&playsinline=1"
         title="Norrmalmstryckeriet"
@@ -19,21 +78,20 @@ import Layout from '../layouts/Layout.astro';
         alt="Tryckpress på Norrmalmstryckeriet"
         class="absolute inset-0 w-full h-full object-cover -z-10"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>
-      <div class="absolute bottom-[40px] left-[40px] md:bottom-[60px] md:left-[60px] z-10 max-w-3xl">
-        <h2 class="!text-white mb-[24px]">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+      <div class="absolute bottom-[40px] left-[40px] md:bottom-[60px] md:left-[60px] z-10 max-w-4xl">
+        <h2 class="!text-white font-[var(--font-heading)] !font-normal" style="font-size:clamp(2rem, 5vw, 4.5rem);">
           Ditt lokala tryckeri i Stockholm.
         </h2>
-        <a href="/offert" class="btn-pill btn-red">
-          Begär offert<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- ═══ 2. LOGO BAR — social proof, subtle ═══ -->
-  <section class="py-[24px] mx-[30px] overflow-hidden">
+  <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
+  <section class="py-[20px] mx-[34px] overflow-hidden">
     <div class="logo-carousel-track">
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
       <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
       <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
       <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-80" />
@@ -43,7 +101,6 @@ import Layout from '../layouts/Layout.astro';
       <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 w-[46px] h-auto opacity-80" />
       <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-80" />
       <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
-      <!-- Duplicate set for seamless loop -->
       <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
       <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
       <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[32px] w-auto opacity-80" />
@@ -51,24 +108,13 @@ import Layout from '../layouts/Layout.astro';
       <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
       <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
       <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 w-[46px] h-auto opacity-80" />
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-auto w-auto opacity-80" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
     </div>
   </section>
 
-  <!-- ═══ 3. QUOTE — the big statement, centered, full screen ═══ -->
-  <section class="flex items-center min-h-[70vh] py-[100px] md:py-[140px]">
-    <div class="section-boxed">
-      <h2 class="text-[#222] text-center">
-        Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
-      </h2>
-    </div>
-  </section>
-
-  <!-- ═══ 4. PRODUCTS — what we offer ═══ -->
-  <section class="pt-[60px] pb-[100px] md:pt-[80px] md:pb-[140px]">
-    <h3 class="ml-[30px] mb-[30px] md:mb-[40px]">Vad vill du trycka?</h3>
-    <div id="product-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
+  <!-- ═══ PRODUCT CAROUSEL ═══ -->
+  <section class="pt-[40px] pb-[80px]">
+    <h3 class="ml-[34px] mb-[20px] font-[var(--font-heading)] !font-normal text-[#222]" style="font-size:clamp(1.375rem,4vw+0.25rem,3rem);">Vad vill du trycka?</h3>
+    <div id="product-carousel" class="flex gap-[12px] overflow-x-auto scrollbar-hide ml-[34px] pr-[34px]">
       {[
         { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg' },
         { label: 'Foldrar', icon: 'foldrar.svg' },
@@ -79,31 +125,40 @@ import Layout from '../layouts/Layout.astro';
         { label: 'Böcker', icon: 'bocker-1.svg' },
         { label: 'Storformat', icon: 'storformat-1.svg' },
       ].map((product) => (
-        <a href={`/produkter/${product.icon.replace('-1.svg', '').replace('.svg', '')}`} class="shrink-0 w-[380px] min-h-[387px] bg-[#F5F5F5] rounded-[16px] p-[30px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline">
+        <a href={`/produkter/${product.icon.replace('-1.svg', '').replace('.svg', '')}`} class="shrink-0 w-[380px] min-h-[395px] bg-[#F5F5F5] rounded-[16px] p-[34px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
           <img src={`/images/icons/${product.icon}`} alt={product.label} class="w-[90px] h-[90px] mb-[20px]" />
-          <span class="font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] text-[#222] leading-none tracking-[-0.02em] whitespace-pre-line">{product.label}</span>
-          <span class="mt-auto w-[45px] h-[45px] rounded-full bg-[#222] flex items-center justify-center text-white">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] text-[#222] leading-tight tracking-[-0.02em] whitespace-pre-line">{product.label}</span>
+          <span class="mt-auto w-[45px] h-[45px] rounded-full bg-[#222] flex items-center justify-center text-white self-end">
+            <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
           </span>
         </a>
       ))}
     </div>
-    <div class="flex justify-end gap-2 mt-4 mr-[30px]">
-      <button id="carousel-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors" aria-label="Föregående">
+    <div class="flex justify-end gap-2 mt-4 mr-[34px]">
+      <button id="carousel-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
-      <button id="carousel-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors" aria-label="Nästa">
+      <button id="carousel-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
   </section>
 
-  <!-- ═══ 5. VARFÖR TRYCKSAKER — the argument, own screen ═══ -->
+  <!-- ═══ QUOTE SECTION ═══ -->
+  <section class="py-[80px] md:py-[120px]">
+    <div class="max-w-[1140px] mx-auto px-[34px]">
+      <h3 class="text-[#222] font-[var(--font-heading)] !font-normal" style="font-size:clamp(1.625rem, 5vw, 4.5rem); line-height:1.05; letter-spacing:-0.03em;">
+        Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
+      </h3>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR TRYCKSAKER ═══ -->
   <section class="bg-[#F3F3F3]">
-    <div class="max-w-[1163px] mx-auto px-[30px] py-[100px] md:py-[140px]">
-      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[100px] items-center">
+    <div class="max-w-[1140px] mx-auto px-[34px] py-[80px]">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
         <div>
-          <h2 class="text-[#222]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
+          <h2 class="text-[#222]">
             Varför trycksaker fortfarande gör skillnad.
           </h2>
         </div>
@@ -111,43 +166,42 @@ import Layout from '../layouts/Layout.astro';
           <p class="mb-8 leading-relaxed">
             I en digital värld gör trycksaker att ditt budskap känns. Genom att kombinera digital kommunikation med något fysiskt och påtagligt når du fram tydligare och skapar starkare relationer med dina kunder.
           </p>
-          <div class="flex flex-col gap-4">
-            <a href="/nyheter/trycksaker-digital-varld" class="btn-pill btn-ghost">
-              Läs mer här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </a>
-            <a href="#" class="btn-pill btn-dark">
-              Varför välja trycksaker Infografik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </a>
-          </div>
+          <a href="/nyheter/trycksaker-digital-varld" class="inline-block font-bold text-[#222] mb-6 hover:underline">
+            Läs mer här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <br />
+          <a href="#" class="inline-flex items-center gap-2 bg-[#222] text-white rounded-full px-[24px] py-[14px] text-[15px] font-medium no-underline hover:bg-[#333] transition-colors mt-2">
+            Varför välja trycksaker Infografik<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ 6. PROCESS — how it works, generous spacing ═══ -->
-  <section class="py-[100px] md:py-[160px]">
-    <div class="section-boxed">
-      <h2 class="text-center text-[#222] mb-[80px] md:mb-[120px]" style="font-size: clamp(1.625rem, 5vw + 0.25rem, 4rem);">
+  <!-- ═══ PROCESS SECTION ═══ -->
+  <section class="py-[80px] md:py-[120px]">
+    <div class="max-w-[1140px] mx-auto px-[34px]">
+      <h2 class="text-center text-[#222] mb-[60px] md:mb-[80px]">
         Enkel process för ett grymt resultat.
       </h2>
-      <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
+      <div class="grid md:grid-cols-3 gap-[20px]">
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">1.</span>
-          <h4 class="text-[#222] mb-[16px]">Offertförfrågan:</h4>
+          <h4 class="text-[#222] mb-[12px]">Offertförfrågan:</h4>
           <p>Skicka en förfrågan till oss med dina önskemål och tryckbehov, så kommer vi att erbjuda en skräddarsydd och konkurrenskraftig offert.</p>
         </div>
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">2.</span>
-          <h4 class="text-[#222] mb-[16px]">Design/korrektur:</h4>
+          <h4 class="text-[#222] mb-[12px]">Design/korrektur:</h4>
           <p>Vi samarbetar med dig för att skapa ditt perfekta tryck. Vi skickar ett korrektur för att du ska kunna granska och godkänna ditt tryck innan vi fortsätter till tryckning.</p>
         </div>
         <div>
           <span class="block font-[var(--font-heading)] text-[clamp(5rem,8vw,9.125rem)] text-[#222] leading-none tracking-[-1px]">3.</span>
-          <h4 class="text-[#222] mb-[16px]">Tryck/leverans:</h4>
+          <h4 class="text-[#222] mb-[12px]">Tryck/leverans:</h4>
           <p>När du godkänt korrektur sköter vi tryckningen med hjälp av våra högkvalitativa och miljövänliga processer. Därefter levererar vi dina trycksaker i rätt tid.</p>
         </div>
       </div>
-      <div class="mt-[60px] text-center">
+      <div class="mt-[40px]">
         <a href="/begar-offert" class="btn-pill btn-red">
           Offertförfrågan<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
         </a>
@@ -155,126 +209,51 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ 7. KUNDREFERENSER — visual proof, before FAQ ═══ -->
-  <section class="py-[80px] md:py-[120px]">
-    <h3 class="ml-[30px] mb-[30px] md:mb-[40px]">Kundreferenser.</h3>
-    <div class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[30px] pr-[30px]">
-      {[
-        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
-        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
-        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
-        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
-        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
-      ].map((ref) => (
-        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
-          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-            <span class="text-white font-[var(--font-heading)] text-[clamp(1.375rem,4vw+0.25rem,3rem)] leading-none tracking-[-0.02em]">{ref.name}</span>
-            <span class="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center text-white">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-            </span>
-          </div>
-        </a>
+  <!-- ═══ TABBED FAQ SECTION ═══ -->
+  <section class="max-w-[1140px] mx-auto px-[34px] pb-[80px]">
+    <div class="flex flex-wrap gap-[10px] mb-[30px]" id="faq-tabs">
+      {faqTabs.map((tab, i) => (
+        <button
+          class={`faq-tab-btn rounded-full px-[20px] py-[16px] text-[15px] font-[var(--font-body)] cursor-pointer transition-colors duration-200 ${i === 0 ? 'bg-[#222] text-white border border-[#222]' : 'bg-white text-[#222] border border-[#222] hover:bg-[#f5f5f5]'}`}
+          data-tab-index={i}
+        >
+          {tab.tab}
+        </button>
       ))}
     </div>
-  </section>
-
-  <!-- ═══ 8. SERVICE PILLS + FAQ — knowledge section ═══ -->
-  <section class="section-boxed py-[80px] md:py-[120px]">
-    <h3 class="text-[#222] mb-[30px] md:mb-[40px]">Våra tjänster.</h3>
-    <div class="flex flex-wrap gap-[10px] mb-[60px] md:mb-[80px]">
-      <a href="#" class="tab-pill tab-pill-active">Lokalt tryckeri i Stockholm</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Tryckmetoder – Offset & Digitaltryck</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Efterbehandling & Materialval</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Personlig tryckproduktion & variabeldata</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Leverans & Distribution</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Miljö, certifieringar & hållbarhet</a>
-      <a href="#" class="tab-pill tab-pill-inactive">Tryck & digital kommunikation</a>
-    </div>
-
-    <h3 class="text-[#222] mb-[30px]">Vanliga frågor.</h3>
-    <div id="faq-accordion">
-      {[
-        { q: 'Varför ska man anlita ett lokalt tryckeri?', a: 'Att välja ett lokalt tryckeri innebär kortare leveranstider, personlig service och möjlighet att besöka produktionen. Du får en direktkontakt med projektledaren som förstår dina behov och kan anpassa lösningen efter ditt projekt.' },
-        { q: 'Vad innebär lokal produktion i praktiken?', a: 'Lokal produktion betyder att dina trycksaker produceras i vår anläggning i Sollentuna, nära Stockholm. Det ger kortare transporter, mindre miljöpåverkan och snabbare leveranser.' },
-        { q: 'Vad används offsettryck till?', a: 'Offsettryck är perfekt för större upplagor – från ett par hundra till flera tusen exemplar. Metoden ger mycket hög och jämn kvalitet, och styckekostnaden sjunker med upplagan. Vanliga produkter är broschyrer, kataloger, affischer och böcker.' },
-        { q: 'Vad är fördelarna med digitaltryck?', a: 'Digitaltryck är idealiskt för kortare upplagor och snabba leveranser. Du slipper startkostnader för tryckplåtar, kan personalisera varje exemplar med variabeldata och har möjlighet att trycka on-demand.' },
-        { q: 'Hur hanterar ni filer och färghantering?', a: 'Vi tar emot filer i de flesta format – PDF, InDesign, Illustrator med mera. Vår prepress-avdelning granskar alla filer före tryck och kontrollerar upplösning, färgprofiler och beskärningsmarker. Vi använder ICC-profiler för exakt färgåtergivning.' },
-        { q: 'Vilka kvalitetsskillnader finns det mellan tryckmetoderna?', a: 'Offsettryck ger generellt den mest exakta färgåtergivningen och finaste detaljerna, särskilt vid stora upplagor. Digitaltryck har kommit mycket nära offset i kvalitet och erbjuder fördelar som variabeldata och snabbare leverans.' },
-        { q: 'Hur väljer jag rätt tryckmetod?', a: 'Det beror på upplaga, budget, leveranstid och produkt. Generellt gäller: digitaltryck för korta upplagor (1–500 ex) och offsettryck för större upplagor (500+ ex). Vi hjälper dig gärna att välja rätt.' },
-        { q: 'Vad är hybridtryck?', a: 'Hybridtryck kombinerar offset och digitaltryck i samma produkt. Till exempel kan du trycka en basupplaga i offset och sedan personalisera med digitaltryck. Det ger bästa av två världar.' },
-        { q: 'Vilka leveranstider erbjuder ni?', a: 'Normala leveranstider är 5–7 arbetsdagar för offsettryck och 2–3 arbetsdagar för digitaltryck. Vi erbjuder även expressproduktion vid behov. Kontakta oss för exakta tider för ditt projekt.' },
-        { q: 'Erbjuder ni budgetanpassade tjänster?', a: 'Ja, vi anpassar alltid lösningen efter din budget. Vi kan föreslå alternativa papper, format eller tryckmetoder som håller nere kostnaden utan att kompromissa med kvaliteten.' },
-        { q: 'Vad innebär personalisering och variabeldata?', a: 'Med variabeldata kan varje tryckt exemplar ha unikt innehåll – namn, adresser, bilder eller erbjudanden. Perfekt för direktreklam, personliga inbjudningar eller skräddarsydda kataloger.' },
-        { q: 'Vilka miljöcertifieringar har ni?', a: 'Vi är Svanenmärkta, vilket innebär att vår produktion uppfyller Nordisk Miljömärknings krav på kemikalier, pappersval och produktionsprocesser. Vi arbetar kontinuerligt med att minska vår miljöpåverkan.' },
-        { q: 'Hur hållbara är era material?', a: 'Vi erbjuder ett brett urval av miljömärkta och FSC-certifierade papper. Vi väljer alltid det mest hållbara alternativet som möter dina kvalitetskrav och ger råd om materialval.' },
-        { q: 'Hur effektiva är trycksaker jämfört med digitalt?', a: 'Studier visar att fysiska trycksaker skapar starkare minnesbilder och högre uppmärksamhet än digitala budskap. Tryckt material upplevs som mer trovärdigt och stannar kvar längre hos mottagaren.' },
-        { q: 'Hur integrerar jag tryck med digital marknadsföring?', a: 'Trycksaker och digital marknadsföring kompletterar varandra utmärkt. Använd QR-koder, personliga URL:er eller augmented reality för att koppla tryck till digitala upplevelser och mäta resultat.' },
-      ].map((item) => (
-        <div class="border-b border-[#D5D8DC]">
-          <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left cursor-pointer">
-            <span class="font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] text-[#222] pr-4"><strong>Fråga:</strong> {item.q}</span>
-            <span class="faq-icon shrink-0 w-[25px] h-[25px] flex items-center justify-center text-[#222] transition-transform duration-300">
-              <svg class="faq-plus" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-              <svg class="faq-minus hidden" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
-            </span>
-          </button>
-          <div class="faq-answer text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] leading-[1.7] pb-[20px] px-[10px]">
-            <p>{item.a}</p>
-          </div>
+    <div id="faq-panels">
+      {faqTabs.map((tab, tabIdx) => (
+        <div class={`faq-panel ${tabIdx === 0 ? '' : 'hidden'}`} data-panel-index={tabIdx}>
+          {tab.qs.map((item) => (
+            <div class="border-b border-[#D5D8DC]">
+              <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left cursor-pointer">
+                <span class="font-[var(--font-body)] text-[18px] text-[#222] pr-4"><strong>Fråga:</strong> {item.q}</span>
+                <span class="faq-icon shrink-0 w-[25px] h-[25px] flex items-center justify-center text-[#222]">
+                  <svg class="faq-plus" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                  <svg class="faq-minus hidden" width="25" height="25" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+                </span>
+              </button>
+              <div class="faq-answer text-[18px] leading-[1.7] pb-[20px] px-[10px]">
+                <p>{item.a}</p>
+              </div>
+            </div>
+          ))}
         </div>
       ))}
     </div>
   </section>
 
-  <!-- ═══ 9. NEWS — red section ═══ -->
-  <section class="mx-[30px] rounded-[50px] bg-[#D9222A] overflow-hidden">
-    <div class="max-w-[1140px] mx-auto px-[30px] py-[80px] md:py-[100px]">
-      <h3 class="!text-white mb-[40px] md:mb-[60px]">Nyheter.</h3>
-      <div class="grid md:grid-cols-3 gap-[20px]">
-        <a href="/nyheter/trycksaker-digital-varld" class="group">
-          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
-            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <h4 class="!text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
-          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
-            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </span>
-        </a>
-        <a href="/nyheter/digital-stress-tryckt-media" class="group">
-          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
-            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <h4 class="!text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
-          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
-            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </span>
-        </a>
-        <a href="/nyheter/nya-mojligheter-investering" class="group">
-          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
-            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <h4 class="!text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
-          <span class="text-white/80 font-[var(--font-body)] text-[clamp(0.9375rem,0.5vw+0.8rem,1.125rem)] font-medium group-hover:text-white transition-colors">
-            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 10. HJÄLP? CTA — final close, Apple-style ending ═══ -->
-  <section class="flex items-center min-h-[60vh] py-[100px] md:py-[160px]">
-    <div class="section-boxed">
+  <!-- ═══ HJÄLP? CTA ═══ -->
+  <section class="py-[80px]">
+    <div class="max-w-[1140px] mx-auto px-[34px]">
       <h1 class="text-[#222] mb-[30px]">Hjälp?</h1>
-      <p class="mb-6 max-w-2xl leading-relaxed">
+      <p class="mb-4 max-w-2xl leading-relaxed">
         Vi hjälper dig från första fil till leverans med smarta beslut, tydliga råd och kvalitet från tryckbord till leveranskartong.
       </p>
       <p class="font-bold mb-2 max-w-2xl text-[#222]">
         Kontakta oss idag för en kostnadsfri offert eller rådgivning.
       </p>
-      <p class="text-gray-500 mb-10 max-w-2xl">
+      <p class="text-gray-500 mb-8 max-w-2xl">
         Ingen gissning, bara smarta val – och trycksaker du kan vara stolt över.
       </p>
       <a href="/kontakta-oss" class="btn-pill btn-red">
@@ -283,12 +262,108 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- ═══ KUNDREFERENSER CAROUSEL ═══ -->
+  <section class="py-[80px]">
+    <h3 class="ml-[34px] mb-[20px] font-[var(--font-heading)] !font-normal text-[#222]" style="font-size:clamp(1.375rem,4vw+0.25rem,3rem);">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[34px] pr-[34px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[460px] h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+            <span class="text-white font-[var(--font-heading)] text-[clamp(1.375rem,3vw,3rem)] leading-none tracking-[-0.02em]">{ref.name}</span>
+            <span class="w-[50px] h-[50px] rounded-full bg-[#222] flex items-center justify-center text-white shrink-0">
+              <svg width="20" height="20" viewBox="0 0 448 512" fill="currentColor"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-2 mt-4 mr-[34px]">
+      <button id="ref-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ NEWS SECTION (RED) ═══ -->
+  <section class="mx-[34px] rounded-[50px] bg-[#D9222A] overflow-hidden">
+    <div class="max-w-[1140px] mx-auto px-[34px] py-[60px] md:py-[80px]">
+      <h3 class="!text-white font-[var(--font-heading)] !font-normal mb-[40px]" style="font-size:clamp(1.375rem,4vw+0.25rem,3rem);">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="!text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="!text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="!text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
-<!-- ═══ SCRIPTS ═══ -->
 <script>
   function initHomepage() {
-    // FAQ Accordion with smooth animation
+    // === FAQ Tabs ===
+    const tabBtns = document.querySelectorAll('.faq-tab-btn');
+    const panels = document.querySelectorAll('.faq-panel');
+
+    tabBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = btn.getAttribute('data-tab-index');
+
+        tabBtns.forEach((b) => {
+          b.classList.remove('bg-[#222]', 'text-white');
+          b.classList.add('bg-white', 'text-[#222]');
+        });
+        btn.classList.remove('bg-white', 'text-[#222]');
+        btn.classList.add('bg-[#222]', 'text-white');
+
+        panels.forEach((p) => p.classList.add('hidden'));
+        const target = document.querySelector(`[data-panel-index="${idx}"]`);
+        if (target) target.classList.remove('hidden');
+
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+      });
+    });
+
+    // === FAQ Accordion ===
     document.querySelectorAll('.faq-toggle').forEach((btn) => {
       btn.addEventListener('click', () => {
         const answer = btn.nextElementSibling as HTMLElement;
@@ -296,15 +371,16 @@ import Layout from '../layouts/Layout.astro';
         const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
         const isOpen = answer.classList.contains('is-open');
 
-        // Close all
-        document.querySelectorAll('.faq-answer').forEach((a) => {
-          (a as HTMLElement).style.maxHeight = '0';
-          a.classList.remove('is-open');
-        });
-        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
-        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        const panel = btn.closest('.faq-panel');
+        if (panel) {
+          panel.querySelectorAll('.faq-answer').forEach((a) => {
+            (a as HTMLElement).style.maxHeight = '0';
+            a.classList.remove('is-open');
+          });
+          panel.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+          panel.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        }
 
-        // Toggle current
         if (!isOpen) {
           answer.classList.add('is-open');
           answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -314,17 +390,22 @@ import Layout from '../layouts/Layout.astro';
       });
     });
 
-    // Product Carousel scroll
+    // === Product Carousel ===
     const carousel = document.getElementById('product-carousel');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
-    const scrollAmount = 400;
-
-    prevBtn?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    document.getElementById('carousel-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -400, behavior: 'smooth' });
     });
-    nextBtn?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    document.getElementById('carousel-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: 400, behavior: 'smooth' });
+    });
+
+    // === Reference Carousel ===
+    const refCarousel = document.getElementById('ref-carousel');
+    document.getElementById('ref-prev')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: -480, behavior: 'smooth' });
+    });
+    document.getElementById('ref-next')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: 480, behavior: 'smooth' });
     });
   }
 
