@@ -89,25 +89,25 @@ const faqTabs = [
 
   <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
   <section class="py-[20px] mx-[34px] overflow-hidden">
-    <div class="logo-carousel-track">
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[14px] w-auto opacity-80" />
-      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[35px] w-auto opacity-80" />
-      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[22px] w-auto opacity-80" />
-      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[24px] w-auto opacity-80" />
-      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[40px] w-auto opacity-80" />
-      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[14px] w-auto opacity-80" />
-      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[35px] w-auto opacity-80" />
-      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[22px] w-auto opacity-80" />
-      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[20px] w-auto opacity-80" />
-      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[24px] w-auto opacity-80" />
-      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[40px] w-auto opacity-80" />
-      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[20px] w-auto opacity-80" />
+    <div class="logo-carousel-track" style="gap:60px;">
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[42px] w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[37px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[53px] w-auto opacity-80" />
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[42px] w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[37px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[53px] w-auto opacity-80" />
     </div>
   </section>
 
@@ -273,7 +273,7 @@ const faqTabs = [
         { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
         { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
       ].map((ref) => (
-        <a href={ref.href} class="shrink-0 w-[460px] h-[370px] rounded-[16px] overflow-hidden relative block group">
+        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
           <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
