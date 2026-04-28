@@ -27,6 +27,7 @@
   --color-gray-900: #171717;
   --font-heading: Georgia, "Times New Roman", serif;
   --font-body: Arial, Helvetica, sans-serif;
+  --font-ui: Inter, -apple-system, "system-ui", sans-serif;
 }
 
 @layer base {
@@ -250,15 +251,17 @@ a {
 .link-arrow:hover { text-decoration: underline; }
 
 /* ═══════════════════════════════════════════════════
-   BUTTONS
-   Font: Arial (body font), 16px, weight 500
-   Padding: 16px 32px, border-radius: 100px
+   BUTTONS — exakt enligt mall (Elementor)
+   Font: Inter, 16px, weight 500, letter-spacing -0.3px
+   Padding: 16px 32px, border-radius: 100px, line-height 16px
    ═══════════════════════════════════════════════════ */
 
 .btn-pill {
-  font-family: var(--font-body);
+  font-family: var(--font-ui);
   font-size: 16px;
   font-weight: 500;
+  line-height: 16px;
+  letter-spacing: -0.3px;
   padding: 16px 32px;
   border-radius: 100px;
   display: inline-flex;
@@ -268,7 +271,6 @@ a {
   text-decoration: none;
   cursor: pointer;
   border: none;
-  line-height: 1;
 }
 .btn-pill:hover { opacity: 0.88; }
 

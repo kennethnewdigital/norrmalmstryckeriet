@@ -78,10 +78,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           När ett blad blir för kort ger broschyren plats för ordning, bilder och fördjupning. Vi hjälper dig välja format, sidantal, papper, tryck och bindning efter hur broschyren ska användas.
         </p>
         <div class="flex flex-wrap items-center gap-[16px] mb-[60px]">
-          <a href="/begar-offert" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-[#D9222A] text-white font-[var(--font-ui,Inter)] font-medium text-[16px] hover:opacity-90 transition-opacity no-underline">
+          <a href="/begar-offert" class="btn-pill btn-red">
             Offertförfrågan<Fragment set:html={arrowSvg} />
           </a>
-          <a href="tel:+4686210090" class="inline-flex items-center px-[32px] py-[16px] rounded-full border-2 border-white text-white font-[var(--font-ui,Inter)] font-medium text-[16px] hover:bg-white hover:text-[#222] transition-colors no-underline">
+          <a href="tel:+4686210090" class="btn-pill border-2 border-white text-white hover:bg-white hover:text-[#222]" style="background: transparent;">
             Ring 08-96 01 35
           </a>
         </div>
@@ -124,7 +124,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
               </li>
             ))}
           </ul>
-          <a href="/wp-content/uploads/broschyr-infografik.pdf" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-[#222] text-white font-[var(--font-ui,Inter)] font-medium text-[16px] hover:bg-[#000] transition-colors no-underline">
+          <a href="/wp-content/uploads/broschyr-infografik.pdf" class="btn-pill btn-dark">
             Ladda ner infografik
           </a>
         </div>
@@ -301,7 +301,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             <input type="email" name="email" placeholder="E-post" required class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
             <input type="tel" name="phone" placeholder="Telefon" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
             <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="6" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)] resize-none"></textarea>
-            <button type="submit" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-white text-[#222] font-[var(--font-ui,Inter)] font-medium text-[16px] hover:bg-[#222] hover:text-white transition-colors mt-[8px]">
+            <button type="submit" class="btn-pill mt-[8px]" style="background: white; color: #222;">
               Skicka meddelande
             </button>
           </form>
