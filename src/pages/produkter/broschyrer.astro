@@ -1,187 +1,167 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const stats = [
-  { number: '3x', suffix: '', label: 'Längre engagemang', body: 'Fysiska broschyrer ger 8 gånger längre uppmärksamhet än digitala dokument enligt neurovetenskapliga studier.' },
-  { number: '35', suffix: '%', label: 'Bättre minneseffekt', body: 'Fysiska material skapar starkare emotionella kopplingar och ökar chansen att mottagaren minns ditt budskap.' },
-  { number: '17', suffix: '%', label: 'Högre respons', body: 'Kampanjer med fysiska broschyrer ger högre respons än enbart digitala kampanjer.' },
+// === COPY FRÅN BROSCHYRER.DOCX ===
+
+const effects = [
+  'Mer plats för förklaring och bild',
+  'Tydlig läsordning över flera sidor',
+  'Rätt känsla för företag, produkt och varumärke',
+  'Möjlighet till häftning, limbindning och finish',
 ];
 
+// 6 scenarios — exakt från docx (inte 8!)
 const scenarios = [
-  { title: 'Mässa eller event?', body: 'Besökarna träffar 50 utställare på en dag. De tar med sig 5 broschyrer hem. Din ska vara en av dem – och den som faktiskt läses.', rec: 'A5 eller kvadratiskt format, 170-200g, matt laminering. Står ut i högen.' },
-  { title: 'Företagspresentation?', body: 'Första intrycket sätts inom sekunder. En gedigen broschyr signalerar att ni tar er själva på allvar — och därmed kunden.', rec: 'A4 eller liggande format, limbunden, premiumpapper. Professionellt och hållbart.' },
-  { title: 'Produktkatalog?', body: 'Dina kunder ska kunna bläddra, jämföra, drömma. En fysisk katalog gör det möjligt på ett sätt som en webbshop aldrig kan.', rec: 'A4 häftad eller limbunden, bestruket papper för skarpa produktbilder.' },
-  { title: 'Säljmaterial för möten?', body: 'Du lämnar broschyren kvar efter mötet. Den fortsätter sälja när du gått. Den ska representera dig när du inte är där.', rec: 'Kompakt format, 12-16 sidor, folietryck på loggan. Premium men portabel.' },
-  { title: 'Årsredovisning?', body: 'En årsredovisning är mer än siffror. Det är er historia, ert varumärke, ert ansikte utåt mot aktieägare och partners.', rec: 'A4 limbunden, obestruket premiumpapper, diskret foliedetaljer. Seriöst och hållbart.' },
-  { title: 'Utbildningsmaterial?', body: 'Kursdeltagare behöver material som håller, som går att anteckna i, som tål att bläddras i hundra gånger.', rec: 'A4 spiralbunden, 100-120g obestruket, ligger plant för anteckningar.' },
-  { title: 'Jubileumsskrift?', body: '50 år, 100 år, eller bara ett viktigt kapitel. En jubileumsbok ska kännas som den milstolpe den representerar.', rec: 'Trådhäftning eller limbunden, 150g obestruket, textilomslag. En bok att spara.' },
-  { title: 'Direktutskick?', body: 'Brevlådan är inte död — den är mindre trängd. En broschyr som dimper ner hos rätt person vid rätt tid kan öppna dörrar.', rec: 'DL eller A5, självhäftande, 170g. Kompakt, personlig, direkt.' },
-];
-
-const expertTips = [
-  { title: 'Bindningen påverkar allt', body: 'Häftning, limbindning, spiralbindning — valet påverkar hur broschyren öppnas, ligger plant och upplevs. Vi hjälper dig välja rätt.' },
-  { title: 'Sidantal är inte bara matte', body: 'Häftade broschyrer måste ha sidantal delbara med 4. Limbundna har andra regler. Vi ser till att din design passar formatet.' },
-  { title: 'Provtryck sparar pengar', body: 'Vid större upplagor eller känsliga färger rekommenderar vi provtryck. Bättre att justera innan än att ångra efter.' },
-];
-
-const expertise = [
   {
-    title: 'Format',
-    intro: 'Formatet påverkar hur broschyren upplevs och används. Olika situationer kräver olika format.',
-    items: [
-      ['A4 stående', 'Klassiskt. Passar produktkataloger och presentationer.'],
-      ['A4 liggande', 'Visar bilder bättre. Perfekt för portföljer.'],
-      ['A5', 'Kompakt och portabelt. Mässfavorit.'],
-      ['Kvadratiskt', 'Sticker ut. Modernt och annorlunda.'],
-      ['DL/tredjedels A4', 'Passar i kuvert och broschyrställ.'],
-    ],
+    title: 'Du ska presentera företaget',
+    body: 'Du behöver visa verksamhet, erbjudande, människor och kontaktvägar i en tydlig helhet. Konsekvensen blir att innehållet behöver en röd tråd över flera sidor.',
+    rec: 'A5 eller A4, 8–12 sidor, fullfärg 4+4, silk eller obestruket papper och häftning eller limbindning efter sidantal.',
   },
   {
-    title: 'Bindning',
-    intro: 'Bindningen avgör hur broschyren beter sig. Välj rätt för ditt syfte.',
-    items: [
-      ['Häftning (klammer)', 'Upp till 64 sidor. Ekonomiskt, klassiskt.'],
-      ['Limbindning', 'Från 40 sidor. Ligger plant, håller länge.'],
-      ['Spiralbindning', 'Ligger helt plant. Bra för manualer.'],
-      ['Wire-o', 'Dubbelspirar. Premium och funktionellt.'],
-      ['Trådshäftning', 'Exklusivt. För jubileumspublikationer.'],
-    ],
+    title: 'Du ska göra en produktbroschyr',
+    body: 'Du behöver visa bilder, funktioner, användning och fördelar utan att allt trängs på en sida. Konsekvensen blir att format och sidflöde behöver hjälpa kunden att jämföra och förstå.',
+    rec: 'A4 vid mer information, fullfärg, papper med bra bildåtergivning och tydliga avsnitt för produkt, nytta och kontakt.',
   },
   {
-    title: 'Papper & finish',
-    intro: 'Pappret är halva upplevelsen. Rätt val förstärker ditt budskap.',
-    items: [
-      ['Bestruket', 'Skarpa bilder, livfulla färger. Produktfokus.'],
-      ['Obestruket', 'Naturlig känsla. Hållbarhet och värme.'],
-      ['130-170g inlaga', 'Standard. Bra balans vikt/kvalitet.'],
-      ['250-350g omslag', 'Stabilt omslag. Skyddar och imponerar.'],
-      ['Matt/silk laminering', 'Skyddar och lyfter omslaget.'],
-    ],
+    title: 'Du ska skapa en kampanjbroschyr',
+    body: 'Du vill samla erbjudande, argument och nästa steg i ett material som känns mer genomarbetat än ett blad. Konsekvensen blir att första sidan behöver väcka intresse och insidorna bygga förtroende.',
+    rec: 'A5, 8 sidor, digitaltryck vid mindre upplaga och offsettryck vid större upplaga.',
+  },
+  {
+    title: 'Du ska ta fram utbildningsmaterial',
+    body: 'Du behöver ett häfte som går att läsa i ordning, anteckna i och spara. Konsekvensen blir att läsbarhet, papper och bindning blir viktiga för användningen.',
+    rec: 'A4 eller A5, obestruket papper, tydlig sidnumrering och häftning eller limbindning beroende på sidantal.',
+  },
+  {
+    title: 'Du ska trycka till mässa',
+    body: 'Du behöver ett material som ger mer fördjupning än ett reklamblad och som kan tas med vidare. Konsekvensen blir att broschyren behöver vara lätt att dela ut, lätt att bläddra i och tydlig i avslutet.',
+    rec: 'A5, 8–12 sidor, fullfärg, kraftigare omslag och tydlig kontakt på baksidan.',
+  },
+  {
+    title: 'Du vill skapa premiumkänsla',
+    body: 'Du behöver en broschyr som speglar varumärket och känns genomarbetad i handen. Konsekvensen blir att papper, omslag och efterbehandling påverkar helhetsintrycket.',
+    rec: 'Högre gramvikt på omslag, silk eller bestruket papper, laminering, prägling eller foliering där känslan ska förstärkas.',
   },
 ];
 
-const testimonials = [
-  { quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.', author: 'Björn Jansson', role: 'Projektledare, Repro 8' },
-  { quote: 'De har en suverän förmåga att hitta tryckekonomiska lösningar på våra kreativa idéer.', author: 'Susanne Fridolfsson', role: 'VD Gomorron Reklambyrå' },
-  { quote: 'De visar gång på gång en service- och kvalitetsförmåga som passar våra höga krav.', author: 'Jesper Odelius', role: 'COO Set Up AB' },
-  { quote: 'Norrmalms tryckeriet är en trygg och professionell partner. Trycket håller alltid absoluta världsklass och kommer på utlovad tid. Med andra ord, helt perfekt.', author: 'Patrick Kämpe', role: 'Jajja Media Group AB' },
-];
+// 1 quote — exakt från docx
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
 
+// FAQ — 7 questions exakt från docx
 const faqs = [
-  { q: 'Hur många sidor kan en broschyr ha?', a: 'Det beror på bindningen. Häftade broschyrer fungerar bäst med 8-64 sidor (sidantalet måste vara delbart med 4). Limbundna broschyrer kan ha från ca 40 sidor och uppåt — egentligen obegränsat. Vi hjälper dig anpassa innehållet till rätt format.' },
-  { q: 'Vad är skillnaden mellan häftning och limbindning?', a: 'Häftning (klammerhäftning) är snabbare och billigare — arken viks och häftas i ryggen. Limbindning ger en "bok-känsla" med plan rygg och mer professionellt intryck. Limbundna broschyrer ligger också mer plant när de öppnas. Tumregeln: häftning upp till 64 sidor, limbindning från 40 sidor.' },
-  { q: 'Vilken papperstjocklek rekommenderar ni för broschyrer?', a: 'För inlagan rekommenderar vi 130-170g bestruket eller obestruket beroende på bildinnehåll. För omslaget 250-350g, gärna med matt eller silk laminering för skydd och känsla. Vid många sidor kan tunnare papper (115g) vara smart för att hålla nere vikten.' },
-  { q: 'Hur snabbt kan ni leverera broschyrer?', a: 'Standardleverans är 7-10 arbetsdagar för häftade broschyrer, något längre för limbundna. Express kan vi ofta lösa på 4-5 dagar. Har du bråttom? Ring oss — vi har löst många "omöjliga" deadlines genom åren.' },
-  { q: 'Vad kostar det att trycka broschyrer?', a: 'Priset beror på format, sidantal, papper, bindning och upplaga. Som riktmärke: 100 st 16-sidiga A5 häftade från ca 2500 kr, 500 st från ca 4500 kr. Men varje projekt är unikt — kontakta oss för en exakt offert utan förbindelser.' },
-  { q: 'Kan ni hjälpa till med design?', a: 'Vi har inte egen designavdelning, men vi samarbetar med duktiga grafiska formgivare som vi kan rekommendera. Vi ger också alltid feedback på original — upplösning, färgprofiler, utfall, säkerhetszoner. Skicka det du har så återkommer vi med synpunkter.' },
-  { q: 'Är ni miljöcertifierade?', a: 'Ja, vi är Svanenmärkta. Det innebär miljöcertifierade papper, vattenbaserade lacker och ansvarsfull produktion. Du får trycksaker du kan vara stolt över — både för kvaliteten och för miljöavtrycket.' },
+  { q: 'Vad är skillnaden mellan folder och broschyr?', a: 'En folder är ofta ett vikt blad med färre ytor. En broschyr har flera sidor och passar när innehållet behöver mer struktur.' },
+  { q: 'När passar en broschyr bäst?', a: 'Broschyrer passar företagspresentationer, produktinformation, kampanjer och utbildningsmaterial. De fungerar när mottagaren behöver läsa mer än ett kort budskap.' },
+  { q: 'Vilket format ska jag välja?', a: 'A5 passar när broschyren ska vara lätt att dela ut och ta med. A4 passar när bilder, tabeller eller längre texter behöver mer utrymme.' },
+  { q: 'Vad påverkar priset på en broschyr?', a: 'Sidantal, format, upplaga, papper, tryckmetod, bindning och efterbehandling påverkar priset. Vi rekommenderar val efter innehåll och användning.' },
+  { q: 'När passar digitaltryck?', a: 'Digitaltryck passar ofta mindre upplagor och flexibla produktioner. Det är ett bra val när materialet ska tas fram i begränsad mängd.' },
+  { q: 'När passar offsettryck?', a: 'Offsettryck passar ofta större upplagor. Det kan ge bra styckekonomi och jämn färgåtergivning vid volym.' },
+  { q: 'Kan broschyren få en mer exklusiv känsla?', a: 'Ja. Omslag, gramvikt, laminering, prägling eller foliering kan göra broschyren mer bearbetad. Valet bör kopplas till varumärke, mottagare och användning.' },
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 ---
 
 <Layout
-  title="Trycka broschyrer i Stockholm | Norrmalmstryckeriet"
-  description="Broschyrer som bygger förtroende. Vi hjälper dig välja format, sidantal, papper, bindning och tryckmetod efter syftet."
+  title="Trycka broschyrer – format, papper och bindning | Norrmalmstryckeriet"
+  description="Tryck broschyrer för företag, produkt, kampanj och utbildning. Vi hjälper dig välja format, sidantal, papper, tryckmetod och bindning."
 >
 
-  <!-- ═══ HERO (FULLBREDD med bakgrundsbild) ═══ -->
-  <section class="relative w-full" style="background-image: url('/images/hero/hero-broschyr.webp'); background-size: cover; background-position: center; min-height: 700px;">
-    <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent"></div>
+  <!-- ═══ HERO (FULLBREDD bakgrundsbild, samma som mallen) ═══ -->
+  <section class="relative w-full" style="background-image: url('/images/hero/hero-broschyr.webp'); background-size: cover; background-position: center; min-height: 720px;">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"></div>
     <div class="relative z-10 max-w-[1300px] mx-auto px-[34px] py-[100px] md:py-[140px]">
       <p class="!text-white/80 text-[12px] md:text-[13px] mb-[20px] tracking-[0.2em] uppercase font-medium">Tryckeri Stockholm • Sollentuna / Häggvik</p>
       <h1 class="typo-hero !text-white mb-[24px]">
-        Broschyrer.
+        Mer att berätta
       </h1>
-      <p class="!text-white/90 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed mb-[40px]">
-        En broschyr är ingen snabbfix. Det är ett säljverktyg som arbetar för dig — på mässan, i mötet, i brevlådan. Vi hjälper dig välja rätt format, papper och bindning så att resultatet motsvarar ambitionen.
+      <p class="!text-white/90 max-w-[600px] text-[16px] md:text-[18px] leading-relaxed mb-[40px]">
+        När ett blad blir för kort ger broschyren plats för ordning, bilder och fördjupning. Vi hjälper dig välja format, sidantal, papper, tryck och bindning efter hur broschyren ska användas.
       </p>
       <div class="flex flex-wrap items-center gap-[16px] mb-[60px]">
-        <a href="/begar-offert" class="btn-pill btn-red">
+        <a href="/begar-offert" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-[#DC2626] text-white font-[var(--font-ui)] font-medium text-[16px] hover:bg-[#B91C1C] transition-colors no-underline">
           Offertförfrågan<Fragment set:html={arrowSvg} />
         </a>
-        <a href="tel:+4686210090" class="inline-flex items-center font-[var(--font-body)] font-medium text-[15px] px-[28px] py-[14px] rounded-full border-2 border-white text-white hover:bg-white hover:text-[#222] transition-colors">
+        <a href="tel:+4686210090" class="inline-flex items-center px-[32px] py-[16px] rounded-full border-2 border-white text-white font-[var(--font-ui)] font-medium text-[16px] hover:bg-white hover:text-[#222] transition-colors no-underline">
           Ring 08-96 01 35
         </a>
       </div>
       <div class="flex flex-wrap items-end gap-[40px] md:gap-[60px]">
         <div>
           <div class="!text-white font-[var(--font-heading)] text-[34px] md:text-[42px] leading-none">100+ år</div>
-          <div class="!text-white/70 text-[11px] md:text-[12px] tracking-[0.15em] uppercase mt-[4px]">År av erfarenhet</div>
+          <div class="!text-white/70 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mt-[6px] font-medium">År av erfarenhet</div>
         </div>
         <div>
           <div class="!text-white font-[var(--font-heading)] text-[34px] md:text-[42px] leading-none">1000+</div>
-          <div class="!text-white/70 text-[11px] md:text-[12px] tracking-[0.15em] uppercase mt-[4px]">Uppdrag årligen</div>
+          <div class="!text-white/70 text-[10px] md:text-[11px] tracking-[0.18em] uppercase mt-[6px] font-medium">Uppdrag årligen</div>
         </div>
         <div class="flex items-center gap-[12px]">
           <div class="w-[44px] h-[44px] rounded-full bg-[#7CB342] flex items-center justify-center">
-            <span class="text-white text-[20px] font-bold">✓</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <div class="!text-white text-[12px] tracking-[0.15em] uppercase">Svanenmärkt</div>
+          <div class="!text-white text-[10px] md:text-[11px] tracking-[0.18em] uppercase font-medium">Svanenmärkt</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ "VARFÖR BROSCHYR?" - quote + stat cards ═══ -->
+  <!-- ═══ "VARFÖR BROSCHYR?" — Quote H2 ═══ -->
   <section class="py-[100px] md:py-[140px]">
     <div class="max-w-[1300px] mx-auto px-[34px]">
       <p class="text-[#888] text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">Varför broschyr?</p>
-      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start mb-[80px]">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
         <h2 class="typo-quote">
-          En broschyr stannar kvar. <span class="block">En PDF klickas lätt bort.</span>
+          En broschyr kan vara många sidor. <em>Eller en tydlig väg genom ett längre budskap.</em>
         </h2>
         <div class="md:pt-[20px]">
           <p class="text-[18px] leading-relaxed text-[#222] mb-[28px]">
-            I en digital värld är det fysiska en konkurrensfördel. En välgjord broschyr kommunicerar kvalitet innan den ens öppnats.
+            När struktur, papper och bindning samspelar blir innehållet lättare att följa.
           </p>
-          <a href="/wp-content/uploads/broschyr-infografik.pdf" class="inline-flex items-center px-[28px] py-[14px] rounded-full bg-[#222] text-white text-[15px] font-medium hover:bg-[#000] transition-colors">
+          <ul class="space-y-[10px] mb-[32px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/wp-content/uploads/broschyr-infografik.pdf" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-[#222] text-white font-[var(--font-ui)] font-medium text-[16px] hover:bg-[#000] transition-colors no-underline">
             Ladda ner infografik
           </a>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-[20px] md:gap-[24px]">
-        {stats.map((s) => (
-          <div class="bg-[#EAEAEA] rounded-[20px] p-[40px] md:p-[50px] min-h-[280px] flex flex-col">
-            <div class="font-[var(--font-heading)] text-[#222] leading-none mb-[16px]">
-              <span class="text-[clamp(3.5rem,6vw,5.5rem)]">{s.number}</span><span class="text-[clamp(2rem,3.5vw,3rem)]">{s.suffix}</span>
-            </div>
-            <h3 class="text-[18px] md:text-[20px] text-[#222] font-[var(--font-body)] font-medium mb-[20px]">{s.label}</h3>
-            <p class="text-[15px] leading-relaxed text-[#555]">{s.body}</p>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 
-  <!-- ═══ "Det handlar inte om sidor. Det handlar om syfte." (sidoscroll-kort) ═══ -->
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort (380px breda, #F5F5F5, br 16px) ═══ -->
   <section class="pt-[80px] pb-[120px]">
     <div class="max-w-[1300px] mx-auto px-[34px] mb-[40px]">
       <p class="text-[#888] text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">När du behöver en broschyr</p>
       <h2 class="typo-section-title text-[#222] mb-[20px]">
-        Det handlar inte om sidor. Det handlar om syfte.
+        Vad vill du uppnå?
       </h2>
       <p class="text-[#555] text-[16px] md:text-[18px] max-w-[720px]">
-        En broschyr kan vara 8 eller 64 sidor. Det viktiga är att den gör jobbet. Berätta vad du vill uppnå – vi rekommenderar formatet.
+        Berätta situationen. Vi löser trycket.
       </p>
     </div>
     <div id="scenario-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide pl-[34px] pr-[34px]">
       {scenarios.map((s) => (
-        <article class="shrink-0 w-[300px] bg-[#EAEAEA] rounded-[16px] p-[34px] flex flex-col min-h-[400px]">
-          <h3 class="font-[var(--font-heading)] text-[24px] text-[#222] mb-[20px]">{s.title}</h3>
-          <p class="text-[14px] leading-relaxed text-[#444] mb-[24px]">{s.body}</p>
-          <div class="mt-auto pt-[20px]">
-            <div class="border-t border-[#C8C8C8] pt-[20px]">
-              <p class="text-[14px] leading-relaxed text-[#222]">
-                <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
-              </p>
-            </div>
+        <article class="shrink-0 w-[380px] bg-[#F5F5F5] rounded-[16px] p-[43px] flex flex-col min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] text-[28px] text-[#222] leading-[1.15] mb-[20px]">{s.title}</h3>
+          <p class="text-[15px] leading-relaxed text-[#444] mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
           </div>
         </article>
       ))}
     </div>
     <div class="max-w-[1300px] mx-auto px-[34px] flex justify-end gap-[8px] mt-[24px]">
-      <button id="scenario-prev" class="w-[44px] h-[44px] rounded-full bg-[#EAEAEA] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+      <button id="scenario-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
       <button id="scenario-next" class="w-[44px] h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
@@ -190,120 +170,82 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ HUR VI JOBBAR (centrerad, ingen bg) ═══ -->
+  <!-- ═══ HUR VI JOBBAR (centrerat) ═══ -->
   <section class="py-[100px] md:py-[140px]">
     <div class="max-w-[1140px] mx-auto px-[34px] text-center">
       <p class="text-[#888] text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">Hur vi jobbar</p>
-      <h2 class="typo-section-title text-[#222] mb-[20px]">
+      <h2 class="typo-section-title text-[#222] mb-[80px] md:mb-[100px]">
         Broschyrer kräver lite mer planering.
       </h2>
-      <p class="text-[#555] text-[16px] md:text-[18px] mb-[80px]">
-        Men processen behöver inte vara komplicerad.
-      </p>
       <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
         <div>
           <span class="typo-process-number block">1.</span>
-          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Du berättar vad du vill uppnå</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]">Mässa? Kundmöte? Direktutskick? Vi behöver förstå sammanhanget för att kunna rekommendera rätt format, papper och bindning.</p>
+          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Du berättar</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Du beskriver syfte, upplaga, målgrupp och hur broschyren ska användas.</p>
         </div>
         <div>
           <span class="typo-process-number block">2.</span>
-          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Vi rekommenderar en lösning</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]">Baserat på upplaga, budget och syfte föreslår vi den kombination som ger bäst resultat. Inte den dyraste — den rätta.</p>
+          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Vi rekommenderar</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Vi föreslår format, sidantal, papper, tryckmetod, bindning och eventuell efterbehandling.</p>
         </div>
         <div>
           <span class="typo-process-number block">3.</span>
-          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Du godkänner – vi producerar</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]">Du får en tydlig offert och provtryck vid behov. När du säger ja sköter vi resten: tryck, bindning, leverans.</p>
+          <h3 class="font-[var(--font-heading)] text-[22px] md:text-[26px] text-[#222] mb-[16px]">Du godkänner</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag och godkänner innan broschyren går till tryck.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══ VARFÖR INTE WEBBSHOP (grå sektion, 2 kolumner) ═══ -->
-  <section class="bg-[#EFEFEF]">
+  <section class="bg-[#F3F3F3]">
     <div class="max-w-[1300px] mx-auto px-[34px] py-[100px] md:py-[140px]">
-      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px]">
-        <div>
-          <p class="text-[#888] text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">Varför vi inte har en webbshop</p>
-          <h2 class="typo-section-title text-[#222] mb-[40px]">
-            Broschyrer är ingen standardlösning.
-          </h2>
-          <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444]">
-            <p>Broschyrer är för komplexa för att vara en enkel standardlösning. Fel papper, fel bindning eller fel format kan förstöra hela intrycket.</p>
-            <p>Hos webbtryckerier väljer du ur en meny. Hos oss får du rådgivning. Vi ställer frågor, ifrågasätter antaganden och föreslår alternativ du inte visste fanns.</p>
-            <p class="text-[#222] font-medium">Resultatet? En broschyr som faktiskt fungerar — inte bara en som kostade minst.</p>
-          </div>
-        </div>
-        <div>
-          <div class="space-y-[32px]">
-            {expertTips.map((t) => (
-              <div>
-                <h3 class="font-[var(--font-body)] font-bold text-[16px] md:text-[17px] text-[#222] mb-[8px]">{t.title}</h3>
-                <p class="text-[15px] leading-relaxed text-[#555]">{t.body}</p>
-              </div>
-            ))}
-            <div class="pt-[12px]">
-              <a href="/kontakta-oss" class="inline-flex items-center text-[#222] font-medium hover:underline">
-                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
-              </a>
-            </div>
-          </div>
+      <p class="text-[#888] text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">Varför inte webbshop</p>
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
+        <h2 class="typo-section-title text-[#222]">
+          Broschyrer är ingen standardlösning.
+        </h2>
+        <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444] md:pt-[20px]">
+          <p>Broschyrer påverkas av flera val som behöver hänga ihop. Sidantal, papper, tryckmetod, omslag och bindning styr både känsla och funktion.</p>
+          <p>Med rådgivning får du en broschyr som passar innehållet. Det gör valet enklare och resultatet mer genomtänkt.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ VÅR EXPERTIS (MÖRK) ═══ -->
+  <!-- ═══ VÅR EXPERTIS (mörk bg, kort #313131 br 25px) ═══ -->
   <section class="bg-[#1F1F1F]">
     <div class="max-w-[1300px] mx-auto px-[34px] py-[100px] md:py-[140px]">
       <p class="!text-white/60 text-[11px] md:text-[12px] mb-[24px] tracking-[0.2em] uppercase font-medium">Vår expertis</p>
-      <h2 class="typo-section-title !text-white mb-[20px]">
+      <h2 class="typo-section-title !text-white mb-[60px] md:mb-[80px]">
         Format, papper, bindning – vi kan det.
       </h2>
-      <p class="!text-white/70 text-[16px] md:text-[18px] mb-[60px] md:mb-[80px] max-w-[720px]">
-        Du behöver inte vara expert på broschyrer. Men vi är det. Här är grunderna.
-      </p>
       <div class="grid md:grid-cols-3 gap-[24px]">
-        {expertise.map((e) => (
-          <div class="bg-[#2A2A2A] rounded-[16px] p-[40px]">
-            <h3 class="font-[var(--font-heading)] text-[28px] md:text-[32px] !text-white mb-[20px]">{e.title}</h3>
-            <p class="!text-white/70 text-[15px] leading-relaxed mb-[24px]">{e.intro}</p>
-            <div class="space-y-[14px]">
-              {e.items.map(([term, desc]) => (
-                <p class="text-[14px] leading-relaxed !text-white/80">
-                  <strong class="!text-white font-bold">{term}</strong> – {desc}
-                </p>
-              ))}
-            </div>
-          </div>
-        ))}
+        <div class="bg-[#313131] rounded-[25px] p-[39px]">
+          <h3 class="font-[var(--font-heading)] text-[28px] md:text-[32px] !text-white mb-[20px]">Papper</h3>
+          <p class="!text-white/80 text-[15px] leading-relaxed">Vi hjälper dig välja yta och gramvikt efter innehåll, bildkänsla, läsbarhet och hur broschyren ska hanteras.</p>
+        </div>
+        <div class="bg-[#313131] rounded-[25px] p-[39px]">
+          <h3 class="font-[var(--font-heading)] text-[28px] md:text-[32px] !text-white mb-[20px]">Tryckmetod</h3>
+          <p class="!text-white/80 text-[15px] leading-relaxed">Digitaltryck passar ofta mindre upplagor och flexibel produktion. Offsettryck passar ofta större upplagor där jämn färgåtergivning och styckekonomi blir viktiga.</p>
+        </div>
+        <div class="bg-[#313131] rounded-[25px] p-[39px]">
+          <h3 class="font-[var(--font-heading)] text-[28px] md:text-[32px] !text-white mb-[20px]">Efterbehandling</h3>
+          <p class="!text-white/80 text-[15px] leading-relaxed">Häftning, limbindning, falsning, laminering, lack, prägling och foliering kan förstärka funktion, hållbarhet och känsla.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ KUNDCITAT-CAROUSEL (vit bg, centrerat, dots) ═══ -->
+  <!-- ═══ KUNDCITAT (1 citat, vit bg, centrerad) ═══ -->
   <section class="py-[100px] md:py-[140px]">
-    <div class="max-w-[1140px] mx-auto px-[34px]">
-      <div id="testimonials-track" class="relative overflow-hidden">
-        <div id="testimonials-slides" class="flex transition-transform duration-500 ease-out">
-          {testimonials.map((t) => (
-            <div class="testimonial-slide shrink-0 w-full text-center px-[20px] md:px-[60px]">
-              <p class="font-[var(--font-heading)] text-[clamp(1.5rem,2.8vw,2.5rem)] leading-[1.3] text-[#222] mb-[40px]">
-                &ldquo;{t.quote}&rdquo;
-              </p>
-              <div class="text-[15px]">
-                <span class="font-bold text-[#222]">{t.author}</span>
-                <span class="text-[#666]"> – {t.role}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div class="flex justify-center gap-[10px] mt-[40px]" id="testimonials-dots">
-        {testimonials.map((_, i) => (
-          <button class="testimonial-dot w-[8px] h-[8px] rounded-full bg-[#D5D8DC] transition-colors" data-index={i} aria-label={`Citat ${i + 1}`}></button>
-        ))}
+    <div class="max-w-[1140px] mx-auto px-[34px] text-center">
+      <p class="font-[var(--font-heading)] text-[clamp(1.5rem,2.8vw,2.5rem)] leading-[1.3] text-[#222] mb-[40px]">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
       </div>
     </div>
   </section>
@@ -334,16 +276,20 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ HJÄLP? (kontaktformulär) ═══ -->
-  <section class="bg-[#EFEFEF] mt-[40px]">
-    <div class="max-w-[1300px] mx-auto px-[34px] py-[100px] md:py-[140px]">
+  <!-- ══════════════════════════════════════════
+       FOOTER START (allt efter FAQ — exakt som mallen)
+       ══════════════════════════════════════════ -->
+
+  <!-- ═══ HJÄLP? + KONTAKTFORMULÄR (grå #F3F3F3, 2 kolumner) ═══ -->
+  <section class="bg-[#F3F3F3]">
+    <div class="max-w-[1300px] mx-auto px-[34px] py-[100px] md:py-[120px]">
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px]">
         <div>
-          <h2 class="typo-section-title text-[#222] mb-[16px]" style="font-size: clamp(3rem, 6vw, 6rem);">Hjälp?</h2>
-          <h3 class="font-[var(--font-heading)] text-[24px] md:text-[32px] text-[#222] mb-[24px]">
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px]" style="font-size: clamp(3.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[26px] md:text-[32px] text-[#222] mb-[28px] leading-[1.2]">
             Berätta om ditt broschyrprojekt.
           </h3>
-          <p class="text-[16px] leading-relaxed text-[#555] mb-[32px] max-w-[480px]">
+          <p class="text-[16px] leading-relaxed text-[#444] mb-[36px] max-w-[480px]">
             Skicka en förfrågan eller ring oss direkt. Vi återkommer med en rekommendation och ett pris – oftast samma dag. Du förbinder dig till ingenting förrän du säger ja.
           </p>
           <div class="space-y-[8px] text-[15px] text-[#222]">
@@ -353,13 +299,13 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           </div>
         </div>
         <div>
-          <form class="space-y-[12px]">
-            <input type="text" placeholder="Ditt namn" class="w-full px-[20px] py-[16px] rounded-full bg-white border border-transparent focus:border-[#222] outline-none text-[15px]" />
-            <input type="text" placeholder="Företagsnamn" class="w-full px-[20px] py-[16px] rounded-full bg-white border border-transparent focus:border-[#222] outline-none text-[15px]" />
-            <input type="email" placeholder="E-post" class="w-full px-[20px] py-[16px] rounded-full bg-white border border-transparent focus:border-[#222] outline-none text-[15px]" />
-            <input type="tel" placeholder="Telefon" class="w-full px-[20px] py-[16px] rounded-full bg-white border border-transparent focus:border-[#222] outline-none text-[15px]" />
-            <textarea placeholder="Berätta kort om ditt projekt..." rows="5" class="w-full px-[20px] py-[16px] rounded-[24px] bg-white border border-transparent focus:border-[#222] outline-none text-[15px] resize-none"></textarea>
-            <button type="submit" class="btn-pill bg-[#222] text-white hover:bg-[#000]">
+          <form class="space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="text" name="company" placeholder="Företagsnamn" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="email" name="email" placeholder="E-post" required class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="tel" name="phone" placeholder="Telefon" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="6" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)] resize-none"></textarea>
+            <button type="submit" class="inline-flex items-center px-[32px] py-[16px] rounded-full bg-white text-[#222] font-[var(--font-ui)] font-medium text-[16px] hover:bg-[#222] hover:text-white transition-colors mt-[8px]">
               Skicka meddelande
             </button>
           </form>
@@ -368,11 +314,79 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
+  <!-- ═══ KUNDREFERENSER CAROUSEL (samma som startsidan) ═══ -->
+  <section class="py-[80px]">
+    <h3 class="typo-carousel-heading ml-[34px] mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[34px] pr-[34px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{ref.name}</span>
+            <span class="plus-btn plus-btn-md">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-2 mt-4 mr-[34px]">
+      <button id="ref-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETER (röd rundad sektion, samma som startsidan) ═══ -->
+  <section class="mx-[34px] rounded-[50px] bg-[#D9222A] overflow-hidden">
+    <div class="max-w-[1140px] mx-auto px-[34px] py-[60px] md:py-[80px]">
+      <h3 class="typo-carousel-heading !text-white mb-[40px]">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <script>
   function initBroschyrer() {
-    // FAQ accordion
     document.querySelectorAll('.faq-toggle').forEach((btn) => {
       btn.addEventListener('click', () => {
         const answer = btn.nextElementSibling as HTMLElement;
@@ -396,48 +410,21 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       });
     });
 
-    // Scenario carousel
     const carousel = document.getElementById('scenario-carousel');
     document.getElementById('scenario-prev')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: -320, behavior: 'smooth' });
+      carousel?.scrollBy({ left: -400, behavior: 'smooth' });
     });
     document.getElementById('scenario-next')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: 320, behavior: 'smooth' });
+      carousel?.scrollBy({ left: 400, behavior: 'smooth' });
     });
 
-    // Testimonials carousel with dots
-    const slides = document.getElementById('testimonials-slides');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    let currentIdx = 0;
-
-    function setActive(idx: number) {
-      currentIdx = idx;
-      if (slides) (slides as HTMLElement).style.transform = `translateX(-${idx * 100}%)`;
-      dots.forEach((d, i) => {
-        if (i === idx) {
-          d.classList.remove('bg-[#D5D8DC]');
-          d.classList.add('bg-[#222]');
-        } else {
-          d.classList.remove('bg-[#222]');
-          d.classList.add('bg-[#D5D8DC]');
-        }
-      });
-    }
-
-    dots.forEach((dot) => {
-      dot.addEventListener('click', () => {
-        const idx = parseInt(dot.getAttribute('data-index') || '0');
-        setActive(idx);
-      });
+    const refCarousel = document.getElementById('ref-carousel');
+    document.getElementById('ref-prev')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: -620, behavior: 'smooth' });
     });
-
-    setActive(0);
-
-    // Auto-advance every 6 seconds
-    setInterval(() => {
-      const next = (currentIdx + 1) % dots.length;
-      setActive(next);
-    }, 6000);
+    document.getElementById('ref-next')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: 620, behavior: 'smooth' });
+    });
   }
 
   initBroschyrer();
