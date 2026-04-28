@@ -44,6 +44,17 @@ const faqs = [
   { q: 'Kan broschyren få en mer exklusiv känsla?', a: 'Ja. Omslag, gramvikt, laminering, prägling eller foliering kan göra broschyren mer bearbetad. Valet bör kopplas till varumärke, mottagare och användning.' },
 ];
 
+const relatedLinks = [
+  { label: 'Blad, reklamblad, flyers', href: '/produkter/blad' },
+  { label: 'Foldrar', href: '/produkter/foldrar' },
+  { label: 'Böcker', href: '/produkter/bocker' },
+  { label: 'Mappar', href: '/produkter/mappar' },
+  { label: 'Affischer', href: '/produkter/affischer' },
+  { label: 'Digitaltryck', href: '/guider/digitaltryck' },
+  { label: 'Offsettryck', href: '/guider/offsettryck' },
+  { label: 'Filhantering & inställningar', href: '/guider/filhantering' },
+];
+
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 ---
 
@@ -62,14 +73,26 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
       <div class="absolute bottom-[40px] left-[40px] right-[40px] md:bottom-[60px] md:left-[60px] md:right-[60px] z-10">
-        <h1 class="typo-hero !text-white">
+        <span class="block text-white/80 text-[14px] md:text-[16px] mb-[16px] tracking-wide uppercase font-medium">Broschyrer</span>
+        <h1 class="typo-hero !text-white max-w-[900px]">
           Mer att berätta
         </h1>
+        <p class="!text-white/90 max-w-[640px] mt-[20px] mb-[28px] text-[16px] md:text-[18px] leading-relaxed">
+          När ett blad blir för kort ger broschyren plats för ordning, bilder och fördjupning. Vi hjälper dig välja format, sidantal, papper, tryck och bindning efter hur broschyren ska användas.
+        </p>
+        <div class="flex flex-wrap items-center gap-[16px]">
+          <a href="/begar-offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/wp-content/uploads/broschyr-infografik.pdf" class="!text-white inline-flex items-center font-medium hover:underline">
+            Ladda ner infografik<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ TRUST STRIP (samma form som logo-bar) ═══ -->
+  <!-- ═══ TRUST STRIP ═══ -->
   <section class="py-[40px] mx-[34px] overflow-hidden">
     <div class="flex flex-wrap justify-center items-center gap-[40px] md:gap-[80px] py-[10px]">
       <div class="flex items-center gap-[10px]">
@@ -87,32 +110,27 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ INTRO TEXT (samma form som startsidans quote) ═══ -->
+  <!-- ═══ INTRO QUOTE (samma form som startsidans quote) ═══ -->
   <section class="py-[80px] md:py-[120px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <h2 class="typo-quote">
-        När ett blad blir för kort ger broschyren plats för ordning, bilder och fördjupning. <em>Vi hjälper dig välja format, sidantal, papper, tryck och bindning efter hur broschyren ska användas.</em>
+        En broschyr kan vara många sidor. <em>Eller en tydlig väg genom ett längre budskap.</em>
       </h2>
-      <div class="mt-[40px]">
-        <a href="/begar-offert" class="btn-pill btn-red">
-          Offertförfrågan<Fragment set:html={arrowSvg} />
-        </a>
-      </div>
     </div>
   </section>
 
-  <!-- ═══ VARFÖR + EFFEKT (två-kolumn grå sektion, samma form som "Varför trycksaker") ═══ -->
+  <!-- ═══ VARFÖR + EFFEKT (två-kolumn grå sektion) ═══ -->
   <section class="bg-[#F3F3F3]">
     <div class="max-w-[1140px] mx-auto px-[34px] py-[80px]">
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
         <div>
           <h2 class="text-[#222]">
-            En broschyr kan vara många sidor. Eller en tydlig väg genom ett längre budskap.
+            Varför broschyr?
           </h2>
         </div>
         <div>
           <p class="mb-8 leading-relaxed">
-            När struktur, papper och bindning samspelar blir innehållet lättare att följa.
+            När struktur, papper och bindning samspelar blir innehållet lättare att följa. En broschyr ger plats för ordning, bilder och fördjupning – och bygger förtroende på ett sätt som ett kort budskap aldrig kan.
           </p>
           <ul class="space-y-3">
             <li class="flex items-start gap-3">
@@ -137,7 +155,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ SCENARIO CAROUSEL (samma form som produktkarusellen) ═══ -->
+  <!-- ═══ VAD VILL DU UPPNÅ? – sidoscroll-kort (samma form som produktkarusellen) ═══ -->
   <section class="pt-[80px] pb-[80px]">
     <div class="ml-[34px] mb-[20px]">
       <h3 class="typo-carousel-heading mb-[12px]">Vad vill du uppnå?</h3>
@@ -217,7 +235,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ VÅR EXPERTIS (3 kolumner, samma form som "Enkel process" utan numrer) ═══ -->
+  <!-- ═══ VÅR EXPERTIS (3 kolumner) ═══ -->
   <section class="py-[80px] md:py-[120px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <h2 class="typo-section-title text-[#222] mb-[60px] md:mb-[80px]">
@@ -240,7 +258,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ KUNDCITAT (samma form som startsidans quote) ═══ -->
+  <!-- ═══ KUNDCITAT ═══ -->
   <section class="py-[80px] md:py-[120px] bg-[#F3F3F3]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <h3 class="typo-quote">
@@ -252,10 +270,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ FAQ (samma form som startsidans FAQ-accordion, utan tabbar) ═══ -->
+  <!-- ═══ FAQ ═══ -->
   <section class="max-w-[1140px] mx-auto px-[34px] py-[80px] md:py-[120px]">
     <h2 class="typo-section-title text-[#222] mb-[40px] md:mb-[60px]">
-      Vanliga frågor.
+      Vanliga frågor om broschyrer.
     </h2>
     <div id="faq-list">
       {faqs.map((item) => (
@@ -275,11 +293,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ SLUTKONTAKT (samma form som "News"-sektionen, röd rundad) ═══ -->
+  <!-- ═══ SLUTKONTAKT (röd rundad sektion) ═══ -->
   <section class="mx-[34px] mb-[80px] rounded-[50px] bg-[#D9222A] overflow-hidden">
     <div class="max-w-[1140px] mx-auto px-[34px] py-[80px] md:py-[120px]">
       <h2 class="typo-section-title !text-white mb-[24px] max-w-[900px]">
-        Vill du trycka broschyrer för företag, produkt, kampanj eller utbildning?
+        Berätta om ditt broschyrprojekt.
       </h2>
       <p class="!text-white/90 text-[18px] leading-relaxed max-w-[720px] mb-[40px]">
         Berätta hur broschyren ska användas, så rekommenderar vi format, papper, sidantal och bindning.
@@ -292,6 +310,18 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           Ring 08-621 00 90
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══ RELATERADE TRYCKSAKER (pill-länkar) ═══ -->
+  <section class="max-w-[1140px] mx-auto px-[34px] pb-[120px]">
+    <h3 class="typo-process-sub mb-[24px] text-[#222]">Relaterade trycksaker</h3>
+    <div class="flex flex-wrap gap-[12px]">
+      {relatedLinks.map((link) => (
+        <a href={link.href} class="inline-flex items-center px-[20px] py-[12px] rounded-full border border-[#222] text-[#222] text-[15px] font-medium hover:bg-[#222] hover:text-white transition-colors no-underline">
+          {link.label}
+        </a>
+      ))}
     </div>
   </section>
 
