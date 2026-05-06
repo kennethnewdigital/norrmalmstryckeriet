@@ -333,6 +333,34 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════
+   APPLE-STYLE REVEAL ON SCROLL
+   Add class .reveal to any element to enable fade-up
+   on viewport entry. JS toggles .is-revealed.
+   ═══════════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
    UTILITY CLASSES
    ═══════════════════════════════════════════════════ */
 

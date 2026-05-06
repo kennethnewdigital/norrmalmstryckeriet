@@ -32,5 +32,57 @@ const {
       <slot />
     </main>
     <Footer />
+
+    <!-- Apple-style reveal-on-scroll -->
+    <script is:inline>
+      (function () {
+        function initReveal() {
+          // Auto-add .reveal to common content blocks if they don't have it
+          // Skip elements explicitly marked or already revealed
+          const autoTargets = document.querySelectorAll(
+            'main section > div, main section > h1, main section > h2, main section > h3, main section article'
+          );
+          autoTargets.forEach((el) => {
+            if (
+              !el.classList.contains('reveal') &&
+              !el.classList.contains('no-reveal') &&
+              !el.closest('.no-reveal') &&
+              !el.closest('header')
+            ) {
+              el.classList.add('reveal');
+            }
+          });
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-revealed');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.08, rootMargin: '0px 0px -8% 0px' }
+          );
+
+          document.querySelectorAll('.reveal').forEach((el) => {
+            // If already in viewport (above the fold), reveal immediately
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.9) {
+              el.classList.add('is-revealed');
+            } else {
+              observer.observe(el);
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initReveal);
+        } else {
+          initReveal();
+        }
+        document.addEventListener('astro:after-swap', initReveal);
+      })();
+    </script>
   </body>
 </html>
