@@ -45,15 +45,15 @@ const omOss = [
 ];
 ---
 
-<!-- ═══ DESKTOP HEADER (Apple-style sticky pill) ═══ -->
+<!-- ═══ DESKTOP HEADER (corpowerocean-style frosted bar) ═══ -->
 <header
   id="desktop-header"
-  class="hidden md:block fixed top-[20px] left-[20px] right-[20px] z-[100] transition-all duration-300"
+  class="hidden md:block fixed top-0 left-0 right-0 z-[100] transition-all duration-300"
 >
   <div
     id="header-inner"
-    class="bg-white/95 backdrop-blur-md rounded-[100px] shadow-lg shadow-black/[0.06] flex items-center justify-between transition-all duration-300"
-    style="padding: 14px 24px;"
+    class="cpo-frost flex items-center justify-between transition-all duration-300"
+    style="padding: 18px 44px;"
   >
     <!-- Logo -->
     <a href="/" class="shrink-0">
@@ -247,7 +247,21 @@ const omOss = [
 <div class="md:hidden h-[48px]"></div>
 
 <style>
-  /* Apple-style hover dropdown — show on parent hover */
+  /* corpowerocean-style frosted glass bar */
+  .cpo-frost {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  /* When scrolled, becomes more solid */
+  #desktop-header.scrolled .cpo-frost {
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  /* Hover dropdown — show on parent hover */
   .dropdown-trigger:hover .dropdown-panel,
   .dropdown-trigger:focus-within .dropdown-panel {
     opacity: 1;
@@ -257,11 +271,6 @@ const omOss = [
   .dropdown-trigger:hover .dropdown-chevron,
   .dropdown-trigger:focus-within .dropdown-chevron {
     transform: rotate(180deg);
-  }
-
-  /* When scrolling, header gets a denser look */
-  #desktop-header.scrolled #header-inner {
-    box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.12);
   }
 </style>
 

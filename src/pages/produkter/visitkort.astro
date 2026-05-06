@@ -108,49 +108,50 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   description="Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter."
 >
 
-  <!-- ═══ HERO (matchar startsidan: aspect-ratio 1.75/1, mx-[34px], gradient bottom) ═══ -->
+  <!-- ═══ HERO (allt flödande från topp, trust i botten) ═══ -->
   <section class="relative">
-    <div class="mx-[34px] mt-[51px] rounded-[50px] overflow-hidden relative" style="aspect-ratio:1.75/1; max-height:85vh; min-height:600px; background:#000;">
+    <div class="mx-[34px] mt-[51px] rounded-[50px] overflow-hidden relative" style="aspect-ratio:1.75/1; max-height:90vh; min-height:680px; background:#000;">
       <img
         src="/images/hero/visitkort-hero.png"
         alt="Visitkort från Norrmalmstryckeriet"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none"></div>
-      <div class="absolute bottom-[40px] left-[40px] right-[40px] md:bottom-[60px] md:left-[60px] md:right-[60px] z-10">
-        <p class="!text-white/85 mb-[16px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / Häggvik</p>
-        <h1 class="typo-hero !text-white mb-[20px]" style="text-wrap: balance;">
-          Lämna rätt intryck
-        </h1>
-        <p class="!text-white/90 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed mb-[28px]">
-          När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
-        </p>
-        <div class="flex flex-wrap items-center gap-[12px]">
-          <a href="/begar-offert" class="btn-pill btn-red">
-            Offertförfrågan<Fragment set:html={arrowSvg} />
-          </a>
-          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
-            Ring 08-96 01 35
-          </a>
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/15 pointer-events-none"></div>
+      <!-- Allt content flödar från top-padding ned, trust som sista block -->
+      <div class="relative z-10 h-full flex flex-col justify-between px-[40px] md:px-[60px] py-[60px] md:py-[80px]">
+        <!-- Toppblock: label, H1, body, CTAs -->
+        <div class="max-w-[640px]">
+          <p class="!text-white/85 mb-[16px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / Häggvik</p>
+          <h1 class="typo-hero !text-white mb-[20px]" style="text-wrap: balance;">
+            Lämna rätt intryck
+          </h1>
+          <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px]">
+            När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
+          </p>
+          <div class="flex flex-wrap items-center gap-[12px]">
+            <a href="/begar-offert" class="btn-pill btn-red">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
+              Ring 08-96 01 35
+            </a>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TRUST STRIP (under hero, separat) ═══ -->
-  <section class="py-[40px] mx-[34px]">
-    <div class="flex flex-wrap items-center justify-center gap-[40px] md:gap-[80px]">
-      <div class="flex items-center gap-[14px]">
-        <span class="font-[var(--font-heading)] text-[#222] leading-none" style="font-size: clamp(1.75rem, 2.5vw, 2.25rem);">100+ år</span>
-        <span class="text-[#666] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">År av erfarenhet</span>
-      </div>
-      <div class="flex items-center gap-[14px]">
-        <span class="font-[var(--font-heading)] text-[#222] leading-none" style="font-size: clamp(1.75rem, 2.5vw, 2.25rem);">1000+</span>
-        <span class="text-[#666] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Uppdrag årligen</span>
-      </div>
-      <div class="flex items-center gap-[14px]">
-        <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[36px] h-[37px]" />
-        <span class="text-[#222] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Svanenmärkt</span>
+        <!-- Trust strip i botten, stackad vertikalt, vänsterställd -->
+        <div class="flex flex-wrap items-end gap-[40px] md:gap-[60px] mt-[40px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(1.5rem, 1.8vw, 1.875rem);">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase" style="font-size: 10px; letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(1.5rem, 1.8vw, 1.875rem);">1000+</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase" style="font-size: 10px; letter-spacing: 1.5px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase" style="font-size: 10px; letter-spacing: 1.5px;">Svanenmärkt</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
