@@ -110,7 +110,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ HERO ═══ -->
   <section class="relative">
-    <div class="mx-[44px] mt-[66px] rounded-[50px] overflow-hidden relative" style="background-image: url('/images/hero/hero-tryckpress.webp'); background-size: cover; background-position: center; min-height: 720px;">
+    <div class="mx-[44px] mt-[66px] rounded-[50px] overflow-hidden relative" style="background-image: url('/images/hero/visitkort-hero.png'); background-size: cover; background-position: center; min-height: 720px;">
       <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"></div>
       <div class="relative z-10 px-[60px] md:px-[88px] py-[80px] md:py-[120px]">
         <p class="!text-white mb-[20px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / häggvik</p>
@@ -124,7 +124,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           <a href="/begar-offert" class="btn-pill btn-red">
             Offertförfrågan<Fragment set:html={arrowSvg} />
           </a>
-          <a href="tel:+4686210090" class="btn-pill border-2 border-white text-white hover:bg-white hover:text-[#222]" style="background: transparent;">
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
             Ring 08-96 01 35
           </a>
         </div>
@@ -147,19 +147,19 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ "VARFÖR VISITKORT?" — Quote ═══ -->
+  <!-- ═══ "VARFÖR VISITKORT?" — Quote + Infografik-nedladdning ═══ -->
   <section class="py-[100px] md:py-[140px]">
     <div class="mx-[44px]">
       <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför visitkort?</p>
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
-        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em;">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; hyphens: auto; text-wrap: balance;" lang="sv">
           Ett visitkort kan bara lämna kontaktuppgifter. <em>Eller göra mötet lättare att minnas.</em>
         </h2>
         <div class="md:pt-[20px]">
           <p class="text-[18px] leading-relaxed text-[#222] mb-[28px]">
             När papper, tryck och finish passar varumärket blir kortet en naturlig del av presentationen.
           </p>
-          <ul class="space-y-[10px] mb-[36px]">
+          <ul class="space-y-[10px] mb-[40px]">
             {effects.map((eff) => (
               <li class="flex items-start gap-[10px] text-[16px] leading-relaxed text-[#222]">
                 <span class="shrink-0 mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
@@ -167,9 +167,27 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
               </li>
             ))}
           </ul>
-          <a href="/begar-offert" class="btn-pill btn-dark">
-            Offertförfrågan<Fragment set:html={arrowSvg} />
-          </a>
+
+          <!-- Infografik-nedladdning med leadcapture -->
+          <div class="bg-[#F5F5F5] rounded-[16px] p-[28px] md:p-[34px]">
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[8px]" style="font-size: 22px; line-height: 1.2;">
+              Visitkort-guiden — gratis infografik
+            </h3>
+            <p class="text-[14px] leading-relaxed text-[#555] mb-[20px]">
+              Få vår 1-sidiga PDF-guide med papperstips, tryckmetoder och finish-effekter. Skicka uppgifterna så skickar vi guiden direkt.
+            </p>
+            <form id="infografik-form" class="space-y-[10px]" action="/downloads/visitkort-infographic.pdf" method="get" target="_blank">
+              <input type="text" name="name" placeholder="Ditt namn" required class="w-full px-[14px] py-[12px] rounded-[4px] bg-white border border-[#E5E5E5] focus:border-[#222] outline-none text-[15px] font-[var(--font-body)]" />
+              <input type="email" name="email" placeholder="E-post" required class="w-full px-[14px] py-[12px] rounded-[4px] bg-white border border-[#E5E5E5] focus:border-[#222] outline-none text-[15px] font-[var(--font-body)]" />
+              <input type="text" name="company" placeholder="Företag (valfritt)" class="w-full px-[14px] py-[12px] rounded-[4px] bg-white border border-[#E5E5E5] focus:border-[#222] outline-none text-[15px] font-[var(--font-body)]" />
+              <button type="submit" class="btn-pill btn-dark w-full justify-center mt-[6px]">
+                Ladda ner infografik (PDF)
+              </button>
+              <p class="text-[12px] text-[#777] mt-[10px] leading-relaxed">
+                Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Du kan avregistrera dig när som helst.
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -179,7 +197,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <section class="pt-[80px] pb-[100px]">
     <div class="ml-[44px] mb-[40px]">
       <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">När du behöver visitkort</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
         Det handlar inte om kontaktuppgifter. Det handlar om vad du lämnar efter dig.
       </h2>
       <p class="text-[#555] text-[16px] md:text-[18px] max-w-[800px] mb-[6px]">
@@ -192,7 +210,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     <div id="scenario-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide pl-[44px] pr-[44px]">
       {scenarios.map((s) => (
         <article class="shrink-0 w-[380px] bg-[#F5F5F5] rounded-[16px] p-[43px] flex flex-col min-h-[482px]">
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: 28px; line-height: 28px;">{s.title}</h3>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: 26px; line-height: 30px; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
           <p class="text-[15px] leading-relaxed text-[#444] mb-[24px]">{s.body}</p>
           <div class="mt-auto pt-[20px] border-t border-[#C8C8C8]">
             <p class="text-[14px] leading-relaxed text-[#222]">
@@ -241,10 +259,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
   <section class="bg-[#F3F3F3]">
-    <div class="mx-[44px] py-[100px] md:py-[140px] px-[44px]">
+    <div class="px-[44px] py-[100px] md:py-[140px]">
       <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför inte webbshop</p>
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
-        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; hyphens: auto;" lang="sv">
           Visitkort är små, men detaljerna syns direkt.
         </h2>
         <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444] md:pt-[20px]">
