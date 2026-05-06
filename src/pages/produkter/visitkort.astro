@@ -108,19 +108,24 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   description="Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter."
 >
 
-  <!-- ═══ HERO ═══ -->
+  <!-- ═══ HERO (matchar startsidan: aspect-ratio 1.75/1, mx-[34px], gradient bottom) ═══ -->
   <section class="relative">
-    <div class="mx-[44px] mt-[66px] rounded-[50px] overflow-hidden relative" style="background-image: url('/images/hero/visitkort-hero.png'); background-size: cover; background-position: center; min-height: 720px;">
-      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"></div>
-      <div class="relative z-10 px-[60px] md:px-[88px] py-[80px] md:py-[120px]">
-        <p class="!text-white mb-[20px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / häggvik</p>
-        <h1 class="font-[var(--font-heading)] !font-normal !text-white mb-[24px]" style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em;">
+    <div class="mx-[34px] mt-[51px] rounded-[50px] overflow-hidden relative" style="aspect-ratio:1.75/1; max-height:85vh; min-height:600px; background:#000;">
+      <img
+        src="/images/hero/visitkort-hero.png"
+        alt="Visitkort från Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none"></div>
+      <div class="absolute bottom-[40px] left-[40px] right-[40px] md:bottom-[60px] md:left-[60px] md:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / Häggvik</p>
+        <h1 class="typo-hero !text-white mb-[20px]" style="text-wrap: balance;">
           Lämna rätt intryck
         </h1>
-        <p class="!text-white/90 max-w-[600px] text-[16px] md:text-[18px] leading-relaxed mb-[40px]">
+        <p class="!text-white/90 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed mb-[28px]">
           När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
         </p>
-        <div class="flex flex-wrap items-center gap-[16px] mb-[60px]">
+        <div class="flex flex-wrap items-center gap-[12px]">
           <a href="/begar-offert" class="btn-pill btn-red">
             Offertförfrågan<Fragment set:html={arrowSvg} />
           </a>
@@ -128,21 +133,24 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             Ring 08-96 01 35
           </a>
         </div>
-        <!-- Trust strip -->
-        <div class="flex flex-wrap items-center gap-[40px] md:gap-[60px]">
-          <div>
-            <div class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(2rem, 3vw, 2.625rem);">100+ år</div>
-            <div class="!text-white/70 mt-[6px] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">År av erfarenhet</div>
-          </div>
-          <div>
-            <div class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(2rem, 3vw, 2.625rem);">1000+</div>
-            <div class="!text-white/70 mt-[6px] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Uppdrag årligen</div>
-          </div>
-          <div class="flex items-center gap-[14px]">
-            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[40px] h-[41px]" />
-            <div class="!text-white font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Svanenmärkt</div>
-          </div>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TRUST STRIP (under hero, separat) ═══ -->
+  <section class="py-[40px] mx-[34px]">
+    <div class="flex flex-wrap items-center justify-center gap-[40px] md:gap-[80px]">
+      <div class="flex items-center gap-[14px]">
+        <span class="font-[var(--font-heading)] text-[#222] leading-none" style="font-size: clamp(1.75rem, 2.5vw, 2.25rem);">100+ år</span>
+        <span class="text-[#666] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">År av erfarenhet</span>
+      </div>
+      <div class="flex items-center gap-[14px]">
+        <span class="font-[var(--font-heading)] text-[#222] leading-none" style="font-size: clamp(1.75rem, 2.5vw, 2.25rem);">1000+</span>
+        <span class="text-[#666] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Uppdrag årligen</span>
+      </div>
+      <div class="flex items-center gap-[14px]">
+        <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[36px] h-[37px]" />
+        <span class="text-[#222] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Svanenmärkt</span>
       </div>
     </div>
   </section>
@@ -257,17 +265,39 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
+  <!-- ═══ VARFÖR INTE WEBBSHOP — 2-kol med expert-tips ═══ -->
   <section class="bg-[#F3F3F3]">
     <div class="px-[44px] py-[100px] md:py-[140px]">
-      <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför inte webbshop</p>
-      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
-        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; hyphens: auto;" lang="sv">
-          Visitkort är små, men detaljerna syns direkt.
-        </h2>
-        <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444] md:pt-[20px]">
-          <p>Papper, färg, marginaler, finish och läsbarhet påverkar hur kortet uppfattas i handen.</p>
-          <p>Med rådgivning får du ett visitkort som passar varumärket. Det gör valet enklare och resultatet mer professionellt.</p>
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px]">
+        <div>
+          <p class="text-[#888] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför vi inte har en webbshop</p>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; hyphens: auto; text-wrap: balance;" lang="sv">
+            Visitkort är små, men detaljerna syns direkt.
+          </h2>
+          <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444]">
+            <p>Visitkort är små, men detaljerna märks direkt i handen. Papper, färg, marginaler, finish och läsbarhet påverkar hur kortet uppfattas.</p>
+            <p>Hos webbtryckerier väljer du ur en meny. Hos oss får du rådgivning som matchar varumärket — och en lösning som faktiskt fungerar.</p>
+            <p class="text-[#222] font-medium">Resultatet? Ett visitkort som speglar varumärket — inte bara ett som kostade minst.</p>
+          </div>
+        </div>
+        <div class="space-y-[32px] md:pt-[60px]">
+          <div>
+            <h3 class="font-[var(--font-body)] font-bold text-[16px] md:text-[17px] text-[#222] mb-[8px]">Detaljerna märks direkt</h3>
+            <p class="text-[15px] leading-relaxed text-[#555]">Pappersval, marginaler, typografi och färg avgör hur kortet känns. Vi hjälper dig välja kombinationen som passar rollen och varumärket.</p>
+          </div>
+          <div>
+            <h3 class="font-[var(--font-body)] font-bold text-[16px] md:text-[17px] text-[#222] mb-[8px]">Specialeffekter behöver omsorg</h3>
+            <p class="text-[15px] leading-relaxed text-[#555]">Folieprägling, UV-lack och prägling kan lyfta kortet — men måste sitta rätt för att inte störa läsbarheten. Vi vägleder placering och omfattning.</p>
+          </div>
+          <div>
+            <h3 class="font-[var(--font-body)] font-bold text-[16px] md:text-[17px] text-[#222] mb-[8px]">Versionering och team-hantering</h3>
+            <p class="text-[15px] leading-relaxed text-[#555]">När flera personer ska ha samma kort med olika kontaktuppgifter behöver original, mall och versioner hanteras konsekvent. Vi sköter logistiken.</p>
+          </div>
+          <div class="pt-[12px]">
+            <a href="/kontakta-oss" class="inline-flex items-center text-[#222] font-medium hover:underline">
+              Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
         </div>
       </div>
     </div>

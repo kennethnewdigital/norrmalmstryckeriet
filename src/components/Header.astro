@@ -1,70 +1,206 @@
 ---
-/* No props needed */
+const products = [
+  { label: 'Visitkort', href: '/produkter/visitkort' },
+  { label: 'Blad, reklamblad, flyers', href: '/produkter/blad' },
+  { label: 'Foldrar', href: '/produkter/foldrar' },
+  { label: 'Broschyrer', href: '/produkter/broschyrer' },
+  { label: 'Mappar', href: '/produkter/mappar' },
+  { label: 'Affischer', href: '/produkter/affischer' },
+  { label: 'Kuvert', href: '/produkter/kuvert' },
+  { label: 'Böcker', href: '/produkter/bocker' },
+  { label: 'Storformat', href: '/produkter/storformat' },
+];
+
+const guider = [
+  { label: 'Alla guider', href: '/guider' },
+  { label: 'Stansmallar för mappar', href: '/guider/mappar' },
+  { label: 'Industritryck och planprint', href: '/guider/industritryck' },
+  { label: 'Storformat', href: '/guider/storformat' },
+  { label: 'Kuvert', href: '/guider/kuvert' },
+  { label: 'Affischer', href: '/guider/affischer' },
+  { label: 'Offsettryck, stora upplagor', href: '/guider/offsettryck' },
+  { label: 'Digitaltryck', href: '/guider/digitaltryck' },
+  { label: 'Boktryck', href: '/guider/boktryck' },
+  { label: 'Filhantering & inställningar', href: '/guider/filhantering' },
+  { label: 'Reklamblad', href: '/guider/blad' },
+  { label: 'Foldrar', href: '/guider/foldrar' },
+  { label: 'Broschyrer', href: '/guider/broschyrer' },
+];
+
+const kundref = [
+  { label: 'Memira', href: '/kundreferenser/memira' },
+  { label: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet' },
+  { label: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran' },
+  { label: 'Odelius & Co', href: '/kundreferenser/odelius' },
+  { label: 'Zetatrade', href: '/kundreferenser/zetatrade' },
+];
+
+const omOss = [
+  { label: 'Kontakta oss', href: '/kontakt' },
+  { label: 'Om oss', href: '/om-oss' },
+  { label: 'Nyheter', href: '/nyheter' },
+  { label: 'Miljö', href: '/miljo' },
+  { label: 'Historik', href: '/historik' },
+  { label: 'Integritetspolicy', href: '/integritetspolicy' },
+];
 ---
 
+<!-- ═══ DESKTOP HEADER (Apple-style sticky pill) ═══ -->
 <header
-  class="fixed top-0 left-0 right-0 z-[99] bg-white h-[48px] px-[30px] flex items-center justify-between"
+  id="desktop-header"
+  class="hidden md:block fixed top-[20px] left-[20px] right-[20px] z-[100] transition-all duration-300"
 >
-  <!-- Logo -->
-  <a href="/" class="shrink-0">
-    <img
-      src="/images/logos/site-logo.svg"
-      alt="Norrmalmstryckeriet"
-      class="h-[26px] w-auto"
-    />
-  </a>
-
-  <!-- Desktop nav -->
-  <nav class="hidden md:flex items-center gap-5">
-    <a
-      href="/kontakt"
-      class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center hover:opacity-80 transition-opacity"
-    >
-      Kontakta oss
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </a>
-
-    <a
-      href="/offert"
-      class="btn-pill btn-red"
-    >
-      Begär offert
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </a>
-
-    <a
-      href="https://shop.norrmalmstryckeriet.se"
-      class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center hover:opacity-80 transition-opacity"
-    >
-      Webbshop
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-    </a>
-
-    <a href="https://www.sandvikenstryckeri.se" class="shrink-0">
+  <div
+    id="header-inner"
+    class="bg-white/95 backdrop-blur-md rounded-[100px] shadow-lg shadow-black/[0.06] flex items-center justify-between transition-all duration-300"
+    style="padding: 14px 24px;"
+  >
+    <!-- Logo -->
+    <a href="/" class="shrink-0">
       <img
-        src="/images/logos/sandvikens-tryckeri-logo.svg"
-        alt="Sandvikens Tryckeri"
-        class="h-[43px] w-auto"
+        src="/images/logos/site-logo.svg"
+        alt="Norrmalmstryckeriet"
+        class="h-[26px] w-auto"
       />
     </a>
 
-    <!-- Hamburger (desktop) -->
-    <button
-      id="hamburger-btn"
-      class="text-[#D9222A] flex flex-col justify-center items-center gap-[5px] cursor-pointer"
-      aria-label="Meny"
-      aria-expanded="false"
-    >
-      <span class="block w-[22px] h-[2px] bg-current transition-transform duration-200 origin-center" id="ham-top"></span>
-      <span class="block w-[22px] h-[2px] bg-current transition-opacity duration-200" id="ham-mid"></span>
-      <span class="block w-[22px] h-[2px] bg-current transition-transform duration-200 origin-center" id="ham-bot"></span>
-    </button>
-  </nav>
+    <!-- Main nav with hover-dropdowns -->
+    <nav class="flex items-center gap-[8px]">
+      <!-- Produkter -->
+      <div class="dropdown-trigger relative">
+        <a
+          href="/produkter"
+          class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
+        >
+          Produkter och tjänster
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px] dropdown-chevron transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <!-- Dropdown panel -->
+        <div class="dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
+          <div class="bg-white rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[280px]">
+            {products.map((p) => (
+              <a
+                href={p.href}
+                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+              >
+                {p.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
 
-  <!-- Mobile hamburger -->
+      <!-- Guider -->
+      <div class="dropdown-trigger relative">
+        <a
+          href="/guider"
+          class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
+        >
+          Guider
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px] dropdown-chevron transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
+          <div class="bg-white rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[280px] grid grid-cols-1 max-h-[440px] overflow-y-auto">
+            {guider.map((g) => (
+              <a
+                href={g.href}
+                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+              >
+                {g.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Kundreferenser -->
+      <div class="dropdown-trigger relative">
+        <a
+          href="/kundreferenser"
+          class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
+        >
+          Kundreferenser
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px] dropdown-chevron transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
+          <div class="bg-white rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[240px]">
+            {kundref.map((k) => (
+              <a
+                href={k.href}
+                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+              >
+                {k.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Om oss -->
+      <div class="dropdown-trigger relative">
+        <a
+          href="/om-oss"
+          class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
+        >
+          Om oss
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px] dropdown-chevron transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="dropdown-panel absolute top-full right-0 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
+          <div class="bg-white rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[220px]">
+            {omOss.map((o) => (
+              <a
+                href={o.href}
+                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+              >
+                {o.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Right side CTAs -->
+    <div class="flex items-center gap-[8px]">
+      <a
+        href="/kontakt"
+        class="px-[14px] py-[8px] text-[14px] font-medium text-[#222] hover:opacity-70 transition-opacity inline-flex items-center"
+      >
+        Kontakta oss
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[4px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="/offert" class="btn-pill btn-red" style="padding: 10px 18px; font-size: 14px;">
+        Begär offert
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[4px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a
+        href="https://shop.norrmalmstryckeriet.se"
+        class="px-[14px] py-[8px] text-[14px] font-medium text-[#222] hover:opacity-70 transition-opacity inline-flex items-center"
+      >
+        Webbshop
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[4px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+      <a href="https://www.sandvikenstryckeri.se" class="shrink-0 ml-[8px]">
+        <img
+          src="/images/logos/sandvikens-tryckeri-logo.svg"
+          alt="Sandvikens Tryckeri"
+          class="h-[36px] w-auto"
+        />
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ MOBILE HEADER (oförändrad) ═══ -->
+<header
+  class="md:hidden fixed top-0 left-0 right-0 z-[99] bg-white h-[48px] px-[20px] flex items-center justify-between"
+>
+  <a href="/" class="shrink-0">
+    <img src="/images/logos/site-logo.svg" alt="Norrmalmstryckeriet" class="h-[26px] w-auto" />
+  </a>
   <button
     id="hamburger-btn-mobile"
-    class="md:hidden text-[#D9222A] flex flex-col justify-center items-center gap-[5px] cursor-pointer"
+    class="text-[#D9222A] flex flex-col justify-center items-center gap-[5px] cursor-pointer"
     aria-label="Meny"
     aria-expanded="false"
   >
@@ -74,70 +210,71 @@
   </button>
 </header>
 
-<!-- Mobile / slide-down nav -->
+<!-- Mobile slide-down nav -->
 <div
   id="mobile-nav"
-  class="fixed top-[48px] left-0 right-0 bg-white z-[98] shadow-lg translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300"
+  class="md:hidden fixed top-[48px] left-0 right-0 bg-white z-[98] shadow-lg translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300"
 >
-  <nav class="flex flex-col px-[30px] py-6 gap-4">
+  <nav class="flex flex-col px-[30px] py-6 gap-4 max-h-[calc(100vh-48px)] overflow-y-auto">
     <a href="/produkter" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Produkter och tjänster</a>
     <div class="pl-4 flex flex-col gap-3 -mt-1">
-      <a href="/produkter/visitkort" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Visitkort</a>
-      <a href="/produkter/blad" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Blad, reklamblad, flyers</a>
-      <a href="/produkter/foldrar" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Foldrar</a>
-      <a href="/produkter/broschyrer" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Broschyrer</a>
-      <a href="/produkter/mappar" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Mappar</a>
-      <a href="/produkter/affischer" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Affischer</a>
-      <a href="/produkter/kuvert" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Kuvert</a>
-      <a href="/produkter/bocker" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Böcker</a>
-      <a href="/produkter/storformat" class="font-[var(--font-ui)] text-[15px] text-[#444] hover:text-[#222]">Storformat</a>
+      {products.map((p) => (
+        <a href={p.href} class="font-[var(--font-ui)] text-[15px] text-[#444]">{p.label}</a>
+      ))}
     </div>
     <a href="/guider" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Guider</a>
     <a href="/kundreferenser" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Kundreferenser</a>
     <a href="/om-oss" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Om oss</a>
-
     <hr class="border-[var(--color-divider)]" />
-
     <a href="/kontakt" class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center">
       Kontakta oss
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
-
     <a href="/offert" class="btn-pill btn-red w-fit">
       Begär offert
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
-
     <a href="https://shop.norrmalmstryckeriet.se" class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center">
       Webbshop
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
-
     <hr class="border-[var(--color-divider)]" />
-
-    <a href="tel:+4686210090" class="font-[var(--font-ui)] text-[16px] font-medium text-[#D9222A]">
-      08-621 00 90
-    </a>
-
-    <div class="flex items-center gap-4 mt-2">
-      <img src="/images/logos/sandvikens-tryckeri-logo.svg" alt="Sandvikens Tryckeri" class="h-[40px] w-auto" />
-    </div>
+    <a href="tel:+4686210090" class="font-[var(--font-ui)] text-[16px] font-medium text-[#D9222A]">08-621 00 90</a>
   </nav>
 </div>
 
-<!-- Spacer to offset fixed header -->
-<div class="h-[48px]"></div>
+<!-- Spacer to offset fixed header on mobile only (desktop floats over content) -->
+<div class="md:hidden h-[48px]"></div>
+
+<style>
+  /* Apple-style hover dropdown — show on parent hover */
+  .dropdown-trigger:hover .dropdown-panel,
+  .dropdown-trigger:focus-within .dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .dropdown-trigger:hover .dropdown-chevron,
+  .dropdown-trigger:focus-within .dropdown-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* When scrolling, header gets a denser look */
+  #desktop-header.scrolled #header-inner {
+    box-shadow: 0 8px 24px -4px rgb(0 0 0 / 0.12);
+  }
+</style>
 
 <script>
   function initHeader() {
-    const hamburgerDesktop = document.getElementById('hamburger-btn');
+    // Mobile hamburger
     const hamburgerMobile = document.getElementById('hamburger-btn-mobile');
     const mobileNav = document.getElementById('mobile-nav');
     let isOpen = false;
 
-    function toggle() {
+    function toggleMobile() {
       isOpen = !isOpen;
-
+      if (!mobileNav) return;
       if (isOpen) {
         mobileNav.classList.remove('translate-y-[-100%]', 'opacity-0', 'pointer-events-none');
         mobileNav.classList.add('translate-y-0', 'opacity-100', 'pointer-events-auto');
@@ -146,32 +283,31 @@
         mobileNav.classList.remove('translate-y-0', 'opacity-100', 'pointer-events-auto');
       }
 
-      // Animate hamburger lines
       const tops = document.querySelectorAll('[id^="ham-top"]');
       const mids = document.querySelectorAll('[id^="ham-mid"]');
       const bots = document.querySelectorAll('[id^="ham-bot"]');
-
-      tops.forEach(el => {
-        el.style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : '';
-      });
-      mids.forEach(el => {
-        el.style.opacity = isOpen ? '0' : '1';
-      });
-      bots.forEach(el => {
-        el.style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : '';
-      });
-
-      // Update aria
-      [hamburgerDesktop, hamburgerMobile].forEach(btn => {
-        if (btn) btn.setAttribute('aria-expanded', String(isOpen));
-      });
+      tops.forEach((el) => { (el as HTMLElement).style.transform = isOpen ? 'translateY(7px) rotate(45deg)' : ''; });
+      mids.forEach((el) => { (el as HTMLElement).style.opacity = isOpen ? '0' : '1'; });
+      bots.forEach((el) => { (el as HTMLElement).style.transform = isOpen ? 'translateY(-7px) rotate(-45deg)' : ''; });
+      if (hamburgerMobile) hamburgerMobile.setAttribute('aria-expanded', String(isOpen));
     }
+    if (hamburgerMobile) hamburgerMobile.addEventListener('click', toggleMobile);
 
-    if (hamburgerDesktop) hamburgerDesktop.addEventListener('click', toggle);
-    if (hamburgerMobile) hamburgerMobile.addEventListener('click', toggle);
+    // Desktop sticky shadow on scroll
+    const desktopHeader = document.getElementById('desktop-header');
+    if (desktopHeader) {
+      const handleScroll = () => {
+        if (window.scrollY > 20) {
+          desktopHeader.classList.add('scrolled');
+        } else {
+          desktopHeader.classList.remove('scrolled');
+        }
+      };
+      handleScroll();
+      window.addEventListener('scroll', handleScroll, { passive: true });
+    }
   }
 
-  // Run on initial load and on Astro page transitions
   initHeader();
   document.addEventListener('astro:after-swap', initHeader);
 </script>
