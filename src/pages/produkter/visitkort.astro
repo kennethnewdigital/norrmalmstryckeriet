@@ -1,0 +1,476 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const effects = [
+  'Gör kontaktuppgifter enkla att spara',
+  'Stärker första intrycket vid möten',
+  'Passar säljteam, mässa och nätverk',
+  'Kan lyftas med papper och specialeffekter',
+];
+
+// 7 scenarier — exakt från copy
+const scenarios = [
+  {
+    title: 'Du ska beställa visitkort till teamet',
+    body: 'Du behöver kort till flera personer med samma grafiska uttryck och olika kontaktuppgifter. Konsekvensen blir att original, versioner och kvalitet behöver hanteras konsekvent.',
+    rec: 'Standardformat, gemensam mall, digitaltryck vid mindre antal per person och papper som matchar företagets profil.',
+  },
+  {
+    title: 'Du ska till mässa eller event',
+    body: 'Du behöver ett kort som är lätt att dela ut och enkelt för mottagaren att spara. Konsekvensen blir att informationen behöver vara tydlig och kortet kännas professionellt i många möten.',
+    rec: 'Visitkort med tydlig framsida, kontaktuppgifter på baksidan, fullfärg och något kraftigare papper.',
+  },
+  {
+    title: 'Du vill stärka första intrycket',
+    body: 'Du behöver ett visitkort som känns genomarbetat redan när det lämnas över. Konsekvensen blir att papper, yta och efterbehandling får större betydelse.',
+    rec: 'Kraftigare papper, matt laminering, prägling eller folieprägling där logotyp eller namn ska lyftas.',
+  },
+  {
+    title: 'Du behöver visitkort snabbt i mindre upplaga',
+    body: 'Du behöver ett begränsat antal kort för nyanställd, rollbyte eller kommande möte. Konsekvensen blir att produktionen behöver vara flexibel och originalet redo för tryck.',
+    rec: 'Digitaltryck, standardformat, färdigt original i korrekt format och pappersval som fungerar med kort ledtid.',
+  },
+  {
+    title: 'Du vill skapa miljömedveten profil',
+    body: 'Du vill att visitkortet ska spegla omtanke om material och produktion. Konsekvensen blir att pappersval och helhet behöver stödja företagets hållbarhetsprofil.',
+    rec: 'Miljövänligt papper, tydlig men återhållsam design, tryck som matchar materialets känsla och förpackning i miljövänlig visitkortsbox.',
+  },
+  {
+    title: 'Du behöver hjälp med design',
+    body: 'Du har logotyp och kontaktuppgifter men behöver få visitkortet att kännas färdigt och professionellt. Konsekvensen blir att layout, marginaler, typografi och informationshierarki behöver sitta rätt.',
+    rec: 'Designhjälp eller rekommenderad grafisk designer, tydlig originalmall och tryckanpassning med rätt utfall och färginställningar.',
+  },
+  {
+    title: 'Du vill skapa exklusiva visitkort',
+    body: 'Du behöver ett kort som fungerar som varumärkesbärare i möten där detaljerna märks. Konsekvensen blir att finishen behöver förstärka varumärket utan att göra kortet svårläst.',
+    rec: 'Kraftigare papper, folieprägling, UV-lack eller prägling på utvalda delar samt tydlig kontrast för läsbarhet.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Pappersval',
+    intro: 'Visitkort behöver kännas stabila, tydliga och rätt för personen, rollen och varumärket. Materialet påverkar både första intrycket och hur kortet sparas.',
+    items: [
+      ['Obestruket', 'Naturlig och taktil känsla. Bra för personliga, hållbara eller mer nedtonade uttryck.'],
+      ['Bestruket', 'Slätare yta och tydligare färgtryck. Bra för logotyp, bild och starkare kontrast.'],
+      ['Kraftigare papper', 'Ger mer tyngd och professionellt intryck i handen.'],
+      ['Miljövänliga papper', 'Passar när hållbarhetsprofilen ska synas även i materialvalet.'],
+      ['Specialpapper', 'Passar visitkort som ska kännas mer unika eller premium.'],
+    ],
+  },
+  {
+    title: 'Tryckmetod',
+    intro: 'Visitkort kan behöva produceras till en person, ett helt team eller flera versioner samtidigt. Valet av tryckmetod styrs av upplaga, färgkrav och hur många versioner som behövs.',
+    items: [
+      ['Digitaltryck', 'Snabbt och flexibelt. Passar mindre upplagor, flera namn och kortare serier.'],
+      ['Offsettryck', 'Effektivt vid större upplagor och när färgstabilitet blir viktig.'],
+      ['Pantone', 'Exakt färgmatchning. Bra när logotyp eller varumärkesfärg behöver återges konsekvent.'],
+      ['Variabeltryck', 'Bra när många personer ska ha samma design men olika kontaktuppgifter.'],
+    ],
+  },
+  {
+    title: 'Efterbehandling',
+    intro: 'Efterbehandlingen kan göra visitkortet mer taktilt, mer exklusivt eller mer minnesvärt. Det viktiga är att effekten stärker kortet utan att störa läsbarheten.',
+    items: [
+      ['Laminering', 'Matt, silk eller blank yta. Skyddar och ger ett mer färdigt uttryck.'],
+      ['Folieprägling', 'Metallisk detalj i exempelvis guld eller silver. Bra för logotyp, namn eller grafisk detalj.'],
+      ['UV-lack', 'Blank detaljeffekt som kan lyfta utvalda delar av kortet.'],
+      ['Prägling', 'Upphöjd eller nedsänkt effekt som känns i handen.'],
+      ['Rundade hörn / specialform', 'Kan ge kortet ett mer eget uttryck, om det passar varumärket.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
+
+// 8 FAQ — exakt från copy
+const faqs = [
+  { q: 'Vad ska finnas på ett visitkort?', a: 'Namn, roll, företag, telefon, e-post och webbadress är ofta viktigast. Logotyp och eventuell QR-kod kan läggas till när de stärker användningen.' },
+  { q: 'Vilket papper passar visitkort?', a: 'Ett kraftigare papper ger visitkortet stabilitet och bättre känsla i handen. Valet bör matcha varumärke, design och hur kortet ska användas.' },
+  { q: 'Kan ni trycka visitkort till flera personer?', a: 'Ja, visitkort kan tas fram med samma mall och olika kontaktuppgifter. Det passar team, säljorganisationer och nyanställda.' },
+  { q: 'När passar digitaltryck för visitkort?', a: 'Digitaltryck passar ofta mindre upplagor, flera namn och kortare serier. Det är praktiskt när visitkorten behöver versioneras.' },
+  { q: 'Vad påverkar priset på visitkort?', a: 'Pris påverkas av upplaga, papper, tryck, antal versioner och eventuell efterbehandling. Specialeffekter som folieprägling, UV-lack eller prägling påverkar också priset.' },
+  { q: 'Kan visitkort få specialeffekter?', a: 'Ja, folieprägling, UV-lack och prägling kan lyfta logotyp, namn eller grafiska detaljer. Effekten bör användas där den förstärker helheten och behåller läsbarheten.' },
+  { q: 'Kan ni hjälpa till med design?', a: 'Ja, sidan beskriver designhjälp och möjlighet att rekommendera grafiska designers. Det passar när du har logotyp och innehåll men behöver en färdig layout.' },
+  { q: 'Finns det miljövänliga alternativ?', a: 'Ja, befintlig sida beskriver miljövänliga papper, tryckmetoder och visitkortsbox. Exakta materialval bör verifieras inför beställning.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Trycka visitkort med rätt papper och finish | Norrmalmstryckeriet"
+  description="Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="relative">
+    <div class="mx-[44px] mt-[66px] rounded-[50px] overflow-hidden relative" style="background-image: url('/images/hero/hero-tryckpress.webp'); background-size: cover; background-position: center; min-height: 720px;">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-transparent"></div>
+      <div class="relative z-10 px-[60px] md:px-[88px] py-[80px] md:py-[120px]">
+        <p class="!text-white mb-[20px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / häggvik</p>
+        <h1 class="font-[var(--font-heading)] !font-normal !text-white mb-[24px]" style="font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em;">
+          Lämna rätt intryck
+        </h1>
+        <p class="!text-white/90 max-w-[600px] text-[16px] md:text-[18px] leading-relaxed mb-[40px]">
+          När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
+        </p>
+        <div class="flex flex-wrap items-center gap-[16px] mb-[60px]">
+          <a href="/begar-offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill border-2 border-white text-white hover:bg-white hover:text-[#222]" style="background: transparent;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <!-- Trust strip -->
+        <div class="flex flex-wrap items-center gap-[40px] md:gap-[60px]">
+          <div>
+            <div class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(2rem, 3vw, 2.625rem);">100+ år</div>
+            <div class="!text-white/70 mt-[6px] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">År av erfarenhet</div>
+          </div>
+          <div>
+            <div class="!text-white font-[var(--font-heading)] leading-none" style="font-size: clamp(2rem, 3vw, 2.625rem);">1000+</div>
+            <div class="!text-white/70 mt-[6px] font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Uppdrag årligen</div>
+          </div>
+          <div class="flex items-center gap-[14px]">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[40px] h-[41px]" />
+            <div class="!text-white font-medium uppercase" style="font-size: 11px; letter-spacing: 1.65px;">Svanenmärkt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR VISITKORT?" — Quote ═══ -->
+  <section class="py-[100px] md:py-[140px]">
+    <div class="mx-[44px]">
+      <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför visitkort?</p>
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.03em;">
+          Ett visitkort kan bara lämna kontaktuppgifter. <em>Eller göra mötet lättare att minnas.</em>
+        </h2>
+        <div class="md:pt-[20px]">
+          <p class="text-[18px] leading-relaxed text-[#222] mb-[28px]">
+            När papper, tryck och finish passar varumärket blir kortet en naturlig del av presentationen.
+          </p>
+          <ul class="space-y-[10px] mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/begar-offert" class="btn-pill btn-dark">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="pt-[80px] pb-[100px]">
+    <div class="ml-[44px] mb-[40px]">
+      <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">När du behöver visitkort</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+        Det handlar inte om kontaktuppgifter. Det handlar om vad du lämnar efter dig.
+      </h2>
+      <p class="text-[#555] text-[16px] md:text-[18px] max-w-[800px] mb-[6px]">
+        Ett visitkort kan vara enkelt, klassiskt eller mer exklusivt.
+      </p>
+      <p class="text-[#555] text-[16px] md:text-[18px] max-w-[800px]">
+        Det viktiga är att det känns rätt för personen, rollen och varumärket. Berätta vad du vill uppnå – vi rekommenderar papper och finish.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide pl-[44px] pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[380px] bg-[#F5F5F5] rounded-[16px] p-[43px] flex flex-col min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: 28px; line-height: 28px;">{s.title}</h3>
+          <p class="text-[15px] leading-relaxed text-[#444] mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[24px] mr-[44px]">
+      <button id="scenario-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[44px] h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="py-[100px] md:py-[140px]">
+    <div class="max-w-[1140px] mx-auto px-[44px] text-center">
+      <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[80px] md:mb-[100px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+        Tre steg till rätt visitkort.
+      </h2>
+      <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Du berättar</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Du beskriver antal, personer, användning, varumärke och om originalet finns klart.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Vi föreslår papper, tryckmetod, finish, specialeffekter och eventuell hjälp med design.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag och godkänner innan visitkorten går till tryck.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
+  <section class="bg-[#F3F3F3]">
+    <div class="mx-[44px] py-[100px] md:py-[140px] px-[44px]">
+      <p class="text-[#222] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför inte webbshop</p>
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+          Visitkort är små, men detaljerna syns direkt.
+        </h2>
+        <div class="space-y-[20px] text-[16px] leading-relaxed text-[#444] md:pt-[20px]">
+          <p>Papper, färg, marginaler, finish och läsbarhet påverkar hur kortet uppfattas i handen.</p>
+          <p>Med rådgivning får du ett visitkort som passar varumärket. Det gör valet enklare och resultatet mer professionellt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk RUNDAD) ═══ -->
+  <section class="py-[40px]">
+    <div class="mx-[44px] rounded-[50px] bg-[#222]">
+      <div class="px-[44px] md:px-[60px] py-[100px] md:py-[110px]">
+        <p class="!text-white/60 mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[20px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+          Papper, tryck och finish – vi kan det.
+        </h2>
+        <p class="!text-white/70 text-[16px] md:text-[18px] mb-[60px] md:mb-[80px] max-w-[720px]">
+          Ett visitkort är litet, men detaljerna syns direkt. Papper, tryck och finish avgör vad du lämnar efter dig.
+        </p>
+        <div class="grid md:grid-cols-3 gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[25px] p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[20px]" style="font-size: 32px; line-height: 40px;">{e.title}</h3>
+              <p class="!text-white/70 text-[15px] leading-relaxed mb-[24px]">{e.intro}</p>
+              <div class="space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="py-[100px] md:py-[140px]">
+    <div class="max-w-[1140px] mx-auto px-[44px] text-center">
+      <p class="font-[var(--font-heading)] text-[clamp(1.5rem,2.8vw,2.5rem)] leading-[1.3] text-[#222] mb-[40px]">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="max-w-[1140px] mx-auto px-[44px] py-[80px] md:py-[120px]">
+    <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+      Vanliga frågor om visitkort.
+    </h2>
+    <p class="text-[15px] text-[#555] mb-[40px] md:mb-[60px]">
+      Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+    </p>
+    <div id="faq-list">
+      {faqs.map((item) => (
+        <div class="border-b border-[#D5D8DC]">
+          <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left cursor-pointer">
+            <span class="font-[var(--font-body)] font-bold text-[16px] md:text-[18px] text-[#222] pr-4">{item.q}</span>
+            <span class="faq-icon shrink-0 w-[28px] h-[28px] flex items-center justify-center text-[#D9222A]">
+              <svg class="faq-plus" width="28" height="28" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+              <svg class="faq-minus hidden" width="28" height="28" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+            </span>
+          </button>
+          <div class="faq-answer text-[16px] leading-[1.7] pb-[20px] px-[10px] text-[#444]">
+            <p>{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══ FOOTER START — allt efter FAQ ══ -->
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="bg-[#F3F3F3]">
+    <div class="px-[44px] py-[100px] md:py-[120px]">
+      <div class="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-[40px] md:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px]" style="font-size: clamp(3.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[26px] md:text-[32px] text-[#222] mb-[28px] leading-[1.2]">
+            Berätta om ditt visitkortsprojekt.
+          </h3>
+          <p class="text-[16px] leading-relaxed text-[#444] mb-[36px] max-w-[480px]">
+            Vill du trycka visitkort till team, mässa, kundmöte eller nyanställda? Berätta hur kortet ska användas, så rekommenderar vi papper, tryck, finish och upplaga.
+          </p>
+          <div class="space-y-[8px] text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="text" name="company" placeholder="Företagsnamn" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="email" name="email" placeholder="E-post" required class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <input type="tel" name="phone" placeholder="Telefon" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)]" />
+            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="6" class="w-full px-[16px] py-[14px] rounded-[4px] bg-[#FDFDFD] border border-white focus:border-[#222] outline-none text-[18px] font-[var(--font-body)] resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px]" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDREFERENSER ═══ -->
+  <section class="py-[80px]">
+    <h3 class="typo-carousel-heading ml-[44px] mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[44px] pr-[44px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{ref.name}</span>
+            <span class="plus-btn plus-btn-md">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-2 mt-4 mr-[44px]">
+      <button id="ref-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETER ═══ -->
+  <section class="mx-[44px] rounded-[50px] bg-[#D9222A] overflow-hidden mb-[80px]">
+    <div class="max-w-[1140px] mx-auto px-[44px] py-[60px] md:py-[80px]">
+      <h3 class="typo-carousel-heading !text-white mb-[40px]">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  function initVisitkort() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        const isOpen = answer.classList.contains('is-open');
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        if (!isOpen) {
+          answer.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon.classList.add('hidden');
+          minusIcon.classList.remove('hidden');
+        }
+      });
+    });
+
+    const carousel = document.getElementById('scenario-carousel');
+    document.getElementById('scenario-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -400, behavior: 'smooth' });
+    });
+    document.getElementById('scenario-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: 400, behavior: 'smooth' });
+    });
+
+    const refCarousel = document.getElementById('ref-carousel');
+    document.getElementById('ref-prev')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: -620, behavior: 'smooth' });
+    });
+    document.getElementById('ref-next')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: 620, behavior: 'smooth' });
+    });
+  }
+
+  initVisitkort();
+  document.addEventListener('astro:after-swap', initVisitkort);
+</script>
