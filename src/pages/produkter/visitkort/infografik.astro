@@ -9,22 +9,22 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   description="Ladda ner vår gratis PDF-guide om visitkort: papperstips, tryckmetoder och finish-effekter. Fyll i formuläret så skickas guiden direkt."
 >
 
-  <!-- ═══ HERO (mörk, centrerad) ═══ -->
+  <!-- ═══ HERO (vänsterställd, ljusgrå bg) ═══ -->
   <section class="bg-[#F3F3F3] py-[80px] md:py-[120px] reveal">
-    <div class="max-w-[760px] mx-auto px-[44px] text-center">
+    <div class="mx-[44px] md:mx-[80px] max-w-[900px]">
       <p class="text-[#888] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Gratis nedladdning</p>
       <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px]" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
         Visitkort-guiden — välj rätt papper, tryck och finish.
       </h1>
-      <p class="text-[18px] md:text-[20px] leading-relaxed text-[#444]" style="text-wrap: pretty;">
+      <p class="text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
         En PDF-guide med konkreta råd om pappersval, tryckmetoder, specialeffekter och vad som påverkar priset. Fyll i uppgifterna nedan så får du nedladdningen direkt.
       </p>
     </div>
   </section>
 
-  <!-- ═══ FORMULÄR ═══ -->
+  <!-- ═══ FORMULÄR (vänsterställd, max-w för läsbarhet) ═══ -->
   <section class="py-[60px] md:py-[100px] reveal">
-    <div class="max-w-[560px] mx-auto px-[44px]">
+    <div class="mx-[44px] md:mx-[80px] max-w-[560px]">
       <form
         id="visitkort-infografik-form"
         class="space-y-[14px]"
@@ -94,34 +94,35 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
         </button>
 
-        <p class="text-[12px] text-[#888] mt-[14px] leading-relaxed text-center" style="text-wrap: pretty;">
+        <p class="text-[12px] text-[#888] mt-[14px] leading-relaxed" style="text-wrap: pretty;">
           Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Vi delar aldrig din e-post med tredje part. Läs vår <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicy</a>.
         </p>
       </form>
     </div>
   </section>
 
-  <!-- ═══ VAD INGÅR (förhandsvisning) ═══ -->
-  <section class="bg-[#F3F3F3] py-[80px] md:py-[120px] reveal">
-    <div class="max-w-[1140px] mx-auto px-[44px]">
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] text-center mb-[60px] md:mb-[80px]" style="font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+  <!-- ═══ DETTA FÅR DU I GUIDEN (samma form som "Hur vi jobbar" på visitkort) ═══ -->
+  <section class="bg-[#F3F3F3] py-[100px] md:py-[140px] reveal">
+    <div class="mx-[44px] md:mx-[80px] max-w-[1300px]">
+      <p class="text-[#888] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">I guiden</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[80px] md:mb-[100px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
         Detta får du i guiden.
       </h2>
       <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
         <div class="reveal">
-          <div class="w-[48px] h-[48px] rounded-full bg-[#222] text-white flex items-center justify-center mb-[20px] font-[var(--font-heading)] text-[22px]">1</div>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[10px]" style="font-size: 22px; line-height: 1.2;">Pappersval</h3>
-          <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter och specialpapper — när varje typ passar bäst för ditt budskap och varumärke.</p>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Pappersval</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter och specialpapper — när varje typ passar bäst för ditt budskap och varumärke.</p>
         </div>
         <div class="reveal" style="transition-delay: 100ms;">
-          <div class="w-[48px] h-[48px] rounded-full bg-[#222] text-white flex items-center justify-center mb-[20px] font-[var(--font-heading)] text-[22px]">2</div>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[10px]" style="font-size: 22px; line-height: 1.2;">Tryckmetod</h3>
-          <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Tryckmetod</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
         </div>
         <div class="reveal" style="transition-delay: 200ms;">
-          <div class="w-[48px] h-[48px] rounded-full bg-[#222] text-white flex items-center justify-center mb-[20px] font-[var(--font-heading)] text-[22px]">3</div>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[10px]" style="font-size: 22px; line-height: 1.2;">Efterbehandling</h3>
-          <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack, prägling, laminering och specialformer — när varje effekt lyfter kortet utan att störa läsbarheten.</p>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Efterbehandling</h3>
+          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack, prägling, laminering och specialformer — när varje effekt lyfter kortet utan att störa läsbarheten.</p>
         </div>
       </div>
     </div>
@@ -129,7 +130,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ TILLBAKA-LÄNK ═══ -->
   <section class="py-[60px] md:py-[80px]">
-    <div class="max-w-[760px] mx-auto px-[44px] text-center">
+    <div class="mx-[44px] md:mx-[80px]">
       <a href="/produkter/visitkort" class="inline-flex items-center text-[#222] font-medium hover:underline text-[16px]">
         ← Tillbaka till visitkort
       </a>
