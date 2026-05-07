@@ -12,13 +12,31 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <!-- ═══ HERO ═══ -->
   <section class="page-section bg-[#F3F3F3]">
     <div class="page-container">
-      <p class="section-label">Gratis nedladdning</p>
-      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
-        Visitkort-guiden — välj rätt papper, tryck och finish.
-      </h1>
-      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
-        En PDF-guide med konkreta råd om pappersval, tryckmetoder, specialeffekter och vad som påverkar priset. Fyll i uppgifterna nedan så får du nedladdningen direkt.
-      </p>
+      <div class="grid lg:grid-cols-[1fr_auto] gap-[40px] md:gap-[60px] lg:gap-[80px] items-center">
+        <!-- Vänster: Text -->
+        <div>
+          <p class="section-label">Gratis nedladdning</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+            Visitkort-guiden — välj rätt papper, tryck och finish.
+          </h1>
+          <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
+            En PDF-guide med konkreta råd om pappersval, tryckmetoder, specialeffekter och vad som påverkar priset. Fyll i uppgifterna nedan så får du nedladdningen direkt.
+          </p>
+        </div>
+
+        <!-- Höger: PDF-teaser -->
+        <div class="pdf-teaser-wrap">
+          <div class="pdf-teaser">
+            <img
+              src="/images/infografik/visitkort-teaser.jpg"
+              alt="Förhandsvisning av visitkort-guiden (PDF)"
+              loading="eager"
+              decoding="async"
+            />
+            <span class="pdf-badge">PDF</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -176,5 +194,58 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   .form-input:focus { border-color: #222; }
   @media (min-width: 768px) {
     .form-input { padding: 14px 16px; }
+  }
+
+  /* PDF-teaser i hero */
+  .pdf-teaser-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+  }
+  .pdf-teaser {
+    position: relative;
+    width: 280px;
+    max-width: 100%;
+    aspect-ratio: 1 / 1.414; /* A4 */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.06),
+      0 12px 24px rgba(0,0,0,0.10),
+      0 30px 60px rgba(0,0,0,0.14);
+    transform: rotate(-2deg);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .pdf-teaser:hover { transform: rotate(0deg) translateY(-4px); }
+  .pdf-teaser img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pdf-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #D9222A;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    padding: 5px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  @media (min-width: 640px) {
+    .pdf-teaser { width: 320px; }
+  }
+  @media (min-width: 1024px) {
+    .pdf-teaser { width: 340px; }
+  }
+  @media (min-width: 1440px) {
+    .pdf-teaser { width: 380px; }
   }
 </style>
