@@ -329,9 +329,14 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <div class="border-b border-[#D5D8DC]">
           <button class="faq-toggle w-full flex justify-between items-center py-[20px] px-[10px] text-left cursor-pointer">
             <span class="font-[var(--font-body)] font-bold text-[16px] md:text-[18px] text-[#222] pr-4">{item.q}</span>
-            <span class="faq-icon shrink-0 w-[28px] h-[28px] flex items-center justify-center text-[#D9222A]">
-              <svg class="faq-plus" width="28" height="28" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-              <svg class="faq-minus hidden" width="28" height="28" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+            <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+              <svg class="faq-plus w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="8" y1="2" x2="8" y2="14"/>
+                <line x1="2" y1="8" x2="14" y2="8"/>
+              </svg>
+              <svg class="faq-minus hidden w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="2" y1="8" x2="14" y2="8"/>
+              </svg>
             </span>
           </button>
           <div class="faq-answer text-[16px] leading-[1.7] pb-[20px] px-[10px] text-[#444]">

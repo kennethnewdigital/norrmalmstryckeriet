@@ -33,26 +33,81 @@ const {
     </main>
     <Footer />
 
-    <!-- Apple-style reveal-on-scroll -->
+    <!-- Apple-style reveal-on-scroll (täcker hela siten) -->
     <script is:inline>
       (function () {
+        // Selectors that should reveal — broad coverage, like apple.com
+        const REVEAL_SELECTORS = [
+          // Headings
+          'main h1',
+          'main h2',
+          'main h3',
+          'main h4',
+          // Section labels (eyebrow text)
+          'main .section-label',
+          // Body paragraphs (in content blocks)
+          'main section p',
+          // Cards & articles
+          'main article',
+          // Grid items (cards in grids)
+          'main section .grid > div',
+          'main section .grid > article',
+          'main section .grid > a',
+          // Lists in content
+          'main section ul',
+          'main section ol',
+          // Forms
+          'main form',
+          // Two-column groups
+          'main section .grid',
+          // Carousel scrollers
+          'main section [id$="-carousel"]',
+        ];
+
         function initReveal() {
-          // Auto-add .reveal to common content blocks if they don't have it
-          // Skip elements explicitly marked or already revealed
-          const autoTargets = document.querySelectorAll(
-            'main section > div, main section > h1, main section > h2, main section > h3, main section article'
-          );
-          autoTargets.forEach((el) => {
+          // Auto-add .reveal where appropriate
+          const targets = document.querySelectorAll(REVEAL_SELECTORS.join(', '));
+          targets.forEach((el) => {
+            // Skip if already has reveal, has no-reveal opt-out, or is in header/footer
             if (
-              !el.classList.contains('reveal') &&
-              !el.classList.contains('no-reveal') &&
-              !el.closest('.no-reveal') &&
-              !el.closest('header')
-            ) {
-              el.classList.add('reveal');
+              el.classList.contains('reveal') ||
+              el.classList.contains('no-reveal') ||
+              el.closest('.no-reveal') ||
+              el.closest('header') ||
+              el.closest('footer')
+            ) return;
+
+            // Skip if parent is already going to reveal (avoid double-reveal nesting)
+            // Walk up max 3 levels looking for an already-revealing ancestor
+            let parent = el.parentElement;
+            let depth = 0;
+            while (parent && depth < 3) {
+              if (parent.classList && parent.classList.contains('reveal')) {
+                // If parent already has reveal, only add to children if it's a card-like grid item
+                const isGridItem = el.parentElement && el.parentElement.classList && el.parentElement.classList.contains('grid');
+                if (!isGridItem) return;
+                break;
+              }
+              parent = parent.parentElement;
+              depth++;
             }
+
+            el.classList.add('reveal');
           });
 
+          // Stagger grid children (apple-style cascade)
+          document.querySelectorAll('main section .grid').forEach((grid) => {
+            const items = Array.from(grid.children).filter(
+              (c) => c.classList && c.classList.contains('reveal')
+            );
+            items.forEach((item, i) => {
+              if (!item.style.transitionDelay) {
+                item.style.transitionDelay = i * 80 + 'ms';
+              }
+            });
+          });
+
+          // IntersectionObserver to trigger reveals as they enter viewport
           const observer = new IntersectionObserver(
             (entries) => {
               entries.forEach((entry) => {
@@ -62,14 +117,15 @@ const {
                 }
               });
             },
-            { threshold: 0.08, rootMargin: '0px 0px -8% 0px' }
+            { threshold: 0.08, rootMargin: '0px 0px -6% 0px' }
           );
 
           document.querySelectorAll('.reveal').forEach((el) => {
-            // If already in viewport (above the fold), reveal immediately
             const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.9) {
-              el.classList.add('is-revealed');
+            // Already in viewport (above the fold) — reveal immediately without animation delay
+            if (rect.top < window.innerHeight * 0.95) {
+              // Small timeout so transition can register
+              setTimeout(() => el.classList.add('is-revealed'), 20);
             } else {
               observer.observe(el);
             }

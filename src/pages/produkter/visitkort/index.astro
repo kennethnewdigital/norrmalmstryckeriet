@@ -280,7 +280,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <section class="page-section">
     <div class="max-w-[1140px] mx-auto text-center">
       <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[48px] sm:mb-[64px] md:mb-[100px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
         Tre steg till rätt visitkort.
       </h2>
       <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
@@ -391,9 +391,14 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           <div class="border-b border-[#D5D8DC]">
             <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
               <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
-              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#D9222A]">
-                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="8" y1="2" x2="8" y2="14"/>
+                  <line x1="2" y1="8" x2="14" y2="8"/>
+                </svg>
+                <svg class="faq-minus hidden w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <line x1="2" y1="8" x2="14" y2="8"/>
+                </svg>
               </span>
             </button>
             <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
@@ -528,17 +533,17 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
      finns nu i global.css — alla sidor använder samma system */
 
   .page-section-no-px {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
   @media (min-width: 640px) {
-    .page-section-no-px { padding-top: 80px; padding-bottom: 80px; }
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
   }
   @media (min-width: 768px) {
-    .page-section-no-px { padding-top: 100px; padding-bottom: 100px; }
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
   }
   @media (min-width: 1024px) {
-    .page-section-no-px { padding-top: 140px; padding-bottom: 140px; }
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
   }
 </style>
 
