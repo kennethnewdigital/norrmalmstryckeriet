@@ -1,0 +1,593 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const effects = [
+  'Tydligt budskap i ett enkelt format',
+  'Passar kampanj, mässa, meny och utskick',
+  'Kan tryckas i små och stora upplagor',
+  'Får rätt känsla med papper, tryck och finish',
+];
+
+// 8 scenarier — exakt från copy
+const scenarios = [
+  {
+    title: 'Nyöppning på gång?',
+    body: 'Du har lagt tid på lokal, erbjudande och öppningsdag, men närområdet behöver veta att du finns. Konsekvensen blir att bladet behöver skapa snabb igenkänning och ge mottagaren en tydlig anledning att komma förbi.',
+    rec: 'A5, bestruket papper, stark färg, tydligt öppningserbjudande och QR-kod eller enkel kontaktväg.',
+  },
+  {
+    title: 'Säsongsrea som måste synas?',
+    body: 'Du vill att erbjudandet ska märkas när kunden har många andra budskap omkring sig. Konsekvensen blir att format, rubrik och erbjudande behöver vara enkla att uppfatta direkt.',
+    rec: 'A6 eller A5, något kraftigare papper, tydlig prisstruktur och finish som gör kampanjen lätt att spara.',
+  },
+  {
+    title: 'Fastighet till salu?',
+    body: 'Du vill nå personer i närområdet som kan känna någon som letar, eller själva vara intresserade. Konsekvensen blir att bilder, adress och budskap behöver bära förtroende snabbt.',
+    rec: 'A5, matt känsla, stora bilder, kort text och lokal distribution nära objektet.',
+  },
+  {
+    title: 'Restaurang som vill få fler direktgäster?',
+    body: 'Du vill att fler ska beställa direkt, boka bord eller komma ihåg menyn när de blir hungriga. Konsekvensen blir att bladet behöver vara praktiskt, aptitligt och lätt att spara.',
+    rec: 'A5 eller DL-format, meny på insidan eller baksidan, erbjudande tydligt placerat och papper som tål hantering.',
+  },
+  {
+    title: 'Mässa om några veckor?',
+    body: 'Du har monter, människor på plats och något viktigt att säga, men besökaren behöver få med sig budskapet vidare. Konsekvensen blir att bladet ska fungera både som samtalsstart och påminnelse efter mässan.',
+    rec: 'A5, 170–200 g, matt känsla, tydlig huvudfördel och QR-kod till landningssida eller kontakt.',
+  },
+  {
+    title: 'Gym med pass att fylla?',
+    body: 'Du vill nå människor i närområdet när de faktiskt kan ta steget till provträning. Konsekvensen blir att erbjudandet behöver kännas enkelt, nära och lätt att agera på.',
+    rec: 'A6 eller A5, tydlig CTA som "Boka provpass", kort erbjudande och distribution i relevanta bostadsområden.',
+  },
+  {
+    title: 'Hantverkare i nytt område?',
+    body: 'Du vill bli ihågkommen när behovet uppstår, även om kunden inte behöver hjälp just idag. Konsekvensen blir att kontaktuppgifter, tjänst och lokalt förtroende behöver synas tydligt.',
+    rec: 'Visitkort, A6 eller DL-folder, kraftigare papper, stort telefonnummer och enkel lista över tjänster.',
+  },
+  {
+    title: 'Kunder som slutat handla?',
+    body: 'Du vill påminna tidigare kunder om varför de valde dig från början. Konsekvensen blir att budskapet behöver kännas personligt, relevant och lätt att agera på.',
+    rec: 'A5, personligt erbjudande, tydlig rubrik och variabeltryck eller riktad distribution när uppdraget kräver det.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Pappersval',
+    intro: 'Pappret är halva upplevelsen. Ett blad kan ha stark design, men fel papper gör att det tappar känsla, funktion och hållbarhet.',
+    items: [
+      ['Bestruket', 'Slät yta där färger och bilder får tydligt tryck. Bra för produktbilder, kampanjer och erbjudanden.'],
+      ['Obestruket', 'Mer naturlig och taktil känsla. Bra för text, miljöprofil och material som ska kännas enklare att skriva på eller spara.'],
+      ['80–130 g', 'Lätt och ekonomiskt. Bra för större utskick och enklare informationsblad.'],
+      ['150–200 g', 'Stabilt och professionellt. Bra för mässor, produktblad, menyer och material som ska ligga kvar.'],
+      ['250 g+', 'Mer premiumkänsla. Bra för exklusiva kampanjer, kuponger, kort och material där känslan i handen är viktig.'],
+    ],
+  },
+  {
+    title: 'Tryckmetod',
+    intro: 'Digitaltryck eller offset? Det beror på upplagan, tidsramen och hur materialet ska användas.',
+    items: [
+      ['Digitaltryck', 'Snabbt och flexibelt. Passar mindre upplagor, flera versioner och material som behöver tas fram smidigt.'],
+      ['Offsettryck', 'Effektivt vid större upplagor. Passar när styckpriset, färgstabilitet och större volymer blir viktiga.'],
+      ['Pantone', 'Exakt färgmatchning. Bra när varumärkesfärgen är kritisk och behöver återges konsekvent.'],
+      ['Variabeltryck', 'Personalisera varje blad. Bra för adressering, kundnamn, lokala erbjudanden eller riktad kommunikation.'],
+    ],
+  },
+  {
+    title: 'Efterbehandling',
+    intro: 'Detaljer som gör skillnad. Efterbehandling kan ge bladet en mer professionell känsla, mer funktion eller bättre hållbarhet.',
+    items: [
+      ['Laminering', 'Matt, silk eller blank yta. Skyddar trycket och lyfter känslan.'],
+      ['Perforering', 'Gör delar av bladet avdragbara. Bra för kuponger, svarskort eller erbjudanden.'],
+      ['Prägling', 'Upphöjd detalj, till exempel logotyp. Ger en taktil och mer exklusiv känsla.'],
+      ['Stansning', 'Skapar unika former. Bra när bladet ska sticka ut fysiskt.'],
+      ['Foliering', 'Metallisk effekt i till exempel guld, silver eller holografiskt uttryck. Bra när detaljer ska kännas mer premium.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
+
+// 8 FAQ — exakt från copy
+const faqs = [
+  { q: 'Vad är skillnaden mellan blad, reklamblad och flyer?', a: 'Alla tre är enkla trycksaker i arkformat. Skillnaden ligger oftast i användningen: reklamblad för kampanj, flyer för utdelning och blad för bredare information.' },
+  { q: 'Vilket format ska jag välja?', a: 'A6 fungerar bra när budskapet är kort och ska delas ut snabbt. A5 ger mer plats för erbjudande, bild och kontaktväg, medan A4 passar mer information.' },
+  { q: 'Vilken papperstjocklek passar?', a: 'Lättare papper passar större utskick och enklare kampanjer. Stabilare papper passar mässa, produktblad och material som ska sparas längre.' },
+  { q: 'När passar digitaltryck?', a: 'Digitaltryck passar ofta mindre upplagor, flera versioner och material som behöver produceras flexibelt. Det är vanligt för mässor, lokala kampanjer och mindre serier.' },
+  { q: 'När passar offsettryck?', a: 'Offsettryck passar ofta större upplagor där jämn färgåtergivning och tryckekonomi är viktiga. Det är ett bra val för kampanjer, utdelning och återkommande material.' },
+  { q: 'Vad påverkar priset på reklamblad?', a: 'Pris påverkas av format, upplaga, papper, tryckmetod, färg, finish och eventuell distribution. Vi rekommenderar val efter användning, inte bara efter lägsta styckpris.' },
+  { q: 'Kan ni hjälpa till med design?', a: 'Ja, Norrmalmstryckeriet kan ge tryckteknisk rådgivning och rekommendera grafiska formgivare. Det passar när du har idé, text eller logotyp men behöver få originalet tryckklart.' },
+  { q: 'Kan ni hjälpa till med distribution?', a: 'Ja, blad kan planeras för utdelning, utskick eller riktad distribution. Berätta målgrupp och område, så kan format, papper och hantering anpassas från början.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Trycka reklamblad, blad och flyers | Norrmalmstryckeriet"
+  description="Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring. Vi hjälper dig välja format, papper och finish."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO: Bild överst, text under (stackad vertikalt) — upp till lg 1024px -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <!-- Bild överst -->
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
+        <img
+          src="/images/hero/hero-tryckpress.webp"
+          alt="Reklamblad och flyers från Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <!-- Text under -->
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Blad som gör jobbet
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          När du vill nå ut med kampanj, erbjudande, meny eller inbjudan behöver budskapet vara lätt att ta emot. Vi hjälper dig välja format, papper, tryckmetod och finish efter hur bladet ska användas.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/begar-offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <!-- Trust strip -->
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">1000+</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO: Overlay med text på bilden (1024px+) -->
+  <section class="relative hidden lg:block">
+    <div
+      class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative"
+    >
+      <img
+        src="/images/hero/hero-tryckpress.webp"
+        alt="Reklamblad och flyers från Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[640px]" style="text-wrap: balance;">
+          Blad som gör jobbet
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[640px]">
+          När du vill nå ut med kampanj, erbjudande, meny eller inbjudan behöver budskapet vara lätt att ta emot. Vi hjälper dig välja format, papper, tryckmetod och finish efter hur bladet ska användas.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/begar-offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <!-- Trust strip -->
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">1000+</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR BLAD?" ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <p class="section-label">Varför blad?</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          Ett blad kan vara ett enkelt ark. <em>Eller ett tydligt första steg mot kontakt, besök eller köp.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            När format, papper och budskap passar situationen blir trycksaken lättare att förstå, spara och agera på.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="/begar-offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/produkter/blad/infografik" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Gratis infografik<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">När du behöver blad, reklamblad eller flyers</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Det handlar inte om ett ark. Det handlar om respons.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
+        Ett blad kan delas ut, skickas i brevlådan, ligga på mässbordet eller följa upp ett möte.
+      </p>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Det viktiga är att mottagaren förstår snabbt och gör nästa steg. Berätta vad du vill uppnå – vi rekommenderar format, papper och finish.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[20px] sm:mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[16px] sm:pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till rätt blad.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du beskriver vad bladet ska göra, vem det ska nå och hur det ska delas ut eller användas.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vi föreslår format, papper, tryckmetod, upplaga, finish och eventuell distribution.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag och godkänner innan bladet går till tryck.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
+  <section class="bg-[#F3F3F3] reveal">
+    <div class="page-section">
+      <div class="page-container max-w-[1400px]">
+        <p class="section-label">Varför vi inte har en webbshop</p>
+        <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
+          <!-- Vänster: bara rubriken -->
+          <div class="md:max-w-[520px]">
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+              Lockpriser visar sällan hela valet.
+            </h2>
+          </div>
+          <!-- Höger: brödtext -->
+          <div class="md:max-w-[480px] md:pt-[12px]">
+            <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+              <p>
+                Format, papper, upplaga, leverans och finish påverkar både pris och resultat.
+              </p>
+              <p class="text-[#222] font-medium">
+                Med rådgivning får du ett blad som passar uppdraget. Det gör valet enklare, offerten tydligare och trycksaken mer användbar.
+              </p>
+            </div>
+            <div class="pt-[28px] sm:pt-[36px]">
+              <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk RUNDAD) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Papper, tryck och finish – vi kan det.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Du behöver inte förstå skillnaden mellan digitaltryck och offset. Men vi gör det. Här är grunderna.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="font-[var(--font-heading)] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.25rem, 2.8vw, 2.5rem); line-height: 1.3; color: #222;">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[14px] sm:text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Vanliga frågor om reklamblad.
+      </h2>
+      <p class="text-[14px] sm:text-[15px] text-[#555] mb-[28px] sm:mb-[40px] md:mb-[60px]">
+        Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+      </p>
+      <div id="faq-list">
+        {faqs.map((item) => (
+          <div class="border-b border-[#D5D8DC]">
+            <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
+              <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER START ══ -->
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[1300px]">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[20px] sm:text-[26px] md:text-[32px] text-[#222] mb-[20px] sm:mb-[28px] leading-[1.2]">
+            Berätta om ditt projekt.
+          </h3>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
+            Vill du trycka blad, reklamblad eller flyers till kampanj, mässa, restaurang, utskick eller lokal marknadsföring? Berätta vad du har på gång, så rekommenderar vi format, papper, tryckmetod och finish.
+          </p>
+          <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline break-all">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
+            <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
+            <input type="email" name="email" placeholder="E-post" required class="form-input" />
+            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="5" class="form-input resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDREFERENSER ═══ -->
+  <section class="py-[48px] sm:py-[64px] md:py-[80px]">
+    <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[16px] sm:mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[280px] sm:w-[400px] md:w-[600px] h-[200px] sm:h-[280px] md:h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{ref.name}</span>
+            <span class="plus-btn plus-btn-md">
+              <svg width="22" height="22" viewBox="0 0 448 512" fill="currentColor"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="ref-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETER ═══ -->
+  <section class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden mb-[48px] sm:mb-[64px] md:mb-[80px]">
+    <div class="max-w-[1140px] mx-auto px-[24px] sm:px-[32px] md:px-[44px] py-[48px] sm:py-[60px] md:py-[80px]">
+      <h3 class="typo-carousel-heading !text-white mb-[28px] sm:mb-[40px]">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px] sm:gap-[24px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* Hero size + aspect ratio (desktop only — mobile uses split layout) */
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 560px;
+    max-height: 92vh;
+    background: #000;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+  }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  function initBlad() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        const isOpen = answer.classList.contains('is-open');
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        if (!isOpen) {
+          answer.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon.classList.add('hidden');
+          minusIcon.classList.remove('hidden');
+        }
+      });
+    });
+
+    const carousel = document.getElementById('scenario-carousel');
+    const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('scenario-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    document.getElementById('scenario-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    const refCarousel = document.getElementById('ref-carousel');
+    const refWidth = window.matchMedia('(min-width: 768px)').matches ? 620 : (window.matchMedia('(min-width: 640px)').matches ? 420 : 296);
+    document.getElementById('ref-prev')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: -refWidth, behavior: 'smooth' });
+    });
+    document.getElementById('ref-next')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: refWidth, behavior: 'smooth' });
+    });
+  }
+
+  initBlad();
+  document.addEventListener('astro:after-swap', initBlad);
+</script>

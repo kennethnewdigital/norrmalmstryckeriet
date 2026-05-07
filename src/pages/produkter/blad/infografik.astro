@@ -1,0 +1,121 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Gratis infografik om reklamblad och flyers | Norrmalmstryckeriet"
+  description="Ladda ner vår gratis PDF-guide om reklamblad, blad och flyers: papperstips, tryckmetoder och finish-effekter. Fyll i formuläret så skickas guiden direkt."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">Gratis nedladdning</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Reklamblad-guiden — välj rätt format, papper och finish.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
+        En PDF-guide med konkreta råd om format, pappersval, tryckmetoder, finish-effekter och vad som påverkar priset på reklamblad och flyers. Fyll i uppgifterna nedan så får du nedladdningen direkt.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ FORMULÄR ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[60px] lg:gap-[80px] items-start">
+        <!-- Vänster: Mini-info -->
+        <div>
+          <p class="section-label">Formulär</p>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px]" style="font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+            Fyll i uppgifterna så får du guiden direkt.
+          </h2>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#555] max-w-[440px]" style="text-wrap: pretty;">
+            Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Vi delar aldrig din e-post med tredje part. Läs vår <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicy</a>.
+          </p>
+        </div>
+
+        <!-- Höger: Form -->
+        <div class="md:max-w-[480px] w-full">
+          <form
+            id="blad-infografik-form"
+            class="space-y-[12px] sm:space-y-[14px]"
+            action="/downloads/blad-infographic.pdf"
+            method="get"
+            target="_blank"
+          >
+            <div>
+              <label for="name" class="block text-[14px] font-medium text-[#222] mb-[6px]">Ditt namn <span class="text-[#D9222A]">*</span></label>
+              <input type="text" id="name" name="name" placeholder="För- och efternamn" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="email" class="block text-[14px] font-medium text-[#222] mb-[6px]">E-post <span class="text-[#D9222A]">*</span></label>
+              <input type="email" id="email" name="email" placeholder="namn@foretag.se" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="company" class="block text-[14px] font-medium text-[#222] mb-[6px]">Företag <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="company" name="company" placeholder="Företagsnamn" class="form-input" />
+            </div>
+
+            <div>
+              <label for="role" class="block text-[14px] font-medium text-[#222] mb-[6px]">Roll <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="role" name="role" placeholder="T.ex. marknadschef, designer" class="form-input" />
+            </div>
+
+            <div class="flex items-start gap-[10px] mt-[16px]">
+              <input type="checkbox" id="newsletter" name="newsletter" class="mt-[5px] w-[16px] h-[16px] cursor-pointer" />
+              <label for="newsletter" class="text-[14px] leading-relaxed text-[#555] cursor-pointer">
+                Ja tack, jag vill gärna få tryck-tips och guider per e-post (kan avregistreras när som helst).
+              </label>
+            </div>
+
+            <button type="submit" class="btn-pill btn-red w-full justify-center mt-[20px]">
+              Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DETTA FÅR DU I GUIDEN ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">I guiden</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
+        Detta får du i guiden.
+      </h2>
+      <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Pappersval</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter (80–250 g+) och när varje typ passar bäst för utskick, mässa eller premiumkampanj.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Tryckmetod</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Efterbehandling</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Laminering, perforering, prägling, stansning och foliering — när varje effekt lyfter bladet utan att störa läsbarheten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TILLBAKA-LÄNK ═══ -->
+  <section class="py-[40px] sm:py-[56px] md:py-[72px]">
+    <div class="page-container">
+      <a href="/produkter/blad" class="inline-flex items-center text-[#222] font-medium hover:underline text-[15px] sm:text-[16px]">
+        ← Tillbaka till blad, reklamblad och flyers
+      </a>
+    </div>
+  </section>
+
+</Layout>
