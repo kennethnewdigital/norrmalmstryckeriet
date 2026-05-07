@@ -135,13 +135,19 @@ h6 {
   color: var(--color-dark);
 }
 
-/* Hero heading — 30px → 72px */
+/* Hero heading — 30px → 72px (96px på stora skärmar) */
 .typo-hero {
   font-family: var(--font-heading);
   font-weight: 400;
   font-size: clamp(1.875rem, 5vw + 0.25rem, 4.5rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
+}
+@media (min-width: 1440px) {
+  .typo-hero { font-size: clamp(4.5rem, 5vw + 0.25rem, 6rem); }
+}
+@media (min-width: 1920px) {
+  .typo-hero { font-size: clamp(5rem, 5vw + 0.25rem, 7rem); }
 }
 
 /* Quote text — 26px → 72px, normal + italic mix */

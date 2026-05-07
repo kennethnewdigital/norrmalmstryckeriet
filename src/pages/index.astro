@@ -63,23 +63,48 @@ const faqTabs = [
 
 <Layout title="Norrmalmstryckeriet – Tryckeriet där passion möter precision.">
 
-  <!-- ═══ HERO SECTION (responsive — matches visitkort) ═══ -->
-  <section class="relative">
-    <div class="hero-box-index mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[34px] mt-[16px] sm:mt-[24px] lg:mt-[24px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] overflow-hidden relative">
-      <iframe
-        src="https://www.youtube.com/embed/kJhvwU8M1Ew?autoplay=1&mute=1&loop=1&playlist=kJhvwU8M1Ew&controls=0&showinfo=0&modestbranding=1&playsinline=1"
-        title="Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full scale-[1.2] pointer-events-none"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-      ></iframe>
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO: bild överst, text under (upp till lg) -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <!-- Bild överst -->
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
+        <img
+          src="/images/hero/hero-tryckpress.webp"
+          alt="Tryckpress på Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <!-- Text under -->
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Ditt lokala tryckeri i Stockholm.
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO (lg+): video overlay med lazy load + seamless fade -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box-index mx-[34px] xl:mx-[44px] mt-[24px] rounded-[50px] overflow-hidden relative">
+      <!-- Fallback bild (alltid synlig) -->
       <img
         src="/images/hero/hero-tryckpress.webp"
         alt="Tryckpress på Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full object-cover -z-10"
+        class="absolute inset-0 w-full h-full object-cover"
       />
+      <!-- Video lazy-loaded när hero scrollas in -->
+      <iframe
+        id="hero-video"
+        data-src="https://www.youtube.com/embed/kJhvwU8M1Ew?autoplay=1&mute=1&loop=1&playlist=kJhvwU8M1Ew&controls=0&showinfo=0&modestbranding=1&playsinline=1&rel=0"
+        title="Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full scale-[1.2] pointer-events-none opacity-0 transition-opacity duration-700 ease-out"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-      <div class="absolute bottom-[24px] left-[24px] right-[24px] sm:bottom-[40px] sm:left-[40px] sm:right-[40px] md:bottom-[60px] md:left-[60px] md:right-[60px] z-10">
+      <div class="absolute bottom-[40px] left-[40px] right-[40px] xl:bottom-[60px] xl:left-[60px] xl:right-[60px] z-10">
         <h2 class="typo-hero !text-white">
           Ditt lokala tryckeri i Stockholm.
         </h2>
@@ -90,24 +115,24 @@ const faqTabs = [
   <!-- ═══ LOGO BAR (infinite scroll carousel) ═══ -->
   <section class="py-[20px] mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[34px] overflow-hidden">
     <div class="logo-carousel-track" style="gap:100px;">
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[42px] w-auto opacity-80" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
-      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
-      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
-      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[37px] w-auto opacity-80" />
-      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
-      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
-      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
-      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[53px] w-auto opacity-80" />
-      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[42px] w-auto opacity-80" />
-      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[22px] w-auto opacity-80" />
-      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[60px] w-auto opacity-80" />
-      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[35px] w-auto opacity-80" />
-      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[37px] w-auto opacity-80" />
-      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[34px] w-auto opacity-80" />
-      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[39px] w-auto opacity-80" />
-      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[74px] w-auto opacity-80" />
-      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[53px] w-auto opacity-80" />
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[28px] w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[18px] w-auto opacity-80" />
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[40px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[26px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[44px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[34px] w-auto opacity-80" />
+      <img src="/images/logos/tekompaniet.svg" alt="Tekompaniet" class="shrink-0 h-[28px] w-auto opacity-80" />
+      <img src="/images/logos/kyrkbyran.svg" alt="Kyrkbyrån" class="shrink-0 h-[18px] w-auto opacity-80" />
+      <img src="/images/logos/svenska_curligforbundet.svg" alt="Svenska Curlingförbundet" class="shrink-0 h-[40px] w-auto opacity-80" />
+      <img src="/images/logos/capio.svg" alt="Capio" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/sandvik_logotype_black_rgb.svg" alt="Sandvik" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/memira.svg" alt="Memira" class="shrink-0 h-[24px] w-auto opacity-80" />
+      <img src="/images/logos/Essity_logo.svg" alt="Essity" class="shrink-0 h-[26px] w-auto opacity-80" />
+      <img src="/images/logos/Jureskog_logo_small.svg" alt="Jureskog" class="shrink-0 h-[44px] w-auto opacity-80" />
+      <img src="/images/logos/zetatrade.svg" alt="Zetatrade" class="shrink-0 h-[34px] w-auto opacity-80" />
     </div>
   </section>
 
@@ -420,23 +445,50 @@ flyers</span>
 </Layout>
 
 <style>
-  /* Hero responsiv aspect-ratio (matchar visitkort-system) */
+  /* Hero desktop (lg+) — responsiv för stora skärmar också */
   .hero-box-index {
-    aspect-ratio: 4 / 5;
-    min-height: 480px;
-    max-height: 90vh;
+    aspect-ratio: 1.75 / 1;
+    min-height: 600px;
+    max-height: 85vh;
     background: #000;
   }
-  @media (min-width: 640px) {
-    .hero-box-index { aspect-ratio: 1.4 / 1; min-height: 520px; }
+  @media (min-width: 1440px) {
+    .hero-box-index { aspect-ratio: 2 / 1; max-height: 88vh; }
   }
-  @media (min-width: 1024px) {
-    .hero-box-index { aspect-ratio: 1.75 / 1; min-height: 600px; max-height: 85vh; }
+  @media (min-width: 1920px) {
+    .hero-box-index { aspect-ratio: 2.2 / 1; max-height: 90vh; }
   }
 </style>
 
 <script>
   function initHomepage() {
+    // === Hero video lazy-load + seamless fade ===
+    const heroVideo = document.getElementById('hero-video') as HTMLIFrameElement | null;
+    if (heroVideo && heroVideo.dataset.src && !heroVideo.src) {
+      const heroSection = heroVideo.closest('section');
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && heroVideo.dataset.src) {
+              // Sätt src → börjar ladda
+              heroVideo.src = heroVideo.dataset.src;
+              delete heroVideo.dataset.src;
+              // När iframe laddat → fade in (seamless transition från bilden)
+              heroVideo.addEventListener('load', () => {
+                // Liten delay så YouTube hinner börja spela
+                setTimeout(() => {
+                  heroVideo.style.opacity = '1';
+                }, 600);
+              }, { once: true });
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '200px' }
+      );
+      if (heroSection) observer.observe(heroSection);
+    }
+
     // === FAQ Tabs ===
     const tabBtns = document.querySelectorAll('.faq-tab-btn');
     const panels = document.querySelectorAll('.faq-panel');
