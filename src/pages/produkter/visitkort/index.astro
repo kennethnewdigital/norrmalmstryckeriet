@@ -109,47 +109,97 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 >
 
   <!-- ═══ HERO ═══ -->
-  <section class="relative">
+  <!-- MOBILE HERO: Bild överst, text under (stackad vertikalt) -->
+  <section class="md:hidden">
+    <div class="mx-[16px] mt-[16px]">
+      <!-- Bild överst -->
+      <div class="rounded-[20px] overflow-hidden aspect-[4/3] mb-[24px]">
+        <img
+          src="/images/hero/visitkort-hero.png"
+          alt="Visitkort från Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <!-- Text under -->
+      <div class="px-[4px]">
+        <p class="text-[#888] mb-[12px] uppercase font-medium text-[10px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: clamp(1.875rem, 7vw, 2.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Lämna rätt intryck
+        </h1>
+        <p class="text-[#444] text-[15px] leading-relaxed mb-[24px]">
+          När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
+        </p>
+        <div class="flex flex-col gap-[10px] mb-[32px]">
+          <a href="/begar-offert" class="btn-pill btn-red w-full justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill w-full justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <!-- Trust strip -->
+        <div class="flex flex-wrap items-end gap-x-[24px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px]">1000+</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP/TABLET HERO: Overlay med text på bilden -->
+  <section class="relative hidden md:block">
     <div
-      class="hero-box mx-[16px] sm:mx-[24px] lg:mx-[34px] mt-[16px] lg:mt-[24px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] overflow-hidden relative"
+      class="hero-box mx-[24px] lg:mx-[34px] mt-[16px] lg:mt-[24px] rounded-[36px] lg:rounded-[50px] overflow-hidden relative"
     >
       <img
         src="/images/hero/visitkort-hero.png"
         alt="Visitkort från Norrmalmstryckeriet"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <div class="absolute inset-0 bg-gradient-to-r from-black/75 via-black/50 to-black/15 sm:from-black/65 sm:via-black/35 sm:to-black/10 pointer-events-none"></div>
-      <div class="absolute top-1/2 -translate-y-1/2 left-[24px] right-[24px] sm:left-[32px] sm:right-[32px] md:left-[40px] md:right-[40px] lg:left-[60px] lg:right-[60px] z-10">
-        <p class="!text-white/85 mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing:1.5px; line-height:1;">
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
           Tryckeri Stockholm • Sollentuna / Häggvik
         </p>
-        <h1 class="typo-hero !text-white mb-[16px] sm:mb-[20px] max-w-[640px]" style="text-wrap: balance;">
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[640px]" style="text-wrap: balance;">
           Lämna rätt intryck
         </h1>
-        <p class="!text-white/90 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px] max-w-[640px]">
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[640px]">
           När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
         </p>
-        <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
-          <a href="/begar-offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/begar-offert" class="btn-pill btn-red">
             Offertförfrågan<Fragment set:html={arrowSvg} />
           </a>
-          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: white; color: #222;">
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
             Ring 08-96 01 35
           </a>
         </div>
-        <!-- Trust strip — vänsterställd, vertikalt stackad -->
-        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+        <!-- Trust strip -->
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
           <div class="flex flex-col items-start">
-            <span class="!text-white font-[var(--font-heading)] leading-none text-[20px] sm:text-[24px] lg:text-[30px]">100+ år</span>
-            <span class="!text-white/70 mt-[6px] sm:mt-[8px] font-medium uppercase text-[9px] sm:text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
           </div>
           <div class="flex flex-col items-start">
-            <span class="!text-white font-[var(--font-heading)] leading-none text-[20px] sm:text-[24px] lg:text-[30px]">1000+</span>
-            <span class="!text-white/70 mt-[6px] sm:mt-[8px] font-medium uppercase text-[9px] sm:text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">1000+</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Uppdrag årligen</span>
           </div>
           <div class="flex flex-col items-start">
-            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[28px] h-[29px] sm:w-[34px] sm:h-[35px]" />
-            <span class="!text-white/85 mt-[6px] sm:mt-[8px] font-medium uppercase text-[9px] sm:text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt</span>
           </div>
         </div>
       </div>
@@ -463,79 +513,32 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 </Layout>
 
 <style>
-  /* Hero size + aspect ratio */
+  /* Hero size + aspect ratio (desktop only — mobile uses split layout) */
   .hero-box {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 1.4 / 1;
     min-height: 560px;
     max-height: 92vh;
     background: #000;
-  }
-  @media (min-width: 640px) {
-    .hero-box { aspect-ratio: 1.4 / 1; min-height: 580px; }
   }
   @media (min-width: 1024px) {
     .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
   }
 
-  /* Standard section padding (consistent vertical rhythm) */
-  .page-section {
-    padding-top: 64px;
-    padding-bottom: 64px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+  /* page-section / page-container / section-label / form-input
+     finns nu i global.css — alla sidor använder samma system */
+
   .page-section-no-px {
     padding-top: 64px;
     padding-bottom: 64px;
   }
   @media (min-width: 640px) {
-    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
     .page-section-no-px { padding-top: 80px; padding-bottom: 80px; }
   }
   @media (min-width: 768px) {
-    .page-section { padding-top: 100px; padding-bottom: 100px; }
     .page-section-no-px { padding-top: 100px; padding-bottom: 100px; }
   }
   @media (min-width: 1024px) {
-    .page-section { padding-top: 140px; padding-bottom: 140px; padding-left: 44px; padding-right: 44px; }
     .page-section-no-px { padding-top: 140px; padding-bottom: 140px; }
-  }
-
-  /* Inner content max-width container (for sections with padding) */
-  .page-content {
-    width: 100%;
-  }
-
-  /* Section labels — uppercase eyebrow */
-  .section-label {
-    font-family: var(--font-body);
-    font-size: 11px;
-    line-height: 1;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  @media (min-width: 768px) {
-    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
-  }
-
-  /* Form input — 16px font to prevent iOS zoom-on-focus */
-  .form-input {
-    width: 100%;
-    padding: 13px 14px;
-    border-radius: 6px;
-    background: #FDFDFD;
-    border: 1px solid #E5E5E5;
-    font-size: 16px;
-    font-family: var(--font-body);
-    transition: border-color 0.15s;
-    outline: none;
-  }
-  .form-input:focus { border-color: #222; }
-  @media (min-width: 768px) {
-    .form-input { padding: 14px 16px; font-size: 16px; }
   }
 </style>
 

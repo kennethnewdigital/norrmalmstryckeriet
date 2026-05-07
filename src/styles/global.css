@@ -361,6 +361,94 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════
+   PAGE LAYOUT SYSTEM — 1440px grid
+   .page-section: vertikal rytm + horisontal padding
+   .page-container: max-w 1440px centrerad
+   ═══════════════════════════════════════════════════ */
+
+.page-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-section {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .page-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 768px) {
+  .page-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+@media (min-width: 1024px) {
+  .page-section {
+    padding-top: 140px;
+    padding-bottom: 140px;
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+}
+
+/* Section utility med mindre vertikal padding */
+.page-section-sm {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+@media (min-width: 640px) {
+  .page-section-sm { padding-top: 64px; padding-bottom: 64px; padding-left: 24px; padding-right: 24px; }
+}
+@media (min-width: 1024px) {
+  .page-section-sm { padding-top: 80px; padding-bottom: 80px; padding-left: 44px; padding-right: 44px; }
+}
+
+/* Section labels (eyebrow) — global */
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+}
+
+/* Form input — 16px to prevent iOS zoom */
+.form-input {
+  width: 100%;
+  padding: 13px 14px;
+  border-radius: 6px;
+  background: #FDFDFD;
+  border: 1px solid #D5D8DC;
+  font-size: 16px;
+  font-family: var(--font-body);
+  transition: border-color 0.15s;
+  outline: none;
+}
+.form-input:focus { border-color: #222; }
+@media (min-width: 768px) {
+  .form-input { padding: 14px 16px; }
+}
+
+/* ═══════════════════════════════════════════════════
    UTILITY CLASSES
    ═══════════════════════════════════════════════════ */
 
