@@ -196,13 +196,12 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     .form-input { padding: 14px 16px; }
   }
 
-  /* PDF-teaser i hero — kommer upp bakom nästa sektion */
+  /* PDF-teaser i hero — kommer upp bakifrån, samma effekt på alla skärmar */
   .hero-pdf {
     overflow: visible;
     position: relative;
     z-index: 1;
   }
-  /* Nästa sektion (formulär) ligger OVANPÅ → täcker teaserns nederkant */
   .form-section-cover {
     position: relative;
     z-index: 2;
@@ -214,11 +213,12 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     justify-content: center;
     align-items: flex-end;
     position: relative;
+    margin-bottom: -180px; /* mobile peek behind next section */
   }
 
   .pdf-teaser {
     position: relative;
-    width: 300px;
+    width: 240px;
     max-width: 100%;
     aspect-ratio: 1879 / 2350;
     border-radius: 10px;
@@ -230,9 +230,12 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       0 40px 80px rgba(0,0,0,0.18);
     transform: rotate(3deg);
     transform-origin: top center;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
   }
-  .pdf-teaser:hover { transform: rotate(1deg) translateY(-4px); }
+  /* Apple-style subtil hover — bara liten lift, ingen rotation-ändring */
+  .pdf-teaser:hover { transform: rotate(3deg) translateY(-6px); }
+
   .pdf-teaser img {
     width: 100%;
     height: 100%;
@@ -256,21 +259,19 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     z-index: 2;
   }
 
-  /* Mobil/tablet: teaser stackad under text — ingen peek-effekt */
-  @media (max-width: 1023px) {
-    .pdf-teaser { width: 320px; transform: rotate(2deg); }
+  @media (min-width: 640px) {
+    .pdf-teaser-wrap { margin-bottom: -200px; }
+    .pdf-teaser { width: 280px; }
   }
-
-  /* Desktop: teasern hänger ut nedanför hero och täcks av nästa sektion */
   @media (min-width: 1024px) {
     .pdf-teaser-wrap {
       align-self: end;
-      margin-bottom: -180px;
+      margin-bottom: -260px;
     }
     .pdf-teaser { width: 360px; }
   }
   @media (min-width: 1440px) {
-    .pdf-teaser-wrap { margin-bottom: -220px; }
+    .pdf-teaser-wrap { margin-bottom: -300px; }
     .pdf-teaser { width: 400px; }
   }
 </style>
