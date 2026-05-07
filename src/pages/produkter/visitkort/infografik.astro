@@ -9,132 +9,172 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   description="Ladda ner vår gratis PDF-guide om visitkort: papperstips, tryckmetoder och finish-effekter. Fyll i formuläret så skickas guiden direkt."
 >
 
-  <!-- ═══ HERO (vänsterställd, ljusgrå bg) ═══ -->
-  <section class="bg-[#F3F3F3] py-[80px] md:py-[120px] reveal">
-    <div class="mx-[44px] md:mx-[80px] max-w-[900px]">
-      <p class="text-[#888] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Gratis nedladdning</p>
-      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px]" style="font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">Gratis nedladdning</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
         Visitkort-guiden — välj rätt papper, tryck och finish.
       </h1>
-      <p class="text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
         En PDF-guide med konkreta råd om pappersval, tryckmetoder, specialeffekter och vad som påverkar priset. Fyll i uppgifterna nedan så får du nedladdningen direkt.
       </p>
     </div>
   </section>
 
-  <!-- ═══ FORMULÄR (vänsterställd, max-w för läsbarhet) ═══ -->
-  <section class="py-[60px] md:py-[100px] reveal">
-    <div class="mx-[44px] md:mx-[80px] max-w-[560px]">
-      <form
-        id="visitkort-infografik-form"
-        class="space-y-[14px]"
-        action="/downloads/visitkort-infographic.pdf"
-        method="get"
-        target="_blank"
-      >
+  <!-- ═══ FORMULÄR ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[60px] lg:gap-[80px] items-start">
+        <!-- Vänster: Mini-info -->
         <div>
-          <label for="name" class="block text-[14px] font-medium text-[#222] mb-[6px]">Ditt namn <span class="text-[#D9222A]">*</span></label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="För- och efternamn"
-            required
-            class="w-full px-[16px] py-[14px] rounded-[6px] bg-white border border-[#D5D8DC] focus:border-[#222] outline-none text-[16px] font-[var(--font-body)] transition-colors"
-          />
+          <p class="section-label">Formulär</p>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px]" style="font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+            Fyll i uppgifterna så får du guiden direkt.
+          </h2>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#555] max-w-[440px]" style="text-wrap: pretty;">
+            Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Vi delar aldrig din e-post med tredje part. Läs vår <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicy</a>.
+          </p>
         </div>
 
-        <div>
-          <label for="email" class="block text-[14px] font-medium text-[#222] mb-[6px]">E-post <span class="text-[#D9222A]">*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="namn@foretag.se"
-            required
-            class="w-full px-[16px] py-[14px] rounded-[6px] bg-white border border-[#D5D8DC] focus:border-[#222] outline-none text-[16px] font-[var(--font-body)] transition-colors"
-          />
+        <!-- Höger: Form -->
+        <div class="md:max-w-[480px] w-full">
+          <form
+            id="visitkort-infografik-form"
+            class="space-y-[12px] sm:space-y-[14px]"
+            action="/downloads/visitkort-infographic.pdf"
+            method="get"
+            target="_blank"
+          >
+            <div>
+              <label for="name" class="block text-[14px] font-medium text-[#222] mb-[6px]">Ditt namn <span class="text-[#D9222A]">*</span></label>
+              <input type="text" id="name" name="name" placeholder="För- och efternamn" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="email" class="block text-[14px] font-medium text-[#222] mb-[6px]">E-post <span class="text-[#D9222A]">*</span></label>
+              <input type="email" id="email" name="email" placeholder="namn@foretag.se" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="company" class="block text-[14px] font-medium text-[#222] mb-[6px]">Företag <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="company" name="company" placeholder="Företagsnamn" class="form-input" />
+            </div>
+
+            <div>
+              <label for="role" class="block text-[14px] font-medium text-[#222] mb-[6px]">Roll <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="role" name="role" placeholder="T.ex. marknadschef, designer" class="form-input" />
+            </div>
+
+            <div class="flex items-start gap-[10px] mt-[16px]">
+              <input type="checkbox" id="newsletter" name="newsletter" class="mt-[5px] w-[16px] h-[16px] cursor-pointer" />
+              <label for="newsletter" class="text-[14px] leading-relaxed text-[#555] cursor-pointer">
+                Ja tack, jag vill gärna få tryck-tips och guider per e-post (kan avregistreras när som helst).
+              </label>
+            </div>
+
+            <button type="submit" class="btn-pill btn-red w-full justify-center mt-[16px] sm:mt-[20px]">
+              Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
+            </button>
+          </form>
         </div>
-
-        <div>
-          <label for="company" class="block text-[14px] font-medium text-[#222] mb-[6px]">Företag <span class="text-[#888] font-normal">(valfritt)</span></label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            placeholder="Företagsnamn"
-            class="w-full px-[16px] py-[14px] rounded-[6px] bg-white border border-[#D5D8DC] focus:border-[#222] outline-none text-[16px] font-[var(--font-body)] transition-colors"
-          />
-        </div>
-
-        <div>
-          <label for="role" class="block text-[14px] font-medium text-[#222] mb-[6px]">Roll <span class="text-[#888] font-normal">(valfritt)</span></label>
-          <input
-            type="text"
-            id="role"
-            name="role"
-            placeholder="T.ex. marknadschef, designer"
-            class="w-full px-[16px] py-[14px] rounded-[6px] bg-white border border-[#D5D8DC] focus:border-[#222] outline-none text-[16px] font-[var(--font-body)] transition-colors"
-          />
-        </div>
-
-        <div class="flex items-start gap-[10px] mt-[16px]">
-          <input
-            type="checkbox"
-            id="newsletter"
-            name="newsletter"
-            class="mt-[5px] w-[16px] h-[16px] cursor-pointer"
-          />
-          <label for="newsletter" class="text-[14px] leading-relaxed text-[#555] cursor-pointer">
-            Ja tack, jag vill gärna få tryck-tips och guider per e-post (kan avregistreras när som helst).
-          </label>
-        </div>
-
-        <button type="submit" class="btn-pill btn-red w-full justify-center mt-[20px]">
-          Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
-        </button>
-
-        <p class="text-[12px] text-[#888] mt-[14px] leading-relaxed" style="text-wrap: pretty;">
-          Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Vi delar aldrig din e-post med tredje part. Läs vår <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicy</a>.
-        </p>
-      </form>
+      </div>
     </div>
   </section>
 
-  <!-- ═══ DETTA FÅR DU I GUIDEN (samma form som "Hur vi jobbar" på visitkort) ═══ -->
-  <section class="bg-[#F3F3F3] py-[100px] md:py-[140px] reveal">
-    <div class="mx-[44px] md:mx-[80px] max-w-[1300px]">
-      <p class="text-[#888] mb-[24px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">I guiden</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[80px] md:mb-[100px]" style="font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.03em;">
+  <!-- ═══ DETTA FÅR DU I GUIDEN ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">I guiden</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[48px] sm:mb-[64px] md:mb-[100px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
         Detta får du i guiden.
       </h2>
-      <div class="grid md:grid-cols-3 gap-[40px] md:gap-[60px]">
-        <div class="reveal">
+      <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
+        <div>
           <span class="typo-process-number block">1.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Pappersval</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter och specialpapper — när varje typ passar bäst för ditt budskap och varumärke.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Pappersval</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter och specialpapper — när varje typ passar bäst för ditt budskap och varumärke.</p>
         </div>
-        <div class="reveal" style="transition-delay: 100ms;">
+        <div>
           <span class="typo-process-number block">2.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Tryckmetod</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Tryckmetod</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
         </div>
-        <div class="reveal" style="transition-delay: 200ms;">
+        <div>
           <span class="typo-process-number block">3.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: 26px; line-height: 1.2;">Efterbehandling</h3>
-          <p class="text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack, prägling, laminering och specialformer — när varje effekt lyfter kortet utan att störa läsbarheten.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Efterbehandling</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack, prägling, laminering och specialformer — när varje effekt lyfter kortet utan att störa läsbarheten.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ═══ TILLBAKA-LÄNK ═══ -->
-  <section class="py-[60px] md:py-[80px]">
-    <div class="mx-[44px] md:mx-[80px]">
-      <a href="/produkter/visitkort" class="inline-flex items-center text-[#222] font-medium hover:underline text-[16px]">
+  <section class="py-[40px] sm:py-[56px] md:py-[72px]">
+    <div class="page-container">
+      <a href="/produkter/visitkort" class="inline-flex items-center text-[#222] font-medium hover:underline text-[15px] sm:text-[16px]">
         ← Tillbaka till visitkort
       </a>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  /* Konsekvent 1440px container för ALLA sektioner — allt linjerar */
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Sektioner — gemensam vertikal rytm + horisontal padding */
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 140px; padding-bottom: 140px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  /* Eyebrow/section labels */
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+
+  /* Form input */
+  .form-input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 6px;
+    background: #FDFDFD;
+    border: 1px solid #D5D8DC;
+    font-size: 16px;
+    font-family: var(--font-body);
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  .form-input:focus { border-color: #222; }
+  @media (min-width: 768px) {
+    .form-input { padding: 14px 16px; }
+  }
+</style>
