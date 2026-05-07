@@ -116,10 +116,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         alt="Visitkort från Norrmalmstryckeriet"
         class="absolute inset-0 w-full h-full object-cover"
       />
-      <!-- Bottom-only gradient (samma som startsidan) -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
-      <!-- Allt content absolut-positionerat i bottom-left (samma placering som startsidan) -->
-      <div class="absolute bottom-[40px] left-[40px] right-[40px] md:bottom-[60px] md:left-[60px] md:right-[60px] z-10">
+      <!-- Subtil gradient för läsbarhet (mörkare vänster, ljusare höger) -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <!-- Allt content absolut-positionerat, vertikalt centrerat -->
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] md:left-[60px] md:right-[60px] z-10">
         <p class="!text-white/85 mb-[16px] uppercase font-medium" style="font-size:12px; letter-spacing:1.8px; line-height:1;">Tryckeri Stockholm • Sollentuna / Häggvik</p>
         <h1 class="typo-hero !text-white mb-[20px] max-w-[640px]" style="text-wrap: balance;">
           Lämna rätt intryck
