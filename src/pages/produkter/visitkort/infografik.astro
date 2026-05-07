@@ -41,7 +41,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   </section>
 
   <!-- ═══ FORMULÄR ═══ -->
-  <section class="page-section">
+  <section class="page-section form-section-cover">
     <div class="page-container">
       <div class="grid md:grid-cols-2 gap-[40px] md:gap-[60px] lg:gap-[80px] items-start">
         <!-- Vänster: Mini-info -->
@@ -196,10 +196,16 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     .form-input { padding: 14px 16px; }
   }
 
-  /* PDF-teaser i hero — klipps av sektionens nederkant */
+  /* PDF-teaser i hero — kommer upp bakom nästa sektion */
   .hero-pdf {
-    overflow: hidden;
+    overflow: visible;
     position: relative;
+    z-index: 1;
+  }
+  .form-section-cover {
+    position: relative;
+    z-index: 2;
+    background: #fff;
   }
   .pdf-teaser-wrap {
     display: flex;
@@ -211,7 +217,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     position: relative;
     width: 300px;
     max-width: 100%;
-    aspect-ratio: 1833 / 2700; /* matchar cropped topp-del */
+    aspect-ratio: 1833 / 2700;
     border-radius: 10px;
     overflow: hidden;
     background: #fff;
@@ -250,11 +256,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     .pdf-teaser { width: 320px; transform: rotate(2deg); }
   }
   @media (min-width: 1024px) {
-    .pdf-teaser-wrap { align-self: end; margin-bottom: -60px; }
+    .pdf-teaser-wrap { align-self: end; margin-bottom: -180px; }
     .pdf-teaser { width: 360px; }
   }
   @media (min-width: 1440px) {
-    .pdf-teaser-wrap { margin-bottom: -70px; }
+    .pdf-teaser-wrap { margin-bottom: -220px; }
     .pdf-teaser { width: 400px; }
   }
 </style>
