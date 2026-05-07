@@ -196,24 +196,24 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     .form-input { padding: 14px 16px; }
   }
 
-  /* PDF-teaser i hero — peek från sektionens nederkant */
+  /* PDF-teaser i hero — klipps av sektionens nederkant */
   .hero-pdf {
-    overflow: visible;
+    overflow: hidden;
     position: relative;
   }
 
   .pdf-teaser-wrap {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-end;
     position: relative;
   }
 
   .pdf-teaser {
     position: relative;
-    width: 260px;
+    width: 300px;
     max-width: 100%;
-    aspect-ratio: 1879 / 3800; /* matchar cropped infografik (toppdelen) */
+    aspect-ratio: 1879 / 2350; /* matchar cropped topp-del */
     border-radius: 10px;
     overflow: hidden;
     background: #fff;
@@ -221,11 +221,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       0 1px 2px rgba(0,0,0,0.06),
       0 14px 28px rgba(0,0,0,0.10),
       0 40px 80px rgba(0,0,0,0.18);
-    transform: rotate(-3deg);
+    transform: rotate(3deg);
     transform-origin: top center;
     transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .pdf-teaser:hover { transform: rotate(-1deg) translateY(-4px); }
+  .pdf-teaser:hover { transform: rotate(1deg) translateY(-4px); }
   .pdf-teaser img {
     width: 100%;
     height: 100%;
@@ -249,21 +249,21 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     z-index: 2;
   }
 
-  /* Mobil/tablet: teaser stackad under text, normalt flöde */
+  /* Mobil/tablet: teaser stackad under text */
   @media (max-width: 1023px) {
-    .pdf-teaser { width: 280px; transform: rotate(-2deg); }
+    .pdf-teaser { width: 320px; transform: rotate(2deg); }
   }
 
-  /* Desktop: peek-effekt — teasern är lång och hänger ut nederkant */
+  /* Desktop: lite större, hänger ner mot sektionens nederkant och klipps där */
   @media (min-width: 1024px) {
     .pdf-teaser-wrap {
       align-self: end;
-      margin-bottom: -120px; /* hänger ut nedanför sektionen */
+      margin-bottom: -60px; /* extra liten överlappning som klipps av overflow:hidden */
     }
-    .pdf-teaser { width: 300px; }
+    .pdf-teaser { width: 360px; }
   }
   @media (min-width: 1440px) {
-    .pdf-teaser-wrap { margin-bottom: -150px; }
-    .pdf-teaser { width: 340px; }
+    .pdf-teaser-wrap { margin-bottom: -70px; }
+    .pdf-teaser { width: 400px; }
   }
 </style>
