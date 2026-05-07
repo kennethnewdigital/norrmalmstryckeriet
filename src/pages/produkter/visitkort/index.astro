@@ -252,34 +252,30 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ VARFÖR INTE WEBBSHOP — generös 2-kol med expert-tips ═══ -->
+  <!-- ═══ VARFÖR INTE WEBBSHOP — H2 vänster, brödtext + CTA höger ═══ -->
   <section class="bg-[#F3F3F3] reveal">
     <div class="max-w-[1400px] mx-auto px-[44px] md:px-[80px] py-[120px] md:py-[160px]">
       <p class="text-[#888] mb-[28px] uppercase font-medium" style="font-size: 12px; letter-spacing: 1.8px;">Varför vi inte har en webbshop</p>
       <div class="grid md:grid-cols-[1fr_1fr] gap-[60px] md:gap-[120px] items-start">
-        <div class="md:max-w-[460px]">
-          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px]" style="font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+        <!-- Vänster: bara rubriken -->
+        <div class="md:max-w-[520px]">
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
             Visitkort är små, men detaljerna syns direkt.
           </h2>
-          <div class="space-y-[24px] text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
-            <p>Hos webbtryckerier väljer du ur en meny. Hos oss får du rådgivning som matchar varumärket — och en lösning som faktiskt fungerar.</p>
-            <p class="text-[#222] font-medium">Resultatet? Ett visitkort som speglar varumärket — inte bara ett som kostade minst.</p>
-          </div>
         </div>
-        <div class="md:max-w-[480px] space-y-[36px]">
-          <div class="reveal">
-            <h3 class="font-[var(--font-body)] font-bold text-[17px] md:text-[18px] text-[#222] mb-[10px]">Detaljerna märks direkt</h3>
-            <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">Pappersval, marginaler, typografi och färg avgör hur kortet känns. Vi hjälper dig välja kombinationen som passar rollen och varumärket.</p>
+        <!-- Höger: brödtext med snygga radfall -->
+        <div class="md:max-w-[480px] md:pt-[12px]">
+          <div class="space-y-[24px] text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+            <p>
+              Hos webbtryckerier väljer du ur en meny.<br class="hidden md:inline" />
+              Hos oss får du rådgivning som matchar varumärket — och en lösning som faktiskt fungerar.
+            </p>
+            <p class="text-[#222] font-medium">
+              Resultatet?<br class="hidden md:inline" />
+              Ett visitkort som speglar varumärket — inte bara ett som kostade minst.
+            </p>
           </div>
-          <div class="reveal" style="transition-delay: 80ms;">
-            <h3 class="font-[var(--font-body)] font-bold text-[17px] md:text-[18px] text-[#222] mb-[10px]">Specialeffekter behöver omsorg</h3>
-            <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack och prägling kan lyfta kortet — men måste sitta rätt för att inte störa läsbarheten. Vi vägleder placering och omfattning.</p>
-          </div>
-          <div class="reveal" style="transition-delay: 160ms;">
-            <h3 class="font-[var(--font-body)] font-bold text-[17px] md:text-[18px] text-[#222] mb-[10px]">Versionering och team-hantering</h3>
-            <p class="text-[15px] leading-[1.65] text-[#555]" style="text-wrap: pretty;">När flera personer ska ha samma kort med olika kontaktuppgifter behöver original, mall och versioner hanteras konsekvent. Vi sköter logistiken.</p>
-          </div>
-          <div class="pt-[12px] reveal" style="transition-delay: 240ms;">
+          <div class="pt-[36px] reveal" style="transition-delay: 120ms;">
             <a href="/kontakta-oss" class="inline-flex items-center text-[#222] font-medium hover:underline">
               Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
             </a>
