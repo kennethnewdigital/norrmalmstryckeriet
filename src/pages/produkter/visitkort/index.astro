@@ -111,7 +111,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <!-- ═══ HERO ═══ -->
   <!-- MOBILE+TABLET HERO: Bild överst, text under (stackad vertikalt) — upp till lg 1024px -->
   <section class="lg:hidden">
-    <div class="mx-[16px] sm:mx-[24px] mt-[16px] sm:mt-[24px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
       <!-- Bild överst -->
       <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
         <img
@@ -241,7 +241,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
   <section class="page-section-no-px">
-    <div class="ml-[16px] sm:ml-[24px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] lg:mr-[44px]">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
       <p class="section-label" style="margin-bottom: 16px;">När du behöver visitkort</p>
       <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
         Det handlar inte om kontaktuppgifter. Det handlar om vad du lämnar efter dig.
@@ -253,7 +253,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         Det viktiga är att det känns rätt för personen, rollen och varumärket. Berätta vad du vill uppnå – vi rekommenderar papper och finish.
       </p>
     </div>
-    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] lg:pl-[44px] pr-[16px] sm:pr-[24px] lg:pr-[44px]">
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
       {scenarios.map((s) => (
         <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
           <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
@@ -336,7 +336,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ VÅR EXPERTIS (mörk RUNDAD) ═══ -->
   <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
-    <div class="mx-[16px] sm:mx-[24px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
       <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
         <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
         <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
@@ -443,8 +443,8 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
   <!-- ═══ KUNDREFERENSER ═══ -->
   <section class="py-[48px] sm:py-[64px] md:py-[80px]">
-    <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] lg:ml-[44px] mb-[16px] sm:mb-[20px]">Kundreferenser.</h3>
-    <div id="ref-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] lg:ml-[44px] pr-[16px] sm:pr-[24px] lg:pr-[44px]">
+    <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[16px] sm:mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
       {[
         { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
         { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
@@ -464,7 +464,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         </a>
       ))}
     </div>
-    <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] lg:mr-[44px]">
+    <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
       <button id="ref-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
         <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
@@ -475,7 +475,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   </section>
 
   <!-- ═══ NYHETER ═══ -->
-  <section class="mx-[16px] sm:mx-[24px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden mb-[48px] sm:mb-[64px] md:mb-[80px]">
+  <section class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden mb-[48px] sm:mb-[64px] md:mb-[80px]">
     <div class="max-w-[1140px] mx-auto px-[24px] sm:px-[32px] md:px-[44px] py-[48px] sm:py-[60px] md:py-[80px]">
       <h3 class="typo-carousel-heading !text-white mb-[28px] sm:mb-[40px]">Nyheter.</h3>
       <div class="grid md:grid-cols-3 gap-[20px] sm:gap-[24px]">

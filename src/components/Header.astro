@@ -45,10 +45,10 @@ const omOss = [
 ];
 ---
 
-<!-- ═══ DESKTOP HEADER (corpowerocean-style frosted bar) ═══ -->
+<!-- ═══ DESKTOP HEADER (corpowerocean-style frosted bar) — bara lg+ (1024px+) ═══ -->
 <header
   id="desktop-header"
-  class="hidden md:block fixed top-0 left-0 right-0 z-[100] transition-all duration-300"
+  class="hidden lg:block fixed top-0 left-0 right-0 z-[100] transition-all duration-300"
 >
   <div
     id="header-inner"
@@ -191,9 +191,9 @@ const omOss = [
   </div>
 </header>
 
-<!-- ═══ MOBILE HEADER (oförändrad) ═══ -->
+<!-- ═══ MOBILE/TABLET HEADER (hamburger upp till lg/1024px) ═══ -->
 <header
-  class="md:hidden fixed top-0 left-0 right-0 z-[99] bg-white h-[48px] px-[20px] flex items-center justify-between"
+  class="lg:hidden fixed top-0 left-0 right-0 z-[99] bg-white h-[48px] px-[20px] flex items-center justify-between"
 >
   <a href="/" class="shrink-0">
     <img src="/images/logos/site-logo.svg" alt="Norrmalmstryckeriet" class="h-[26px] w-auto" />
@@ -210,10 +210,10 @@ const omOss = [
   </button>
 </header>
 
-<!-- Mobile slide-down nav -->
+<!-- Mobile/Tablet slide-down nav -->
 <div
   id="mobile-nav"
-  class="md:hidden fixed top-[48px] left-0 right-0 bg-white z-[98] shadow-lg translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300"
+  class="lg:hidden fixed top-[48px] left-0 right-0 bg-white z-[98] shadow-lg translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300"
 >
   <nav class="flex flex-col px-[30px] py-6 gap-4 max-h-[calc(100vh-48px)] overflow-y-auto">
     <a href="/produkter" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Produkter och tjänster</a>
@@ -243,8 +243,8 @@ const omOss = [
   </nav>
 </div>
 
-<!-- Spacer to offset fixed header (mobile 48px, desktop ~72px) -->
-<div class="h-[48px] md:h-[72px]"></div>
+<!-- Spacer to offset fixed header (mobile/tablet 48px, desktop ~72px) -->
+<div class="h-[48px] lg:h-[72px]"></div>
 
 <style>
   /* corpowerocean-style frosted glass bar */

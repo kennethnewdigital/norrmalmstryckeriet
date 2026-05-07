@@ -374,8 +374,8 @@ a {
 }
 
 /* Section vertikal rytm — harmoniserad
-   Mobil: 48 / Tablet: 64 / Desktop: 88
-   Två stackade sektioner = 96-176px gap (lagom luft) */
+   Mobil: 48 / sm: 56 / md (tablet): 72 / lg (desktop): 88
+   Horizontal: 16 / 24 / 32 (tablet) / 44 (desktop) */
 .page-section {
   padding-top: 48px;
   padding-bottom: 48px;
@@ -394,6 +394,8 @@ a {
   .page-section {
     padding-top: 72px;
     padding-bottom: 72px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }
 @media (min-width: 1024px) {
@@ -414,6 +416,9 @@ a {
 }
 @media (min-width: 640px) {
   .page-section-sm { padding-top: 48px; padding-bottom: 48px; padding-left: 24px; padding-right: 24px; }
+}
+@media (min-width: 768px) {
+  .page-section-sm { padding-top: 56px; padding-bottom: 56px; padding-left: 32px; padding-right: 32px; }
 }
 @media (min-width: 1024px) {
   .page-section-sm { padding-top: 64px; padding-bottom: 64px; padding-left: 44px; padding-right: 44px; }
