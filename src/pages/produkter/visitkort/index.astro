@@ -109,11 +109,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 >
 
   <!-- ═══ HERO ═══ -->
-  <!-- MOBILE HERO: Bild överst, text under (stackad vertikalt) -->
-  <section class="md:hidden">
-    <div class="mx-[16px] mt-[16px]">
+  <!-- MOBILE+TABLET HERO: Bild överst, text under (stackad vertikalt) — upp till lg 1024px -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] mt-[16px] sm:mt-[24px]">
       <!-- Bild överst -->
-      <div class="rounded-[20px] overflow-hidden aspect-[4/3] mb-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
         <img
           src="/images/hero/visitkort-hero.png"
           alt="Visitkort från Norrmalmstryckeriet"
@@ -121,36 +121,36 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         />
       </div>
       <!-- Text under -->
-      <div class="px-[4px]">
-        <p class="text-[#888] mb-[12px] uppercase font-medium text-[10px]" style="letter-spacing:1.5px; line-height:1;">
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
           Tryckeri Stockholm • Sollentuna / Häggvik
         </p>
-        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px]" style="font-size: clamp(1.875rem, 7vw, 2.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
           Lämna rätt intryck
         </h1>
-        <p class="text-[#444] text-[15px] leading-relaxed mb-[24px]">
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
           När du möter kund, partner eller kontaktperson behöver dina uppgifter vara enkla att ta med. Vi hjälper dig välja papper, tryck och finish efter hur visitkortet ska kännas och användas.
         </p>
-        <div class="flex flex-col gap-[10px] mb-[32px]">
-          <a href="/begar-offert" class="btn-pill btn-red w-full justify-center">
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/begar-offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
             Offertförfrågan<Fragment set:html={arrowSvg} />
           </a>
-          <a href="tel:+4686210090" class="btn-pill w-full justify-center" style="background: #F3F3F3; color: #222;">
+          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
             Ring 08-96 01 35
           </a>
         </div>
         <!-- Trust strip -->
-        <div class="flex flex-wrap items-end gap-x-[24px] gap-y-[16px] pt-[8px]">
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
           <div class="flex flex-col items-start">
-            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px]">100+ år</span>
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
             <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
           </div>
           <div class="flex flex-col items-start">
-            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px]">1000+</span>
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">1000+</span>
             <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
           </div>
           <div class="flex flex-col items-start">
-            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px]" />
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
             <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
           </div>
         </div>
@@ -158,10 +158,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- DESKTOP/TABLET HERO: Overlay med text på bilden -->
-  <section class="relative hidden md:block">
+  <!-- DESKTOP HERO: Overlay med text på bilden (1024px+) -->
+  <section class="relative hidden lg:block">
     <div
-      class="hero-box mx-[24px] lg:mx-[34px] mt-[16px] lg:mt-[24px] rounded-[36px] lg:rounded-[50px] overflow-hidden relative"
+      class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative"
     >
       <img
         src="/images/hero/visitkort-hero.png"
@@ -268,10 +268,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
     <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] lg:mr-[44px]">
       <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
-        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
       <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
-        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
   </section>
@@ -283,7 +283,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
         Tre steg till rätt visitkort.
       </h2>
-      <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
         <div>
           <span class="typo-process-number block">1.</span>
           <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
@@ -345,9 +345,9 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
           Ett visitkort är litet, men detaljerna syns direkt. Papper, tryck och finish avgör vad du lämnar efter dig.
         </p>
-        <div class="grid md:grid-cols-3 gap-[16px] sm:gap-[20px] md:gap-[24px]">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
           {expertise.map((e) => (
-            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[32px] md:p-[39px]">
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
               <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
               <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
               <div class="space-y-[12px] sm:space-y-[14px]">
@@ -392,13 +392,8 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
               <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
               <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
-                <svg class="faq-plus w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <line x1="8" y1="2" x2="8" y2="14"/>
-                  <line x1="2" y1="8" x2="14" y2="8"/>
-                </svg>
-                <svg class="faq-minus hidden w-[20px] h-[20px] sm:w-[22px] sm:h-[22px]" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                  <line x1="2" y1="8" x2="14" y2="8"/>
-                </svg>
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
               </span>
             </button>
             <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
@@ -463,7 +458,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
             <span class="typo-ref-name text-white">{ref.name}</span>
             <span class="plus-btn plus-btn-md">
-              <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="2" x2="8" y2="14"/><line x1="2" y1="8" x2="14" y2="8"/></svg>
+              <svg width="22" height="22" viewBox="0 0 448 512" fill="currentColor"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
             </span>
           </div>
         </a>
@@ -471,10 +466,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
     <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] lg:mr-[44px]">
       <button id="ref-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
-        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
       </button>
       <button id="ref-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
-        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
   </section>
