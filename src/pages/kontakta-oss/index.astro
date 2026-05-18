@@ -1,0 +1,258 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const team = [
+  {
+    name: 'Mats Jansson',
+    role: 'VD / Försäljning',
+    phones: [
+      { label: '08-510 604 20', tel: '+4685106 0420' },
+      { label: '0708-29 12 05', tel: '+46708291205' },
+    ],
+    email: 'mats@norrmalmstryckeriet.se',
+    image: '/images/team/mats-jansson.webp',
+  },
+  {
+    name: 'Bengt Lindau',
+    role: 'Sälj / Projektledare',
+    phones: [
+      { label: '08-510 604 22', tel: '+46851060422' },
+      { label: '0708-29 67 95', tel: '+46708296795' },
+    ],
+    email: 'bengt@norrmalmstryckeriet.se',
+    image: '/images/team/bengt-lindau.webp',
+  },
+  {
+    name: 'Jens Johansson',
+    role: 'Sälj / Projektledare',
+    phones: [
+      { label: '070-527 78 80', tel: '+46705277880' },
+    ],
+    email: 'jens.johansson@sandvikenstryckeri.se',
+    image: '/images/team/jens-johansson.webp',
+  },
+  {
+    name: 'Stefan Johansson',
+    role: 'Prepress / Projektledare',
+    phones: [
+      { label: '070-777 98 63', tel: '+46707779863' },
+    ],
+    email: 'stefan@norrmalmstryckeriet.se',
+    image: '/images/team/stefan-johansson.webp',
+  },
+  {
+    name: 'Peter Näslund',
+    role: 'Prepress / Projektledare',
+    phones: [
+      { label: '070-774 78 53', tel: '+46707747853' },
+    ],
+    email: 'peter@norrmalmstryckeriet.se',
+    image: '/images/team/peter-naslund.webp',
+  },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Kontakta oss – Norrmalmstryckeriet | Tryckeri i Stockholm"
+  description="Ring 08-96 01 35 eller maila tryckeri@norrmalmstryckeriet.se. Besök oss på Hammarbacken 4A i Häggvik, 15 min från Stockholm city."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <p class="section-label">Kontakta oss</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Vi gillar att prata med våra kunder.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
+        Ring oss på <a href="tel:+4686960135" class="text-[#222] underline hover:no-underline font-medium">08-96 01 35</a> eller maila <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#222] underline hover:no-underline font-medium">tryckeri@norrmalmstryckeriet.se</a>. Vill du istället ha en offert? Då går du till <a href="/offert" class="text-[#D9222A] hover:underline font-medium">offertförfrågan</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ KONTAKT-CARDS — Ring / Maila / Besök ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+
+        <!-- Ring -->
+        <a href="tel:+4686960135" class="bg-white rounded-[20px] p-[28px] sm:p-[36px] no-underline block group hover:bg-[#FAFAFA] transition-colors duration-200">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#D9222A]/10 flex items-center justify-center mb-[20px] sm:mb-[24px] group-hover:bg-[#D9222A]/20 transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9222A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <p class="section-label" style="margin-bottom: 8px;">Ring</p>
+          <p class="font-[var(--font-heading)] !font-normal text-[#222] text-[24px] sm:text-[28px] leading-[1.1] mb-[8px]">08-96 01 35</p>
+          <p class="text-[14px] sm:text-[15px] text-[#666]">Sollentuna / Häggvik</p>
+          <p class="font-[var(--font-heading)] !font-normal text-[#222] text-[20px] sm:text-[22px] leading-[1.1] mt-[16px] mb-[8px]">026-24 80 00</p>
+          <p class="text-[14px] sm:text-[15px] text-[#666]">Sandviken</p>
+        </a>
+
+        <!-- Maila -->
+        <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="bg-white rounded-[20px] p-[28px] sm:p-[36px] no-underline block group hover:bg-[#FAFAFA] transition-colors duration-200">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#D9222A]/10 flex items-center justify-center mb-[20px] sm:mb-[24px] group-hover:bg-[#D9222A]/20 transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9222A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <p class="section-label" style="margin-bottom: 8px;">Maila</p>
+          <p class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2] mb-[8px] break-all">tryckeri@norrmalmstryckeriet.se</p>
+          <p class="text-[14px] sm:text-[15px] text-[#666]">Sollentuna / Häggvik</p>
+          <p class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2] mt-[16px] mb-[8px] break-all">info@sandvikenstryckeri.se</p>
+          <p class="text-[14px] sm:text-[15px] text-[#666]">Sandviken</p>
+        </a>
+
+        <!-- Besök -->
+        <a href="https://maps.google.com/?q=Hammarbacken+4A,+19147+Sollentuna" target="_blank" rel="noopener" class="bg-white rounded-[20px] p-[28px] sm:p-[36px] no-underline block group hover:bg-[#FAFAFA] transition-colors duration-200 sm:col-span-2 lg:col-span-1">
+          <div class="w-[48px] h-[48px] rounded-full bg-[#D9222A]/10 flex items-center justify-center mb-[20px] sm:mb-[24px] group-hover:bg-[#D9222A]/20 transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D9222A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <p class="section-label" style="margin-bottom: 8px;">Besök</p>
+          <p class="font-[var(--font-heading)] !font-normal text-[#222] text-[20px] sm:text-[22px] leading-[1.2] mb-[4px]">Hammarbacken 4A</p>
+          <p class="text-[14px] sm:text-[15px] text-[#666]">Häggvik, Sollentuna</p>
+          <p class="text-[13px] sm:text-[14px] text-[#888] mt-[8px]">15 min från Stockholm city</p>
+          <p class="text-[13px] sm:text-[14px] text-[#888] mt-[16px]"><strong class="text-[#222] font-medium">Postadress:</strong><br/>Box 416, 191 24 Sollentuna</p>
+        </a>
+
+      </div>
+      <p class="text-[13px] sm:text-[14px] text-[#888] mt-[24px] sm:mt-[32px] text-center">
+        Org nr: 556088-1681
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ KONTAKTPERSONER ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <p class="section-label">Kontaktpersoner</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px] max-w-[920px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Människorna bakom tryckpressen.
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[20px] sm:gap-[24px] md:gap-[28px]">
+        {team.map((person) => (
+          <article class="bg-[#F5F5F5] rounded-[20px] overflow-hidden flex flex-col">
+            <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
+              <img
+                src={person.image}
+                alt={person.name}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
+              />
+            </div>
+            <div class="p-[20px] sm:p-[24px] flex flex-col gap-[8px]">
+              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2]">{person.name}</h3>
+              <p class="text-[13px] sm:text-[14px] text-[#666] uppercase font-medium" style="letter-spacing: 1.2px;">{person.role}</p>
+              <div class="flex flex-col gap-[4px] mt-[8px]">
+                {person.phones.map((p) => (
+                  <a href={`tel:${p.tel}`} class="text-[14px] sm:text-[15px] text-[#222] hover:text-[#D9222A] transition-colors">
+                    {p.label}
+                  </a>
+                ))}
+                <a href={`mailto:${person.email}`} class="text-[13px] sm:text-[14px] text-[#D9222A] hover:underline break-all mt-[2px]">
+                  {person.email}
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KARTA + RUTTBESKRIVNING ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">Hitta hit</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[32px] sm:mb-[48px] md:mb-[60px] max-w-[920px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Tryckeri i Häggvik, 15 minuter från city.
+      </h2>
+      <div class="grid lg:grid-cols-[1.5fr_1fr] gap-[24px] lg:gap-[40px] items-stretch">
+        <div class="rounded-[20px] overflow-hidden bg-white aspect-[4/3] lg:aspect-auto lg:min-h-[460px]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2027.5!2d17.9269!3d59.4364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sHammarbacken%204A%2C%20191%2047%20Sollentuna!5e0!3m2!1ssv!2sse!4v1700000000000!5m2!1ssv!2sse"
+            class="w-full h-full border-0"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Karta till Norrmalmstryckeriet"
+          ></iframe>
+        </div>
+        <div class="bg-white rounded-[20px] p-[28px] sm:p-[36px] lg:p-[44px] flex flex-col">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[22px] sm:text-[26px] mb-[16px] sm:mb-[20px] leading-[1.2]">Med bil</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[24px] sm:mb-[28px]">
+            E4 norrut från Stockholm, avfart Häggvik. Följ skyltning mot Hammarbacken. Gratis parkering finns vid entrén.
+          </p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[22px] sm:text-[26px] mb-[16px] sm:mb-[20px] leading-[1.2]">Med pendeltåg</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[24px] sm:mb-[28px]">
+            Pendeltåg till Häggvik station (15 min från Stockholms central). Sedan 5 minuters promenad.
+          </p>
+          <a href="https://maps.google.com/?q=Hammarbacken+4A,+19147+Sollentuna" target="_blank" rel="noopener" class="btn-pill btn-dark mt-auto self-start">
+            Öppna i Google Maps<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA — OFFERTFÖRFRÅGAN ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] text-center">
+        <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Vill du ha en offert?</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[24px] sm:mb-[32px] max-w-[820px] mx-auto" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Berätta vad du vill trycka. Vi gör resten.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[28px] sm:mb-[36px] max-w-[640px] mx-auto" style="text-wrap: pretty;">
+          Fyll i offertformuläret eller ring oss på 08-96 01 35. Vi rekommenderar format, papper och finish efter ditt projekt.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap items-center justify-center gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686960135" class="btn-pill w-full sm:w-auto justify-center" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 140px; padding-bottom: 140px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>
