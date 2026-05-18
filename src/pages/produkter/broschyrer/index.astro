@@ -39,50 +39,39 @@ const scenarios = [
     body: 'Du behöver en broschyr som speglar varumärket och känns genomarbetad i handen. Konsekvensen blir att papper, omslag och efterbehandling påverkar helhetsintrycket.',
     rec: 'Högre gramvikt på omslag, silk eller bestruket papper, laminering, prägling eller foliering där känslan ska förstärkas.',
   },
-  {
-    title: 'Du säljer fastighet eller projekt',
-    body: 'Du vill ge intressenter ett material att gå tillbaka till efter visningen. Konsekvensen blir att bilder, planlösningar och fakta behöver kännas både tydliga och påkostade.',
-    rec: 'A4 stående, 8–16 sidor, kraftigt omslag, silk-bestruket inlaga och eventuell folie- eller präglingsdetalj.',
-  },
-  {
-    title: 'Du tar fram årsredovisning',
-    body: 'Du vill att texten ska vara läsbar, siffrorna lättnavigerade och helheten kännas professionell. Konsekvensen blir att format, papperskvalitet och bindning behöver hålla över tid.',
-    rec: 'A4, obestruket eller silk-papper, 4+4 fullfärg, limbindning vid större sidantal och tydlig läsordning.',
-  },
 ];
 
 const expertise = [
   {
-    title: 'Format & sidantal',
-    intro: 'Format och sidantal styr hur broschyren känns i handen och hur lätt den är att läsa. Rätt val gör innehållet luftigt och navigerbart.',
+    title: 'Pappersval',
+    intro: 'I en broschyr ska pappret fungera över flera sidor. Det påverkar bläddring, bildkänsla och hur materialet upplevs.',
     items: [
-      ['A4', 'Mer plats för bild, tabeller och längre text. Bra för produktbroschyrer, kataloger och utbildningsmaterial.'],
-      ['A5', 'Lätt att dela ut och ta med. Bra för företagspresentation, mässa och säljmaterial.'],
-      ['Kvadrat', 'Mer designdrivet format. Bra när broschyren ska sticka ut och bilder är centrala.'],
-      ['8–16 sidor', 'Häftad broschyr. Bra för kampanj, presentation och produktblad.'],
-      ['24+ sidor', 'Limbunden broschyr. Bra för katalog, magasin och årsredovisning.'],
+      ['Bestruket', 'Slät yta med tydlig färgåtergivning. Bra för bilder, produktkataloger och visuella presentationer.'],
+      ['Obestruket', 'Naturlig och taktil känsla. Bra för text, utbildningsmaterial och ett mer nedtonat uttryck.'],
+      ['Lättare inlaga', 'Bra när sidantalet är högre och broschyren ska vara smidig att bläddra i.'],
+      ['Stabilare inlaga', 'Ger mer professionell känsla och fungerar bra när broschyren ska sparas.'],
+      ['Kraftigare omslag', 'Ger bättre första intryck, tydligare struktur och mer hållbarhet.'],
     ],
   },
   {
-    title: 'Papper & tryck',
-    intro: 'Pappret bär budskapet. Med rätt yta, gramvikt och tryckmetod blir broschyren både snygg och hållbar.',
+    title: 'Tryckmetod',
+    intro: 'Broschyrens upplaga, sidantal och färgkrav styr tryckvalet. Målet är att innehåll, ekonomi och känsla ska mötas i rätt produktion.',
     items: [
-      ['Bestruket silk', 'Mjuk yta som ger fin bildåtergivning utan glansigt intryck. Bra för företags- och produktbroschyrer.'],
-      ['Obestruket', 'Naturlig och taktil känsla. Bra för utbildning, miljöprofil och text som ska kännas mer äkta.'],
-      ['Digitaltryck', 'Snabbt och flexibelt. Passar mindre upplagor, korta ledtider och olika versioner.'],
-      ['Offsettryck', 'Effektivt vid större upplagor. Ger jämn färg och bra styckekonomi vid volym.'],
-      ['Pantone', 'Exakt färgmatchning för varumärkesfärger som måste återges konsekvent.'],
+      ['Digitaltryck', 'Snabbt och flexibelt. Passar mindre upplagor, korta serier och versionerade broschyrer.'],
+      ['Offsettryck', 'Effektivt vid större upplagor. Passar när jämn färgåtergivning och lägre styckpris i volym blir viktiga.'],
+      ['Pantone', 'Exakt färgmatchning. Bra när varumärkesfärger behöver återges konsekvent.'],
+      ['Variabeltryck', 'Anpassa broschyren efter mottagare, region, kundgrupp eller kampanjversion.'],
     ],
   },
   {
-    title: 'Bindning & finish',
-    intro: 'Bindning och efterbehandling avgör hur broschyren upplevs. Detaljerna gör att helheten känns rätt.',
+    title: 'Efterbehandling',
+    intro: 'Bindning och finish gör broschyren mer användbar och mer värd att spara. Här avgörs mycket av slutkänslan.',
     items: [
-      ['Trådhäftning', 'Klassisk häftning för 8–48 sidor. Snabb, stabil och kostnadseffektiv.'],
-      ['Limbindning', 'Boklik rygg från ca 40 sidor. Bra för katalog, magasin och årsredovisning.'],
-      ['Laminering', 'Matt eller silk yta på omslaget. Skyddar trycket och lyfter känslan.'],
-      ['Prägling', 'Upphöjd detalj som logotyp eller titel. Ger taktil och exklusiv känsla.'],
-      ['Foliering', 'Metallisk effekt i guld, silver eller färg. Bra när omslaget ska kännas premium.'],
+      ['Häftning', 'Vanligt för broschyrer med färre sidor. Ger ett smidigt och lättbläddrat format.'],
+      ['Limbindning', 'Passar större sidantal och mer bokliknande känsla.'],
+      ['Laminering eller lack', 'Skyddar omslaget och ger matt, silk eller blank finish.'],
+      ['Prägling', 'Ger logotyp eller detalj mer djup och taktil känsla.'],
+      ['Foliering', 'Skapar premiumkänsla på omslag, titel eller rubrik.'],
     ],
   },
 ];
@@ -94,14 +83,14 @@ const testimonial = {
 };
 
 const faqs = [
-  { q: 'Vad är skillnaden mellan folder och broschyr?', a: 'En folder är ofta ett vikt blad med färre ytor. En broschyr har flera sidor och passar när innehållet behöver mer struktur.' },
+  { q: 'Vad är skillnaden mellan folder och broschyr?', a: 'En folder är ofta ett falsat blad med färre ytor. En broschyr har flera sidor och passar när innehållet behöver mer struktur.' },
   { q: 'När passar en broschyr bäst?', a: 'Broschyrer passar företagspresentationer, produktinformation, kampanjer och utbildningsmaterial. De fungerar när mottagaren behöver läsa mer än ett kort budskap.' },
   { q: 'Vilket format ska jag välja?', a: 'A5 passar när broschyren ska vara lätt att dela ut och ta med. A4 passar när bilder, tabeller eller längre texter behöver mer utrymme.' },
   { q: 'Vad påverkar priset på en broschyr?', a: 'Sidantal, format, upplaga, papper, tryckmetod, bindning och efterbehandling påverkar priset. Vi rekommenderar val efter innehåll och användning.' },
   { q: 'När passar digitaltryck?', a: 'Digitaltryck passar ofta mindre upplagor och flexibla produktioner. Det är ett bra val när materialet ska tas fram i begränsad mängd.' },
   { q: 'När passar offsettryck?', a: 'Offsettryck passar ofta större upplagor. Det kan ge bra styckekonomi och jämn färgåtergivning vid volym.' },
-  { q: 'Vilken bindning ska jag välja?', a: 'Trådhäftning passar 8–48 sidor och är snabb och stabil. Limbindning passar från ca 40 sidor och ger en boklik rygg som syns i hyllan.' },
-  { q: 'Kan broschyren få en mer exklusiv känsla?', a: 'Ja. Omslag, gramvikt, laminering, prägling eller foliering kan göra broschyren mer bearbetad. Valet bör kopplas till varumärke, mottagare och användning.' },
+  { q: 'När ska broschyren häftas?', a: 'Häftning passar ofta broschyrer med färre sidor och smidigt format. Det ger en lättbläddrad trycksak som fungerar bra för presentation och kampanj.' },
+  { q: 'När passar limbindning?', a: 'Limbindning passar när broschyren har fler sidor eller ska kännas mer som en bok. Det ger mer tyngd och en tydligare rygg.' },
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
@@ -240,15 +229,15 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
   <section class="page-section-no-px">
     <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
-      <p class="section-label" style="margin-bottom: 16px;">När du behöver en broschyr</p>
+      <p class="section-label" style="margin-bottom: 16px;">Vad vill du uppnå</p>
       <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
-        Det handlar inte om sidantal. Det handlar om struktur.
+        Berätta situationen. Vi löser trycket.
       </h2>
       <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
-        En broschyr kan presentera företaget, sälja en produkt eller bygga upp ett längre resonemang.
+        Det handlar inte om sidor. Det handlar om syfte. En broschyr kan vara 8 eller 64 sidor. Det viktiga är att den gör jobbet.
       </p>
       <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
-        Det viktiga är att läsaren kan följa med från första till sista sidan. Berätta vad du vill uppnå – vi rekommenderar format, papper och bindning.
+        Berätta vad du vill uppnå – vi rekommenderar formatet.
       </p>
     </div>
     <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
@@ -285,7 +274,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <div>
           <span class="typo-process-number block">1.</span>
           <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
-          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du beskriver vad broschyren ska göra, vem den ska nå och hur den ska användas.</p>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du beskriver syfte, upplaga, målgrupp och hur broschyren ska användas.</p>
         </div>
         <div>
           <span class="typo-process-number block">2.</span>
@@ -309,16 +298,16 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
           <div class="md:max-w-[520px]">
             <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
-              Lockpriser visar sällan hela valet.
+              Broschyrer påverkas av flera val som behöver hänga ihop.
             </h2>
           </div>
           <div class="md:max-w-[480px] md:pt-[12px]">
             <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
               <p>
-                Format, sidantal, papper, bindning och finish påverkar både pris och resultat.
+                Sidantal, papper, tryckmetod, omslag och bindning styr både känsla och funktion.
               </p>
               <p class="text-[#222] font-medium">
-                Med rådgivning får du en broschyr som passar uppdraget. Det gör valet enklare, offerten tydligare och trycksaken mer användbar.
+                Med rådgivning får du en broschyr som passar innehållet. Det gör valet enklare och resultatet mer genomtänkt.
               </p>
             </div>
             <div class="pt-[28px] sm:pt-[36px]">
@@ -341,7 +330,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           Format, papper och bindning – vi kan det.
         </h2>
         <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
-          Du behöver inte förstå skillnaden mellan trådhäftning och limbindning. Men vi gör det. Här är grunderna.
+          Du behöver inte veta om broschyren ska häftas eller limbindas. Vi hjälper dig välja utifrån sidantal, innehåll och känsla.
         </p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
           {expertise.map((e) => (
@@ -413,7 +402,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             Berätta om ditt projekt.
           </h3>
           <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
-            Vill du trycka en broschyr för företaget, en produkt, en kampanj eller utbildning? Berätta vad du har på gång, så rekommenderar vi format, sidantal, papper, tryck och bindning.
+            Vill du trycka broschyrer för företag, produkt, kampanj eller utbildning? Berätta hur broschyren ska användas, så rekommenderar vi format, papper, sidantal och bindning.
           </p>
           <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
             <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
