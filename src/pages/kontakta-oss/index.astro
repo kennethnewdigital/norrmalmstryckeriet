@@ -120,42 +120,50 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ KONTAKTPERSONER ═══ -->
-  <section class="page-section">
-    <div class="page-container">
-      <p class="section-label">Kontaktpersoner</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px] max-w-[920px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+  <!-- ═══ KONTAKTPERSONER — sidoscroll ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Kontaktpersoner</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
         Människorna bakom tryckpressen.
       </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-[20px] sm:gap-[24px] md:gap-[28px]">
-        {team.map((person) => (
-          <article class="bg-[#F5F5F5] rounded-[20px] overflow-hidden flex flex-col">
-            <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
-              <img
-                src={person.image}
-                alt={person.name}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
-              />
-            </div>
-            <div class="p-[20px] sm:p-[24px] flex flex-col gap-[8px]">
-              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2]">{person.name}</h3>
-              <p class="text-[13px] sm:text-[14px] text-[#666] uppercase font-medium" style="letter-spacing: 1.2px;">{person.role}</p>
-              <div class="flex flex-col gap-[4px] mt-[8px]">
-                {person.phones.map((p) => (
-                  <a href={`tel:${p.tel}`} class="text-[14px] sm:text-[15px] text-[#222] hover:text-[#D9222A] transition-colors">
-                    {p.label}
-                  </a>
-                ))}
-                <a href={`mailto:${person.email}`} class="text-[13px] sm:text-[14px] text-[#D9222A] hover:underline break-all mt-[2px]">
-                  {person.email}
+    </div>
+    <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px] snap-x snap-mandatory">
+      {team.map((person) => (
+        <article class="shrink-0 w-[220px] sm:w-[240px] md:w-[260px] lg:w-[280px] bg-[#F5F5F5] rounded-[16px] overflow-hidden flex flex-col snap-start">
+          <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
+            <img
+              src={person.image}
+              alt={person.name}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
+            />
+          </div>
+          <div class="p-[16px] sm:p-[20px] flex flex-col gap-[6px]">
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[15px] sm:text-[16px] leading-[1.2]">{person.name}</h3>
+            <p class="text-[10px] sm:text-[11px] text-[#666] uppercase font-medium" style="letter-spacing: 1.1px;">{person.role}</p>
+            <div class="flex flex-col gap-[2px] mt-[8px]">
+              {person.phones.map((p) => (
+                <a href={`tel:${p.tel}`} class="text-[13px] sm:text-[14px] text-[#222] hover:text-[#D9222A] transition-colors">
+                  {p.label}
                 </a>
-              </div>
+              ))}
+              <a href={`mailto:${person.email}`} class="text-[12px] sm:text-[13px] text-[#D9222A] hover:underline break-all mt-[2px]">
+                {person.email}
+              </a>
             </div>
-          </article>
-        ))}
-      </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="team-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="team-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </section>
 
@@ -255,4 +263,33 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   @media (min-width: 768px) {
     .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
   }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
 </style>
+
+<script>
+  function initKontakt() {
+    const teamCarousel = document.getElementById('team-carousel');
+    const teamWidth = window.matchMedia('(min-width: 1024px)').matches ? 300 : (window.matchMedia('(min-width: 768px)').matches ? 280 : (window.matchMedia('(min-width: 640px)').matches ? 260 : 236));
+    document.getElementById('team-prev')?.addEventListener('click', () => {
+      teamCarousel?.scrollBy({ left: -teamWidth, behavior: 'smooth' });
+    });
+    document.getElementById('team-next')?.addEventListener('click', () => {
+      teamCarousel?.scrollBy({ left: teamWidth, behavior: 'smooth' });
+    });
+  }
+  initKontakt();
+  document.addEventListener('astro:after-swap', initKontakt);
+</script>

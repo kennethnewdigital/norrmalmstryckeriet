@@ -199,38 +199,48 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ TEAM TEASER ═══ -->
-  <section class="page-section bg-[#F3F3F3]">
-    <div class="page-container">
-      <p class="section-label">Människorna</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px] max-w-[920px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+  <!-- ═══ TEAM TEASER — sidoscroll ═══ -->
+  <section class="page-section-no-px bg-[#F3F3F3]">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Människorna</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
         Människorna bakom tryckpressen.
       </h2>
-      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed text-[#555] mb-[32px] sm:mb-[48px] max-w-[680px]">
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed text-[#555] max-w-[680px]">
         Ring eller maila direkt — vi finns nära original, tryck och produktion.
       </p>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-[16px] sm:gap-[20px] md:gap-[24px] mb-[32px] sm:mb-[40px]">
-        {team.map((person) => (
-          <article class="bg-white rounded-[16px] overflow-hidden flex flex-col">
-            <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
-              <img
-                src={person.image}
-                alt={person.name}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
-              />
-            </div>
-            <div class="p-[16px] sm:p-[20px] flex flex-col gap-[4px]">
-              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[15px] sm:text-[17px] leading-[1.2]">{person.name}</h3>
-              <p class="text-[11px] sm:text-[12px] text-[#666] uppercase font-medium" style="letter-spacing: 1.1px;">{person.role}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-      <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center inline-flex">
+    </div>
+    <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px] snap-x snap-mandatory">
+      {team.map((person) => (
+        <article class="shrink-0 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
+          <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
+            <img
+              src={person.image}
+              alt={person.name}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
+            />
+          </div>
+          <div class="p-[14px] sm:p-[18px] flex flex-col gap-[4px]">
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[13px] sm:text-[15px] leading-[1.2]">{person.name}</h3>
+            <p class="text-[10px] sm:text-[11px] text-[#666] uppercase font-medium" style="letter-spacing: 1.1px;">{person.role}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-between items-center gap-[12px] mt-[16px] sm:mt-[24px] ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <a href="/kontakta-oss" class="btn-pill btn-dark inline-flex">
         Se alla kontaktuppgifter<Fragment set:html={arrowSvg} />
       </a>
+      <div class="flex gap-[8px]">
+        <button id="team-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-white flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+          <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="team-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+          <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -315,4 +325,33 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   @media (min-width: 768px) {
     .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
   }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
 </style>
+
+<script>
+  function initOmOss() {
+    const teamCarousel = document.getElementById('team-carousel');
+    const teamWidth = window.matchMedia('(min-width: 1024px)').matches ? 236 : (window.matchMedia('(min-width: 768px)').matches ? 220 : (window.matchMedia('(min-width: 640px)').matches ? 200 : 176));
+    document.getElementById('team-prev')?.addEventListener('click', () => {
+      teamCarousel?.scrollBy({ left: -teamWidth, behavior: 'smooth' });
+    });
+    document.getElementById('team-next')?.addEventListener('click', () => {
+      teamCarousel?.scrollBy({ left: teamWidth, behavior: 'smooth' });
+    });
+  }
+  initOmOss();
+  document.addEventListener('astro:after-swap', initOmOss);
+</script>
