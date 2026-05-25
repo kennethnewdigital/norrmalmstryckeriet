@@ -1,0 +1,576 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const effects = [
+  'Mer plats för innehåll och bilder',
+  'Tydlig struktur från start till CTA',
+  'Rätt känsla för möte, mässa och utskick',
+  'Smidigare val av format, papper och upplaga',
+];
+
+const scenarios = [
+  {
+    title: 'Du ska presentera företaget',
+    body: 'Du behöver en folder som snabbt förklarar vilka ni är, vad ni erbjuder och varför kunden ska välja er. Konsekvensen blir att innehållet behöver kännas samlat, tydligt och representativt.',
+    rec: '4-sidig A4 eller A5, silk eller obestruket papper, fullfärg 4+4 och falsning som ger tydlig läsordning.',
+  },
+  {
+    title: 'Du ska sälja en tjänst',
+    body: 'Du vill lämna något efter mötet som kunden kan läsa, dela och återkomma till. Konsekvensen blir att foldern behöver bära både argument, exempel och kontaktväg.',
+    rec: 'A5-folder med tydlig framsida, strukturerat innehåll, digitaltryck för mindre upplaga och papper som känns professionellt i handen.',
+  },
+  {
+    title: 'Du ska lansera en produkt',
+    body: 'Du behöver visa funktioner, nytta, bilder och tekniska detaljer på ett sätt som känns enkelt. Konsekvensen blir att ytan behöver planeras så att kunden snabbt förstår värdet.',
+    rec: '4-sidig A4-folder, fullfärg, bildstarkt papper och falsning som delar upp produkt, fördelar, specifikation och kontakt.',
+  },
+  {
+    title: 'Du ska trycka till mässa',
+    body: 'Du behöver material som går snabbt att dela ut och lätt att ta med sig vidare. Konsekvensen blir att formatet behöver vara kompakt, tydligt och tåla många händer.',
+    rec: 'A5-folder, digitaltryck vid mindre upplaga eller offsettryck vid större upplaga, samt matt eller tålig yta beroende på användning.',
+  },
+  {
+    title: 'Du ska göra ett utskick',
+    body: 'Du vill skicka information som känns mer genomarbetad än ett enkelt blad. Konsekvensen blir att format, vikt och falsning behöver fungera med kuvert, porto och hantering.',
+    rec: '4-sidig A5-folder, anpassad gramvikt, fullfärg och falsning som gör foldern enkel att packa och distribuera.',
+  },
+  {
+    title: 'Du vill skapa premiumkänsla',
+    body: 'Du behöver en folder som stärker varumärket och känns genomarbetad redan vid första kontakten. Konsekvensen blir att materialval och efterbehandling får stor betydelse.',
+    rec: 'Högre gramvikt, silk eller bestruket papper, laminering, prägling eller foliering där uttrycket ska förstärkas.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Pappersval',
+    intro: 'Pappret påverkar både känslan och hur foldern falsas. Ett för kraftigt papper kan göra en folder svår att stänga snyggt, särskilt vid flera falsningar.',
+    items: [
+      ['Bestruket', 'Slät yta där färger och bilder får tydligt tryck. Bra för produktpresentationer, kampanjer och bildstarkt material.'],
+      ['Obestruket', 'Naturlig och taktil känsla. Bra för text, instruktioner, miljöprofil och material som ska kännas mer nedtonat.'],
+      ['Lättare papper', 'Smidigt för utskick och foldrar med flera falsningar.'],
+      ['Stabilare papper', 'Ger mer professionell känsla i handen. Bra för mässor, företagspresentationer och säljmaterial.'],
+      ['Kraftigare papper', 'Passar enklare falsningar där foldern ska kännas mer exklusiv.'],
+    ],
+  },
+  {
+    title: 'Tryckmetod',
+    intro: 'Digitaltryck eller offset? Det beror på upplaga, tidsram, färgkrav och hur foldern ska användas.',
+    items: [
+      ['Digitaltryck', 'Snabbt och flexibelt. Passar mindre upplagor, testversioner och kortare serier.'],
+      ['Offsettryck', 'Effektivt vid större upplagor. Passar kampanjer, utskick och material där styckpris och färgstabilitet blir viktiga.'],
+      ['Pantone', 'Exakt färgmatchning. Bra när logotyp eller profilfärg behöver återges konsekvent.'],
+      ['Variabeltryck', 'Anpassa foldern med namn, område, QR-kod eller mottagarstyrt innehåll.'],
+    ],
+  },
+  {
+    title: 'Efterbehandling',
+    intro: 'Här avgörs mycket av folderns funktion. Efterbehandlingen styr hur foldern öppnas, håller och upplevs i handen.',
+    items: [
+      ['Falsning', 'Rullfals, parallellfals, altarfals eller annan lösning efter innehåll och format.'],
+      ['Laminering', 'Matt, silk eller blank yta. Skyddar och ger mer tålig känsla.'],
+      ['Prägling', 'Upphöjd detalj, till exempel logotyp. Ger taktil och mer exklusiv känsla.'],
+      ['Stansning', 'Skapar specialform, öppning eller ett mer unikt uttryck.'],
+      ['Foliering', 'Metallisk effekt i exempelvis guld eller silver. Bra när detaljer ska lyftas.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Vi fick hjälp att välja rätt format och papper för vårt material. Foldern blev tydlig, lätt att använda och kändes professionell i mötet.',
+  author: 'Exempelcitat',
+  role: 'Ersätt med verifierat kundcitat före publicering',
+};
+
+const faqs = [
+  { q: 'Vad är en folder?', a: 'En folder är ett tryckt blad som falsas till flera sidor. Den passar när du vill presentera mer innehåll än vad ett enkelt blad rymmer.' },
+  { q: 'Vad är falsning?', a: 'Falsning är när ett tryckt ark viks maskinellt till flera sidor. Valet av falsning påverkar läsordning, format och hur foldern öppnas.' },
+  { q: 'Ska jag välja A5 eller A4?', a: 'A5 passar när foldern ska vara kompakt, lätt att dela ut och enkel att ta med. A4 passar när du behöver mer plats för bilder, erbjudanden eller produktinformation.' },
+  { q: 'När passar digitaltryck?', a: 'Digitaltryck passar ofta mindre upplagor, versionerat material och produktion där flexibilitet är viktig. Det är bra när foldern ska tas fram snabbt eller i flera varianter.' },
+  { q: 'När passar offsettryck?', a: 'Offsettryck passar ofta större upplagor där styckpris och färgstabilitet blir viktiga. Det är vanligt vid utskick, kampanjer och återkommande material.' },
+  { q: 'Vad påverkar priset på en folder?', a: 'Pris påverkas av format, upplaga, papper, tryckmetod, falsning och efterbehandling. Vi rekommenderar lösning efter användning, budget och önskat intryck.' },
+  { q: 'Vilket papper ska jag välja?', a: 'Silk ger ofta en jämn och professionell känsla med bra bildåtergivning. Obestruket passar när uttrycket ska kännas mer naturligt, taktilt eller skrivbart.' },
+  { q: 'Kan foldern få premiumkänsla?', a: 'Ja. Laminering, prägling, foliering och kraftigare papper kan förstärka känslan. Valet bör kopplas till varumärke, mottagare och användning.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Trycka foldrar – rådgivning, format och falsning | Norrmalmstryckeriet"
+  description="Tryck foldrar för mässa, utskick, presentation och säljmaterial. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#1a1a2e]">
+        <img
+          src="/images/hero/foldrar-hero.svg"
+          alt="Foldrar från Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Foldrar som förklarar
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          När ett blad blir för kort ger foldern plats för ordning, bilder och tydlig nästa handling. Vi hjälper dig välja format, papper, falsning och tryck efter hur foldern ska användas.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">1000+</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#1a1a2e]">
+      <img
+        src="/images/hero/foldrar-hero.svg"
+        alt="Foldrar från Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[640px]" style="text-wrap: balance;">
+          Foldrar som förklarar
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[640px]">
+          När ett blad blir för kort ger foldern plats för ordning, bilder och tydlig nästa handling. Vi hjälper dig välja format, papper, falsning och tryck efter hur foldern ska användas.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">1000+</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR FOLDER?" ═══ -->
+  <section class="page-section">
+    <div class="page-content">
+      <p class="section-label">Varför folder?</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          En folder kan vara löst falsad. <em>Eller genomtänkt från första sida till sista uppmaning.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            När format, papper, tryck och falsning samspelar blir budskapet lättare att ta till sig.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/produkter/foldrar/infografik" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Gratis infografik<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Vad vill du uppnå</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Berätta situationen. Vi löser trycket.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
+        Det handlar inte om falsning. Det handlar om ordning. En folder kan guida mottagaren genom erbjudande, produkt, instruktion eller kampanj.
+      </p>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Det viktiga är att innehållet kommer i rätt följd. Berätta vad du vill uppnå – vi rekommenderar format och falsning.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[20px] sm:mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[16px] sm:pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till rätt folder.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du beskriver syfte, upplaga, målgrupp och hur foldern ska användas.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vi föreslår format, papper, tryckmetod, falsning och eventuell efterbehandling.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag och godkänner innan foldern går till tryck.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
+  <section class="bg-[#F3F3F3] reveal">
+    <div class="page-section">
+      <div class="page-container max-w-[1400px]">
+        <p class="section-label">Varför vi inte har en webbshop</p>
+        <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
+          <div class="md:max-w-[520px]">
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+              Foldrar påverkas mycket av valen runt trycket.
+            </h2>
+          </div>
+          <div class="md:max-w-[480px] md:pt-[12px]">
+            <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+              <p>
+                Format, gramvikt, falsning, upplaga och efterbehandling avgör hur foldern känns, fungerar och används.
+              </p>
+              <p class="text-[#222] font-medium">
+                Med rådgivning får du en lösning som passar situationen. Det gör valet enklare och resultatet mer genomtänkt.
+              </p>
+            </div>
+            <div class="pt-[28px] sm:pt-[36px]">
+              <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Papper, tryck och falsning – vi kan det.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Du behöver inte veta vilken falsning som passar. Men vi vet hur format, papper och läsordning ska hänga ihop.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="font-[var(--font-heading)] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.25rem, 2.8vw, 2.5rem); line-height: 1.3; color: #222;">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[14px] sm:text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Vanliga frågor om foldrar.
+      </h2>
+      <p class="text-[14px] sm:text-[15px] text-[#555] mb-[28px] sm:mb-[40px] md:mb-[60px]">
+        Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+      </p>
+      <div id="faq-list">
+        {faqs.map((item) => (
+          <div class="border-b border-[#D5D8DC]">
+            <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
+              <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[1300px]">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[20px] sm:text-[26px] md:text-[32px] text-[#222] mb-[20px] sm:mb-[28px] leading-[1.2]">
+            Berätta om ditt projekt.
+          </h3>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
+            Vill du trycka foldrar till möte, mässa, utskick eller presentation? Berätta hur foldern ska användas, så rekommenderar vi format, papper, tryckmetod och efterbehandling.
+          </p>
+          <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline break-all">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
+            <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
+            <input type="email" name="email" placeholder="E-post" required class="form-input" />
+            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="5" class="form-input resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDREFERENSER ═══ -->
+  <section class="py-[48px] sm:py-[64px] md:py-[80px]">
+    <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[16px] sm:mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[280px] sm:w-[400px] md:w-[600px] h-[200px] sm:h-[280px] md:h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{ref.name}</span>
+            <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              <svg width="44" height="44" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="ref-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETER ═══ -->
+  <section class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden mb-[48px] sm:mb-[64px] md:mb-[80px]">
+    <div class="max-w-[1140px] mx-auto px-[24px] sm:px-[32px] md:px-[44px] py-[48px] sm:py-[60px] md:py-[80px]">
+      <h3 class="typo-carousel-heading !text-white mb-[28px] sm:mb-[40px]">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px] sm:gap-[24px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[16px] sm:mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[10px] sm:mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[14px] sm:text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<Fragment set:html={arrowSvg} />
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 560px;
+    max-height: 92vh;
+    background: #1a1a2e;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+  }
+  @media (min-width: 1920px) {
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+  }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  function initFoldrar() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        const isOpen = answer.classList.contains('is-open');
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        if (!isOpen) {
+          answer.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon.classList.add('hidden');
+          minusIcon.classList.remove('hidden');
+        }
+      });
+    });
+
+    const carousel = document.getElementById('scenario-carousel');
+    const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('scenario-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    document.getElementById('scenario-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    const refCarousel = document.getElementById('ref-carousel');
+    const refWidth = window.matchMedia('(min-width: 768px)').matches ? 620 : (window.matchMedia('(min-width: 640px)').matches ? 420 : 296);
+    document.getElementById('ref-prev')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: -refWidth, behavior: 'smooth' });
+    });
+    document.getElementById('ref-next')?.addEventListener('click', () => {
+      refCarousel?.scrollBy({ left: refWidth, behavior: 'smooth' });
+    });
+  }
+
+  initFoldrar();
+  document.addEventListener('astro:after-swap', initFoldrar);
+</script>

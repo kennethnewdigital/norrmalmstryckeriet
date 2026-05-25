@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 960" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="55%" stop-color="#3a1f3a"/>
+      <stop offset="100%" stop-color="#2a1419"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="75%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#D9222A" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#D9222A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Bakgrund -->
+  <rect width="1920" height="960" fill="url(#bg)"/>
+  <rect width="1920" height="960" fill="url(#dots)"/>
+  <rect width="1920" height="960" fill="url(#glow)"/>
+
+  <!-- Folder/vikt papper-motiv höger sida -->
+  <g transform="translate(1150 180)" opacity="0.85">
+    <!-- Bakre sida -->
+    <path d="M0,80 L520,30 L540,540 L20,580 Z" fill="#ffffff" fill-opacity="0.06"/>
+    <!-- Mittsida -->
+    <path d="M280,60 L780,80 L780,560 L280,540 Z" fill="#ffffff" fill-opacity="0.10"/>
+    <!-- Främre sida -->
+    <path d="M540,30 L780,80 L780,560 L540,540 Z" fill="#ffffff" fill-opacity="0.14"/>
+    <!-- Falsning-linjer -->
+    <line x1="280" y1="60" x2="280" y2="540" stroke="#ffffff" stroke-opacity="0.20" stroke-width="1.5"/>
+    <line x1="540" y1="30" x2="540" y2="540" stroke="#ffffff" stroke-opacity="0.25" stroke-width="1.5"/>
+  </g>
+
+  <!-- Diskret "placeholder"-markering nere höger -->
+  <g transform="translate(1740 920)" opacity="0.35">
+    <rect x="-95" y="-22" width="90" height="20" rx="10" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="-50" y="-8" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="500" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PLACEHOLDER</text>
+  </g>
+</svg>
