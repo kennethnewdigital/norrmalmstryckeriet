@@ -1,0 +1,264 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Gratis infografik om kuvert | Norrmalmstryckeriet"
+  description="Ladda ner vår gratis PDF-guide om kuvert: format, fönster, papper, färg och tryckmetod. Fyll i formuläret så skickas guiden direkt."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section hero-pdf bg-[#F3F3F3]">
+    <div class="page-container">
+      <div class="grid lg:grid-cols-[1fr_auto] gap-[40px] md:gap-[60px] lg:gap-[80px] items-center lg:items-end">
+        <div>
+          <p class="section-label">Gratis nedladdning</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+            Kuvert-guiden — välj rätt format, fönster och tryck.
+          </h1>
+          <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
+            En PDF-guide med konkreta råd om format (C5, C4), fönsterplacering, pappersval, färgtryck, förslutning och vad som påverkar priset på kuvert. Fyll i uppgifterna nedan så får du nedladdningen direkt.
+          </p>
+        </div>
+
+        <div class="pdf-teaser-wrap">
+          <div class="pdf-teaser">
+            <img
+              src="/images/infografik/kuvert-teaser.webp"
+              alt="Förhandsvisning av kuvert-guiden (PDF)"
+              loading="eager"
+              decoding="async"
+            />
+            <span class="pdf-badge">PDF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FORMULÄR ═══ -->
+  <section class="page-section form-section-cover">
+    <div class="page-container">
+      <div class="grid md:grid-cols-2 gap-[40px] md:gap-[60px] lg:gap-[80px] items-start">
+        <div>
+          <p class="section-label">Formulär</p>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px]" style="font-size: clamp(1.5rem, 3vw, 2.5rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+            Fyll i uppgifterna så får du guiden direkt.
+          </h2>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#555] max-w-[440px]" style="text-wrap: pretty;">
+            Vi använder uppgifterna för att skicka guiden och eventuella uppföljningar. Vi delar aldrig din e-post med tredje part. Läs vår <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicy</a>.
+          </p>
+        </div>
+
+        <div class="md:max-w-[480px] w-full">
+          <form
+            id="kuvert-infografik-form"
+            class="space-y-[12px] sm:space-y-[14px]"
+            action="/downloads/kuvert-infographic.pdf"
+            method="get"
+            target="_blank"
+          >
+            <div>
+              <label for="name" class="block text-[14px] font-medium text-[#222] mb-[6px]">Ditt namn <span class="text-[#D9222A]">*</span></label>
+              <input type="text" id="name" name="name" placeholder="För- och efternamn" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="email" class="block text-[14px] font-medium text-[#222] mb-[6px]">E-post <span class="text-[#D9222A]">*</span></label>
+              <input type="email" id="email" name="email" placeholder="namn@foretag.se" required class="form-input" />
+            </div>
+
+            <div>
+              <label for="company" class="block text-[14px] font-medium text-[#222] mb-[6px]">Företag <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="company" name="company" placeholder="Företagsnamn" class="form-input" />
+            </div>
+
+            <div>
+              <label for="role" class="block text-[14px] font-medium text-[#222] mb-[6px]">Roll <span class="text-[#888] font-normal">(valfritt)</span></label>
+              <input type="text" id="role" name="role" placeholder="T.ex. marknadschef, designer" class="form-input" />
+            </div>
+
+            <div class="flex items-start gap-[10px] mt-[16px]">
+              <input type="checkbox" id="newsletter" name="newsletter" class="mt-[5px] w-[16px] h-[16px] cursor-pointer" />
+              <label for="newsletter" class="text-[14px] leading-relaxed text-[#555] cursor-pointer">
+                Ja tack, jag vill gärna få tryck-tips och guider per e-post (kan avregistreras när som helst).
+              </label>
+            </div>
+
+            <button type="submit" class="btn-pill btn-red w-full justify-center mt-[20px]">
+              Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DETTA FÅR DU I GUIDEN ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <p class="section-label">I guiden</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
+        Detta får du i guiden.
+      </h2>
+      <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Format & fönster</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">C5, C5 H2 med fönster, C4 och färgade kuvert — när varje val passar bäst för kundbrev, faktura eller kampanj.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Tryckmetod</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Offsettryck, 1+0 svart, 4+0 CMYK och Pantone — när varje val ger rätt varumärkesnärvaro och styckpris.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Förslutning & flöde</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Täckremsa, självslutande, fukthäftande och adressflöde — när varje detalj styr om utskicket går smidigt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TILLBAKA-LÄNK ═══ -->
+  <section class="py-[40px] sm:py-[56px] md:py-[72px]">
+    <div class="page-container">
+      <a href="/produkter/kuvert" class="inline-flex items-center text-[#222] font-medium hover:underline text-[15px] sm:text-[16px]">
+        ← Tillbaka till kuvert
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 140px; padding-bottom: 140px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 6px;
+    background: #FDFDFD;
+    border: 1px solid #D5D8DC;
+    font-size: 16px;
+    font-family: var(--font-body);
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  .form-input:focus { border-color: #222; }
+  @media (min-width: 768px) {
+    .form-input { padding: 14px 16px; }
+  }
+
+  .hero-pdf {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+  .form-section-cover {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+  }
+
+  .pdf-teaser-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    margin-bottom: -210px;
+  }
+
+  .pdf-teaser {
+    position: relative;
+    width: 240px;
+    max-width: 100%;
+    aspect-ratio: 1833 / 2700;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow:
+      0 1px 2px rgba(0,0,0,0.06),
+      0 14px 28px rgba(0,0,0,0.10),
+      0 40px 80px rgba(0,0,0,0.18);
+    transform: rotate(3deg);
+    transform-origin: top center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .pdf-teaser:hover { transform: rotate(3deg) translateY(-6px); }
+
+  .pdf-teaser img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .pdf-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: #D9222A;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    padding: 5px 9px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  @media (min-width: 640px) {
+    .pdf-teaser-wrap { margin-bottom: -240px; }
+    .pdf-teaser { width: 280px; }
+  }
+  @media (min-width: 1024px) {
+    .pdf-teaser-wrap { align-self: end; margin-bottom: -300px; }
+    .pdf-teaser { width: 360px; }
+  }
+  @media (min-width: 1440px) {
+    .pdf-teaser-wrap { margin-bottom: -340px; }
+    .pdf-teaser { width: 400px; }
+  }
+</style>

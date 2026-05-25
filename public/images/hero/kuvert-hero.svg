@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 960" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="55%" stop-color="#2e2440"/>
+      <stop offset="100%" stop-color="#2a1f2a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#D9222A" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#D9222A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Bakgrund -->
+  <rect width="1920" height="960" fill="url(#bg)"/>
+  <rect width="1920" height="960" fill="url(#dots)"/>
+  <rect width="1920" height="960" fill="url(#glow)"/>
+
+  <!-- Kuvert-motiv (tre kuvert på olika nivåer) -->
+  <g transform="translate(1080 220)">
+    <!-- Bakre kuvert (C4, stort) -->
+    <g opacity="0.55" transform="rotate(-6 0 0)">
+      <rect x="0" y="0" width="460" height="320" fill="#ffffff" fill-opacity="0.08" rx="4"/>
+      <!-- Flik-linje -->
+      <path d="M0,0 L230,170 L460,0" fill="none" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5"/>
+      <!-- Fönster -->
+      <rect x="30" y="200" width="140" height="55" fill="#ffffff" fill-opacity="0.10" rx="2"/>
+    </g>
+
+    <!-- Mitten-kuvert (C5 med fönster) -->
+    <g opacity="0.78" transform="translate(120 80) rotate(3 0 0)">
+      <rect x="0" y="0" width="420" height="280" fill="#ffffff" fill-opacity="0.14" rx="4"/>
+      <!-- Flik-linje -->
+      <path d="M0,0 L210,150 L420,0" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="2"/>
+      <!-- Avsändare-block uppe vänster -->
+      <rect x="28" y="28" width="100" height="8" fill="#ffffff" fill-opacity="0.40"/>
+      <rect x="28" y="44" width="70" height="6" fill="#ffffff" fill-opacity="0.20"/>
+      <!-- Logotyp accent -->
+      <rect x="28" y="62" width="30" height="3" fill="#D9222A" fill-opacity="0.7"/>
+      <!-- Adress-fönster -->
+      <rect x="40" y="170" width="170" height="65" fill="#ffffff" fill-opacity="0.16" rx="2"/>
+      <rect x="55" y="185" width="120" height="5" fill="#ffffff" fill-opacity="0.45"/>
+      <rect x="55" y="197" width="100" height="5" fill="#ffffff" fill-opacity="0.35"/>
+      <rect x="55" y="209" width="140" height="5" fill="#ffffff" fill-opacity="0.35"/>
+    </g>
+
+    <!-- Främre litet kuvert -->
+    <g opacity="0.90" transform="translate(280 240) rotate(-2 0 0)">
+      <rect x="0" y="0" width="320" height="220" fill="#ffffff" fill-opacity="0.18" rx="4"/>
+      <path d="M0,0 L160,115 L320,0" fill="none" stroke="#ffffff" stroke-opacity="0.40" stroke-width="2"/>
+      <rect x="24" y="24" width="80" height="8" fill="#ffffff" fill-opacity="0.55"/>
+      <rect x="24" y="40" width="55" height="6" fill="#ffffff" fill-opacity="0.30"/>
+    </g>
+  </g>
+
+  <!-- Diskret "placeholder"-markering nere höger -->
+  <g transform="translate(1740 920)" opacity="0.35">
+    <rect x="-95" y="-22" width="90" height="20" rx="10" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="-50" y="-8" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="500" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PLACEHOLDER</text>
+  </g>
+</svg>
