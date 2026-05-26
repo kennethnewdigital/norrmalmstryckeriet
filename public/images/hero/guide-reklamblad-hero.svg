@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 960" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1f2e"/>
+      <stop offset="55%" stop-color="#2a2440"/>
+      <stop offset="100%" stop-color="#1f1a2a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="78%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#D9222A" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#D9222A" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+
+  <!-- Bakgrund -->
+  <rect width="1920" height="960" fill="url(#bg)"/>
+  <rect width="1920" height="960" fill="url(#dots)"/>
+  <rect width="1920" height="960" fill="url(#glow)"/>
+
+  <!-- Guide/blad-motiv (stack av blad) -->
+  <g transform="translate(1180 160)">
+    <!-- Bakre blad -->
+    <g opacity="0.45" transform="rotate(-6 0 0)">
+      <rect x="0" y="0" width="360" height="500" fill="#ffffff" fill-opacity="0.08" rx="3"/>
+      <rect x="30" y="40" width="180" height="14" fill="#ffffff" fill-opacity="0.20"/>
+      <rect x="30" y="62" width="220" height="6" fill="#ffffff" fill-opacity="0.10"/>
+      <rect x="30" y="74" width="180" height="6" fill="#ffffff" fill-opacity="0.10"/>
+    </g>
+    <!-- Mitten-blad -->
+    <g opacity="0.70" transform="translate(40 30) rotate(3 0 0)">
+      <rect x="0" y="0" width="360" height="500" fill="#ffffff" fill-opacity="0.12" rx="3"/>
+      <rect x="30" y="40" width="160" height="20" fill="#ffffff" fill-opacity="0.35"/>
+      <rect x="30" y="70" width="240" height="8" fill="#ffffff" fill-opacity="0.18"/>
+      <rect x="30" y="82" width="200" height="8" fill="#ffffff" fill-opacity="0.18"/>
+      <!-- Accent-stripe -->
+      <rect x="30" y="430" width="50" height="4" fill="#D9222A" fill-opacity="0.7"/>
+      <rect x="30" y="445" width="100" height="6" fill="#ffffff" fill-opacity="0.25"/>
+    </g>
+    <!-- Främre blad (med "Guide"-tag) -->
+    <g opacity="0.92" transform="translate(80 80)">
+      <rect x="0" y="0" width="360" height="500" fill="#ffffff" fill-opacity="0.18" rx="3"/>
+      <!-- Guide-label tag -->
+      <rect x="30" y="30" width="90" height="22" rx="11" fill="#D9222A" fill-opacity="0.85"/>
+      <text x="75" y="46" font-family="-apple-system, system-ui, sans-serif" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle" letter-spacing="1.2">GUIDE</text>
+      <!-- Rubrik -->
+      <rect x="30" y="80" width="200" height="22" fill="#ffffff" fill-opacity="0.55"/>
+      <rect x="30" y="108" width="150" height="22" fill="#ffffff" fill-opacity="0.55"/>
+      <!-- Brödtext -->
+      <rect x="30" y="148" width="260" height="6" fill="#ffffff" fill-opacity="0.25"/>
+      <rect x="30" y="160" width="240" height="6" fill="#ffffff" fill-opacity="0.25"/>
+      <rect x="30" y="172" width="220" height="6" fill="#ffffff" fill-opacity="0.25"/>
+      <!-- Steg-block -->
+      <rect x="30" y="220" width="140" height="3" fill="#ffffff" fill-opacity="0.4"/>
+      <rect x="30" y="232" width="100" height="14" fill="#ffffff" fill-opacity="0.5"/>
+      <rect x="30" y="254" width="240" height="5" fill="#ffffff" fill-opacity="0.25"/>
+      <rect x="30" y="264" width="220" height="5" fill="#ffffff" fill-opacity="0.25"/>
+    </g>
+  </g>
+
+  <!-- Diskret "placeholder"-markering nere höger -->
+  <g transform="translate(1740 920)" opacity="0.35">
+    <rect x="-95" y="-22" width="90" height="20" rx="10" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="-50" y="-8" font-family="-apple-system, system-ui, sans-serif" font-size="10" font-weight="500" fill="#ffffff" text-anchor="middle" letter-spacing="1.5">PLACEHOLDER</text>
+  </g>
+</svg>

@@ -1,0 +1,532 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
+
+// Tryck-termer
+const tryckTermer = [
+  ['4+0', 'Fyrfärgstryck på ena sidan, inget tryck på baksidan'],
+  ['4+4', 'Fyrfärgstryck på båda sidor'],
+  ['1+0', 'Enfärgstryck på ena sidan'],
+  ['1+1', 'Enfärgstryck på båda sidor'],
+];
+
+// Användningsområden
+const anvandning = [
+  ['Kampanjer', 'Erbjudanden, produktlanseringar, butikskampanjer'],
+  ['Event och mässor', 'Flyers, programblad, inbjudningar, leave-behinds'],
+  ['Information', 'Medlemsinformation, instruktioner, produktblad'],
+  ['Försäljning', 'Säljblad, erbjudandeblad, tjänstepresentationer'],
+  ['Utskick', 'Bilagor i brev, DR-kampanjer, lokala utskick'],
+  ['Intern kommunikation', 'Policyblad, informationsblad, personalmaterial'],
+  ['Restaurang och service', 'Menyblad, prislistor, brickunderlägg'],
+];
+
+// Format
+const format = [
+  ['A6', 'Flyers, kuponger, små erbjudanden, eventinformation'],
+  ['A5', 'Reklamblad, säljblad, informationsblad, mässmaterial'],
+  ['A4', 'Produktblad, instruktioner, prislistor, mer innehållstunga blad'],
+  ['Kvadratiskt format', 'Kampanjer, premiumkänsla, särskiljning'],
+  ['Eget format', 'Varumärkesbyggande material, lanseringar, särskilda utskick'],
+];
+
+// Efterbehandling
+const efterbehandling = [
+  ['Perforering', 'Kuponger, svarstalonger, rivbara delar'],
+  ['Stansning', 'Egen form, rundade hörn, särskild design'],
+  ['Prägling', 'Taktil känsla, premiumdetaljer, logotyper'],
+  ['Foliering', 'Exklusiva detaljer i exempelvis guld, silver eller färgfolie'],
+  ['Lack', 'Skydd, glans, matt effekt eller markerade ytor'],
+  ['Laminering', 'Extra skydd och stabilitet'],
+  ['Håltagning', 'Upphängning, pärmar, praktisk användning'],
+];
+
+// Original / tryckfil
+const tryckfil = [
+  ['Utfall', 'Lägg till utfall om färg, bild eller grafik går ända ut till kanten'],
+  ['Skärmärken', 'Används för att visa slutformat vid skärning'],
+  ['Bildkvalitet', 'Bilder bör ha tillräcklig upplösning för tryck'],
+  ['Färger', 'Tryck produceras normalt i CMYK'],
+  ['Marginaler', 'Text och viktiga detaljer bör ligga en bit från skärkanten'],
+  ['PDF', 'Leverera helst tryckfärdig PDF enligt tryckeriets rekommendationer'],
+];
+
+// Beslutsfrågor
+const beslut = [
+  ['Vad ska mottagaren förstå?', 'Styr rubrik, budskap och innehåll'],
+  ['Vad ska mottagaren göra?', 'Styr CTA och kontaktväg'],
+  ['Var ska bladet användas?', 'Styr format, papper och efterbehandling'],
+  ['Hur länge ska det leva?', 'Styr materialval och kvalitetsnivå'],
+  ['Hur ska det distribueras?', 'Styr format, vikt och eventuell kuvertering'],
+  ['Vilken känsla ska avsändaren förmedla?', 'Styr papper, bildval, färg och finish'],
+];
+---
+
+<Layout
+  title="Trycka blad och reklamblad – guide till format, papper och tryck | Norrmalmstryckeriet"
+  description="Lär dig vad du bör tänka på när du ska trycka blad eller reklamblad. Guide till format, papper, digitaltryck, offsettryck, original och efterbehandling."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#1a1f2e]">
+        <img src="/images/hero/guide-reklamblad-hero.svg" alt="Guide om blad och reklamblad" class="w-full h-full object-cover" />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Guide • Norrmalmstryckeriet
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Allt du behöver veta om blad och reklamblad
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          Ett pappersark. Ett budskap. En tydlig avsändare. Den enkla trycksaken som fortfarande gör jobbet — när format, papper, tryckmetod och efterbehandling samspelar.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/produkter/blad/infografik" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Ladda ner guiden (PDF)<Fragment set:html={downloadSvg} />
+          </a>
+          <a href="/offert" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#1a1f2e]">
+      <img src="/images/hero/guide-reklamblad-hero.svg" alt="Guide om blad och reklamblad" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Guide • Norrmalmstryckeriet
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[820px]" style="text-wrap: balance;">
+          Allt du behöver veta om blad och reklamblad
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[680px]">
+          Ett pappersark. Ett budskap. En tydlig avsändare. Den enkla trycksaken som fortfarande gör jobbet — när format, papper, tryckmetod och efterbehandling samspelar.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px]">
+          <a href="/produkter/blad/infografik" class="btn-pill btn-red">
+            Ladda ner guiden (PDF)<Fragment set:html={downloadSvg} />
+          </a>
+          <a href="/offert" class="btn-pill" style="background: white; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INGRESS ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[820px]">
+      <p class="section-label">Översikt</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Blad och reklamblad — den enkla trycksaken som fortfarande gör jobbet.
+      </h2>
+      <div class="text-[16px] sm:text-[17px] md:text-[18px] leading-[1.7] text-[#333] space-y-[18px]" style="text-wrap: pretty;">
+        <p>Ett blad är en av de mest grundläggande trycksakerna som finns.</p>
+        <p>Ett pappersark. Ett budskap. En tydlig avsändare. Tryck på ena sidan eller båda sidorna. Ibland enkelt och rakt. Ibland påkostat, formstansat, perforerat, lackat eller producerat på ett papper som gör att hela känslan förändras.</p>
+        <p><strong class="text-[#222]">Det är just enkelheten som gör bladet så användbart.</strong> Ett reklamblad kan delas ut på en mässa, skickas med i ett brev, ligga på en disk, delas ut i butik, följa med som informationsblad i en leverans eller användas som säljmaterial vid ett möte.</p>
+        <p>När det är rätt gjort blir bladet mer än ett ark. Det blir ett verktyg för att skapa uppmärksamhet, förklara något snabbt och ge mottagaren något att hålla i handen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VAD ÄR ETT BLAD? ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">1. Definition</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Vad är ett blad?
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px] mb-[32px] sm:mb-[40px]" style="text-wrap: pretty;">
+        <p>I tryckerisammanhang är ett blad en trycksak utan falsning, klammer eller limbindning. Det är alltså ett löst ark i ett bestämt format.</p>
+        <p>Vanliga format är A6, A5, A4 och ibland större format. Ett A5-blad är till exempel vanligt som flyer, informationsblad eller kampanjmaterial. När formatet blir större — exempelvis A2, 50 × 70 cm eller 70 × 100 cm — brukar man istället tala om <a href="/produkter/affischer" class="underline hover:text-[#222]">affisch</a>.</p>
+        <p>Ett blad kan tryckas på en sida eller två sidor. I trycktermer skrivs det ofta så här:</p>
+      </div>
+      <div class="bg-white rounded-[16px] overflow-hidden border border-[#E5E5E5]">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Tryckterm</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Betyder</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tryckTermer.map(([term, desc], i) => (
+              <tr class={i < tryckTermer.length - 1 ? 'border-b border-[#F0F0F0]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[15px] sm:text-[16px] text-[#222] font-mono">{term}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[14px] sm:text-[15px] text-[#444]">{desc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] text-[#666] mt-[20px] italic">
+        För de flesta moderna reklamblad används fyrfärgstryck (CMYK). Det ger möjlighet att trycka bilder, färgytor, logotyper, grafik och text i fullfärg.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ NÄR PASSAR BLAD? ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">2. Användning</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        När passar blad och reklamblad bäst?
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px] mb-[32px] sm:mb-[40px]" style="text-wrap: pretty;">
+        <p>Blad passar när du vill kommunicera snabbt, tydligt och kostnadseffektivt. Det är en trycksak som fungerar särskilt bra när mottagaren behöver förstå något direkt — ett erbjudande, en nyhet, en produkt, ett event eller en instruktion.</p>
+        <p><strong class="text-[#222]">Det fina med bladet är att det inte kräver mycket av mottagaren.</strong> Det är lätt att ta emot, lätt att dela ut och lätt att spara.</p>
+      </div>
+      <div class="bg-[#F5F5F5] rounded-[16px] overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Användning</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Exempel</th>
+            </tr>
+          </thead>
+          <tbody>
+            {anvandning.map(([use, ex], i) => (
+              <tr class={i < anvandning.length - 1 ? 'border-b border-[#E8E8E8]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{use}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{ex}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        Ett blad är särskilt starkt när det har ett tydligt syfte. Därför börjar en bra produktion inte med frågan <em>"vad kostar ett A5?"</em>, utan med frågan: <strong class="text-[#222]">vad ska bladet få mottagaren att förstå, känna eller göra?</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ NEDLADDNINGS-CTA #1 (mitt i artikeln) ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[920px]">
+      <div class="bg-[#222] rounded-[20px] sm:rounded-[28px] px-[24px] sm:px-[40px] md:px-[56px] py-[36px] sm:py-[48px] md:py-[56px] grid md:grid-cols-[1fr_auto] gap-[24px] md:gap-[40px] items-center">
+        <div>
+          <p class="!text-white/60 uppercase font-medium text-[10px] sm:text-[11px] mb-[10px]" style="letter-spacing: 1.5px;">Gratis nedladdning</p>
+          <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[8px] sm:mb-[10px]" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.2; text-wrap: balance;">
+            Vill du ha hela guiden som PDF?
+          </h3>
+          <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed max-w-[520px]">
+            Ladda ner den nedladdningsbara guiden — en beslutsmodell i 8 steg för rätt format, papper, tryck och efterbehandling.
+          </p>
+        </div>
+        <a href="/produkter/blad/infografik" class="btn-pill btn-red w-full md:w-auto justify-center md:justify-start whitespace-nowrap">
+          Ladda ner guiden<Fragment set:html={downloadSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR FUNGERAR REKLAMBLAD? ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">3. Effekt</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Varför fungerar reklamblad fortfarande?
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>Reklamblad fungerar eftersom de gör kommunikationen fysisk. Mottagaren får något i handen. Budskapet finns kvar på bordet, i väskan, i receptionen, på anslagstavlan eller i mötesmappen. Det konkurrerar på ett annat sätt än digital kommunikation, där allt passerar snabbt.</p>
+        <p>Ett välgjort blad kan också göra ett företag mer konkret. Det visar att avsändaren har tagit sig tid att paketera sitt budskap. Det ger tyngd åt en presentation. Det kan förstärka ett säljmöte, göra en kampanj mer minnesvärd och ge mottagaren något enkelt att återvända till efter första kontakten.</p>
+        <p><strong class="text-[#222]">Det är därför blad fortfarande används</strong> av företag, föreningar, myndigheter, organisationer, butiker, mässutställare och lokala verksamheter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FORMAT ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">4. Format</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Format — välj storlek efter situationen.
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px] mb-[32px] sm:mb-[40px]" style="text-wrap: pretty;">
+        <p>Formatet påverkar hur bladet uppfattas. Ett mindre format känns snabbt, enkelt och lätt att dela ut. Ett större format ger mer utrymme för bilder, argument och tydligare rubriker. Ett avvikande format kan skapa uppmärksamhet och kännas mer genomarbetat.</p>
+      </div>
+      <div class="bg-[#F5F5F5] rounded-[16px] overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Format</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Passar ofta till</th>
+            </tr>
+          </thead>
+          <tbody>
+            {format.map(([f, d], i) => (
+              <tr class={i < format.length - 1 ? 'border-b border-[#E8E8E8]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{f}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{d}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        <strong class="text-[#222]">Tips:</strong> Låt innehållet styra formatet. Om bladet ska läsas snabbt fungerar ett mindre format ofta bra. Om det ska förklara, jämföra eller presentera flera produkter kan ett större format vara bättre.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ PAPPER ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">5. Papper</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Papper — känslan börjar i materialet.
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>Pappret påverkar både känsla, funktion och hållbarhet. Ett tunt papper kan vara rätt för stora utskick där vikt och portokostnad spelar roll. Ett kraftigare papper kan ge bättre stabilitet, högre kvalitetskänsla och längre livslängd. Bestruket papper kan ge bilder och färger mer skärpa. Obestruket papper kan ge en mjukare, mer naturlig och taktil känsla.</p>
+        <p><strong class="text-[#222]">Det viktiga är att välja papper efter användning.</strong></p>
+        <ul class="list-disc pl-[20px] space-y-[6px] text-[15px] sm:text-[16px] text-[#444]">
+          <li>Ska bladet delas ut snabbt?</li>
+          <li>Ska det sparas?</li>
+          <li>Ska det skickas med post?</li>
+          <li>Ska det ligga i en monter?</li>
+          <li>Ska det kännas enkelt, informativt, exklusivt eller hållbart?</li>
+        </ul>
+        <p>När pappret matchar syftet känns trycksaken mer genomtänkt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ OFFSET VS DIGITAL ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">6. Tryckmetod</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Offsettryck eller digitaltryck?
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-[16px] sm:gap-[20px] mb-[24px]">
+        <div class="bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[20px] sm:text-[24px] leading-[1.2] mb-[12px]">Digitaltryck</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444]">Passar ofta vid mindre upplagor, snabb produktion och när materialet behöver versioneras — kortare serier, testupplagor, eventmaterial eller blad där olika versioner ska produceras.</p>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[20px] sm:text-[24px] leading-[1.2] mb-[12px]">Offsettryck</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444]">Passar ofta vid större upplagor, när styckpriset blir viktigt och när man vill ha mycket hög och stabil tryckkvalitet över många exemplar.</p>
+        </div>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] leading-[1.7]">
+        På Norrmalmstryckeriet hjälper vi dig att välja rätt metod utifrån uppdraget. Målet är inte att välja den mest avancerade lösningen, utan den lösning som ger bäst resultat för syftet, upplagan och budgeten.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ EFTERBEHANDLING ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">7. Efterbehandling</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Efterbehandling — små detaljer som gör stor skillnad.
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        Ett blad kan vara helt rakt och enkelt. Det kan också förädlas för att få mer funktion, hållbarhet eller känsla. Vanliga efterbehandlingar:
+      </p>
+      <div class="bg-white rounded-[16px] overflow-hidden border border-[#E5E5E5]">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Efterbehandling</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">När det passar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {efterbehandling.map(([t, d], i) => (
+              <tr class={i < efterbehandling.length - 1 ? 'border-b border-[#F0F0F0]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{t}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{d}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        Efterbehandling ska väljas med omsorg. Rätt detalj kan lyfta hela trycksaken. Fel detalj kan göra den onödigt dyr eller mindre praktisk. <strong class="text-[#222]">Prata med tryckeriet tidigt</strong>, särskilt om bladet ska ha en särskild funktion.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ ORIGINAL / TRYCKFIL ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">8. Original</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Original och tryckfil — så blir resultatet bättre.
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        För att ett blad ska bli bra i tryck behöver originalet vara rätt förberett. Det handlar bland annat om:
+      </p>
+      <div class="bg-[#F5F5F5] rounded-[16px] overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Del</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Rekommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tryckfil.map(([d, r], i) => (
+              <tr class={i < tryckfil.length - 1 ? 'border-b border-[#E8E8E8]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{d}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{r}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        Norrmalmstryckeriet arbetar enligt europeisk standard för offsettryck och använder exempelvis <strong class="text-[#222]">PSOcoated_v3 FOGRA51</strong> för bestruket papper och <strong class="text-[#222]">PSOuncoated_v3 FOGRA52</strong> för obestruket papper. Känner du dig osäker är det bättre att fråga tidigt — då kan original, format, papper och produktion kontrolleras innan jobbet går vidare.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ GÖR BÄTTRE REKLAMBLAD ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">9. Beslutsmodell</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Så gör du ett bättre reklamblad.
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        Ett bra reklamblad börjar med ett tydligt uppdrag. Innan layouten är klar bör du veta:
+      </p>
+      <div class="bg-white rounded-[16px] overflow-hidden border border-[#E5E5E5]">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Fråga</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Varför det spelar roll</th>
+            </tr>
+          </thead>
+          <tbody>
+            {beslut.map(([q, r], i) => (
+              <tr class={i < beslut.length - 1 ? 'border-b border-[#F0F0F0]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{q}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{r}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-[28px] sm:mt-[36px] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#333] space-y-[14px]" style="text-wrap: pretty;">
+        <p>Det bästa reklambladet är sällan det som innehåller mest information. Det är det som hjälper mottagaren att snabbt förstå <strong class="text-[#222]">varför budskapet är relevant</strong>.</p>
+        <ul class="list-disc pl-[20px] space-y-[4px]">
+          <li>En stark rubrik.</li>
+          <li>En tydlig nytta.</li>
+          <li>En enkel väg vidare.</li>
+          <li>Ett format som passar situationen.</li>
+          <li>Ett material som känns rätt i handen.</li>
+        </ul>
+        <p>Då får bladet bättre chans att göra sitt jobb.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SAMMANFATTNING ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[820px]">
+      <p class="section-label">Sammanfattning</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Blad och reklamblad — på kort.
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>Ett blad är en enkel, flexibel och effektiv trycksak som kan användas på många sätt. Det kan vara ett reklamblad, informationsblad, säljblad, produktblad, menyblad, kupong, flyer eller en del av ett större utskick.</p>
+        <p>Resultatet påverkas av format, papper, tryckmetod, färger, original och efterbehandling. Därför lönar det sig att tänka igenom syftet innan produktionen startar.</p>
+        <p>Hos Norrmalmstryckeriet hjälper vi dig att välja rätt lösning från början — så att bladet känns rätt, fungerar praktiskt och representerar ditt budskap på bästa sätt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA (mörk) ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1200px]">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Behöver du trycka blad?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Berätta vad bladet ska göra — vi hjälper med resten.
+          </h2>
+          <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Berätta vad bladet ska användas till, vilken upplaga du behöver och om du har ett färdigt original. Vi hjälper dig med format, papper, tryckmetod, efterbehandling och offert.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full justify-center">
+            Begär offert på blad<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/produkter/blad/infografik" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Ladda ner guiden (PDF)<Fragment set:html={downloadSvg} />
+          </a>
+          <a href="/produkter/blad" class="btn-pill w-full justify-center" style="background: rgba(255,255,255,0.10); color: #fff;">
+            Se produktsidan<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 480px;
+    max-height: 80vh;
+    background: #1a1f2e;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 2 / 1; min-height: 560px; max-height: 70vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2.3 / 1; max-height: 68vh; }
+  }
+
+  .page-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 72px; padding-bottom: 72px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 88px; padding-bottom: 88px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 112px; padding-bottom: 112px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 16px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 20px; }
+  }
+</style>
