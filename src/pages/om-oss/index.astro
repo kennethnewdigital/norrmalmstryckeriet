@@ -199,48 +199,66 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ TEAM TEASER — sidoscroll ═══ -->
+  <!-- ═══ TEAM TEASER — sidoscroll <lg, grid lg+ ═══ -->
   <section class="page-section-no-px bg-[#F3F3F3]">
     <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
       <p class="section-label" style="margin-bottom: 16px;">Människorna</p>
       <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
-        Människorna bakom tryckpressen.
+        Människorna du pratar med.
       </h2>
       <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed text-[#555] max-w-[680px]">
-        Ring eller maila direkt — vi finns nära original, tryck och produktion.
+        Sälj, projektledning och prepress — ring eller maila direkt så hjälper vi dig vidare.
       </p>
     </div>
-    <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px] snap-x snap-mandatory">
-      {team.map((person) => (
-        <article class="shrink-0 w-[160px] sm:w-[180px] md:w-[200px] lg:w-[220px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
-          <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
-            <img
-              src={person.image}
-              alt={person.name}
-              loading="lazy"
-              decoding="async"
-              class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out"
-            />
-          </div>
-          <div class="p-[14px] sm:p-[18px] flex flex-col gap-[4px]">
-            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[13px] sm:text-[15px] leading-[1.2]">{person.name}</h3>
-            <p class="text-[10px] sm:text-[11px] text-[#666] uppercase font-medium" style="letter-spacing: 1.1px;">{person.role}</p>
-          </div>
-        </article>
-      ))}
+
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
+        {team.map((person) => (
+          <article class="shrink-0 w-[160px] sm:w-[180px] md:w-[200px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
+            <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
+              <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
+            </div>
+            <div class="p-[14px] sm:p-[18px] flex flex-col gap-[4px]">
+              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[13px] sm:text-[14px] leading-[1.2]">{person.name}</h3>
+              <p class="text-[9px] sm:text-[10px] text-[#666] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div class="flex justify-between items-center gap-[12px] mt-[16px] sm:mt-[24px] ml-[16px] sm:ml-[24px] md:ml-[32px] mr-[16px] sm:mr-[24px] md:mr-[32px]">
+        <a href="/kontakta-oss" class="btn-pill btn-dark inline-flex">
+          Se alla kontaktuppgifter<Fragment set:html={arrowSvg} />
+        </a>
+        <div class="flex gap-[8px]">
+          <button id="team-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-white flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+            <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button id="team-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+            <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
     </div>
-    <div class="flex justify-between items-center gap-[12px] mt-[16px] sm:mt-[24px] ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+
+    <!-- DESKTOP: 5-col grid -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-5 gap-[16px] mb-[32px]">
+        {team.map((person) => (
+          <article class="bg-white rounded-[16px] overflow-hidden flex flex-col">
+            <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
+              <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
+            </div>
+            <div class="p-[18px] flex flex-col gap-[4px]">
+              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[14px] leading-[1.2]">{person.name}</h3>
+              <p class="text-[10px] text-[#666] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+            </div>
+          </article>
+        ))}
+      </div>
       <a href="/kontakta-oss" class="btn-pill btn-dark inline-flex">
         Se alla kontaktuppgifter<Fragment set:html={arrowSvg} />
       </a>
-      <div class="flex gap-[8px]">
-        <button id="team-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-white flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
-          <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button id="team-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
-          <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
     </div>
   </section>
 
