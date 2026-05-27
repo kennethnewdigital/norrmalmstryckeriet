@@ -1,0 +1,491 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const effects = [
+  'Syns tydligt i fysisk miljö',
+  'Passar mässa, entré, butik och event',
+  'Kan anpassas för inne- och utemiljö',
+  'Materialval påverkar hållbarhet och intryck',
+];
+
+const scenarios = [
+  {
+    title: 'Du ska synas på mässa',
+    body: 'Du behöver ett budskap som fungerar snabbt när människor går förbi. Konsekvensen blir att format, höjd och läsavstånd styr hur mycket text som fungerar.',
+    rec: 'Roll up med tydlig huvudrubrik, stark bild, kort budskap och kontakt eller QR-kod nära slutet.',
+  },
+  {
+    title: 'Du ska märka upp entré',
+    body: 'Du behöver visa var besökaren är, vart den ska gå och vad som händer. Konsekvensen blir att tydlighet och placering blir viktigare än mycket information.',
+    rec: 'Stor affisch eller skylt, tydlig kontrast och material efter inomhus- eller utomhusmiljö.',
+  },
+  {
+    title: 'Du ska synas utomhus',
+    body: 'Du behöver ett material som klarar placering, avstånd och väderpåverkan. Konsekvensen blir att material och montering behöver väljas efter miljön.',
+    rec: 'Banderoll i tåligt material, format efter plats och tryck med få tydliga budskap.',
+  },
+  {
+    title: 'Du ska skapa butikskommunikation',
+    body: 'Du behöver lyfta kampanj, kategori eller erbjudande där kunden fattar beslut. Konsekvensen blir att trycket behöver passa flödet i butiken.',
+    rec: 'Storformatsaffisch, PP-film eller annat lämpligt material, färgstarkt tryck och format efter ytan.',
+  },
+  {
+    title: 'Du ska göra tillfällig kampanj',
+    body: 'Du behöver synas under en begränsad period med material som är snabbt att placera. Konsekvensen blir att lösningen behöver vara praktisk, lätt att hantera och tydlig.',
+    rec: 'Roll up, affisch eller banderoll beroende på plats, digitaltryck och material efter kampanjens längd.',
+  },
+  {
+    title: 'Du vill återanvända materialet',
+    body: 'Du behöver en lösning som kan användas vid flera tillfällen utan att kännas sliten. Konsekvensen blir att material, konstruktion och budskap bör vara mer tidlösa.',
+    rec: 'Roll up-system, hållbart material, ren design och budskap som fungerar över tid.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Materialval',
+    intro: 'Materialet styr hållbarhet, känsla och var trycket kan användas. Det som fungerar i en mässmonter är inte alltid rätt val för en fasad eller butiksyta.',
+    items: [
+      ['Polyester', 'Passar roll up och vepor där materialet ska fungera i system och vara lätt att hantera.'],
+      ['Brandklassad polyester', 'Passar miljöer där materialkrav är viktiga.'],
+      ['PP-film', 'PVC-fritt och återvinningsbart alternativ för affischer och vissa storformatslösningar.'],
+      ['Vävburen polyester', 'Passar banderoller och större ytor där materialet behöver vara tåligt.'],
+      ['Skivmaterial', 'Passar skyltar, gatupratare och mer fasta miljöer.'],
+    ],
+  },
+  {
+    title: 'Tryckmetod',
+    intro: 'Storformat kräver tryckmetod efter material, format och miljö. Här styr platsen ofta mer än själva produkten.',
+    items: [
+      ['Digitalprint', 'Bra för storformat, korta serier och varierande motiv.'],
+      ['Planprint', 'Bra när trycket ska direkt på plana material som skiva, trä, glas eller liknande ytor.'],
+      ['Vit färg', 'Kan behövas på mörka eller transparenta material för bättre täckning.'],
+      ['Fyrfärg', 'Standard för bild, kampanj och tydlig visuell kommunikation.'],
+      ['Materialanpassat tryck', 'Valet styrs av plats, väder, ljus och montering.'],
+    ],
+  },
+  {
+    title: 'Efterbehandling',
+    intro: 'Storformat behöver ofta färdigställas för att fungera i miljön. Montering och hantering är en del av resultatet.',
+    items: [
+      ['Kapning', 'Ger exakt format och rent slutresultat.'],
+      ['Laminering', 'Skyddar ytan och förlänger hållbarheten.'],
+      ['Öljetter', 'Gör banderoller lättare att montera.'],
+      ['Roll up-system', 'Gör materialet enkelt att transportera och återanvända.'],
+      ['Montering', 'Anpassas efter vägg, skiva, stativ eller utomhusmiljö.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
+
+const faqs = [
+  { q: 'Vad räknas som storformat?', a: 'Storformat är tryck som ska synas tydligt i fysisk miljö. Det kan vara roll up, banderoll, större affisch eller liknande material.' },
+  { q: 'När passar roll up?', a: 'Roll up passar mässa, entré, event och presentationer. Den är enkel att placera, flytta och återanvända.' },
+  { q: 'När passar banderoll?', a: 'Banderoll passar när budskapet ska synas stort, ofta på längre avstånd. Materialet bör väljas efter placering och miljö.' },
+  { q: 'Vad påverkar priset på storformat?', a: 'Format, material, tryck, konstruktion och efterbehandling påverkar priset. Placering och användning styr ofta rekommendationen.' },
+  { q: 'Kan storformat användas utomhus?', a: 'Ja, men material och montering behöver anpassas efter väder, vind och exponering. Berätta var det ska sitta så rekommenderar vi rätt lösning.' },
+  { q: 'Hur mycket text fungerar i storformat?', a: 'Storformat bör ha kort budskap, stark bild och tydlig avsändare. Läsavståndet avgör hur mycket information som fungerar.' },
+  { q: 'Kan samma material återanvändas?', a: 'Ja, särskilt roll up och vissa monterade lösningar kan fungera över tid. Då bör budskapet vara mer tidlöst och materialet tåla hantering.' },
+  { q: 'Vad är planprint?', a: 'Planprint innebär att man printar direkt på plana material. Det passar när trycket ska bli en del av en skiva, produkt, skylt eller yta.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Storformat tryck – roll up, banderoll och affisch | Norrmalmstryckeriet"
+  description="Tryck storformat för mässa, entré, butik och event. Vi hjälper dig välja roll up, banderoll, affisch, material och format."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#161a2e]">
+        <img src="/images/hero/storformat-hero.svg" alt="Storformat från Norrmalmstryckeriet" class="w-full h-full object-cover" />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Syns på avstånd
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          När budskapet ska fungera i entré, mässa, butik eller utomhusmiljö behövs större format. Vi hjälper dig välja material, format och lösning efter plats, hållbarhet och användning.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">1000+</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#161a2e]">
+      <img src="/images/hero/storformat-hero.svg" alt="Storformat från Norrmalmstryckeriet" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[640px]" style="text-wrap: balance;">
+          Syns på avstånd
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[640px]">
+          När budskapet ska fungera i entré, mässa, butik eller utomhusmiljö behövs större format. Vi hjälper dig välja material, format och lösning efter plats, hållbarhet och användning.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">1000+</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Uppdrag årligen</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR STORFORMAT?" ═══ -->
+  <section class="page-section">
+    <div class="page-content">
+      <p class="section-label">Varför storformat?</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          Storformat kan bara vara stort. <em>Eller göra budskapet lätt att se på rätt plats.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            När material och format passar miljön blir trycket mer användbart.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/produkter/storformat/infografik" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Gratis infografik<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Vad vill du uppnå</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Berätta situationen. Vi löser trycket.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
+        Det handlar inte om att göra något större. Det handlar om att synas på rätt plats. Storformat kan vara roll up, banderoll, skylt, vepa eller affisch.
+      </p>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Det viktiga är att budskapet fungerar i miljön. Berätta vad du vill uppnå – vi rekommenderar material och format.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[20px] sm:mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[16px] sm:pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till rätt storformat.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du beskriver plats, syfte, upplaga, miljö och hur storformatet ska användas.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vi föreslår format, material, tryckmetod, konstruktion och eventuell efterbehandling.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag och godkänner innan produktionen startar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VARFÖR INTE WEBBSHOP ═══ -->
+  <section class="bg-[#F3F3F3] reveal">
+    <div class="page-section">
+      <div class="page-container max-w-[1400px]">
+        <p class="section-label">Varför vi inte har en webbshop</p>
+        <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
+          <div class="md:max-w-[520px]">
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+              Storformat påverkas av platsen där det ska synas.
+            </h2>
+          </div>
+          <div class="md:max-w-[480px] md:pt-[12px]">
+            <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+              <p>
+                Material, avstånd, ljus, montering och användning styr vilken lösning som fungerar bäst.
+              </p>
+              <p class="text-[#222] font-medium">
+                Med rådgivning får du ett storformat som passar miljön. Det gör valet enklare och budskapet mer synligt.
+              </p>
+            </div>
+            <div class="pt-[28px] sm:pt-[36px]">
+              <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Material, tryck och montering – vi kan det.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Storformat handlar inte bara om storlek. Det handlar om rätt material på rätt plats.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="font-[var(--font-heading)] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.25rem, 2.8vw, 2.5rem); line-height: 1.3; color: #222;">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[14px] sm:text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Vanliga frågor om storformat.
+      </h2>
+      <p class="text-[14px] sm:text-[15px] text-[#555] mb-[28px] sm:mb-[40px] md:mb-[60px]">
+        Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+      </p>
+      <div id="faq-list">
+        {faqs.map((item) => (
+          <div class="border-b border-[#D5D8DC]">
+            <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
+              <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[1300px]">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[20px] sm:text-[26px] md:text-[32px] text-[#222] mb-[20px] sm:mb-[28px] leading-[1.2]">
+            Berätta om ditt projekt.
+          </h3>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
+            Vill du trycka roll up, banderoll, affisch eller annat storformat? Berätta var det ska synas, så rekommenderar vi material, format och lösning.
+          </p>
+          <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline break-all">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
+            <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
+            <input type="email" name="email" placeholder="E-post" required class="form-input" />
+            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="5" class="form-input resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 560px;
+    max-height: 92vh;
+    background: #161a2e;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+  }
+  @media (min-width: 1920px) {
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+  }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  function initStorformat() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        const isOpen = answer.classList.contains('is-open');
+        document.querySelectorAll('.faq-answer').forEach((a) => {
+          (a as HTMLElement).style.maxHeight = '0';
+          a.classList.remove('is-open');
+        });
+        document.querySelectorAll('.faq-plus').forEach((p) => p.classList.remove('hidden'));
+        document.querySelectorAll('.faq-minus').forEach((m) => m.classList.add('hidden'));
+        if (!isOpen) {
+          answer.classList.add('is-open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon.classList.add('hidden');
+          minusIcon.classList.remove('hidden');
+        }
+      });
+    });
+
+    const carousel = document.getElementById('scenario-carousel');
+    const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('scenario-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    document.getElementById('scenario-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  }
+
+  initStorformat();
+  document.addEventListener('astro:after-swap', initStorformat);
+</script>

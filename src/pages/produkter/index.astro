@@ -1,0 +1,350 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+const plusSvg = `<svg width="36" height="36" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>`;
+
+const products = [
+  {
+    label: 'Blad, reklamblad, flyers',
+    icon: 'blad-1.svg',
+    slug: 'blad',
+    desc: 'Den enkla trycksaken som fortfarande gör jobbet — A6 till A4, fyrfärg och tydligt budskap.',
+    span: 'big', // featured
+  },
+  {
+    label: 'Visitkort',
+    icon: 'blad-1.svg',
+    slug: 'visitkort',
+    desc: 'Det första intrycket på ett kort. Papper, tryck och finish som matchar varumärket.',
+  },
+  {
+    label: 'Foldrar',
+    icon: 'foldrar.svg',
+    slug: 'foldrar',
+    desc: 'När ett blad blir för kort. Format, falsning och rytm som leder läsaren.',
+  },
+  {
+    label: 'Broschyrer',
+    icon: 'broschyrer-1.svg',
+    slug: 'broschyrer',
+    desc: 'För längre budskap, presentation och produktinfo. Häftning eller limbindning.',
+  },
+  {
+    label: 'Mappar',
+    icon: 'mappar-1.svg',
+    slug: 'mappar',
+    desc: 'Samla offert, avtal och presentation i ett professionellt format. Stansning och fickor.',
+  },
+  {
+    label: 'Affischer',
+    icon: 'affischer-1.svg',
+    slug: 'affischer',
+    desc: 'Syns på plats — A3, 50×70 och 70×100 för event, butik, entré och kampanj.',
+  },
+  {
+    label: 'Kuvert',
+    icon: 'kuvert-1.svg',
+    slug: 'kuvert',
+    desc: 'C5, C4 och fönsterkuvert. Får utskicket att kännas professionellt redan före öppning.',
+  },
+  {
+    label: 'Böcker',
+    icon: 'bocker-1.svg',
+    slug: 'bocker',
+    desc: 'Rapport, katalog, jubileum eller utbildning — limbundet eller häftat med rätt omslag.',
+  },
+  {
+    label: 'Storformat',
+    icon: 'storformat-1.svg',
+    slug: 'storformat',
+    desc: 'Roll up, banderoll och stor affisch — material och format för mässa, butik och utomhus.',
+  },
+];
+
+const tjanster = [
+  {
+    title: 'Rådgivning',
+    body: 'Vi börjar med uppdraget — inte med prislistan. Format, papper, tryck och finish efter syftet.',
+  },
+  {
+    title: 'Original & prepress',
+    body: 'Kontroll av PDF, utfall, marginaler och färgrymd. FOGRA51/52 enligt europeisk standard.',
+  },
+  {
+    title: 'Offsettryck',
+    body: 'Stabil tryckkvalitet vid större upplagor. Bra styckpris och jämn färg över hela serien.',
+  },
+  {
+    title: 'Digitaltryck',
+    body: 'Flexibelt för mindre upplagor, korta ledtider och versionerat material. Variabeltryck.',
+  },
+  {
+    title: 'Efterbehandling',
+    body: 'Falsning, stansning, häftning, limbindning, prägling, foliering, lack och laminering — in-house.',
+  },
+  {
+    title: 'Distribution',
+    body: 'Kuvertering, packning och utskick. Vi hjälper hela vägen från tryck till mottagare.',
+  },
+];
+---
+
+<Layout
+  title="Produkter och tjänster | Norrmalmstryckeriet"
+  description="Trycksaker för företag och organisationer — visitkort, blad, foldrar, broschyrer, mappar, affischer, kuvert, böcker och storformat. Rådgivning, original, offset, digital och efterbehandling under samma tak."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <p class="section-label">Produkter och tjänster</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Trycksaker som faktiskt gör jobbet.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
+        Från visitkort till storformat — vi hjälper dig välja format, papper, tryckmetod och efterbehandling efter syftet. Rådgivning, original, tryck och finish under samma tak i Sollentuna.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUKT-BENTO (lg+) + sidoscroll (<lg) ═══ -->
+  <section class="pb-[64px] sm:pb-[80px] md:pb-[100px]">
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div id="product-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px]">
+        {products.map((p) => (
+          <a href={`/produkter/${p.slug}`} class="shrink-0 w-[280px] sm:w-[320px] md:w-[360px] bg-[#F5F5F5] rounded-[20px] p-[28px] sm:p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative min-h-[320px] sm:min-h-[360px]">
+            <img src={`/images/icons/${p.icon}`} alt={p.label} class="w-[64px] h-[64px] sm:w-[72px] sm:h-[72px] mb-[20px] sm:mb-[24px]" />
+            <span class="typo-card-title mb-[8px] sm:mb-[10px]">{p.label}</span>
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#555]">{p.desc}</p>
+            <span class="mt-auto self-end text-[#222] pt-[16px]">
+              <Fragment set:html={plusSvg} />
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="flex justify-end gap-2 mt-4 mr-[16px] sm:mr-[24px] md:mr-[32px]">
+        <button id="prod-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="prod-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- DESKTOP: bento-grid -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-3 grid-rows-[repeat(5,_minmax(220px,_auto))] gap-[16px]">
+        {/* Card 1 (BIG): Blad — col-span 2 row-span 2 */}
+        <a href="/produkter/blad" class="col-span-2 row-span-2 bg-[#F5F5F5] rounded-[24px] p-[48px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/blad-1.svg" alt="Blad, reklamblad, flyers" class="w-[140px] h-[140px] mb-[28px]" />
+          <span class="typo-card-title mb-[12px]" style="font-size: 30px;">Blad,<br/>reklamblad,<br/>flyers</span>
+          <p class="text-[15px] leading-relaxed text-[#555] max-w-[420px] mt-[8px]">Den enkla trycksaken som fortfarande gör jobbet — A6 till A4, fyrfärg och tydligt budskap.</p>
+          <span class="mt-auto self-end text-[#222]">
+            <svg width="48" height="48" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+          </span>
+        </a>
+
+        {/* Card 2: Visitkort */}
+        <a href="/produkter/visitkort" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/blad-1.svg" alt="Visitkort" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Visitkort</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">Det första intrycket på ett kort.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 3: Foldrar */}
+        <a href="/produkter/foldrar" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/foldrar.svg" alt="Foldrar" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Foldrar</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">När bladet blir för kort.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 4: Broschyrer */}
+        <a href="/produkter/broschyrer" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/broschyrer-1.svg" alt="Broschyrer" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Broschyrer</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">För längre budskap och presentation.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 5: Mappar */}
+        <a href="/produkter/mappar" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/mappar-1.svg" alt="Mappar" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Mappar</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">Samla offert, avtal och presentation.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 6: Affischer */}
+        <a href="/produkter/affischer" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/affischer-1.svg" alt="Affischer" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Affischer</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">A3, 50×70 och 70×100 — syns på plats.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 7: Kuvert */}
+        <a href="/produkter/kuvert" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/kuvert-1.svg" alt="Kuvert" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Kuvert</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">C5, C4 och fönsterkuvert.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 8 (WIDE): Böcker — col-span 2 */}
+        <a href="/produkter/bocker" class="col-span-2 bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-row items-center gap-[28px] group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/bocker-1.svg" alt="Böcker" class="w-[96px] h-[96px] shrink-0" />
+          <div class="flex-1">
+            <span class="typo-card-title mb-[8px] block">Böcker</span>
+            <p class="text-[13px] leading-relaxed text-[#555]">Rapport, katalog, jubileum eller utbildning — limbundet eller häftat.</p>
+          </div>
+          <span class="text-[#222] shrink-0"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 9: Storformat */}
+        <a href="/produkter/storformat" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/storformat-1.svg" alt="Storformat" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Storformat</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">Roll up, banderoll och stor affisch.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TJÄNSTER (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Tjänster</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Hela vägen från idé till färdig trycksak.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Vi har rådgivning, original, tryckpress och efterbehandling under samma tak. Det gör besluten enklare och resultatet mer genomtänkt.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {tjanster.map((t) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[36px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 1.6vw + 0.4rem, 1.625rem); line-height: 1.2;">{t.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed">{t.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "HUR VI JOBBAR" ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till rätt trycksak.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vad ska tryckas, vem ska ta emot det, vilken upplaga och leveranstid behöver du?</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Format, papper, tryckmetod och efterbehandling — efter uppdraget, inte efter prislistan.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Du får ett tydligt förslag med offert. Sedan producerar vi när du godkänt allt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA (mörk rundad) ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#D9222A] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.85); margin-bottom: 16px;">Redo att trycka?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Berätta vad du vill trycka — vi gör resten.
+          </h2>
+          <p class="!text-white/85 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Skicka original eller en kort beskrivning. Vi rekommenderar format, papper och finish — och ger dig en tydlig offert.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686960135" class="btn-pill w-full justify-center" style="background: rgba(255,255,255,0.15); color: #fff;">
+            Ring 08-96 01 35
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: rgba(0,0,0,0.20); color: #fff;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>
+
+<script>
+  function initProdukter() {
+    const carousel = document.getElementById('product-carousel');
+    const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 380 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('prod-prev')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    document.getElementById('prod-next')?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  }
+  initProdukter();
+  document.addEventListener('astro:after-swap', initProdukter);
+</script>
