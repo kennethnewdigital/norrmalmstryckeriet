@@ -11,20 +11,26 @@ const products = [
   { label: 'Storformat', href: '/produkter/storformat' },
 ];
 
-const guider = [
-  { label: 'Alla guider', href: '/guider' },
-  { label: 'Stansmallar för mappar', href: '/guider/mappar' },
-  { label: 'Industritryck och planprint', href: '/guider/industritryck' },
-  { label: 'Storformat', href: '/guider/storformat' },
-  { label: 'Kuvert', href: '/guider/kuvert' },
-  { label: 'Affischer', href: '/guider/affischer' },
-  { label: 'Offsettryck, stora upplagor', href: '/guider/offsettryck' },
-  { label: 'Digitaltryck', href: '/guider/digitaltryck' },
-  { label: 'Boktryck', href: '/guider/boktryck' },
-  { label: 'Filhantering & inställningar', href: '/guider/filhantering' },
-  { label: 'Reklamblad', href: '/guider/blad' },
+// Guider grupperat i två kolumner (mega-menu)
+const guiderProdukter = [
+  { label: 'Reklamblad', href: '/guider/reklamblad' },
+  { label: 'Visitkort', href: '/guider/visitkort' },
   { label: 'Foldrar', href: '/guider/foldrar' },
   { label: 'Broschyrer', href: '/guider/broschyrer' },
+  { label: 'Mappar', href: '/guider/mappar' },
+  { label: 'Affischer', href: '/guider/affischer' },
+  { label: 'Kuvert', href: '/guider/kuvert' },
+  { label: 'Böcker', href: '/guider/bocker' },
+  { label: 'Storformat', href: '/guider/storformat' },
+];
+
+const guiderTeknik = [
+  { label: 'Offsettryck', href: '/guider/offsettryck' },
+  { label: 'Digitaltryck', href: '/guider/digitaltryck' },
+  { label: 'Boktryck', href: '/guider/boktryck' },
+  { label: 'Industritryck & planprint', href: '/guider/industritryck' },
+  { label: 'Filhantering & inställningar', href: '/guider/filhantering' },
+  { label: 'Stansmallar för mappar', href: '/guider/stansmallar-mappar' },
 ];
 
 const kundref = [
@@ -77,20 +83,30 @@ const omOss = [
         </a>
         <!-- Dropdown panel -->
         <div class="dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
-          <div class="cpo-frost-panel rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[280px]">
+          <div class="cpo-frost-panel rounded-[20px] shadow-xl shadow-black/10 p-[20px] min-w-[300px]">
+            <p class="px-[16px] py-[6px] text-[10px] uppercase text-[#888] font-semibold" style="letter-spacing: 1.2px;">Produkter</p>
             {products.map((p) => (
               <a
                 href={p.href}
-                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+                class="block px-[16px] py-[8px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
               >
                 {p.label}
               </a>
             ))}
+            <div class="border-t border-[#E5E5E5]/60 mt-[12px] pt-[10px]">
+              <a
+                href="/produkter"
+                class="flex items-center justify-between px-[16px] py-[10px] rounded-[10px] text-[14px] font-medium text-[#222] hover:bg-[#F5F5F5] transition-colors"
+              >
+                <span>Alla produkter och tjänster</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Guider -->
+      <!-- Guider (mega-menu, 2 kolumner — ingen scroll) -->
       <div class="dropdown-trigger relative">
         <a
           href="/guider"
@@ -100,15 +116,40 @@ const omOss = [
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px] dropdown-chevron transition-transform"><polyline points="6 9 12 15 18 9"/></svg>
         </a>
         <div class="dropdown-panel absolute top-full left-1/2 -translate-x-1/2 pt-[12px] opacity-0 invisible pointer-events-none transition-all duration-200">
-          <div class="cpo-frost-panel rounded-[20px] shadow-xl shadow-black/10 p-[12px] min-w-[280px] grid grid-cols-1 max-h-[440px] overflow-y-auto">
-            {guider.map((g) => (
+          <div class="cpo-frost-panel rounded-[20px] shadow-xl shadow-black/10 p-[20px] w-[560px]">
+            <div class="grid grid-cols-2 gap-x-[20px] gap-y-[2px]">
+              <div>
+                <p class="px-[16px] py-[6px] text-[10px] uppercase text-[#888] font-semibold" style="letter-spacing: 1.2px;">Produktguider</p>
+                {guiderProdukter.map((g) => (
+                  <a
+                    href={g.href}
+                    class="block px-[16px] py-[8px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+                  >
+                    {g.label}
+                  </a>
+                ))}
+              </div>
+              <div>
+                <p class="px-[16px] py-[6px] text-[10px] uppercase text-[#888] font-semibold" style="letter-spacing: 1.2px;">Teknik & specialer</p>
+                {guiderTeknik.map((g) => (
+                  <a
+                    href={g.href}
+                    class="block px-[16px] py-[8px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+                  >
+                    {g.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div class="border-t border-[#E5E5E5]/60 mt-[12px] pt-[10px]">
               <a
-                href={g.href}
-                class="block px-[16px] py-[10px] rounded-[10px] text-[14px] text-[#444] hover:bg-[#F5F5F5] hover:text-[#222] transition-colors"
+                href="/guider"
+                class="flex items-center justify-between px-[16px] py-[10px] rounded-[10px] text-[14px] font-medium text-[#222] hover:bg-[#F5F5F5] transition-colors"
               >
-                {g.label}
+                <span>Alla guider</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
               </a>
-            ))}
+            </div>
           </div>
         </div>
       </div>
@@ -223,6 +264,16 @@ const omOss = [
       ))}
     </div>
     <a href="/guider" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Guider</a>
+    <div class="pl-4 flex flex-col gap-3 -mt-1">
+      <p class="text-[11px] uppercase text-[#888] font-semibold" style="letter-spacing: 1.2px;">Produktguider</p>
+      {guiderProdukter.map((g) => (
+        <a href={g.href} class="font-[var(--font-ui)] text-[15px] text-[#444]">{g.label}</a>
+      ))}
+      <p class="text-[11px] uppercase text-[#888] font-semibold mt-2" style="letter-spacing: 1.2px;">Teknik & specialer</p>
+      {guiderTeknik.map((g) => (
+        <a href={g.href} class="font-[var(--font-ui)] text-[15px] text-[#444]">{g.label}</a>
+      ))}
+    </div>
     <a href="/kundreferenser" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Kundreferenser</a>
     <a href="/om-oss" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Om oss</a>
     <hr class="border-[var(--color-divider)]" />

@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+const plusSvg = `<svg width="36" height="36" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>`;
+
+const productGuides = [
+  { title: 'Reklamblad', slug: 'reklamblad', desc: 'Format, papper, tryck och efterbehandling för blad och reklamblad.', icon: 'blad-1.svg' },
+  { title: 'Visitkort', slug: 'visitkort', desc: 'Papper, tryckmetod och specialeffekter för rätt första intryck.', icon: 'blad-1.svg' },
+  { title: 'Foldrar', slug: 'foldrar', desc: 'Falsning, format och papper som bär läsordningen.', icon: 'foldrar.svg' },
+  { title: 'Broschyrer', slug: 'broschyrer', desc: 'Sidantal, omslag, häftning och limbindning — för längre material.', icon: 'broschyrer-1.svg' },
+  { title: 'Mappar', slug: 'mappar', desc: 'Material, stansning, fickor och tryck — för offert och presentation.', icon: 'mappar-1.svg' },
+  { title: 'Affischer', slug: 'affischer', desc: 'A3 till 70×100 — format, läsavstånd och material för rätt miljö.', icon: 'affischer-1.svg' },
+  { title: 'Kuvert', slug: 'kuvert', desc: 'C5, C4, fönster, färg och förslutning — utskick som känns rätt.', icon: 'kuvert-1.svg' },
+  { title: 'Böcker', slug: 'bocker', desc: 'Omslag, inlaga, papper och bindning — för rapport, katalog eller jubileum.', icon: 'bocker-1.svg' },
+  { title: 'Storformat', slug: 'storformat', desc: 'Roll up, banderoll och stor affisch — material och montering.', icon: 'storformat-1.svg' },
+];
+
+const teknikGuides = [
+  { title: 'Offsettryck', slug: 'offsettryck', desc: 'Stora upplagor, stabil färg och lågt styckpris. När offset är rätt val.' },
+  { title: 'Digitaltryck', slug: 'digitaltryck', desc: 'Snabbt, flexibelt och versionerat material. När digital är rätt metod.' },
+  { title: 'Boktryck', slug: 'boktryck', desc: 'Hela kedjan från original till färdig bok — omslag, inlaga och bindning.' },
+  { title: 'Industritryck & planprint', slug: 'industritryck', desc: 'Tryck direkt på plana material — skiva, trä, glas och andra ytor.' },
+  { title: 'Filhantering & inställningar', slug: 'filhantering', desc: 'Utfall, marginaler, CMYK, ICC-profiler och tryckfärdig PDF.' },
+  { title: 'Stansmallar för mappar', slug: 'stansmallar-mappar', desc: 'Hitta rätt stansmall för fickor, flikar och form på din mapp.' },
+];
+---
+
+<Layout
+  title="Guider om tryck och trycksaker | Norrmalmstryckeriet"
+  description="Guider om reklamblad, visitkort, foldrar, broschyrer, mappar, affischer, kuvert, böcker, storformat, offsettryck, digitaltryck och filhantering — från Norrmalmstryckeriet."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <p class="section-label">Guider och kunskap</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Allt du behöver veta om tryck.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
+        Format, papper, tryckmetod, efterbehandling och original — våra guider hjälper dig fatta rätt beslut innan produktionen startar. Varje guide finns både att läsa direkt och att ladda ner som PDF.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ PRODUKTGUIDER ═══ -->
+  <section class="pb-[64px] sm:pb-[80px] md:pb-[100px]">
+    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[24px] sm:mb-[32px]">
+      <p class="section-label" style="margin-bottom: 12px;">Produktguider</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; max-width: 720px;" lang="sv">
+        Guider per produkt — så väljer du rätt.
+      </h2>
+    </div>
+
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div id="prod-guides-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px]">
+        {productGuides.map((g) => (
+          <a href={`/guider/${g.slug}`} class="shrink-0 w-[280px] sm:w-[320px] md:w-[360px] bg-[#F5F5F5] rounded-[20px] p-[28px] sm:p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative min-h-[300px]">
+            <img src={`/images/icons/${g.icon}`} alt={g.title} class="w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] mb-[18px] sm:mb-[24px]" />
+            <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold tracking-[1.2px] mb-[6px]">Guide</span>
+            <span class="typo-card-title mb-[8px] sm:mb-[10px]">{g.title}</span>
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#555]">{g.desc}</p>
+            <span class="mt-auto self-end text-[#222] pt-[16px]">
+              <Fragment set:html={plusSvg} />
+            </span>
+          </a>
+        ))}
+      </div>
+      <div class="flex justify-end gap-2 mt-4 mr-[16px] sm:mr-[24px] md:mr-[32px]">
+        <button id="pg-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button id="pg-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- DESKTOP: 3-col grid -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-3 gap-[16px]">
+        {productGuides.map((g) => (
+          <a href={`/guider/${g.slug}`} class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative min-h-[260px]">
+            <img src={`/images/icons/${g.icon}`} alt={g.title} class="w-[64px] h-[64px] mb-[20px]" />
+            <span class="text-[11px] uppercase text-[#D9222A] font-semibold tracking-[1.2px] mb-[6px]">Guide</span>
+            <span class="typo-card-title mb-[8px]">{g.title}</span>
+            <p class="text-[13px] leading-relaxed text-[#555]">{g.desc}</p>
+            <span class="mt-auto self-end text-[#222] pt-[16px]"><Fragment set:html={plusSvg} /></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TEKNIK & SPECIALER (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Tryckmetoder & teknik</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Gräv djupare i metoden.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          När produktionen ska bestämmas — välj rätt tryckmetod, förbered originalet rätt och förstå tekniken bakom resultatet.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {teknikGuides.map((g) => (
+            <a href={`/guider/${g.slug}`} class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[36px] no-underline block group hover:bg-[#3A3A3A] transition-colors duration-200">
+              <span class="text-[10px] sm:text-[11px] uppercase !text-[#FF7080] font-semibold tracking-[1.2px] mb-[8px] sm:mb-[10px] block">Guide</span>
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 1.6vw + 0.4rem, 1.625rem); line-height: 1.2;">{g.title}</h3>
+              <p class="!text-white/70 text-[13px] sm:text-[14px] leading-relaxed mb-[20px]">{g.desc}</p>
+              <span class="!text-white/85 text-[13px] sm:text-[14px] font-medium inline-flex items-center group-hover:!text-white transition-colors">
+                Läs guiden<Fragment set:html={arrowSvg} />
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#D9222A] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.85); margin-bottom: 16px;">Behöver du rådgivning?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Guiderna ger riktning. Vi ger förslag.
+          </h2>
+          <p class="!text-white/85 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Berätta vad du vill trycka så rekommenderar vi format, papper, tryckmetod och efterbehandling.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/produkter" class="btn-pill w-full justify-center" style="background: rgba(0,0,0,0.20); color: #fff;">
+            Se alla produkter<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: rgba(255,255,255,0.15); color: #fff;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>
+
+<script>
+  function initGuider() {
+    const c = document.getElementById('prod-guides-carousel');
+    const w = window.matchMedia('(min-width: 768px)').matches ? 380 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('pg-prev')?.addEventListener('click', () => { c?.scrollBy({ left: -w, behavior: 'smooth' }); });
+    document.getElementById('pg-next')?.addEventListener('click', () => { c?.scrollBy({ left: w, behavior: 'smooth' }); });
+  }
+  initGuider();
+  document.addEventListener('astro:after-swap', initGuider);
+</script>
