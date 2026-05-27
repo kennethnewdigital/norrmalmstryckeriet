@@ -240,18 +240,18 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     <div class="lg:hidden">
       <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
         {team.map((person) => (
-          <article class="shrink-0 w-[220px] sm:w-[240px] md:w-[260px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
+          <article class="shrink-0 w-[240px] sm:w-[260px] md:w-[280px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
             <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
               <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
             </div>
-            <div class="p-[14px] sm:p-[16px] flex flex-col gap-[2px]">
-              <h3 class="text-[#222] leading-[1.2]" style="font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0;">{person.name}</h3>
-              <p class="text-[9px] sm:text-[10px] text-[#777] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
-              <div class="flex flex-col gap-[2px] mt-[8px]">
+            <div class="p-[18px] sm:p-[20px] flex flex-col gap-[4px]">
+              <h3 class="text-[#222] leading-[1.15]" style="font-family: var(--font-heading); font-size: 20px; font-weight: 400; letter-spacing: -0.01em;">{person.name}</h3>
+              <p class="text-[#666] mt-[2px]" style="font-size: 15px;">{person.role}</p>
+              <div class="flex flex-col gap-[2px] mt-[10px]">
                 {person.phones.map((p) => (
-                  <a href={`tel:${p.tel}`} class="text-[12px] text-[#222] hover:text-[#D9222A] transition-colors">{p.label}</a>
+                  <a href={`tel:${p.tel}`} class="text-[#222] hover:text-[#D9222A] transition-colors" style="font-size: 15px;">{p.label}</a>
                 ))}
-                <a href={`mailto:${person.email}`} class="text-[11px] text-[#D9222A] hover:underline break-all mt-[2px]">{person.email}</a>
+                <a href={`mailto:${person.email}`} class="text-[#D9222A] hover:underline break-all mt-[2px]" style="font-size: 14px;">{person.email}</a>
               </div>
             </div>
           </article>
@@ -280,14 +280,14 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
               <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
             </div>
-            <div class="p-[16px] flex flex-col gap-[2px]">
-              <h3 class="text-[#222] leading-[1.2]" style="font-family: var(--font-body); font-size: 10px; font-weight: 600; letter-spacing: 0;">{person.name}</h3>
-              <p class="text-[10px] text-[#777] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
-              <div class="flex flex-col gap-[2px] mt-[8px]">
+            <div class="p-[20px] flex flex-col gap-[4px]">
+              <h3 class="text-[#222] leading-[1.15]" style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; letter-spacing: -0.01em;">{person.name}</h3>
+              <p class="text-[#666] mt-[2px]" style="font-size: 16px;">{person.role}</p>
+              <div class="flex flex-col gap-[2px] mt-[12px]">
                 {person.phones.map((p) => (
-                  <a href={`tel:${p.tel}`} class="text-[12px] text-[#222] hover:text-[#D9222A] transition-colors">{p.label}</a>
+                  <a href={`tel:${p.tel}`} class="text-[#222] hover:text-[#D9222A] transition-colors" style="font-size: 16px;">{p.label}</a>
                 ))}
-                <a href={`mailto:${person.email}`} class="text-[11px] text-[#D9222A] hover:underline break-all mt-[2px]">{person.email}</a>
+                <a href={`mailto:${person.email}`} class="text-[#D9222A] hover:underline break-all mt-[2px]" style="font-size: 15px;">{person.email}</a>
               </div>
             </div>
           </article>
