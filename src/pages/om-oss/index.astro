@@ -21,11 +21,36 @@ const purposes = [
 ];
 
 const team = [
-  { name: 'Mats Jansson', role: 'VD / Försäljning', image: '/images/team/mats-jansson.webp' },
-  { name: 'Bengt Lindau', role: 'Sälj / Projektledare', image: '/images/team/bengt-lindau.webp' },
-  { name: 'Jens Johansson', role: 'Sälj / Projektledare', image: '/images/team/jens-johansson.webp' },
-  { name: 'Stefan Johansson', role: 'Prepress / Projektledare', image: '/images/team/stefan-johansson.webp' },
-  { name: 'Peter Näslund', role: 'Prepress / Projektledare', image: '/images/team/peter-naslund.webp' },
+  {
+    name: 'Mats Jansson', role: 'VD / Försäljning',
+    phones: [{ label: '08-510 604 20', tel: '+4685106 0420' }, { label: '0708-29 12 05', tel: '+46708291205' }],
+    email: 'mats@norrmalmstryckeriet.se',
+    image: '/images/team/mats-jansson.webp',
+  },
+  {
+    name: 'Bengt Lindau', role: 'Sälj / Projektledare',
+    phones: [{ label: '08-510 604 22', tel: '+46851060422' }, { label: '0708-29 67 95', tel: '+46708296795' }],
+    email: 'bengt@norrmalmstryckeriet.se',
+    image: '/images/team/bengt-lindau.webp',
+  },
+  {
+    name: 'Jens Johansson', role: 'Sälj / Projektledare',
+    phones: [{ label: '070-527 78 80', tel: '+46705277880' }],
+    email: 'jens.johansson@sandvikenstryckeri.se',
+    image: '/images/team/jens-johansson.webp',
+  },
+  {
+    name: 'Stefan Johansson', role: 'Prepress / Projektledare',
+    phones: [{ label: '070-777 98 63', tel: '+46707779863' }],
+    email: 'stefan@norrmalmstryckeriet.se',
+    image: '/images/team/stefan-johansson.webp',
+  },
+  {
+    name: 'Peter Näslund', role: 'Prepress / Projektledare',
+    phones: [{ label: '070-774 78 53', tel: '+46707747853' }],
+    email: 'peter@norrmalmstryckeriet.se',
+    image: '/images/team/peter-naslund.webp',
+  },
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
@@ -199,14 +224,14 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ TEAM TEASER — sidoscroll <lg, grid lg+ ═══ -->
+  <!-- ═══ TEAM — sidoscroll <lg, grid lg+ — fullständig kontaktinfo ═══ -->
   <section class="page-section-no-px bg-[#F3F3F3]">
-    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[28px] sm:mb-[40px]">
       <p class="section-label" style="margin-bottom: 16px;">Människorna</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 880px;" lang="sv">
         Människorna du pratar med.
       </h2>
-      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed text-[#555] max-w-[680px]">
+      <p class="text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#555] max-w-[680px]">
         Sälj, projektledning och prepress — ring eller maila direkt så hjälper vi dig vidare.
       </p>
     </div>
@@ -215,13 +240,19 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     <div class="lg:hidden">
       <div id="team-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
         {team.map((person) => (
-          <article class="shrink-0 w-[160px] sm:w-[180px] md:w-[200px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
+          <article class="shrink-0 w-[220px] sm:w-[240px] md:w-[260px] bg-white rounded-[16px] overflow-hidden flex flex-col snap-start">
             <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
               <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
             </div>
-            <div class="p-[14px] sm:p-[18px] flex flex-col gap-[4px]">
-              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[13px] sm:text-[14px] leading-[1.2]">{person.name}</h3>
-              <p class="text-[9px] sm:text-[10px] text-[#666] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+            <div class="p-[14px] sm:p-[16px] flex flex-col gap-[2px]">
+              <h3 class="text-[#222] text-[12px] sm:text-[13px] font-semibold leading-[1.2]">{person.name}</h3>
+              <p class="text-[9px] sm:text-[10px] text-[#777] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+              <div class="flex flex-col gap-[2px] mt-[8px]">
+                {person.phones.map((p) => (
+                  <a href={`tel:${p.tel}`} class="text-[12px] text-[#222] hover:text-[#D9222A] transition-colors">{p.label}</a>
+                ))}
+                <a href={`mailto:${person.email}`} class="text-[11px] text-[#D9222A] hover:underline break-all mt-[2px]">{person.email}</a>
+              </div>
             </div>
           </article>
         ))}
@@ -249,9 +280,15 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             <div class="aspect-[4/5] bg-[#E5E5E5] overflow-hidden">
               <img src={person.image} alt={person.name} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700 ease-out" />
             </div>
-            <div class="p-[18px] flex flex-col gap-[4px]">
-              <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[14px] leading-[1.2]">{person.name}</h3>
-              <p class="text-[10px] text-[#666] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+            <div class="p-[16px] flex flex-col gap-[2px]">
+              <h3 class="text-[#222] text-[13px] font-semibold leading-[1.2]">{person.name}</h3>
+              <p class="text-[10px] text-[#777] uppercase font-medium" style="letter-spacing: 1px;">{person.role}</p>
+              <div class="flex flex-col gap-[2px] mt-[8px]">
+                {person.phones.map((p) => (
+                  <a href={`tel:${p.tel}`} class="text-[12px] text-[#222] hover:text-[#D9222A] transition-colors">{p.label}</a>
+                ))}
+                <a href={`mailto:${person.email}`} class="text-[11px] text-[#D9222A] hover:underline break-all mt-[2px]">{person.email}</a>
+              </div>
             </div>
           </article>
         ))}
