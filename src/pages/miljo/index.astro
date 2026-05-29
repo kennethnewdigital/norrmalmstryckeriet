@@ -1,0 +1,285 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+// Återvinning / processer
+const processer = [
+  'Plåt och papper återvinns',
+  'Tvättvätskor och kemikalier hanteras med ansvar',
+  'Framkallningsfria plåtar i en modernare offsetprocess',
+  'Vegetabiliska tvättvätskor i vardagens produktion',
+  'Material sorteras och tas om hand kontrollerat',
+];
+
+// Så hjälper vi dig
+const hjalp = [
+  'Papper och material',
+  'Format och upplaga',
+  'Digitaltryck eller offsettryck',
+  'Storformat och skyltmaterial',
+  'Originalkontroll och prepress',
+  'Efterbehandling',
+  'Distribution och praktisk hantering',
+  'Svanenmärkt tryckproduktion',
+];
+---
+
+<Layout
+  title="Svanenmärkt tryckeri i Sollentuna – hållbara trycksaker | Norrmalmstryckeriet"
+  description="Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag med hållbara trycksaker, rätt papper, tryckmetod, efterbehandling och rådgivning."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO: bild överst, text under -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#E5E5E5]">
+        <img src="/images/hero/miljo-hero.webp" alt="Grönska, vatten och svan vid Norrmalmstryckeriets närmiljö" class="w-full h-full object-cover" />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="section-label">Miljö</p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Svanenmärkt tryck med ansvar i varje led.
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, organisationer och byråer att ta fram trycksaker med rätt material, rätt metod och rätt känsla — från original och papper till tryck, efterbehandling och leverans.
+        </p>
+        <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center inline-flex">
+          Begär offert<Fragment set:html={arrowSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO: bild i bakgrunden + overlay -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#E5E5E5]">
+      <img src="/images/hero/miljo-hero.webp" alt="Grönska, vatten och svan vid Norrmalmstryckeriets närmiljö" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10 max-w-[680px]">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Miljö
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px]" style="text-wrap: balance;">
+          Svanenmärkt tryck med ansvar i varje led.
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px]">
+          Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, organisationer och byråer att ta fram trycksaker med rätt material, rätt metod och rätt känsla — från original och papper till tryck, efterbehandling och leverans.
+        </p>
+        <a href="/offert" class="btn-pill btn-red inline-flex">
+          Begär offert<Fragment set:html={arrowSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ INTRO ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Miljö som ansvar, kontroll och bättre val</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Trycksaker ska kännas bra i handen. De ska också kännas bra i beslutet.
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>På Norrmalmstryckeriet arbetar vi med Svanenmärkt tryckproduktion i Sollentuna. Det innebär att miljöarbetet finns med i hela processen: från materialval och kemikalier till energi, återvinning, produktion och färdig leverans.</p>
+        <p>För oss handlar miljö om kunskap, kontroll och ansvar i vardagen. Rätt papper, rätt tryckmetod, rätt upplaga, rätt efterbehandling — rätt produktion för det trycksaken ska göra. När de valen görs med omsorg får kunden en trycksak som håller ihop både kommunikationen, känslan och ansvaret bakom produktionen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MILJÖARBETE SOM HANTVERK ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <div class="md:max-w-[520px]">
+          <p class="section-label">Miljöarbete som en del av hantverket</p>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+            Vi var tidigt FSC-certifierade — idag är vi Svanenmärkta.
+          </h2>
+        </div>
+        <div class="md:max-w-[520px] md:pt-[8px]">
+          <div class="text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#444] space-y-[16px]" style="text-wrap: pretty;">
+            <p>Norrmalmstryckeriet har länge arbetat med miljöfrågor inom grafisk produktion — med spårbarhet, materialval och ansvarsfull produktion. Svanenmärkningen ger ett bredare miljöperspektiv på hela verksamheten.</p>
+            <p class="text-[#222] font-medium">Svanen omfattar mer än pappret: vilka kemikalier som används, hur produktionen drivs, hur material hanteras, hur avfall sorteras och hur resurser tas tillvara.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RÄTT MATERIAL FÖR RÄTT ANVÄNDNING ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Rätt material för rätt användning</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Ett bra miljöval börjar med frågan: vad ska materialet användas till?
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>Papper påverkar hur materialet upplevs, hur länge det håller, hur det fungerar i produktion och hur mottagaren tar emot budskapet. Ett tunnare papper kan passa stora utskick där vikt och distribution spelar roll. Ett kraftigare papper kan vara rätt när trycksaken ska sparas eller ge en mer påkostad känsla. Obestruket ger ett naturligt, taktilt uttryck — bestruket ger skarpare bildåtergivning.</p>
+        <p>Ska trycksaken skickas? Delas ut på mässa? Ligga i en reception? Sparas av mottagaren? När användningen är tydlig blir materialvalet bättre — och mer ansvarsfullt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RÄTT METOD FRÅN BÖRJAN ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Rätt metod från början</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Ett hållbart val handlar också om rätt produktionsmetod.
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px]" style="text-wrap: pretty;">
+        <p>Digitaltryck passar ofta mindre upplagor, snabb produktion och versionerat material. Offsettryck passar större upplagor, hög färgstabilitet och effektiv produktion över många exemplar. Storformat passar när budskapet ska synas på avstånd — affisch, roll-up, skyltmaterial, vepa eller mässmaterial.</p>
+        <p class="text-[#222] font-medium">Vi hjälper kunden att välja metod efter uppdraget. Det gör produktionen mer träffsäker, minskar onödiga omtag och ger bättre kontroll över material, upplaga, kvalitet och slutresultat. Miljöarbete börjar ofta just där: i de kloka besluten före produktion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ÅTERVINNING & PROCESSER (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Återvinning och modernare processer</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px] max-w-[820px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Miljöarbetet sitter i rutinerna och i produktionsflödet.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[56px] max-w-[720px]">
+          Dagens professionella tryckproduktion ser annorlunda ut än tidigare. Vi arbetar med moderna processer, bättre kontroll och genomtänkt hantering av material och restprodukter.
+        </p>
+        <ul class="grid sm:grid-cols-2 gap-x-[40px] gap-y-[16px] sm:gap-y-[20px] max-w-[900px]">
+          {processer.map((p) => (
+            <li class="flex items-start gap-[12px]">
+              <span class="shrink-0 mt-[7px] w-[7px] h-[7px] rounded-full bg-[#D9222A]"></span>
+              <span class="!text-white/90 text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed">{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LOKALT TRYCK + LÄNGRE LIV ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="grid md:grid-cols-2 gap-[24px] sm:gap-[32px] lg:gap-[40px]">
+        <div class="bg-[#F5F5F5] rounded-[20px] sm:rounded-[28px] p-[28px] sm:p-[40px] md:p-[48px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em;">Lokalt tryck med närhet och ansvar</h3>
+          <div class="text-[15px] sm:text-[16px] leading-[1.7] text-[#444] space-y-[14px]" style="text-wrap: pretty;">
+            <p>Som lokalt tryckeri i Sollentuna betyder det närhet till produktionen, kortare kontaktvägar och större möjlighet till rådgivning innan trycksaken går i produktion.</p>
+            <p>Lokalt tryck handlar om mer än geografi — det handlar om människor som går att nå, dialog kring material och metod, och att kunna välja en lösning som passar både budget, kvalitet och användning.</p>
+          </div>
+        </div>
+        <div class="bg-[#F5F5F5] rounded-[20px] sm:rounded-[28px] p-[28px] sm:p-[40px] md:p-[48px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em;">Trycksaker som får längre liv</h3>
+          <div class="text-[15px] sm:text-[16px] leading-[1.7] text-[#444] space-y-[14px]" style="text-wrap: pretty;">
+            <p>En viktig del av miljöarbetet är att skapa trycksaker som faktiskt används. En rätt planerad och rätt producerad trycksak sparas längre, känns mer relevant och ger större värde per producerat exemplar.</p>
+            <p>Därför hjälper vi gärna till tidigt: vad ska trycksaken göra, hur ska den distribueras, vilken känsla ska den ge och hur länge ska den leva?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SÅ HJÄLPER VI DIG ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Så hjälper vi dig att välja rätt</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Du kommer med en idé, ett original eller ett behov.
+      </h2>
+      <ul class="grid sm:grid-cols-2 gap-x-[40px] gap-y-[12px] sm:gap-y-[16px]">
+        {hjalp.map((h) => (
+          <li class="flex items-start gap-[12px] text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#333]">
+            <span class="shrink-0 mt-[7px] w-[7px] h-[7px] rounded-full bg-[#222]"></span>
+            <span>{h}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mt-[28px] sm:mt-[36px]" style="text-wrap: pretty;">
+        Sedan hjälper vi dig att hitta rätt väg framåt — en lösning som passar syftet, kvaliteten och miljöambitionen.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA (mörk rundad) ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#D9222A] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.85); margin-bottom: 16px;">Behöver du hjälp med Svanenmärkt tryck?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            En trycksak ska kännas rätt hela vägen.
+          </h2>
+          <p class="!text-white/85 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Berätta vad du vill ta fram, hur trycksaken ska användas och vilken upplaga du behöver. Vi hjälper dig att välja format, papper, tryckmetod, efterbehandling och en lösning som passar syftet.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: rgba(0,0,0,0.20); color: #fff;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+
+  /* Hero med bild i bakgrunden — samma som produktsidorna */
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 520px;
+    max-height: 88vh;
+    background: #000;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.9 / 1; min-height: 560px; max-height: 80vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 78vh; }
+  }
+  @media (min-width: 1920px) {
+    .hero-box { aspect-ratio: 2.4 / 1; max-height: 80vh; }
+  }
+</style>
