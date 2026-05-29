@@ -1,0 +1,196 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const posts = [
+    {
+      slug: 'trycksaker-digital-varld',
+      title: 'Varför trycksaker fortfarande fungerar i en digital värld.',
+      date: '2025-06-04',
+      dateLabel: '4 juni 2025',
+      image: '/images/news/QR_CODE_BROSCHURE.webp',
+      excerpt: 'I en tid där vi matas med tusentals digitala intryck varje dag fungerar det fysiska som en motsatsens kraft.',
+      body: [
+        { t: 'p', v: 'Vi börjar i ett konferensrum. En marknadschef bläddrar förstrött genom ännu en PDF på skärmen. Statistiken är god, klickfrekvensen acceptabel – men någonting saknas.' },
+        { t: 'p', v: 'Veckan därpå deltar hon i ett kundmöte. På bordet ligger en tryckt katalog – tjockt, obestruket papper, präglad framsida, noggrant utvald färgpalett. Kunden bläddrar långsamt. Känner. Frågar:' },
+        { t: 'quote', v: 'Är det ni som har gjort den här? Den känns… seriös.' },
+        { t: 'p', v: 'Mötet slutar med en signatur. Inte på en e-signering. På ett faktiskt avtal.' },
+        { t: 'p', v: 'I en tid där vi matas med tusentals digitala intryck varje dag fungerar det fysiska som en motsatsens kraft. Trycksaker kräver närvaro. De känns. Bokstavligen. Och just därför fungerar de fortfarande. Här är varför:' },
+        { t: 'h2', v: '1. Trovärdighet som sitter i handen' },
+        { t: 'p', v: 'En trycksak signalerar kvalitet, investering och varumärkesomsorg. Det du håller i påverkar vad du tror på.' },
+        { t: 'h2', v: '2. Längre livslängd än ett klick' },
+        { t: 'p', v: 'En broschyr på ett skrivbord lever kvar. En katalog i en foajé läses igen. Print dröjer sig kvar – i medvetande och i miljö.' },
+        { t: 'h2', v: '3. Taktileffekten triggar känslor' },
+        { t: 'p', v: 'Studier visar att fysiska material aktiverar hjärnans minnes- och känslocentra starkare än skärmmedia. Print blir upplevelse.' },
+        { t: 'p', v: 'Det verkliga lyftet sker när det analoga och det digitala samarbetar. Se trycksaken som en del av en funnel, inte som ett avslut.' },
+        { t: 'p', v: 'I en värld där alla skriker digitalt viskar trycksaken – och det är just det som får människor att lyssna. Men det kräver rätt strategi. Rätt tryckeri. En partner som förstår både det taktila och det tekniska.' },
+      ],
+    },
+    {
+      slug: 'digital-stress-tryckt-media',
+      title: 'Digital stress och tryckt medias återkomst.',
+      date: '2025-02-26',
+      dateLabel: '26 februari 2025',
+      image: '/images/news/Stressfri-med-tatkilt-media.webp',
+      excerpt: 'Hur vi hittar balansen i en skärmdominerad värld — och varför tryckt media kan vara en oväntad räddning.',
+      body: [
+        { t: 'p', v: 'I en värld där skärmar blivit en förlängning av vårt dagliga liv ökar även frågorna om deras påverkan på vår psykiska hälsa. Ny forskning visar att ökad skärmtid kan leda till högre stressnivåer och sämre välmående, särskilt vid passiv konsumtion eller sociala medier. Men mitt i den digitala stormen finns en oväntad räddning: tryckt media.' },
+        { t: 'h2', v: 'Skärmtid och stress: när det digitala tar över' },
+        { t: 'p', v: 'Vi spenderar mer tid än någonsin framför skärmar – från sociala medier till arbetsrelaterad e-post. Forskningen visar att skärmanvändning kan förändra hjärnans struktur och funktion, aktivera belöningssystemet på ett sätt som skapar beroendemönster och öka risken för kronisk stress.' },
+        { t: 'p', v: 'Sociala medier har en särskilt skadlig effekt på självkänslan, där unga är mest utsatta. Samtidigt påverkar blåljus från skärmar sömnen negativt genom att störa melatoninproduktionen — vilket leder till en ond cirkel av trötthet och ökad skärmanvändning som en form av flykt.' },
+        { t: 'h2', v: 'Tryckt media: en motkraft' },
+        { t: 'p', v: 'Medan skärmar kan skapa stress visar studier att tryckt media kan ha motsatt effekt. Att läsa en fysisk bok stimulerar det parasympatiska nervsystemet och minskar stress. En studie från University of Sussex fann att bara sex minuters läsning kan sänka stressnivåer med 68 % – mer effektivt än både musik och promenader.' },
+        { t: 'p', v: 'Förutom stressreduktion har tryckt media pedagogiska och sociala fördelar. Föräldrar som läser fysiska böcker för sina barn skapar starkare emotionella band och främjar djupare lärande. För vuxna erbjuder papperstidningen en strukturerad informationsinhämtning, fri från digitalt brus och notifikationer.' },
+        { t: 'h2', v: 'Hur hittar vi balansen?' },
+        { t: 'p', v: 'Att helt eliminera skärmar är varken realistiskt eller nödvändigt. Men vi kan skapa en hälsosammare relation till dem genom att medvetet integrera mer tryckt media i vardagen.' },
+        { t: 'h2', v: 'Ett digitalt-analogt samspel' },
+        { t: 'p', v: 'Vårt förhållande till media behöver inte vara svartvitt. Genom att kombinera digital teknik med tryckt media kan vi skapa en mer balanserad vardag — effektiviteten i det digitala och den mentala återhämtningen i det analoga. Små förändringar i vår dagliga rutin kan minska stress, förbättra sömnen och hjälpa oss återta kontrollen över uppmärksamheten.' },
+      ],
+    },
+    {
+      slug: 'nya-mojligheter-investering',
+      title: 'Nya möjligheter med vår senaste investering!',
+      date: '2024-12-03',
+      dateLabel: '3 december 2024',
+      image: '/images/news/Roland_pop_art.webp',
+      excerpt: 'Vi har investerat i en toppmodern Roland TrueVIS640 — storformatstryck med högsta kvalitet och hållbarhet.',
+      body: [
+        { t: 'p', v: 'Norrmalmstryckeriet har investerat i en toppmodern Roland TrueVIS640 – en storformatsskrivare som levererar precisionstryck med högsta kvalitet och hållbarhet. Med den nya maskinen kan vi nu erbjuda en rad möjligheter för dina trycksaker: affischer, banderoller, dekaler och skyltar. Snabbare leveranser och miljövänliga alternativ ingår.' },
+        { t: 'h2', v: 'Högsta kvalitet för stora format' },
+        { t: 'p', v: 'Roland TrueVIS640 är utvecklad för att leverera skarpa detaljer och levande färger, vilket gör den perfekt för storformatstryck som fångar uppmärksamheten. Med den senaste bläckstråletekniken håller dina trycksaker alltid toppklass — oavsett om det handlar om skyltfönsterdekorationer eller tydliga reklambudskap.' },
+        { t: 'h2', v: 'Miljövänliga trycklösningar' },
+        { t: 'p', v: 'Vi är stolta över att bidra till en hållbar framtid. Den nya Roland-maskinen använder miljöcertifierat bläck och är designad för att vara energieffektiv. Genom optimerad materialanvändning och minimering av spill kan vi erbjuda miljövänliga lösningar utan att kompromissa med kvaliteten.' },
+        { t: 'h2', v: 'Effektivitet som sparar tid' },
+        { t: 'p', v: 'Med Roland TrueVIS640 kan vi korta ner produktionstiderna och erbjuda snabbare leveranser. Det gör det möjligt att möta snäva deadlines och leverera trycksaker i tid – varje gång. Har du en viktig kampanj eller ett event på gång ser vi till att du har ditt material redo när du behöver det.' },
+        { t: 'h2', v: 'Anpassade lösningar för dina behov' },
+        { t: 'p', v: 'Varje projekt är unikt. Med vår nya storformatsskrivare kan vi erbjuda flexibla lösningar anpassade efter dina behov — affischer för en butikskampanj, dekaler för produktmärkning eller banderoller för ett evenemang.' },
+        { t: 'p', v: 'Är du redo att lyfta dina trycksaker till nästa nivå? Kontakta oss idag för en offert och upptäck vad vår nya Roland TrueVIS640 kan göra för ditt företag.' },
+      ],
+    },
+  ];
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, all: posts },
+  }));
+}
+
+const { post, all } = Astro.props;
+const others = all.filter((p) => p.slug !== post.slug);
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title={`${post.title.replace(/\.$/, '')} | Norrmalmstryckeriet`}
+  description={post.excerpt}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section pb-0">
+    <div class="page-container max-w-[920px]">
+      <a href="/nyheter" class="inline-flex items-center text-[#888] hover:text-[#222] transition-colors text-[13px] sm:text-[14px] font-medium mb-[24px] sm:mb-[32px]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mr-[6px]"><path d="M15 18l-6-6 6-6"/></svg>
+        Alla nyheter
+      </a>
+      <p class="section-label">Nyheter • {post.dateLabel}</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(2rem, 4vw + 0.5rem, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        {post.title}
+      </h1>
+      <p class="text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed text-[#444]" style="text-wrap: pretty;">
+        {post.excerpt}
+      </p>
+    </div>
+    <div class="page-container max-w-[1100px] mt-[40px] sm:mt-[56px]">
+      <div class="rounded-[20px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-[#E5E5E5] aspect-[16/9]">
+        <img src={post.image} alt={post.title} class="w-full h-full object-cover" loading="eager" decoding="async" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ARTIKELTEXT ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[760px]">
+      <div class="space-y-[20px] sm:space-y-[24px]">
+        {post.body.map((block) => (
+          block.t === 'h2' ? (
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] pt-[16px] sm:pt-[24px]" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">{block.v}</h2>
+          ) : block.t === 'quote' ? (
+            <blockquote class="border-l-[3px] border-[#D9222A] pl-[24px] sm:pl-[32px] my-[8px]">
+              <p class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.375rem, 2vw, 1.875rem); line-height: 1.3; text-wrap: balance;">&ldquo;{block.v}&rdquo;</p>
+            </blockquote>
+          ) : (
+            <p class="text-[16px] sm:text-[17px] md:text-[19px] leading-[1.7] text-[#333]" style="text-wrap: pretty;">{block.v}</p>
+          )
+        ))}
+      </div>
+
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mt-[40px] sm:mt-[56px] pt-[32px] sm:pt-[40px] border-t border-[#E5E5E5]">
+        <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+          Begär offert<Fragment set:html={arrowSvg} />
+        </a>
+        <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+          Kontakta oss<Fragment set:html={arrowSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FLER NYHETER — bento lg+, sidoscroll <lg ═══ -->
+  <section class="page-section-no-px pt-0">
+    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[28px] sm:mb-[40px]">
+      <p class="section-label" style="margin-bottom: 16px;">Fler nyheter</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
+        Mer läsning.
+      </h2>
+    </div>
+
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
+        {others.map((p) => (
+          <a href={`/nyheter/${p.slug}`} class="shrink-0 w-[300px] sm:w-[360px] md:w-[420px] block group no-underline snap-start">
+            <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5] mb-[16px]">
+              <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[8px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-[#D9222A] transition-colors">{p.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- DESKTOP: bento (2 kort fyller bredden) -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-2 gap-[24px]">
+        {others.map((p) => (
+          <a href={`/nyheter/${p.slug}`} class="block group no-underline">
+            <div class="rounded-[20px] overflow-hidden aspect-[16/9] bg-[#E5E5E5] mb-[20px]">
+              <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[10px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[24px] leading-[1.15] group-hover:text-[#D9222A] transition-colors" style="letter-spacing: -0.02em; text-wrap: balance;">{p.title}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; }
+  .page-section { padding-top: 64px; padding-bottom: 64px; padding-left: 16px; padding-right: 16px; }
+  @media (min-width: 640px) { .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; } }
+  @media (min-width: 768px) { .page-section { padding-top: 100px; padding-bottom: 100px; } }
+  @media (min-width: 1024px) { .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; } }
+  .page-section-no-px { padding-top: 48px; padding-bottom: 48px; }
+  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
+  @media (min-width: 768px) { .page-section-no-px { padding-top: 64px; padding-bottom: 64px; } }
+  @media (min-width: 1024px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
+  .section-label {
+    font-family: var(--font-body); font-size: 11px; line-height: 1; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 20px;
+  }
+  @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; } }
+</style>

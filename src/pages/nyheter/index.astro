@@ -1,0 +1,132 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const posts = [
+  {
+    slug: 'trycksaker-digital-varld',
+    title: 'Varför trycksaker fortfarande fungerar i en digital värld.',
+    dateLabel: '4 juni 2025',
+    image: '/images/news/QR_CODE_BROSCHURE.webp',
+    excerpt: 'I en tid där vi matas med tusentals digitala intryck varje dag fungerar det fysiska som en motsatsens kraft.',
+    bento: 'col-span-2 row-span-2',
+  },
+  {
+    slug: 'digital-stress-tryckt-media',
+    title: 'Digital stress och tryckt medias återkomst.',
+    dateLabel: '26 februari 2025',
+    image: '/images/news/Stressfri-med-tatkilt-media.webp',
+    excerpt: 'Hur vi hittar balansen i en skärmdominerad värld.',
+    bento: '',
+  },
+  {
+    slug: 'nya-mojligheter-investering',
+    title: 'Nya möjligheter med vår senaste investering!',
+    dateLabel: '3 december 2024',
+    image: '/images/news/Roland_pop_art.webp',
+    excerpt: 'Vi har investerat i en toppmodern Roland TrueVIS640 — storformatstryck med högsta kvalitet.',
+    bento: '',
+  },
+];
+---
+
+<Layout
+  title="Nyheter | Norrmalmstryckeriet"
+  description="Nyheter och artiklar från Norrmalmstryckeriet — om tryck, hållbarhet, investeringar och varför trycksaker fortfarande gör skillnad."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section pb-0">
+    <div class="page-container">
+      <p class="section-label">Nyheter</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Tankar om tryck, teknik och trender.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
+        Här samlar vi artiklar och nyheter om varför trycksaker fortfarande gör skillnad, om hållbar produktion och om vad som händer hos oss på Norrmalmstryckeriet.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETS-KORT — bento lg+, sidoscroll <lg ═══ -->
+  <section class="page-section-no-px">
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
+        {posts.map((p) => (
+          <a href={`/nyheter/${p.slug}`} class="shrink-0 w-[300px] sm:w-[360px] md:w-[420px] block group no-underline snap-start">
+            <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5] mb-[16px]">
+              <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            </div>
+            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[8px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] text-[19px] sm:text-[21px] leading-[1.2] mb-[8px] group-hover:text-[#D9222A] transition-colors">{p.title}</h2>
+            <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">{p.excerpt}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- DESKTOP: bento -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-3 auto-rows-[260px] gap-[16px]">
+        {posts.map((p) => (
+          <a href={`/nyheter/${p.slug}`} class={`${p.bento} rounded-[20px] overflow-hidden relative block group no-underline`}>
+            <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-[28px] lg:p-[32px]">
+              <span class="block !text-white/70 text-[11px] uppercase font-medium mb-[10px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
+              <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[8px]" style={`line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; font-size: ${p.bento.includes('row-span-2') ? '2rem' : '1.375rem'};`}>{p.title}</h2>
+              {p.bento.includes('row-span-2') && (
+                <p class="!text-white/85 text-[15px] leading-relaxed max-w-[460px]">{p.excerpt}</p>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Något på gång?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Berätta vad du vill trycka — vi gör resten.
+          </h2>
+          <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Skicka original eller en kort beskrivning så hjälper vi dig med format, papper, tryckmetod och en tydlig offert.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full justify-center">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; }
+  .page-section { padding-top: 64px; padding-bottom: 64px; padding-left: 16px; padding-right: 16px; }
+  @media (min-width: 640px) { .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; } }
+  @media (min-width: 768px) { .page-section { padding-top: 100px; padding-bottom: 100px; } }
+  @media (min-width: 1024px) { .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; } }
+  .page-section-no-px { padding-top: 48px; padding-bottom: 48px; }
+  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
+  @media (min-width: 768px) { .page-section-no-px { padding-top: 64px; padding-bottom: 64px; } }
+  @media (min-width: 1024px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
+  .section-label {
+    font-family: var(--font-body); font-size: 11px; line-height: 1; letter-spacing: 1.5px;
+    text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 20px;
+  }
+  @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; } }
+</style>
