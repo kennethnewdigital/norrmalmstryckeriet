@@ -5,8 +5,8 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 ---
 
 <Layout
-  title="Gratis infografik om visitkort | Norrmalmstryckeriet"
-  description="Ladda ner vår gratis PDF-guide om visitkort: papperstips, tryckmetoder och finish-effekter. Fyll i formuläret så skickas guiden direkt."
+  title="Ladda ner guiden: Så skapar du ett visitkort som blir ihågkommet | Norrmalmstryckeriet"
+  description="Ladda ner vår fördjupade PDF-guide om visitkort: format, papper, kartong, QR-kod, tryck, foliering, prägling och original — med en praktisk beslutsmodell."
 >
 
   <!-- ═══ HERO ═══ -->
@@ -17,10 +17,10 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <div>
           <p class="section-label">Gratis nedladdning</p>
           <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px] max-w-[920px]" style="font-size: clamp(2rem, 5vw, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
-            Visitkort-guiden — välj rätt papper, tryck och finish.
+            Så skapar du ett visitkort som blir ihågkommet.
           </h1>
           <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px]" style="text-wrap: pretty;">
-            En PDF-guide med konkreta råd om pappersval, tryckmetoder, specialeffekter och vad som påverkar priset. Fyll i uppgifterna nedan så får du nedladdningen direkt.
+            En praktisk guide till format, papper, design, finish och tryck — med en beslutsmodell i steg. Fyll i uppgifterna nedan så får du nedladdningen direkt. Vill du läsa guiden i webbläsaren först? <a href="/guider/visitkort" class="underline hover:text-[#222]">Läs webbversionen här</a>.
           </p>
         </div>
 
@@ -28,8 +28,8 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         <div class="pdf-teaser-wrap">
           <div class="pdf-teaser">
             <img
-              src="/images/infografik/visitkort-teaser.webp"
-              alt="Förhandsvisning av visitkort-guiden (PDF)"
+              src="/images/infografik/visitkort-guide-teaser.webp"
+              alt="Förhandsvisning av guiden Så skapar du ett visitkort som blir ihågkommet (PDF)"
               loading="eager"
               decoding="async"
             />
@@ -60,7 +60,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           <form
             id="visitkort-infografik-form"
             class="space-y-[12px] sm:space-y-[14px]"
-            action="/downloads/visitkort-infographic.pdf"
+            action="/downloads/visitkort-guide-infographic.pdf"
             method="get"
             target="_blank"
           >
@@ -110,18 +110,18 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       <div class="grid md:grid-cols-3 gap-[28px] sm:gap-[40px] md:gap-[60px]">
         <div>
           <span class="typo-process-number block">1.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Pappersval</h3>
-          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Bestruket vs obestruket, gramvikter och specialpapper — när varje typ passar bäst för ditt budskap och varumärke.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Format & papper</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">90×55, 85×55, stående och kvadratiskt samt 300–400 g kartong — när varje val passar varumärket och känslan i handen.</p>
         </div>
         <div>
           <span class="typo-process-number block">2.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Tryckmetod</h3>
-          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Digitaltryck, offsettryck, Pantone och variabeltryck — när varje metod är rätt val baserat på upplaga, färgkrav och versioner.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Innehåll & QR</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Tydlig informationshierarki, framsida vs baksida och QR-kod med syfte — kontaktkort, LinkedIn, bokning eller portfolio.</p>
         </div>
         <div>
           <span class="typo-process-number block">3.</span>
-          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Efterbehandling</h3>
-          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Folieprägling, UV-lack, prägling, laminering och specialformer — när varje effekt lyfter kortet utan att störa läsbarheten.</p>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Finish & original</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]" style="text-wrap: pretty;">Laminering, UV-lack, foliering och prägling — plus en beslutsmodell i 12 steg och en originalchecklista.</p>
         </div>
       </div>
     </div>
