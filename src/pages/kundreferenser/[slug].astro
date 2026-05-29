@@ -1,0 +1,257 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  const refs = [
+    {
+      slug: 'memira',
+      name: 'Memira',
+      image: '/images/references/memira.webp',
+      website: { label: 'memira.se', url: 'https://www.memira.se' },
+      heroQuote: 'Aldrig någonsin har jag tänkt att vi skulle byta tryckeri! Då får du inte den fantastiska servicen.',
+      quote: 'Aldrig någonsin har jag tänkt att vi skulle byta tryckeri! Då får du inte den fantastiska servicen. Kanske lite billigare men i längden vinner den personliga relationen, att Norrmalmstryckeriet alltid finns där, snabba och bra på att svara och återkopplar med frågor om man är lite otydlig med sin beställning. Inga påsar! Inga broschyrer kvar! Hjälp!',
+      author: 'Åsa Bergendorf',
+      role: 'Marknadschef, Memira',
+      body: [
+        'Åsa Bergendorf är marknadschef på Memira, som är ledande inom ögonlaser och linsbyte i Skandinavien och Nederländerna. Tidigare jobbade Åsa på Twilfit som marknadschef och hade då kontakt med ett av landets största tryckerier.',
+        'Det var väldigt mycket bekymmer där och då — när vi till exempel beställde påsar var vi bara som en droppe i havet. Jag tycker att det är en jätteskillnad nu med Norrmalmstryckeriet och jag uppskattar otroligt mycket den personliga servicen. När saker tar slut, när vi undrar hur många vi tryckte förra gången — då tar Norrmalmstryckeriet själva kontakt och fungerar nästan som en konsult och håller reda på när vi behöver trycka upp nytt material.',
+        'Jag började på Memira för ett knappt år sedan och har sedan dess fått äran att jobba med Norrmalmstryckeriet. Memira har varit kunder sedan 2014. Det personliga omhändertagandet, uppmärksamheten och engagemanget gör att man känner sig väldigt trygg med att det man beställer blir rätt och levererat i rätt tid.',
+      ],
+    },
+    {
+      slug: 'curlingforbundet',
+      name: 'Svenska Curlingförbundet',
+      image: '/images/references/curling.webp',
+      website: { label: 'curling.se', url: 'https://curling.se' },
+      heroQuote: 'Alla dessa år med kvalitet, exakta leveranstider och specialfix är det alltid Mats som har funnits där.',
+      quote: 'Är det någonting jag kan stå för är det att vara referent till Norrmalmstryckeriet! Alla dessa år med kvalitet, exakta leveranstider och specialfix är det alltid Mats som har funnits där. Allt ifrån speciella stansmallar till vanliga trycksaker och annorlunda uppdrag – han löser allt! Framför allt är det tryggheten; Mats har aldrig missat att leverera ett jobb i tid fast jag har varit hopplös ibland med att lämna i tid.',
+      author: 'Stefan Lund',
+      role: 'Förbundschef, Svenska Curlingförbundet',
+      body: [
+        'Jag och Mats gick på Grafiska institutet samtidigt. Sedan när jag startade min egen byrå började jag anlita Norrmalmstryckeriet, och så har det fortsatt i 25 år. Personlig service, optimalt bemötande och högsta kvalitet – då är det helt enkelt Norrmalmstryckeriet som gäller!',
+        'Svenska Curlingförbundet och Stefan beställer många trycksaker kopplade till den dagliga verksamheten och de stora eventen inom sporten. Det kan vara vanliga foldrar och broschyrer, men också skyltar och affischer — och nästa år blir det ännu mer när både EM och VM går i Sverige.',
+        'Jag gillar att göra lite oväntade trycksaker, till exempel skyltar till hotellrum där curlingdeltagare bor under tävlingarna. I stället för den vanliga rumsskylten får gästerna en personlig, specialdesignad skylt med curlingmotiv!',
+        'Just när det gäller svensk curling har årets säsong varit den mest framgångsrika någonsin med nio internationella medaljer från VM, OS och Paralympics. I junior-VM tog de svenska curlingtjejerna silver! Vi vill förstås gärna få ännu fler curlare här i Sverige, och nu har vi fått ett avtal med SVT ända fram till 2030. Så nu kommer vi att synas ännu mer — och det gillar vi!',
+      ],
+    },
+    {
+      slug: 'kyrkbyran',
+      name: 'Kyrkbyrån',
+      image: '/images/references/kyrkbyran.webp',
+      website: { label: 'kyrkbyran.se', url: 'https://kyrkbyran.se' },
+      heroQuote: 'Norrmalmstryckeriet trycker rätt och det blir alltid bra — men det är inte huvudskälet till att vi valt dem. Det är framför allt den personliga servicen!',
+      quote: 'Norrmalmstryckeriet trycker rätt och det blir alltid bra, men det är inte huvudskälet till att vi har valt dem. Det är framför allt den personliga servicen! Det personliga bemötandet i alla produkter är själva grejen.',
+      author: 'Ingrid Eliasson',
+      role: 'Kyrkbyrån',
+      body: [
+        'Även om jag kan skicka en korrekt beställning så hjälper Bengt och Norrmalmstryckeriet mig med mitt jobb. De orkar bry sig på riktigt om att både jag och min kund ska bli glada och nöjda. De har koll på risker — bland annat att Postnord bara delar ut varannan dag — och det hjälper mig med mitt jobb och mina deadlines.',
+        'Vid ett tillfälle kontaktade Norrmalmstryckeriet mig om en ny upplaga. Den tidigare upplagan låg på ett lager, och när Norrmalmstryckeriet kontrollerade inför nytryckningen fick de veta att det fanns ganska många exemplar kvar. "Hej Ingrid, ska du verkligen trycka så här många? Vet kunden om att det inte behövs så många nya ex eftersom det står kvar en hel del kartonger på lagret?" Då fick min kund tips om att trycka mindre.',
+        'Ett annat exempel är att Norrmalmstryckeriet informerade mig om höjda papperspriser. De värnar om både mig som kund och min kund. En gång var en kund kommunikatör i en församling som behövde mycket handledning — då bad jag Norrmalmstryckeriet ta direktkontakt. "Materialet kommer inte att vara korrekt", sa jag, "kan ni hjälpa till?" Bengt ställde upp direkt, både för kommunikatören och produktionen.',
+        'Samma service gäller leveranser. Blir det för tight kör någon medarbetare ut trycksakerna direkt till rätt leveransadress. Omsorgen är det viktiga i alla lägen!',
+      ],
+    },
+    {
+      slug: 'odelius',
+      name: 'Odelius & Co',
+      image: '/images/references/odelius.webp',
+      website: { label: 'odelius.se', url: 'https://odelius.se' },
+      heroQuote: 'Norrmalmstryckeriet står för modern kommunikation, 100 procent service och total pålitlighet.',
+      quote: 'Jag vågar lova att du blir helt nöjd — jag lägger alla tryckuppdrag, stora som små, hos Norrmalmstryckeriet.',
+      author: 'Eva Odelius',
+      role: 'Grafisk formgivare / journalist, Odelius & Co',
+      body: [
+        'Jag är en van och erfaren trycksaksuppköpare sedan många år, och hos Norrmalmstryckeriet och Mats Jansson har jag hittat det jag kallar MATS-metoden: "Miljömärkt Affärsnytta Till Superpris". Mats fixar verkligen allt utan att jag får det minsta bekymmer. Alltid miljömärkt — det är viktigt för mig — alltid rätt, alltid i tid och alltid till rätt pris.',
+        'Norrmalmstryckeriet är ett perfekt och modernt tryckeri som finns på riktigt. För mig är det tryggt att jobba med Mats, Jens och Bengt. De tar sig alltid tid och är lika bra på att lyssna som att trycka, oavsett om det är små, blixtsnabba upplagor eller stora.',
+        'En folder, en affisch eller en bok — Norrmalmstryckeriet har alltid överträffat våra förväntningar med råge. Våra krävande uppdragsgivare och vi på Odelius är mer än nöjda, och bättre kan det inte bli.',
+        'Det är så tryggt att veta att hjälpen bara är ett telefonsamtal eller ett tangentbord bort. Norrmalmstryckeriet har räddat många av våra uppdragsgivare när de glömt att beställa sina trycksaker i tid för att matcha sin egen tuffa deadline.',
+      ],
+    },
+    {
+      slug: 'zetatrade',
+      name: 'Zetatrade AB',
+      image: '/images/references/zetatrade.webp',
+      website: { label: 'zetatrade.se', url: 'https://zetatrade.se' },
+      heroQuote: 'Norrmalmstryckeriet skapar en styrka i att vara ett mindre tryckeri genom väldigt mycket hjärta, engagemang och kunskap.',
+      quote: 'Norrmalmstryckeriet skapar en styrka i att vara ett mindre tryckeri genom väldigt mycket hjärta, engagemang och kunskap.',
+      author: 'Ann-Charlotte Höglund',
+      role: 'Zetatrade AB',
+      body: [
+        'Vi är både samarbetspartners och leverantörer av material till Norrmalmstryckeriet, vilket är ett framgångsrikt koncept. Vi är väldigt nyfikna på att testa våra material, och Norrmalmstryckeriet har bland annat producerat våra egna kollektioner — däribland Geltexstickan — som visar alla färger och präglingar vi använder på intagen i tryckpressarna. Vi lär oss av varandra på ett fantastiskt sätt!',
+        'Zetatrade AB jobbar mycket mot formgivare, annons- och reklambyråer och levererar material till många olika tryckerier. Geltexstickan är en kollektion som företaget byggt upp under 40 år och som Norrmalmstryckeriet har producerat i många upplagor.',
+        'Det är också en stor fördel för oss att vi ligger nära Norrmalmstryckeriet. Det är en styrka som gör att vi kan fixa saker snabbt under dagen och serva våra kunder på bästa tänkbara sätt.',
+      ],
+    },
+  ];
+
+  return refs.map((ref) => ({
+    params: { slug: ref.slug },
+    props: { ref, all: refs },
+  }));
+}
+
+const { ref, all } = Astro.props;
+const others = all.filter((r) => r.slug !== ref.slug);
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title={`Kundreferens: ${ref.name} | Norrmalmstryckeriet`}
+  description={`${ref.name} om samarbetet med Norrmalmstryckeriet: ${ref.heroQuote}`}
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section pb-0">
+    <div class="page-container">
+      <a href="/kundreferenser" class="inline-flex items-center text-[#888] hover:text-[#222] transition-colors text-[13px] sm:text-[14px] font-medium mb-[24px] sm:mb-[32px]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mr-[6px]"><path d="M15 18l-6-6 6-6"/></svg>
+        Alla kundreferenser
+      </a>
+      <div class="grid lg:grid-cols-[1fr_0.8fr] gap-[32px] md:gap-[48px] lg:gap-[64px] items-center">
+        <!-- Vänster: citat -->
+        <div>
+          <p class="section-label">Kundreferens</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(1.5rem, 2.5vw + 0.5rem, 3rem); line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+            &ldquo;{ref.heroQuote}&rdquo;
+          </h1>
+          <div class="flex items-center gap-[4px] flex-wrap text-[14px] sm:text-[15px]">
+            <span class="font-bold text-[#222]">{ref.author}</span>
+            <span class="text-[#666]">— {ref.role}</span>
+          </div>
+        </div>
+        <!-- Höger: bild -->
+        <div class="rounded-[20px] sm:rounded-[28px] lg:rounded-[36px] overflow-hidden bg-[#E5E5E5] aspect-[4/3] lg:aspect-[4/5]">
+          <img
+            src={ref.image}
+            alt={ref.name}
+            class="w-full h-full object-cover"
+            style="object-position: center 25%;"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BERÄTTELSE ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[820px]">
+      <p class="section-label">{ref.name}</p>
+      <div class="text-[16px] sm:text-[17px] md:text-[19px] leading-[1.7] text-[#333] space-y-[20px] sm:space-y-[24px]" style="text-wrap: pretty;">
+        {ref.body.map((p) => (<p set:html={p} />))}
+      </div>
+
+      <!-- Citat-block -->
+      <blockquote class="my-[40px] sm:my-[56px] border-l-[3px] border-[#D9222A] pl-[24px] sm:pl-[32px]">
+        <p class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.25rem, 2vw, 1.875rem); line-height: 1.3; text-wrap: balance;">
+          &ldquo;{ref.quote}&rdquo;
+        </p>
+        <footer class="mt-[16px] sm:mt-[20px] text-[14px] sm:text-[15px]">
+          <span class="font-bold text-[#222]">{ref.author}</span>
+          <span class="text-[#666]"> — {ref.role}</span>
+        </footer>
+      </blockquote>
+
+      <a href={ref.website.url} target="_blank" rel="noopener" class="inline-flex items-center text-[#D9222A] hover:underline font-medium text-[15px] sm:text-[16px]">
+        Besök {ref.website.label}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[6px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ FLER KUNDREFERENSER ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px]">
+      <p class="section-label" style="margin-bottom: 16px;">Fler kundreferenser</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
+        Vad andra kunder säger.
+      </h2>
+    </div>
+    <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {others.map((r) => (
+        <a href={`/kundreferenser/${r.slug}`} class="shrink-0 w-[280px] sm:w-[340px] md:w-[400px] h-[280px] sm:h-[320px] md:h-[360px] rounded-[16px] overflow-hidden relative block group no-underline">
+          <img src={r.image} alt={r.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{r.name}</span>
+            <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              <svg width="40" height="40" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section pt-[40px] sm:pt-[56px]">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Vill du också bli kund?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Samma personliga service väntar dig.
+          </h2>
+          <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Berätta vad du vill trycka, så hjälper vi dig med format, papper, tryckmetod, efterbehandling och en tydlig offert.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full justify-center">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
+  @media (min-width: 768px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
+  @media (min-width: 1024px) { .page-section-no-px { padding-top: 88px; padding-bottom: 88px; } }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>

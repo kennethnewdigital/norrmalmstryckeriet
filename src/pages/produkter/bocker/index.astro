@@ -439,7 +439,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
         { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
       ].map((ref) => (
         <a href={ref.href} class="shrink-0 w-[280px] sm:w-[400px] md:w-[600px] h-[200px] sm:h-[280px] md:h-[350px] rounded-[16px] overflow-hidden relative block group">
-          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
           <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
             <span class="typo-ref-name text-white">{ref.name}</span>

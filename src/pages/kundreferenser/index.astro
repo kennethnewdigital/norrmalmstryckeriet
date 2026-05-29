@@ -1,0 +1,168 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const refs = [
+  { slug: 'memira', name: 'Memira', image: '/images/references/memira.webp', teaser: 'Aldrig någonsin har jag tänkt att vi skulle byta tryckeri!', author: 'Åsa Bergendorf, Marknadschef' },
+  { slug: 'curlingforbundet', name: 'Svenska Curlingförbundet', image: '/images/references/curling.webp', teaser: 'Personlig service, optimalt bemötande och högsta kvalitet.', author: 'Stefan Lund, Förbundschef' },
+  { slug: 'kyrkbyran', name: 'Kyrkbyrån', image: '/images/references/kyrkbyran.webp', teaser: 'Det är framför allt den personliga servicen!', author: 'Ingrid Eliasson' },
+  { slug: 'odelius', name: 'Odelius & Co', image: '/images/references/odelius.webp', teaser: 'Modern kommunikation, 100 procent service och total pålitlighet.', author: 'Eva Odelius' },
+  { slug: 'zetatrade', name: 'Zetatrade AB', image: '/images/references/zetatrade.webp', teaser: 'Mycket hjärta, engagemang och kunskap.', author: 'Ann-Charlotte Höglund' },
+];
+
+// Korta partner-citat (från gamla sidan)
+const quotes = [
+  { quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.', author: 'Björn Jansson', role: 'Projektledare, Repro 8' },
+  { quote: 'De har en suverän förmåga att hitta tryckekonomiska lösningar på våra kreativa idéer.', author: 'Susanne Fridolfsson', role: 'VD, Gomorron Reklambyrå' },
+  { quote: 'De visar gång på gång en service- och kvalitetsförmåga som passar våra höga krav.', author: 'Jesper Odelius', role: 'COO, Set Up AB' },
+  { quote: 'En trygg och professionell partner. Trycket håller alltid absoluta världsklass och kommer på utlovad tid. Med andra ord, helt perfekt.', author: 'Patrick Kämpe', role: 'Jajja Media Group AB' },
+];
+---
+
+<Layout
+  title="Kundreferenser | Norrmalmstryckeriet"
+  description="Vad våra kunder säger om samarbetet med Norrmalmstryckeriet — Memira, Svenska Curlingförbundet, Kyrkbyrån, Odelius & Co och Zetatrade AB."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section pb-0">
+    <div class="page-container">
+      <p class="section-label">Kundreferenser</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Det kunderna minns är servicen.
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
+        Kvalitet och leveranstid är en självklarhet. Men det våra kunder återkommer till är den personliga servicen, omtanken och tryggheten. Här berättar några av dem om samarbetet.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDREFERENS-KORT ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+        {refs.map((r, i) => (
+          <a
+            href={`/kundreferenser/${r.slug}`}
+            class={`group no-underline relative rounded-[20px] overflow-hidden block ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+          >
+            <div class="aspect-[4/5] sm:aspect-[3/4] bg-[#E5E5E5] overflow-hidden">
+              <img
+                src={r.image}
+                alt={r.name}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                style="object-position: center 25%;"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-[24px] sm:p-[28px]">
+              <p class="!text-white/90 font-[var(--font-heading)] !font-normal mb-[12px]" style="font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem); line-height: 1.3; text-wrap: balance;">
+                &ldquo;{r.teaser}&rdquo;
+              </p>
+              <div class="flex items-end justify-between gap-[12px]">
+                <div>
+                  <span class="block typo-ref-name text-white">{r.name}</span>
+                  <span class="block !text-white/70 text-[12px] sm:text-[13px] mt-[2px]">{r.author}</span>
+                </div>
+                <span class="text-white shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                  <svg width="36" height="36" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KORTA PARTNER-CITAT (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Fler röster</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[40px] sm:mb-[56px] md:mb-[72px] max-w-[820px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Partners och byråer om Norrmalmstryckeriet.
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {quotes.map((q) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[28px] sm:p-[32px] lg:p-[40px] flex flex-col">
+              <p class="!text-white/90 font-[var(--font-heading)] !font-normal mb-[20px] sm:mb-[24px]" style="font-size: clamp(1.125rem, 1.5vw + 0.4rem, 1.5rem); line-height: 1.35; text-wrap: balance;">
+                &ldquo;{q.quote}&rdquo;
+              </p>
+              <div class="mt-auto text-[13px] sm:text-[14px]">
+                <span class="!text-white font-bold">{q.author}</span>
+                <span class="!text-white/60"> — {q.role}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#D9222A] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.85); margin-bottom: 16px;">Vill du också bli kund?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Berätta vad du vill trycka — vi gör resten.
+          </h2>
+          <p class="!text-white/85 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Samma personliga service och omtanke som våra kunder beskriver väntar dig. Skicka original eller en kort beskrivning så återkommer vi med ett förslag.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: rgba(0,0,0,0.20); color: #fff;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>
