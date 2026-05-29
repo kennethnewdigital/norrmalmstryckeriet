@@ -6,8 +6,10 @@ export function getStaticPaths() {
     {
       slug: 'trycksaker-digital-varld',
       title: 'Varför trycksaker fortfarande fungerar i en digital värld.',
-      date: '2025-06-04',
+      date: '2025.06.04',
       dateLabel: '4 juni 2025',
+      cat: 'insikt',
+      catLabel: 'Insikt',
       image: '/images/news/QR_CODE_BROSCHURE.webp',
       excerpt: 'I en tid där vi matas med tusentals digitala intryck varje dag fungerar det fysiska som en motsatsens kraft.',
       body: [
@@ -29,8 +31,10 @@ export function getStaticPaths() {
     {
       slug: 'digital-stress-tryckt-media',
       title: 'Digital stress och tryckt medias återkomst.',
-      date: '2025-02-26',
+      date: '2025.02.26',
       dateLabel: '26 februari 2025',
+      cat: 'forskning',
+      catLabel: 'Forskning',
       image: '/images/news/Stressfri-med-tatkilt-media.webp',
       excerpt: 'Hur vi hittar balansen i en skärmdominerad värld — och varför tryckt media kan vara en oväntad räddning.',
       body: [
@@ -50,8 +54,10 @@ export function getStaticPaths() {
     {
       slug: 'nya-mojligheter-investering',
       title: 'Nya möjligheter med vår senaste investering!',
-      date: '2024-12-03',
+      date: '2024.12.03',
       dateLabel: '3 december 2024',
+      cat: 'foretaget',
+      catLabel: 'Företaget',
       image: '/images/news/Roland_pop_art.webp',
       excerpt: 'Vi har investerat i en toppmodern Roland TrueVIS640 — storformatstryck med högsta kvalitet och hållbarhet.',
       body: [
@@ -69,9 +75,15 @@ export function getStaticPaths() {
     },
   ];
 
-  return posts.map((post) => ({
+  // Beräkna lästid (~200 ord/min)
+  const withMeta = posts.map((p) => {
+    const words = (p.excerpt + ' ' + p.body.map((b) => b.v).join(' ')).split(/\s+/).length;
+    return { ...p, readMin: Math.max(1, Math.round(words / 200)) };
+  });
+
+  return withMeta.map((post) => ({
     params: { slug: post.slug },
-    props: { post, all: posts },
+    props: { post, all: withMeta },
   }));
 }
 
@@ -81,40 +93,43 @@ const others = all.filter((p) => p.slug !== post.slug);
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 ---
 
-<Layout
-  title={`${post.title.replace(/\.$/, '')} | Norrmalmstryckeriet`}
-  description={post.excerpt}
->
+<Layout title={`${post.title.replace(/\.$/, '')} | Norrmalmstryckeriet`} description={post.excerpt}>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="page-section pb-0">
-    <div class="page-container max-w-[920px]">
-      <a href="/nyheter" class="inline-flex items-center text-[#888] hover:text-[#222] transition-colors text-[13px] sm:text-[14px] font-medium mb-[24px] sm:mb-[32px]">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mr-[6px]"><path d="M15 18l-6-6 6-6"/></svg>
-        Alla nyheter
-      </a>
-      <p class="section-label">Nyheter • {post.dateLabel}</p>
-      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px]" style="font-size: clamp(2rem, 4vw + 0.5rem, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+  <!-- ═══ HERO (centrerad) ═══ -->
+  <section class="pt-[48px] sm:pt-[64px] md:pt-[80px] px-[16px] sm:px-[24px] md:px-[32px]">
+    <div class="max-w-[820px] mx-auto text-center">
+      <div class="flex items-center justify-center gap-[10px] mb-[20px] sm:mb-[24px] text-[12px] sm:text-[13px]">
+        <span class="uppercase text-[#D9222A] font-semibold" style="letter-spacing: 1px;">{post.catLabel}</span>
+        <span class="text-[#D5D5D5]">•</span>
+        <span class="text-[#888] tabular-nums">{post.dateLabel}</span>
+        <span class="text-[#D5D5D5]">•</span>
+        <span class="text-[#888]">{post.readMin} min läsning</span>
+      </div>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[28px] sm:mb-[36px]" style="font-size: clamp(2rem, 4vw + 0.5rem, 4rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
         {post.title}
       </h1>
-      <p class="text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed text-[#444]" style="text-wrap: pretty;">
-        {post.excerpt}
-      </p>
     </div>
-    <div class="page-container max-w-[1100px] mt-[40px] sm:mt-[56px]">
+  </section>
+
+  <!-- ═══ FULLBREDDS HERO-BILD ═══ -->
+  <section class="px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+    <div class="max-w-[1100px] mx-auto">
       <div class="rounded-[20px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden bg-[#E5E5E5] aspect-[16/9]">
         <img src={post.image} alt={post.title} class="w-full h-full object-cover" loading="eager" decoding="async" />
       </div>
     </div>
   </section>
 
-  <!-- ═══ ARTIKELTEXT ═══ -->
-  <section class="page-section">
-    <div class="page-container max-w-[760px]">
+  <!-- ═══ ARTIKELTEXT (smal spalt) ═══ -->
+  <article class="px-[16px] sm:px-[24px] md:px-[32px] pt-[40px] sm:pt-[56px] md:pt-[72px] pb-[16px]">
+    <div class="max-w-[680px] mx-auto">
+      <p class="text-[18px] sm:text-[20px] md:text-[22px] leading-[1.55] text-[#222] font-medium mb-[28px] sm:mb-[36px]" style="text-wrap: pretty;">
+        {post.excerpt}
+      </p>
       <div class="space-y-[20px] sm:space-y-[24px]">
         {post.body.map((block) => (
           block.t === 'h2' ? (
-            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] pt-[16px] sm:pt-[24px]" style="font-size: clamp(1.5rem, 2.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">{block.v}</h2>
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] pt-[16px] sm:pt-[24px]" style="font-size: clamp(1.5rem, 2.5vw, 2.125rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">{block.v}</h2>
           ) : block.t === 'quote' ? (
             <blockquote class="border-l-[3px] border-[#D9222A] pl-[24px] sm:pl-[32px] my-[8px]">
               <p class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.375rem, 2vw, 1.875rem); line-height: 1.3; text-wrap: balance;">&ldquo;{block.v}&rdquo;</p>
@@ -124,52 +139,52 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           )
         ))}
       </div>
+    </div>
+  </article>
 
-      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mt-[40px] sm:mt-[56px] pt-[32px] sm:pt-[40px] border-t border-[#E5E5E5]">
-        <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
-          Begär offert<Fragment set:html={arrowSvg} />
-        </a>
-        <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
-          Kontakta oss<Fragment set:html={arrowSvg} />
-        </a>
+  <!-- ═══ CTA — "Vill du veta mer?" ═══ -->
+  <section class="px-[16px] sm:px-[24px] md:px-[32px] py-[40px] sm:py-[56px]">
+    <div class="max-w-[680px] mx-auto">
+      <div class="bg-[#F3F3F3] rounded-[24px] sm:rounded-[32px] px-[28px] sm:px-[44px] py-[36px] sm:py-[48px] text-center">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+          Vill du veta mer?
+        </h2>
+        <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#555] mb-[24px] sm:mb-[28px] max-w-[440px] mx-auto" style="text-wrap: pretty;">
+          Berätta vad du vill trycka, så hjälper vi dig med format, papper, tryckmetod och en tydlig offert.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-[10px] sm:gap-[12px] justify-center">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ FLER NYHETER — bento lg+, sidoscroll <lg ═══ -->
-  <section class="page-section-no-px pt-0">
-    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[28px] sm:mb-[40px]">
-      <p class="section-label" style="margin-bottom: 16px;">Fler nyheter</p>
-      <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
+  <!-- ═══ FLER NYHETER (grid) ═══ -->
+  <section class="px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] pb-[64px] sm:pb-[80px] md:pb-[100px]">
+    <div class="max-w-[1440px] mx-auto">
+      <p class="section-label" style="margin-bottom: 12px;">Fler nyheter</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
         Mer läsning.
       </h2>
-    </div>
-
-    <!-- MOBILE/TABLET: sidoscroll -->
-    <div class="lg:hidden">
-      <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
-        {others.map((p) => (
-          <a href={`/nyheter/${p.slug}`} class="shrink-0 w-[300px] sm:w-[360px] md:w-[420px] block group no-underline snap-start">
-            <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5] mb-[16px]">
-              <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[8px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
-            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] leading-[1.2] group-hover:text-[#D9222A] transition-colors">{p.title}</h3>
-          </a>
-        ))}
-      </div>
-    </div>
-
-    <!-- DESKTOP: bento (2 kort fyller bredden) -->
-    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
-      <div class="grid grid-cols-2 gap-[24px]">
+      <div class="grid sm:grid-cols-2 gap-[24px] sm:gap-[28px]">
         {others.map((p) => (
           <a href={`/nyheter/${p.slug}`} class="block group no-underline">
-            <div class="rounded-[20px] overflow-hidden aspect-[16/9] bg-[#E5E5E5] mb-[20px]">
-              <img src={p.image} alt={p.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="rounded-[20px] overflow-hidden aspect-[16/9] bg-[#E5E5E5] mb-[18px]">
+              <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
-            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[10px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
-            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[24px] leading-[1.15] group-hover:text-[#D9222A] transition-colors" style="letter-spacing: -0.02em; text-wrap: balance;">{p.title}</h3>
+            <div class="flex items-center gap-[10px] mb-[10px] text-[12px]">
+              <span class="uppercase text-[#D9222A] font-semibold" style="letter-spacing: 1px;">{p.catLabel}</span>
+              <span class="text-[#D5D5D5]">•</span>
+              <span class="text-[#888] tabular-nums">{p.dateLabel}</span>
+              <span class="text-[#D5D5D5]">•</span>
+              <span class="text-[#888]">{p.readMin} min</span>
+            </div>
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[22px] sm:text-[24px] leading-[1.15] group-hover:text-[#D9222A] transition-colors" style="letter-spacing: -0.02em; text-wrap: balance;">{p.title}</h3>
           </a>
         ))}
       </div>
@@ -179,18 +194,9 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 </Layout>
 
 <style>
-  .page-container { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; }
-  .page-section { padding-top: 64px; padding-bottom: 64px; padding-left: 16px; padding-right: 16px; }
-  @media (min-width: 640px) { .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; } }
-  @media (min-width: 768px) { .page-section { padding-top: 100px; padding-bottom: 100px; } }
-  @media (min-width: 1024px) { .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; } }
-  .page-section-no-px { padding-top: 48px; padding-bottom: 48px; }
-  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
-  @media (min-width: 768px) { .page-section-no-px { padding-top: 64px; padding-bottom: 64px; } }
-  @media (min-width: 1024px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
   .section-label {
     font-family: var(--font-body); font-size: 11px; line-height: 1; letter-spacing: 1.5px;
     text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 20px;
   }
-  @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; } }
+  @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; } }
 </style>
