@@ -1,0 +1,351 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+// Omvänd kronologi — nyast först
+const timeline = [
+  {
+    id: 'idag',
+    year: 'I dag',
+    nav: 'I dag',
+    title: 'Ett lokalt tryckeri med hela hantverket nära',
+    body: [
+      'I dag finns Norrmalmstryckeriet på Hammarbacken i Sollentuna. Här möts original, prepress, tryck, efterbehandling, storformat och rådgivning i samma verksamhet. Det gör att många frågor kan lösas nära produktionen och att kunden får en tryggare väg från idé till färdig trycksak.',
+      'Kunderna finns i många olika branscher — företag, organisationer, myndigheter, bostadsrättsföreningar, byråer, kommunnära verksamheter, större koncerner och lokala bolag. Uppdragen varierar, men behovet är ofta detsamma: en trycksak som känns professionell, fungerar praktiskt och blir rätt producerad.',
+      'Oavsett format handlar det om samma sak: att få ordning på detaljerna. Rätt original, rätt papper, rätt tryckmetod, rätt efterbehandling, rätt leverans och rätt känsla i handen.',
+    ],
+  },
+  {
+    id: '2020-talet',
+    year: '2020-talet',
+    nav: '2020-talet',
+    title: 'Rådgivningen blir viktigare',
+    body: [
+      'Under 2020-talet har tryckbranschen fortsatt förändras. Många kunder arbetar dagligen med digital kommunikation och behöver samtidigt stöd i hur en fysisk trycksak ska planeras, produceras och användas. Valmöjligheterna har blivit fler: digitaltryck, offsettryck, storformat, olika papper, format, bindningar, ytbehandlingar och distributionslösningar.',
+      'För många kunder börjar frågan med: vad ska trycksaken göra? Ska den skapa förtroende, informera tydligt, följa med i ett utskick, ligga i en monter, användas i ett säljmöte eller representera ett varumärke över tid?',
+      'När syftet är tydligt blir resten enklare. Då går det att välja rätt format, papper, upplaga, tryckmetod och efterbehandling. En trycksak blir starkare när detaljerna samverkar.',
+    ],
+  },
+  {
+    id: 'miljo',
+    year: 'Miljö',
+    nav: 'Miljöarbetet',
+    title: 'Svanenmärkt produktion och ansvar i vardagen',
+    body: [
+      'Miljöarbetet har länge varit en naturlig del av Norrmalmstryckeriets utveckling. Företaget var tidigt FSC-certifierat inom grafisk produktion och har under lång tid arbetat med spårbarhet, materialval och ansvarsfull produktion. I dag är Norrmalmstryckeriet Svanenmärkt.',
+      'Svanen omfattar mer än pappret — det handlar om kemikalier, energi, återvinning, tvättvätskor, produktionsprocesser och vilka material som används. Äldre processer har utvecklats till modernare produktion med vegetabiliska tvättvätskor, framkallningsfria plåtar, återvinning av plåt och papper samt bättre kontroll över produktionskedjan.',
+      'För Norrmalmstryckeriet är miljöarbetet en del av hur ett professionellt tryckeri ska fungera: genomtänkt, spårbart, kontrollerat och integrerat i vardagens produktion.',
+    ],
+  },
+  {
+    id: '2014',
+    year: '2014',
+    nav: '2014',
+    title: 'Sandvikens Tryckeri stärker bredden',
+    body: [
+      '2014 tog Norrmalmstryckeriet över Sandvikens Tryckeri. Det blev ett viktigt steg i företagets utveckling och stärkte både kundbasen och den grafiska bredden. Kundrelationerna och erfarenheten blev en viktig del av den fortsatta resan.',
+      'Det här visar en återkommande del av företagets tillväxt: Norrmalmstryckeriet har vuxit genom att ta vidare relationer, kunder och grafiskt kunnande från en bransch i förändring. Det har gjort företaget bredare, starkare och mer användbart för kunder med återkommande trycksaksbehov.',
+    ],
+  },
+  {
+    id: '2008-2009',
+    year: '2008/09',
+    nav: '2008/2009',
+    title: 'Flytten till Hammarbacken',
+    body: [
+      'Vid årsskiftet 2008/2009 flyttade Norrmalmstryckeriet till dagens lokaler på Hammarbacken i Sollentuna — ett av de största stegen i företagets moderna historia.',
+      'Lokalerna gav bättre produktionsflöden. Prepress, tryck, arbetsledning och efterbehandling kunde arbeta närmare varandra. En femfärgs Komori offsetpress blev en central del av produktionen, tillsammans med digitalpressar och utrustning för efterbehandling, stansning, prägling, perforering och storformat.',
+      'När original, prepress, tryck och efterbehandling finns nära varandra blir helheten starkare. Frågor kan lösas snabbare och detaljer fångas upp tidigare.',
+    ],
+  },
+  {
+    id: '2008-ctp',
+    year: '2008',
+    nav: '2008 — CTP',
+    title: 'CTP och modernare prepress',
+    body: [
+      'Inför flytten till Hammarbacken investerade Norrmalmstryckeriet i CTP, dator-till-plåt. Det innebär att steget från digitalt original till tryckplåt blir mer direkt, kontrollerat och effektivt. I äldre flöden gick mycket via film och traditionell repro — med CTP kan tryckplåtar framställas direkt från den digitala filen.',
+      'Det är ett bra exempel på hur produktionen utvecklats med ny teknik, samtidigt som hantverkskunnandet finns kvar i varje steg. Tekniken har förändrats. Kravet på noggrannhet består.',
+    ],
+  },
+  {
+    id: '2000-talet',
+    year: '2000-talet',
+    nav: '2000-talet',
+    title: 'Digitaltrycket öppnar nya möjligheter',
+    body: [
+      'I början av 2000-talet blev digitaltrycket en allt viktigare del av produktionen. Kortare upplagor blev mer ekonomiska, snabbare produktion blev möjlig och fler versioner kunde tas fram med större flexibilitet.',
+      'Digitaltrycket blev ett starkt komplement till offsettrycket. Offset fortsatte vara rätt val när upplaga, färgkvalitet, papperskänsla och efterbehandling vägde tyngre — digitaltryck blev rätt val när snabbhet, flexibilitet och versionering var viktigare.',
+      'Det är fortfarande en av styrkorna: att kunna välja metod efter uppdraget. Tryckmetoden ska stödja syftet, upplagan, materialet och det färdiga resultatet.',
+    ],
+  },
+  {
+    id: 'storformat',
+    year: 'Storformat',
+    nav: 'Storformat',
+    title: 'Större ytor, tydligare synlighet',
+    body: [
+      'Med storformat kunde Norrmalmstryckeriet hjälpa kunder med trycksaker som tar större plats: affischer, roll-ups, vepor, skyltmaterial, gatupratare, re-board och figurskurna presentationer för butik, mässa, event, kontor och offentlig miljö.',
+      'Storformat handlar om synlighet. Materialet ska fungera på avstånd, ha rätt format för platsen, tåla miljön och vara enkelt att montera, transportera eller presentera. Här blir materialvalet centralt — rätt lösning för rätt plats.',
+    ],
+  },
+  {
+    id: '1994',
+    year: '1994',
+    nav: '1994',
+    title: 'Nästa generation kliver in',
+    body: [
+      'Runt 1994 kliver Mats tydligare in i Norrmalmstryckeriet. Det är en viktig del av berättelsen, eftersom mycket av företagets identitet fortfarande bygger på personlig erfarenhet och närhet till produktionen.',
+      'Kunskapen finns hos människor som arbetar med tryck varje dag — människor som kan maskinerna, materialen, färgerna och besluten bakom en färdig trycksak. Det är också därför dialogen med kunden är så viktig. En fil kan se bra ut på skärm men behöva justeras för produktion. Ett papper kan förändra känslan helt. En falsning kan påverka hur en folder öppnas.',
+    ],
+  },
+  {
+    id: '1993',
+    year: '1993',
+    nav: '1993',
+    title: 'En ny ägarfas och en tydlig fortsättning',
+    body: [
+      '1993 blev ett avgörande år. I samband med förändringarna kring Mile Tryck fick Arne möjlighet att köpa vidare Norrmalmstryckeriet. Det blev starten på en ny fas i företagets historia.',
+      'I en bransch präglad av teknikskiften, prispress och förändrade kundbeteenden valde Norrmalmstryckeriet att fortsätta bygga på det som alltid varit viktigast: kundrelationer, produktionserfarenhet och grafiskt kunnande. Att hjälpa kunder, att producera, att lösa praktiska detaljer och att ta varje trycksak hela vägen från idé eller original till färdig produkt.',
+    ],
+  },
+  {
+    id: '1990-talet',
+    year: '1990-talet',
+    nav: '1990-talet',
+    title: 'Bredd, kunder och grafiskt kunnande',
+    body: [
+      'Under 1990-talet växte Norrmalmstryckeriet vidare genom ett brett erbjudande och nära kundrelationer. Det var ett tryckeri för många typer av uppdrag: visitkort, foldrar, blanketter, restaurangmaterial, block, kuponger, böcker, årsredovisningar, utskick, originalproduktion och efterbehandling.',
+      'Bland kunderna fanns större organisationer, reklambyråer, restaurangverksamheter och företag med återkommande behov. Den typen av uppdrag visar vad tryck ofta är i praktiken: teknik, logistik, materialkunskap, precision och förmågan att få många detaljer att stämma samtidigt.',
+    ],
+  },
+  {
+    id: '1990',
+    year: '1990',
+    nav: '1990',
+    title: 'Flytten från Stockholm till Sollentuna',
+    body: [
+      'Runt 1990 flyttade Norrmalmstryckeriet från Döbelnsgatan i Stockholm till Sollentuna. Först gick flytten till Turbergsallé vid Sollentuna centrum — början på en ny fas: från innerstadens tryckerimiljö till större möjligheter att samla produktion, kunder och grafisk kompetens i norra Stockholm.',
+      'Närheten till kunden fanns kvar, samtidigt som verksamheten fick bättre förutsättningar att utvecklas. Norrmalmstryckeriet blev ett Stockholmstryckeri med bas i Sollentuna, nära företag, föreningar, organisationer, byråer och kommunnära verksamheter i hela regionen.',
+    ],
+  },
+  {
+    id: '1987',
+    year: '1987',
+    nav: '1987',
+    title: 'En del av Mile Tryck',
+    body: [
+      '1987 blev Norrmalmstryckeriet en del av Mile Tryck, ett grafiskt bolag med koppling till bland annat skivproduktion, etiketter och trycksaker för musikbranschen.',
+      'Det var en period som visar hur bred grafisk produktion kunde vara — skivetiketter, omslag, restaurangmaterial, notböcker, kuponger, block, foldrar och trycksaker för stora organisationer. Olika kunder, material, upplagor och krav, men samma grundprincip: trycksaken skulle fungera när den väl användes.',
+    ],
+  },
+  {
+    id: '1980-talet',
+    year: '1980-talet',
+    nav: '1980-talet',
+    title: 'Norrmalmstryckeriet på Döbelnsgatan',
+    body: [
+      'Under 1980-talet var Norrmalmstryckeriet starkt förankrat i Stockholm. Verksamheten bedrevs på Döbelnsgatan, mitt i stadens grafiska miljö — en tid då trycksaker hade en självklar roll i nästan all kommunikation.',
+      'Företag behövde blanketter, block, foldrar, produktblad, kuponger, årsredovisningar och säljmaterial. Restauranger behövde menyer. Reklambyråer behövde tryck som kunde bära både idé och genomförande. Musikbranschen behövde skivkonvolut, etiketter och notmaterial. Det var praktiskt, tekniskt och krävde erfarenhet.',
+    ],
+  },
+  {
+    id: '1963',
+    year: '1963',
+    nav: '1963',
+    title: 'Det moderna bolaget tar form',
+    body: [
+      'Under 1960-talet tar det moderna Norrmalmstryckeriet tydligare form, med 1963 som registreringsår. Det gör företagets historia intressant på två nivåer: dels anorna från slutet av 1800-talet — namnet, hantverket och den grafiska traditionen — dels det moderna bolaget som utvecklats genom nya ägare, lokaler, kunder, maskiner och produktionssätt.',
+      'Norrmalmstryckeriet bär både erfarenheten från äldre grafiskt hantverk och kunskapen från flera teknikskiften: från sättning, repro, film och plåt till digitala originalflöden, CTP, offsettryck, digitaltryck, storformat och modern efterbehandling. Historien blir värdefull när den hjälper kunden att välja rätt i dag.',
+    ],
+  },
+  {
+    id: '1896',
+    year: '1896',
+    nav: '1896 — Anor',
+    title: 'Anor i Stockholms grafiska hantverkstradition',
+    body: [
+      'Norrmalmstryckeriet har anor tillbaka till slutet av 1800-talet, med 1896 som en viktig hållpunkt i företagets egen berättelse. Det var en tid då trycksaker byggdes genom hantverk, yrkesskicklighet och känsla för detaljer. Sättning, typografi, repro, papper, färg, tryck, skärning, falsning och efterbehandling krävde människor som visste hur material och maskiner samspelade.',
+      'Trycksaken var en central del av hur företag, föreningar, kultur, handel och samhällsinformation nådde ut. Det arvet finns kvar i Norrmalmstryckeriet. I dag ser tekniken annorlunda ut — men grundfrågan är densamma: vad ska trycksaken göra för mottagaren?',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Historia – från anor i 1890-talets Stockholm till dagens tryckeri i Sollentuna | Norrmalmstryckeriet"
+  description="Norrmalmstryckeriets historia i omvänd kronologi — från dagens Svanenmärkta produktion i Sollentuna tillbaka till grafiskt hantverk i 1890-talets Stockholm."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section pb-0">
+    <div class="page-container">
+      <p class="section-label">Historia</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px] max-w-[1100px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.75rem); line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance;" lang="sv">
+        Från dagens tryckeri i Sollentuna till anor från slutet av 1800-talet.
+      </h1>
+      <p class="text-[16px] sm:text-[19px] md:text-[21px] leading-relaxed text-[#444] max-w-[820px]" style="text-wrap: pretty;">
+        I dag är Norrmalmstryckeriet ett Svanenmärkt tryckeri i Sollentuna med offsettryck, digitaltryck, storformat, originalhantering, prepress, efterbehandling och rådgivning nära produktionen. För att förstå hur vi blev det tryckeri vi är i dag följer vi resan bakåt — genom teknikskiften, flyttar och nya generationer, tillbaka till rötterna i Stockholms grafiska hantverkstradition.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ TIDSLINJE — sticky nav + sektioner ═══ -->
+  <section class="page-section">
+    <div class="page-container">
+      <div class="grid lg:grid-cols-[220px_1fr] xl:grid-cols-[260px_1fr] gap-[40px] lg:gap-[64px] xl:gap-[80px] items-start">
+
+        <!-- Vänster: sticky snabblänkar -->
+        <aside class="hidden lg:block sticky top-[100px]">
+          <p class="section-label" style="margin-bottom: 20px;">Tidslinje</p>
+          <nav id="timeline-nav" class="flex flex-col gap-[2px] border-l border-[#E5E5E5]">
+            {timeline.map((t) => (
+              <a
+                href={`#${t.id}`}
+                data-target={t.id}
+                class="timeline-link relative -ml-px pl-[18px] py-[8px] text-[14px] text-[#888] border-l-2 border-transparent hover:text-[#222] transition-colors"
+              >
+                {t.nav}
+              </a>
+            ))}
+          </nav>
+        </aside>
+
+        <!-- Höger: tidslinje-sektioner -->
+        <div class="flex flex-col">
+          {timeline.map((t, i) => (
+            <article id={t.id} class="timeline-section scroll-mt-[100px] py-[40px] sm:py-[56px] md:py-[64px] first:pt-0 border-b border-[#EDEDED] last:border-b-0">
+              <div class="grid md:grid-cols-[auto_1fr] gap-[20px] md:gap-[48px] lg:gap-[64px] items-start">
+                <!-- Stort årtal -->
+                <span class="block font-[var(--font-heading)] !font-normal text-[#E2E2E2] leading-[0.9] select-none" style="font-size: clamp(3.25rem, 7vw, 7rem); letter-spacing: -0.04em;">
+                  {t.year}
+                </span>
+                <!-- Innehåll -->
+                <div class="md:pt-[10px] max-w-[680px]">
+                  <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.5rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+                    {t.title}
+                  </h2>
+                  <div class="space-y-[16px] text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#444]" style="text-wrap: pretty;">
+                    {t.body.map((p) => (<p>{p}</p>))}
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ AVSLUT / OUTRO ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[920px]">
+      <div class="bg-[#F3F3F3] rounded-[24px] sm:rounded-[36px] px-[28px] sm:px-[48px] md:px-[64px] py-[48px] sm:py-[64px] md:py-[80px]">
+        <p class="section-label">Erfarenheten följer med framåt</p>
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Kärnan är densamma.
+        </h2>
+        <div class="space-y-[16px] text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#444]" style="text-wrap: pretty;">
+          <p>Norrmalmstryckeriet har gått från stadstryckeri till modernt produktionstryckeri i Sollentuna. Från äldre grafiskt hantverk till digitala originalflöden. Från repro och film till CTP och moderna tryckplåtar. Från Döbelnsgatan i Stockholm till Hammarbacken i Sollentuna.</p>
+          <p>Vi hjälper våra kunder att ta fram trycksaker som fungerar i verkligheten — som känns genomarbetade, håller ihop budskap, material och utförande, och går att lämna över med stolthet.</p>
+          <p class="text-[#222] font-medium">Med erfarenheten från det grafiska hantverket. Med tekniken från dagens produktion. Med viljan att hjälpa varje kund att välja rätt väg från idé till färdig trycksak.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mt-[32px] sm:mt-[40px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Begär offert<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/om-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+            Om oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+
+  /* Aktiv snabblänk */
+  .timeline-link.is-active {
+    color: #222;
+    border-left-color: #D9222A;
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  function initHistoria() {
+    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.timeline-link'));
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.timeline-section'));
+    if (!links.length || !sections.length) return;
+
+    const byId = new Map(links.map((l) => [l.dataset.target, l]));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            links.forEach((l) => l.classList.remove('is-active'));
+            const active = byId.get(entry.target.id);
+            if (active) active.classList.add('is-active');
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+
+    // Mjuk scroll vid klick
+    links.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const id = link.dataset.target;
+        const target = id ? document.getElementById(id) : null;
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+  initHistoria();
+  document.addEventListener('astro:after-swap', initHistoria);
+</script>
