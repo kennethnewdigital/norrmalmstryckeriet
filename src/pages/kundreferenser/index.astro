@@ -4,11 +4,11 @@ import Layout from '../../layouts/Layout.astro';
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 
 const refs = [
-  { slug: 'memira', name: 'Memira', image: '/images/references/memira.webp', teaser: 'Aldrig någonsin har jag tänkt att vi skulle byta tryckeri!', author: 'Åsa Bergendorf, Marknadschef' },
-  { slug: 'curlingforbundet', name: 'Svenska Curlingförbundet', image: '/images/references/curling.webp', teaser: 'Personlig service, optimalt bemötande och högsta kvalitet.', author: 'Stefan Lund, Förbundschef' },
-  { slug: 'kyrkbyran', name: 'Kyrkbyrån', image: '/images/references/kyrkbyran.webp', teaser: 'Det är framför allt den personliga servicen!', author: 'Ingrid Eliasson' },
-  { slug: 'odelius', name: 'Odelius & Co', image: '/images/references/odelius.webp', teaser: 'Modern kommunikation, 100 procent service och total pålitlighet.', author: 'Eva Odelius' },
-  { slug: 'zetatrade', name: 'Zetatrade AB', image: '/images/references/zetatrade.webp', teaser: 'Mycket hjärta, engagemang och kunskap.', author: 'Ann-Charlotte Höglund' },
+  { slug: 'memira', name: 'Memira', image: '/images/references/memira.webp', teaser: 'Aldrig någonsin har jag tänkt att vi skulle byta tryckeri!', author: 'Åsa Bergendorf, Marknadschef', bento: 'col-span-2 row-span-2' },
+  { slug: 'curlingforbundet', name: 'Svenska Curlingförbundet', image: '/images/references/curling.webp', teaser: 'Personlig service, optimalt bemötande och högsta kvalitet.', author: 'Stefan Lund, Förbundschef', bento: '' },
+  { slug: 'kyrkbyran', name: 'Kyrkbyrån', image: '/images/references/kyrkbyran.webp', teaser: 'Det är framför allt den personliga servicen!', author: 'Ingrid Eliasson', bento: '' },
+  { slug: 'odelius', name: 'Odelius & Co', image: '/images/references/odelius.webp', teaser: 'Modern kommunikation, 100 procent service och total pålitlighet.', author: 'Eva Odelius', bento: '' },
+  { slug: 'zetatrade', name: 'Zetatrade AB', image: '/images/references/zetatrade.webp', teaser: 'Mycket hjärta, engagemang och kunskap.', author: 'Ann-Charlotte Höglund', bento: 'col-span-2' },
 ];
 
 // Korta partner-citat (från gamla sidan)
@@ -38,34 +38,45 @@ const quotes = [
     </div>
   </section>
 
-  <!-- ═══ KUNDREFERENS-KORT ═══ -->
-  <section class="page-section">
-    <div class="page-container">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
-        {refs.map((r, i) => (
-          <a
-            href={`/kundreferenser/${r.slug}`}
-            class={`group no-underline relative rounded-[20px] overflow-hidden block ${i === 0 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
-          >
-            <div class="aspect-[4/5] sm:aspect-[3/4] bg-[#E5E5E5] overflow-hidden">
-              <img
-                src={r.image}
-                alt={r.name}
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                style="object-position: center 25%;"
-              />
-            </div>
+  <!-- ═══ KUNDREFERENS-KORT — bento lg+, sidoscroll <lg ═══ -->
+  <section class="page-section-no-px">
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div id="ref-scroll" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
+        {refs.map((r) => (
+          <a href={`/kundreferenser/${r.slug}`} class="shrink-0 w-[280px] sm:w-[340px] md:w-[400px] aspect-[3/4] rounded-[20px] overflow-hidden relative block group no-underline snap-start">
+            <img src={r.image} alt={r.name} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-[24px] sm:p-[28px]">
-              <p class="!text-white/90 font-[var(--font-heading)] !font-normal mb-[12px]" style="font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem); line-height: 1.3; text-wrap: balance;">
-                &ldquo;{r.teaser}&rdquo;
-              </p>
+              <p class="!text-white/90 font-[var(--font-heading)] !font-normal mb-[12px]" style="font-size: clamp(1rem, 1.2vw + 0.5rem, 1.25rem); line-height: 1.3; text-wrap: balance;">&ldquo;{r.teaser}&rdquo;</p>
               <div class="flex items-end justify-between gap-[12px]">
                 <div>
                   <span class="block typo-ref-name text-white">{r.name}</span>
                   <span class="block !text-white/70 text-[12px] sm:text-[13px] mt-[2px]">{r.author}</span>
+                </div>
+                <span class="text-white shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                  <svg width="36" height="36" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- DESKTOP: bento -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-3 auto-rows-[280px] gap-[16px]">
+        {refs.map((r) => (
+          <a href={`/kundreferenser/${r.slug}`} class={`${r.bento} rounded-[20px] overflow-hidden relative block group no-underline`}>
+            <img src={r.image} alt={r.name} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-[28px] lg:p-[32px]">
+              <p class="!text-white/90 font-[var(--font-heading)] !font-normal mb-[12px]" style={`line-height: 1.3; text-wrap: balance; font-size: ${r.bento.includes('row-span-2') ? '1.5rem' : '1.125rem'};`}>&ldquo;{r.teaser}&rdquo;</p>
+              <div class="flex items-end justify-between gap-[12px]">
+                <div>
+                  <span class="block typo-ref-name text-white">{r.name}</span>
+                  <span class="block !text-white/70 text-[13px] mt-[2px]">{r.author}</span>
                 </div>
                 <span class="text-white shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
                   <svg width="36" height="36" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
@@ -152,6 +163,13 @@ const quotes = [
   @media (min-width: 1024px) {
     .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
   }
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
+  @media (min-width: 768px) { .page-section-no-px { padding-top: 64px; padding-bottom: 64px; } }
+  @media (min-width: 1024px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
   .section-label {
     font-family: var(--font-body);
     font-size: 11px;

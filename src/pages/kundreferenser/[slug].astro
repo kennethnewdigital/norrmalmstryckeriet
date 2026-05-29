@@ -160,27 +160,49 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
     </div>
   </section>
 
-  <!-- ═══ FLER KUNDREFERENSER ═══ -->
+  <!-- ═══ FLER KUNDREFERENSER — bento lg+, sidoscroll <lg ═══ -->
   <section class="page-section-no-px">
-    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px]">
+    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[28px] sm:mb-[40px]">
       <p class="section-label" style="margin-bottom: 16px;">Fler kundreferenser</p>
       <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.025em;" lang="sv">
         Vad andra kunder säger.
       </h2>
     </div>
-    <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
-      {others.map((r) => (
-        <a href={`/kundreferenser/${r.slug}`} class="shrink-0 w-[280px] sm:w-[340px] md:w-[400px] h-[280px] sm:h-[320px] md:h-[360px] rounded-[16px] overflow-hidden relative block group no-underline">
-          <img src={r.image} alt={r.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
-            <span class="typo-ref-name text-white">{r.name}</span>
-            <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
-              <svg width="40" height="40" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-            </span>
-          </div>
-        </a>
-      ))}
+
+    <!-- MOBILE/TABLET: sidoscroll -->
+    <div class="lg:hidden">
+      <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
+        {others.map((r) => (
+          <a href={`/kundreferenser/${r.slug}`} class="shrink-0 w-[280px] sm:w-[340px] md:w-[400px] aspect-[3/4] rounded-[16px] overflow-hidden relative block group no-underline snap-start">
+            <img src={r.image} alt={r.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
+              <span class="typo-ref-name text-white">{r.name}</span>
+              <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                <svg width="40" height="40" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- DESKTOP: bento (4 kort fyller bredden) -->
+    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
+      <div class="grid grid-cols-3 auto-rows-[300px] gap-[16px]">
+        {others.map((r, i) => (
+          <a href={`/kundreferenser/${r.slug}`} class={`${i === 0 || i === 3 ? 'col-span-2' : 'col-span-1'} rounded-[16px] overflow-hidden relative block group no-underline`}>
+            <img src={r.image} alt={r.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+            <div class="absolute bottom-[28px] left-[28px] right-[28px] flex items-end justify-between">
+              <span class="typo-ref-name text-white">{r.name}</span>
+              <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                <svg width="40" height="40" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
