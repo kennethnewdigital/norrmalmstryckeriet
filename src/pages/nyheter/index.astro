@@ -42,35 +42,31 @@ const filters = categories.filter((c) => c.id === 'all' || usedCats.has(c.id));
         ))}
       </div>
 
-      <!-- Lista -->
-      <div id="news-list">
+      <!-- Lista — kort, 2 i bredd på sm+ -->
+      <div id="news-list" class="grid sm:grid-cols-2 gap-x-[28px] md:gap-x-[40px] lg:gap-x-[56px] gap-y-[40px] sm:gap-y-[52px] md:gap-y-[64px] mt-[28px] sm:mt-[40px]">
         {posts.map((p) => (
           <a
             href={`/nyheter/${p.slug}`}
             data-cat={p.cat}
-            class="news-row group block no-underline border-b border-[#EDEDED] py-[28px] sm:py-[36px] md:py-[44px]"
+            class="news-row group block no-underline"
           >
-            <div class="grid md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[20px] md:gap-[40px] lg:gap-[56px] items-center">
-              <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5]">
-                <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div>
-                <div class="flex items-center gap-[10px] mb-[12px] sm:mb-[16px] flex-wrap">
-                  <span class="text-[12px] sm:text-[13px] text-[#888] font-medium tabular-nums">{p.dotDate}</span>
-                  <span class="text-[#D5D5D5]">•</span>
-                  <span class="text-[11px] sm:text-[12px] uppercase text-[#D9222A] font-semibold" style="letter-spacing: 1px;">{p.catLabel}</span>
-                  <span class="text-[#D5D5D5]">•</span>
-                  <span class="text-[12px] sm:text-[13px] text-[#888]">{p.readMin} min</span>
-                </div>
-                <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px] group-hover:text-[#D9222A] transition-colors" style="font-size: clamp(1.5rem, 2.5vw + 0.4rem, 2.5rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
-                  {p.title}
-                </h2>
-                <p class="text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#555] max-w-[640px] mb-[16px]" style="text-wrap: pretty;">{p.excerpt}</p>
-                <span class="inline-flex items-center text-[14px] sm:text-[15px] font-medium text-[#222] group-hover:text-[#D9222A] transition-colors">
-                  Läs artikeln<Fragment set:html={arrowSvg} />
-                </span>
-              </div>
+            <div class="rounded-[16px] sm:rounded-[20px] overflow-hidden aspect-[16/10] bg-[#E5E5E5] mb-[18px] sm:mb-[22px]">
+              <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
+            <div class="flex items-center gap-[10px] mb-[10px] sm:mb-[14px] flex-wrap">
+              <span class="text-[12px] sm:text-[13px] text-[#888] font-medium tabular-nums">{p.dotDate}</span>
+              <span class="text-[#D5D5D5]">•</span>
+              <span class="text-[11px] sm:text-[12px] uppercase text-[#D9222A] font-semibold" style="letter-spacing: 1px;">{p.catLabel}</span>
+              <span class="text-[#D5D5D5]">•</span>
+              <span class="text-[12px] sm:text-[13px] text-[#888]">{p.readMin} min</span>
+            </div>
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[10px] sm:mb-[14px] group-hover:text-[#D9222A] transition-colors" style="font-size: clamp(1.375rem, 1.4vw + 0.6rem, 1.875rem); line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+              {p.title}
+            </h2>
+            <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#555] mb-[16px]" style="text-wrap: pretty;">{p.excerpt}</p>
+            <span class="inline-flex items-center text-[14px] sm:text-[15px] font-medium text-[#222] group-hover:text-[#D9222A] transition-colors">
+              Läs artikeln<Fragment set:html={arrowSvg} />
+            </span>
           </a>
         ))}
       </div>

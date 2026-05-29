@@ -100,9 +100,9 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   description={`${ref.name} om samarbetet med Norrmalmstryckeriet: ${ref.heroQuote}`}
 >
 
-  <!-- ═══ HERO (centrerad) ═══ -->
+  <!-- ═══ HERO (vänsterställd, samma spalt som berättelsen) ═══ -->
   <section class="pt-[40px] sm:pt-[56px] md:pt-[72px] px-[16px] sm:px-[24px] md:px-[32px]">
-    <div class="max-w-[820px] mx-auto text-center">
+    <div class="max-w-[680px] mx-auto">
       <a href="/kundreferenser" class="inline-flex items-center text-[#888] hover:text-[#222] transition-colors text-[13px] sm:text-[14px] font-medium mb-[20px] sm:mb-[28px]">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mr-[6px]"><path d="M15 18l-6-6 6-6"/></svg>
         Alla kundreferenser
@@ -111,7 +111,7 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
       <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px]" style="font-size: clamp(2rem, 4vw + 0.5rem, 4rem); line-height: 1.04; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
         {ref.name}
       </h1>
-      <div class="flex items-center justify-center gap-[6px] flex-wrap text-[14px] sm:text-[15px]">
+      <div class="flex items-center gap-[6px] flex-wrap text-[14px] sm:text-[15px]">
         <span class="font-bold text-[#222]">{ref.author}</span>
         <span class="text-[#666]">— {ref.role}</span>
       </div>
