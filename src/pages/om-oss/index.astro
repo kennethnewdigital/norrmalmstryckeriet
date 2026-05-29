@@ -64,16 +64,32 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
   <!-- ═══ HERO ═══ -->
   <section class="page-section">
     <div class="page-container">
-      <p class="section-label">Om oss</p>
-      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[28px] sm:mb-[36px] max-w-[1100px]" style="font-size: clamp(2rem, 5.5vw + 0.25rem, 5rem); line-height: 1.02; letter-spacing: -0.035em; text-wrap: balance;" lang="sv">
-        Trycksaker med kunskap, känsla och ansvar.
-      </h1>
-      <p class="text-[17px] sm:text-[20px] md:text-[22px] leading-relaxed text-[#444] max-w-[820px]" style="text-wrap: pretty;">
-        Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna med anor tillbaka till slutet av 1800-talet. Vi hjälper företag, organisationer och byråer att ta fram trycksaker med rätt känsla, rätt funktion och rätt kvalitet — från original och materialval till tryck, efterbehandling och leverans.
-      </p>
+      <div class="grid lg:grid-cols-[1fr_0.85fr] gap-[32px] md:gap-[48px] lg:gap-[64px] items-center">
+        <!-- Vänster: Text -->
+        <div>
+          <p class="section-label">Om oss</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px] sm:mb-[32px] max-w-[720px]" style="font-size: clamp(2rem, 4vw + 0.5rem, 4.25rem); line-height: 1.03; letter-spacing: -0.035em; text-wrap: balance;" lang="sv">
+            Trycksaker med kunskap, känsla och ansvar.
+          </h1>
+          <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[620px]" style="text-wrap: pretty;">
+            Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna med anor tillbaka till slutet av 1800-talet. Vi hjälper företag, organisationer och byråer att ta fram trycksaker med rätt känsla, rätt funktion och rätt kvalitet — från original och materialval till tryck, efterbehandling och leverans.
+          </p>
+        </div>
+
+        <!-- Höger: Bild -->
+        <div class="rounded-[24px] sm:rounded-[32px] lg:rounded-[40px] overflow-hidden aspect-[4/3] lg:aspect-[4/5] bg-[#E5E5E5]">
+          <img
+            src="/images/hero/om-oss-hero.webp"
+            alt="Personalen på Norrmalmstryckeriet"
+            class="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+      </div>
 
       <!-- Stats / trust -->
-      <div class="flex flex-wrap items-end gap-x-[40px] sm:gap-x-[60px] lg:gap-x-[80px] gap-y-[20px] mt-[40px] sm:mt-[60px] pt-[28px] sm:pt-[36px] border-t border-[#E5E5E5] max-w-[760px]">
+      <div class="flex flex-wrap items-end gap-x-[40px] sm:gap-x-[60px] lg:gap-x-[80px] gap-y-[20px] mt-[40px] sm:mt-[56px] pt-[28px] sm:pt-[36px] border-t border-[#E5E5E5]">
         <div class="flex flex-col items-start">
           <span class="font-[var(--font-heading)] text-[#222] leading-none text-[28px] sm:text-[36px]">100+ år</span>
           <span class="text-[#666] mt-[8px] font-medium uppercase text-[10px] sm:text-[11px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
