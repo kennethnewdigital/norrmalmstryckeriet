@@ -7,27 +7,40 @@ const posts = [
   {
     slug: 'trycksaker-digital-varld',
     title: 'Varför trycksaker fortfarande fungerar i en digital värld.',
+    date: '2025.06.04',
     dateLabel: '4 juni 2025',
+    cat: 'insikt',
+    catLabel: 'Insikt',
     image: '/images/news/QR_CODE_BROSCHURE.webp',
     excerpt: 'I en tid där vi matas med tusentals digitala intryck varje dag fungerar det fysiska som en motsatsens kraft.',
-    bento: 'col-span-2 row-span-2',
   },
   {
     slug: 'digital-stress-tryckt-media',
     title: 'Digital stress och tryckt medias återkomst.',
+    date: '2025.02.26',
     dateLabel: '26 februari 2025',
+    cat: 'forskning',
+    catLabel: 'Forskning',
     image: '/images/news/Stressfri-med-tatkilt-media.webp',
-    excerpt: 'Hur vi hittar balansen i en skärmdominerad värld.',
-    bento: '',
+    excerpt: 'Hur vi hittar balansen i en skärmdominerad värld — och varför tryckt media kan vara en oväntad räddning.',
   },
   {
     slug: 'nya-mojligheter-investering',
     title: 'Nya möjligheter med vår senaste investering!',
+    date: '2024.12.03',
     dateLabel: '3 december 2024',
+    cat: 'foretaget',
+    catLabel: 'Företaget',
     image: '/images/news/Roland_pop_art.webp',
-    excerpt: 'Vi har investerat i en toppmodern Roland TrueVIS640 — storformatstryck med högsta kvalitet.',
-    bento: '',
+    excerpt: 'Vi har investerat i en toppmodern Roland TrueVIS640 — storformatstryck med högsta kvalitet och hållbarhet.',
   },
+];
+
+const filters = [
+  { id: 'all', label: 'Alla' },
+  { id: 'insikt', label: 'Insikt' },
+  { id: 'forskning', label: 'Forskning' },
+  { id: 'foretaget', label: 'Företaget' },
 ];
 ---
 
@@ -36,59 +49,74 @@ const posts = [
   description="Nyheter och artiklar från Norrmalmstryckeriet — om tryck, hållbarhet, investeringar och varför trycksaker fortfarande gör skillnad."
 >
 
-  <!-- ═══ HERO ═══ -->
-  <section class="page-section pb-0">
+  <!-- ═══ HERO (vänsterställd) ═══ -->
+  <section class="page-section pb-[32px] sm:pb-[40px]">
     <div class="page-container">
       <p class="section-label">Nyheter</p>
       <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[920px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
         Tankar om tryck, teknik och trender.
       </h1>
-      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px]" style="text-wrap: pretty;">
-        Här samlar vi artiklar och nyheter om varför trycksaker fortfarande gör skillnad, om hållbar produktion och om vad som händer hos oss på Norrmalmstryckeriet.
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[720px]" style="text-wrap: pretty;">
+        Djupdykningar om varför trycksaker fortfarande gör skillnad, om hållbar produktion och om vad som händer hos oss på Norrmalmstryckeriet.
       </p>
     </div>
   </section>
 
-  <!-- ═══ NYHETS-KORT — bento lg+, sidoscroll <lg ═══ -->
-  <section class="page-section-no-px">
-    <!-- MOBILE/TABLET: sidoscroll -->
-    <div class="lg:hidden">
-      <div class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px] snap-x snap-mandatory">
-        {posts.map((p) => (
-          <a href={`/nyheter/${p.slug}`} class="shrink-0 w-[300px] sm:w-[360px] md:w-[420px] block group no-underline snap-start">
-            <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5] mb-[16px]">
-              <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <span class="block text-[11px] uppercase text-[#888] font-medium mb-[8px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
-            <h2 class="font-[var(--font-heading)] !font-normal text-[#222] text-[19px] sm:text-[21px] leading-[1.2] mb-[8px] group-hover:text-[#D9222A] transition-colors">{p.title}</h2>
-            <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">{p.excerpt}</p>
-          </a>
+  <!-- ═══ FILTER + LISTA ═══ -->
+  <section class="pb-[64px] sm:pb-[80px] md:pb-[100px]">
+    <div class="page-container">
+      <!-- Kategori-filter -->
+      <div id="news-filter" class="flex flex-wrap gap-[8px] sm:gap-[10px] border-b border-[#E5E5E5] pb-[24px] sm:pb-[32px] mb-[8px]">
+        {filters.map((f) => (
+          <button
+            data-filter={f.id}
+            class={`news-chip px-[16px] py-[8px] rounded-full text-[13px] sm:text-[14px] font-medium transition-colors cursor-pointer ${f.id === 'all' ? 'is-active' : ''}`}
+          >
+            {f.label}
+          </button>
         ))}
       </div>
-    </div>
 
-    <!-- DESKTOP: bento -->
-    <div class="hidden lg:block max-w-[1440px] mx-auto px-[44px]">
-      <div class="grid grid-cols-3 auto-rows-[260px] gap-[16px]">
+      <!-- Lista -->
+      <div id="news-list">
         {posts.map((p) => (
-          <a href={`/nyheter/${p.slug}`} class={`${p.bento} rounded-[20px] overflow-hidden relative block group no-underline`}>
-            <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-            <div class="absolute bottom-0 left-0 right-0 p-[28px] lg:p-[32px]">
-              <span class="block !text-white/70 text-[11px] uppercase font-medium mb-[10px]" style="letter-spacing: 1.2px;">{p.dateLabel}</span>
-              <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[8px]" style={`line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance; font-size: ${p.bento.includes('row-span-2') ? '2rem' : '1.375rem'};`}>{p.title}</h2>
-              {p.bento.includes('row-span-2') && (
-                <p class="!text-white/85 text-[15px] leading-relaxed max-w-[460px]">{p.excerpt}</p>
-              )}
+          <a
+            href={`/nyheter/${p.slug}`}
+            data-cat={p.cat}
+            class="news-row group block no-underline border-b border-[#EDEDED] py-[28px] sm:py-[36px] md:py-[44px]"
+          >
+            <div class="grid md:grid-cols-[300px_1fr] lg:grid-cols-[380px_1fr] gap-[20px] md:gap-[40px] lg:gap-[56px] items-center">
+              <!-- Bild -->
+              <div class="rounded-[16px] overflow-hidden aspect-[16/10] bg-[#E5E5E5]">
+                <img src={p.image} alt={p.title} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <!-- Innehåll -->
+              <div>
+                <div class="flex items-center gap-[10px] mb-[12px] sm:mb-[16px]">
+                  <span class="text-[12px] sm:text-[13px] text-[#888] font-medium tabular-nums">{p.date}</span>
+                  <span class="text-[#D5D5D5]">•</span>
+                  <span class="text-[11px] sm:text-[12px] uppercase text-[#D9222A] font-semibold" style="letter-spacing: 1px;">{p.catLabel}</span>
+                </div>
+                <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px] group-hover:text-[#D9222A] transition-colors" style="font-size: clamp(1.5rem, 2.5vw + 0.4rem, 2.5rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+                  {p.title}
+                </h2>
+                <p class="text-[15px] sm:text-[16px] md:text-[17px] leading-relaxed text-[#555] max-w-[640px] mb-[16px]" style="text-wrap: pretty;">{p.excerpt}</p>
+                <span class="inline-flex items-center text-[14px] sm:text-[15px] font-medium text-[#222] group-hover:text-[#D9222A] transition-colors">
+                  Läs artikeln<Fragment set:html={arrowSvg} />
+                </span>
+              </div>
             </div>
           </a>
         ))}
       </div>
+
+      <!-- Tomt-läge -->
+      <p id="news-empty" class="hidden text-[15px] sm:text-[16px] text-[#888] py-[40px] text-center">Inga artiklar i den här kategorin ännu.</p>
     </div>
   </section>
 
   <!-- ═══ SLUT-CTA ═══ -->
-  <section class="page-section">
+  <section class="page-section pt-0">
     <div class="page-container max-w-[1300px]">
       <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
         <div>
@@ -120,13 +148,47 @@ const posts = [
   @media (min-width: 640px) { .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; } }
   @media (min-width: 768px) { .page-section { padding-top: 100px; padding-bottom: 100px; } }
   @media (min-width: 1024px) { .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; } }
-  .page-section-no-px { padding-top: 48px; padding-bottom: 48px; }
-  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
-  @media (min-width: 768px) { .page-section-no-px { padding-top: 64px; padding-bottom: 64px; } }
-  @media (min-width: 1024px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
   .section-label {
     font-family: var(--font-body); font-size: 11px; line-height: 1; letter-spacing: 1.5px;
     text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 20px;
   }
   @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; } }
+
+  /* Filter-chips */
+  .news-chip {
+    background: #F3F3F3;
+    color: #555;
+  }
+  .news-chip:hover { background: #EAEAEA; color: #222; }
+  .news-chip.is-active {
+    background: #222;
+    color: #fff;
+  }
+  .news-row.is-hidden { display: none; }
 </style>
+
+<script>
+  function initNewsFilter() {
+    const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.news-chip'));
+    const rows = Array.from(document.querySelectorAll<HTMLElement>('.news-row'));
+    const empty = document.getElementById('news-empty');
+    if (!chips.length) return;
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const filter = chip.dataset.filter;
+        chips.forEach((c) => c.classList.remove('is-active'));
+        chip.classList.add('is-active');
+        let visible = 0;
+        rows.forEach((row) => {
+          const show = filter === 'all' || row.dataset.cat === filter;
+          row.classList.toggle('is-hidden', !show);
+          if (show) visible++;
+        });
+        if (empty) empty.classList.toggle('hidden', visible !== 0);
+      });
+    });
+  }
+  initNewsFilter();
+  document.addEventListener('astro:after-swap', initNewsFilter);
+</script>
