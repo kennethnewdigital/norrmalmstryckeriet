@@ -1,0 +1,490 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
+
+// Beslutsmodell — sidoscroll-kort (8 steg)
+const steps = [
+  { no: '01', title: 'Börja med platsen', body: 'Mässa, reception, butik, skyltfönster, event, kontor eller utomhus — platsen styr format, material, läsavstånd och montering.' },
+  { no: '02', title: 'Bestäm vad som syns först', body: 'Storformat behöver tydlig prioritering. Ett budskap som ska läsas på avstånd måste vara enkelt att ta in — rubrik, bild och CTA i den ordningen.' },
+  { no: '03', title: 'Välj produkt', body: 'Roll-up, vepa, banderoll, gatupratare, Kapa, Re-board, tavla eller affisch — varje produkt löser olika uppgifter i olika miljöer.' },
+  { no: '04', title: 'Välj material', body: 'PP för gatupratare och roll-ups, vinyl för vepor, Kapa för plana inomhusskyltar, Re-board för displayer och figurskurna lösningar.' },
+  { no: '05', title: 'Tryckmetod', body: 'Storformatsprint för rullmaterial, planprint för skivmaterial, digitaltryck för mindre format och offset för större upplagor av t.ex. affischer.' },
+  { no: '06', title: 'Planera efterbehandling', body: 'Laminering, montering på skiva, figurskärning, håltagning, öljetter, kantförstärkning — väljs efter användning och miljö.' },
+  { no: '07', title: 'Kontrollera originalet', body: 'Slutformat, eventuell skala, utfall, säker marginal, läsbarhet på avstånd och tryckfärdig PDF enligt instruktion.' },
+  { no: '08', title: 'Planera leverans', body: 'Rullad i tub, plan leverans för skivmaterial, packad per mottagare eller monterad på plats — storformat ska fungera hela vägen.' },
+];
+
+// Expertis-block
+const expertise = [
+  {
+    title: 'Produkt & plats',
+    intro: 'Rätt produkt börjar med var materialet ska användas — roll-up, vepa, skylt och gatupratare löser olika uppgifter.',
+    items: [
+      ['Roll-up', 'Mässor, receptioner, event och presentationer.'],
+      ['Vepa & banderoll', 'Större ytor, fasader, sport och utomhusmiljöer.'],
+      ['Gatupratare', 'Butik, restaurang och lokal synlighet i flödet.'],
+      ['Kapa & Re-board', 'Skyltar, displayer, utställningar och figurskurna lösningar.'],
+      ['Affisch & tavla', 'Kampanj, anslag, kontor, reception och inredning.'],
+    ],
+  },
+  {
+    title: 'Material & montering',
+    intro: 'Materialet ska passa både miljön och hur storformatet ska monteras, rullas eller transporteras.',
+    items: [
+      ['PP / polypropen', 'Tåligt och smidigt — gatupratare, roll-ups och tåliga affischer.'],
+      ['Vinyl & väv', 'Vepor, banderoller och större format med belastning.'],
+      ['Kapa', 'Lätt, plant och presentabelt för inomhusbruk.'],
+      ['Re-board', 'Styvt, lätt och bra för displayer och figurskärning.'],
+      ['Självhäftande', 'Dekaler på glas, väggar och kampanjytor.'],
+    ],
+  },
+  {
+    title: 'Tryck & original',
+    intro: 'Storformat ställer högre krav på läsavstånd, kontrast och bildkvalitet — originalet måste planeras därefter.',
+    items: [
+      ['Storformatsprint', 'Affischer, roll-ups, vepor och rullmaterial.'],
+      ['Planprint', 'Tryck direkt på skivmaterial som Kapa och Re-board.'],
+      ['Utfall & marginal', 'Utfall där bild går till kant, säker marginal från hål och montering.'],
+      ['Skala', 'Stora format kan byggas i skala enligt tryckeriets instruktion.'],
+      ['Läsavstånd', 'Rubrik, bild och kontrast måste fungera redan på avstånd.'],
+    ],
+  },
+];
+
+// Termer
+const termer = [
+  ['Storformatsprint', 'Print på rullmaterial — affischer, vepor, PP, vinyl'],
+  ['Planprint', 'Tryck direkt på styvt skivmaterial som Kapa eller Re-board'],
+  ['Roll-up', 'Portabelt exponeringsmaterial i kassett för mässor och event'],
+  ['Vepa', 'Större tryckt yta som hängs eller monteras'],
+  ['Re-board', 'Styvt, lätt skivmaterial för displayer och figurskärning'],
+  ['Kapa', 'Lätt och plant skivmaterial för inomhusskyltar'],
+  ['Öljetter', 'Förstärkta hål för upphängning av vepor och banderoller'],
+  ['Kantförstärkning', 'Förstärkt kant för bättre hållbarhet vid större material'],
+];
+
+// Användning
+const anvandning = [
+  ['Mässa', 'Roll-ups, skyltar, displayer, vepor och montergrafik'],
+  ['Reception', 'Tavlor, skyltar, väggmaterial och presentationer'],
+  ['Butik', 'Gatupratare, affischer, skyltar, hyllmaterial och displayer'],
+  ['Event', 'Vepor, vägvisning, banderoller och backdrops'],
+  ['Skyltfönster', 'Material som arbetar med kontrast, ljus och avstånd'],
+  ['Kontor', 'Varumärkesytor, kulturväggar och informationsskyltar'],
+  ['Utomhus', 'Vepor, banderoller och tåliga material med montering'],
+];
+
+// Original-checklista
+const originalChecklista = [
+  ['Slutformat', 'Ange exakt färdigt format på PDF:en'],
+  ['Skala', 'Stora format kan ibland byggas i skala — fråga tryckeriet'],
+  ['Utfall', 'Lägg till utfall där bild eller färg går till kant'],
+  ['Säker marginal', 'Håll viktig text från skärkant, hål och montering'],
+  ['Bildkvalitet', 'Anpassa upplösning efter format och betraktningsavstånd'],
+  ['Textstorlek', 'Säkerställ läsbarhet på avstånd'],
+  ['Färger', 'Anpassa för tryckproduktion enligt tryckeriets profil'],
+  ['PDF', 'Leverera tryckfärdig PDF enligt instruktion'],
+];
+---
+
+<Layout
+  title="Storformat tryck – guide till roll-ups, skyltar, vepor och material | Norrmalmstryckeriet"
+  description="Lär dig vad du bör tänka på när du ska trycka storformat. Guide till roll-ups, vepor, skyltar, gatupratare, Kapa, Re-board, material och original."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section hero-pdf bg-[#F3F3F3]">
+    <div class="page-container">
+      <div class="grid lg:grid-cols-[1fr_auto] gap-[40px] md:gap-[60px] lg:gap-[80px] items-center lg:items-end">
+        <div>
+          <p class="section-label">Guide • Norrmalmstryckeriet</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px] max-w-[820px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+            Allt du behöver veta om storformat.
+          </h1>
+          <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[680px] mb-[24px] sm:mb-[28px]" style="text-wrap: pretty;">
+            När budskapet behöver ta plats — i en entré, på en mässa, i ett skyltfönster eller ute i en miljö där människor passerar. Roll-ups, vepor, gatupratare, skyltar i Kapa och Re-board. Storformat handlar om mer än att förstora en layout — det handlar om material som fungerar i sin miljö.
+          </p>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px]">
+            <a href="/produkter/storformat/infografik" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Ladda ner som PDF<Fragment set:html={downloadSvg} />
+            </a>
+            <a href="/offert" class="btn-pill w-full sm:w-auto justify-center" style="background: #222; color: #fff;">
+              Begär offert<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+
+        <div class="pdf-teaser-wrap">
+          <div class="pdf-teaser">
+            <img src="/images/infografik/storformat-guide-teaser.webp" alt="Förhandsvisning av guiden Så skapar du storformat som syns, fungerar och håller (PDF)" loading="eager" decoding="async" />
+            <span class="pdf-badge">PDF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR LÄSA GUIDEN?" ═══ -->
+  <section class="page-section form-section-cover">
+    <div class="page-content">
+      <p class="section-label">Varför läsa den här guiden?</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          Storformat handlar om material. <em>Och om plats.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            En roll-up arbetar på ett sätt. En vepa på ett annat. En gatupratare ett tredje. Guiden hjälper dig välja rätt produkt, rätt material och rätt produktion — innan tryck.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+              <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+              <span>Förstå skillnaden mellan roll-up, vepa, banderoll, Kapa och Re-board</span>
+            </li>
+            <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+              <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+              <span>Välj material efter miljö, montering och livslängd</span>
+            </li>
+            <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+              <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+              <span>Beslutsmodell i 8 steg från plats till färdig leverans</span>
+            </li>
+            <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+              <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+              <span>Originalchecklista, läsavstånd och tips för synlighet</span>
+            </li>
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="#beslutsmodell" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Till beslutsmodellen<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/produkter/storformat/infografik" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Ladda ner som PDF<Fragment set:html={downloadSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DEFINITION ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Definition</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.75rem, 4vw, 3.25rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+        Vad är storformat?
+      </h2>
+      <div class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] space-y-[16px] mb-[32px] sm:mb-[40px]" style="text-wrap: pretty;">
+        <p>Storformat är ett samlingsnamn för tryck och print i större format än vanliga blad, foldrar och broschyrer. Det kan handla om pappersbaserade <a href="/produkter/affischer" class="underline hover:text-[#222]">affischer</a>, roll-up-material, vepor, banderoller, skyltar, skivmaterial, väggmaterial och olika typer av exponeringslösningar.</p>
+        <p>Storformat handlar om mer än att förstora en layout — det handlar om att skapa material som <em>fungerar i sin miljö.</em></p>
+      </div>
+      <div class="bg-white rounded-[16px] overflow-hidden border border-[#E5E5E5]">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Term</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Betydelse</th>
+            </tr>
+          </thead>
+          <tbody>
+            {termer.map(([t, d], i) => (
+              <tr class={i < termer.length - 1 ? 'border-b border-[#F0F0F0]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{t}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[14px] sm:text-[15px] text-[#444]">{d}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BESLUTSMODELL ═══ -->
+  <section id="beslutsmodell" class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Beslutsmodell</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Så skapar du storformat som syns, fungerar och håller.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Åtta beslut som styr hur väl materialet syns, fungerar i miljön och håller över tid — från plats och produkt till tryck, montering och leverans.
+      </p>
+    </div>
+    <div id="steps-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {steps.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[340px] sm:min-h-[380px]">
+          <span class="font-[var(--font-heading)] text-[#D9222A] text-[36px] sm:text-[44px] leading-none mb-[16px] sm:mb-[20px]">{s.no}</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.625rem); line-height: 1.2;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444]">{s.body}</p>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="steps-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="steps-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ ANVÄNDNING ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Användning</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        När passar storformat?
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        Storformat passar när du vill att ett budskap ska synas tydligt i fysisk miljö — vid event, i butik, på en mässa, i ett kontor, i en reception eller på en plats där många människor rör sig.
+      </p>
+      <div class="bg-[#F5F5F5] rounded-[16px] overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Miljö</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Vanliga produkter</th>
+            </tr>
+          </thead>
+          <tbody>
+            {anvandning.map(([a, b], i) => (
+              <tr class={i < anvandning.length - 1 ? 'border-b border-[#E8E8E8]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{a}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{b}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        <strong class="text-[#222]">Tips:</strong> När flera delar ska användas tillsammans — på en mässa eller i en kampanj — är det klokt att planera helheten: format, färger, material, montering och leverans i samma steg.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ TRE NIVÅER (läsavstånd) ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Läsavstånd</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Storformat ska arbeta på tre avstånd.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[16px] sm:gap-[20px]">
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På långt håll</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Färg, form, bild</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Det mottagaren ser först. Materialet ska väcka uppmärksamhet redan på 10–15 meters håll.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På mellanavstånd</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Rubrik och budskap</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Det som får mottagaren att stanna. Huvudbudskap, erbjudande eller riktning ska kunna läsas snabbt.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På nära håll</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Detaljer och CTA</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Kontakt, QR-kod, datum eller praktisk information — det som leder mottagaren vidare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Produkt, material, tryck och original.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Vi hjälper dig välja rätt material, rätt produkt och rätt produktion för det storformatet ska göra — på mässan, i butiken, i receptionen eller utomhus.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ORIGINAL & CHECKLISTA ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Original</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Originalchecklista — fungerar layouten på avstånd?
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        En stor yta kräver tydligare layout, större rubriker och högre kontrast än en mindre trycksak. Ett enkelt test: titta på layouten från flera meters håll. Om huvudbudskapet syns snabbt — då är du på rätt väg.
+      </p>
+      <div class="bg-[#F5F5F5] rounded-[16px] overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-[#E5E5E5]">
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Del</th>
+              <th class="text-left px-[16px] sm:px-[24px] py-[14px] sm:py-[16px] font-bold text-[13px] sm:text-[14px] uppercase text-[#222]" style="letter-spacing: 0.8px;">Rekommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            {originalChecklista.map(([d, r], i) => (
+              <tr class={i < originalChecklista.length - 1 ? 'border-b border-[#E8E8E8]' : ''}>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] font-bold text-[14px] sm:text-[15px] text-[#222]">{d}</td>
+                <td class="px-[16px] sm:px-[24px] py-[12px] sm:py-[14px] text-[13px] sm:text-[14px] text-[#555]">{r}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEDLADDNINGS-CTA ═══ -->
+  <section class="pt-[16px] pb-[16px] sm:pt-[24px] sm:pb-[24px]">
+    <div class="page-container max-w-[1140px] px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+      <div class="bg-[#D9222A] rounded-[20px] sm:rounded-[28px] px-[24px] sm:px-[40px] md:px-[56px] py-[36px] sm:py-[48px] md:py-[56px] grid md:grid-cols-[1fr_auto] gap-[24px] md:gap-[40px] items-center">
+        <div>
+          <p class="!text-white/80 uppercase font-medium text-[10px] sm:text-[11px] mb-[10px]" style="letter-spacing: 1.5px;">Gratis nedladdning</p>
+          <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[8px] sm:mb-[10px]" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.2; text-wrap: balance;">
+            Vill du ha hela guiden som PDF?
+          </h3>
+          <p class="!text-white/90 text-[14px] sm:text-[15px] leading-relaxed max-w-[520px]">
+            Produktöversikt, materialguide, beslutsmodell, originalchecklista, efterbehandling och leveranstips — i ett paket.
+          </p>
+        </div>
+        <a href="/produkter/storformat/infografik" class="btn-pill w-full md:w-auto justify-center md:justify-start whitespace-nowrap" style="background: #fff; color: #222;">
+          Ladda ner guiden<Fragment set:html={downloadSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EFTERBEHANDLING / MONTERING ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Efterbehandling & montering</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Efterbehandlingen gör storformatet användbart.
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-[16px] sm:gap-[20px]">
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Laminering</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Skyddar ytan och förlänger livslängden. Matt dämpar reflexer, blank ger mer lyster.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Montering på skiva</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Gör materialet styvt och lätt att placera — Kapa eller Re-board.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Figurskärning</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Skapar egen form eller displayeffekt — för butik, mässa och kampanj.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Öljetter & kantförstärkning</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Gör vepor och banderoller enklare att montera och mer hållbara över tid.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Håltagning</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Underlättar upphängning och hängning från krok, lina eller stativ.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Packning i tub</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Skyddar rullat material vid transport och vid återanvändning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Behöver du hjälp med storformat?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Berätta var materialet ska synas — vi hjälper med resten.
+          </h2>
+          <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Skicka din idé, skiss eller färdiga PDF. Vi går igenom produkt, material, tryckmetod, original, efterbehandling, montering, leverans och en tydlig offert.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full justify-center">
+            Begär offert på storformat<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/produkter/storformat/infografik" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Ladda ner guiden (PDF)<Fragment set:html={downloadSvg} />
+          </a>
+          <a href="/produkter/storformat" class="btn-pill w-full justify-center" style="background: rgba(255,255,255,0.10); color: #fff;">
+            Se produktsidan<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container { width: 100%; max-width: 1440px; margin-left: auto; margin-right: auto; }
+
+  .page-section { padding-top: 56px; padding-bottom: 56px; padding-left: 16px; padding-right: 16px; }
+  @media (min-width: 640px) { .page-section { padding-top: 72px; padding-bottom: 72px; padding-left: 24px; padding-right: 24px; } }
+  @media (min-width: 768px) { .page-section { padding-top: 88px; padding-bottom: 88px; } }
+  @media (min-width: 1024px) { .page-section { padding-top: 112px; padding-bottom: 112px; padding-left: 44px; padding-right: 44px; } }
+
+  .page-section-no-px { padding-top: 48px; padding-bottom: 48px; }
+  @media (min-width: 640px) { .page-section-no-px { padding-top: 56px; padding-bottom: 56px; } }
+  @media (min-width: 768px) { .page-section-no-px { padding-top: 72px; padding-bottom: 72px; } }
+  @media (min-width: 1024px) { .page-section-no-px { padding-top: 88px; padding-bottom: 88px; } }
+
+  .section-label { font-family: var(--font-body); font-size: 11px; line-height: 1; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; color: #888; margin-bottom: 16px; }
+  @media (min-width: 768px) { .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 20px; } }
+
+  .hero-pdf { overflow: visible; position: relative; z-index: 1; }
+  .form-section-cover { position: relative; z-index: 2; background: #fff; }
+  .pdf-teaser-wrap { display: flex; justify-content: center; align-items: flex-end; position: relative; margin-bottom: -210px; }
+  .pdf-teaser {
+    position: relative; width: 240px; max-width: 100%;
+    aspect-ratio: 1833 / 2700; border-radius: 10px; overflow: hidden; background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 14px 28px rgba(0,0,0,0.10), 0 40px 80px rgba(0,0,0,0.18);
+    transform: rotate(3deg); transform-origin: top center;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform;
+  }
+  .pdf-teaser:hover { transform: rotate(3deg) translateY(-6px); }
+  .pdf-teaser img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .pdf-badge {
+    position: absolute; top: 12px; right: 12px;
+    background: #D9222A; color: #fff;
+    font-family: var(--font-heading); font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+    padding: 5px 9px; border-radius: 4px; text-transform: uppercase; z-index: 2;
+  }
+  @media (min-width: 640px) { .pdf-teaser-wrap { margin-bottom: -240px; } .pdf-teaser { width: 280px; } }
+  @media (min-width: 1024px) { .pdf-teaser-wrap { align-self: end; margin-bottom: -300px; } .pdf-teaser { width: 360px; } }
+  @media (min-width: 1440px) { .pdf-teaser-wrap { margin-bottom: -340px; } .pdf-teaser { width: 400px; } }
+</style>
+
+<script>
+  function initGuide() {
+    const carousel = document.getElementById('steps-carousel');
+    const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('steps-prev')?.addEventListener('click', () => { carousel?.scrollBy({ left: -cardWidth, behavior: 'smooth' }); });
+    document.getElementById('steps-next')?.addEventListener('click', () => { carousel?.scrollBy({ left: cardWidth, behavior: 'smooth' }); });
+  }
+  initGuide();
+  document.addEventListener('astro:after-swap', initGuide);
+</script>
