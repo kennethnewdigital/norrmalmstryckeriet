@@ -1,0 +1,215 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const sections = [
+  {
+    id: 'personuppgiftsansvarig',
+    title: '1. Personuppgiftsansvarig',
+    body: [
+      'Personuppgiftsansvarig för behandling av dina personuppgifter är:',
+      '<strong>Norrmalmstryckeriet AB</strong><br>Hammarbacken 4A, 191 49 Sollentuna<br>Telefon: 08-96 01 35<br>E-post: <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline">tryckeri@norrmalmstryckeriet.se</a>',
+      'Om du har frågor om hur vi behandlar dina personuppgifter, eller om du vill utöva någon av dina rättigheter, är du välkommen att kontakta oss.',
+    ],
+  },
+  {
+    id: 'vilka-uppgifter',
+    title: '2. Vilka personuppgifter vi behandlar',
+    body: [
+      'Vi behandlar personuppgifter som du själv lämnar till oss, främst i samband med offertförfrågan, kontakt, beställning eller nedladdning av guider och infografik.',
+      'Vanliga uppgifter vi behandlar är: namn, företag, e-postadress, telefonnummer, leveransadress, projektbeskrivning samt korrespondens via e-post eller telefon.',
+      'Vid produktion av trycksaker kan vi även behandla innehållet i de filer du skickar — exempelvis text, bilder, kontaktuppgifter och annan information som är en del av trycksaken. Dessa uppgifter används endast för att producera den beställda trycksaken.',
+    ],
+  },
+  {
+    id: 'andamal',
+    title: '3. Ändamål och laglig grund',
+    body: [
+      'Vi behandlar dina personuppgifter för följande ändamål:',
+      '<ul class="list-disc pl-[24px] space-y-[8px]"><li><strong>Offert och kundkommunikation</strong> — för att svara på din förfrågan, ta fram offert och kommunicera kring projektet (laglig grund: berättigat intresse och, om avtal ingås, fullgörande av avtal).</li><li><strong>Produktion och leverans</strong> — för att producera, packa och leverera de trycksaker du beställer (laglig grund: fullgörande av avtal).</li><li><strong>Fakturering och bokföring</strong> — för att fakturera och uppfylla bokföringsskyldigheter (laglig grund: rättslig förpliktelse).</li><li><strong>Nedladdning av guider</strong> — när du fyller i formulär för att ladda ner guider behandlar vi dina uppgifter för att skicka materialet och eventuellt följa upp (laglig grund: berättigat intresse eller samtycke).</li><li><strong>Nyhetsbrev och marknadsföring</strong> — om du aktivt har samtyckt till att få tips och guider per e-post (laglig grund: samtycke). Du kan när som helst avregistrera dig.</li></ul>',
+    ],
+  },
+  {
+    id: 'delning',
+    title: '4. När vi delar dina uppgifter',
+    body: [
+      'Vi delar inte dina personuppgifter med tredje part för marknadsföringsändamål.',
+      'I vissa fall behöver vi anlita externa leverantörer för att kunna utföra vår verksamhet, exempelvis:',
+      '<ul class="list-disc pl-[24px] space-y-[8px]"><li>Fraktbolag och budfirmor för leverans av trycksaker</li><li>Bokföringsbyrå och revisor för fakturahantering</li><li>Postnord eller annan distributör vid större utskick</li><li>IT-leverantörer som tillhandahåller e-post och systemstöd</li></ul>',
+      'Dessa leverantörer behandlar uppgifterna på vårt uppdrag och får inte använda dem för andra ändamål. Vi har personuppgiftsbiträdesavtal där det krävs.',
+      'Vi kan också behöva lämna ut uppgifter till myndigheter om vi är skyldiga till det enligt lag.',
+    ],
+  },
+  {
+    id: 'lagring',
+    title: '5. Hur länge vi sparar uppgifterna',
+    body: [
+      'Vi sparar dina personuppgifter så länge det behövs för det ändamål som de samlats in för.',
+      '<ul class="list-disc pl-[24px] space-y-[8px]"><li><strong>Kund- och projektuppgifter:</strong> så länge kundrelationen pågår och en tid därefter för att kunna svara på frågor om tidigare produktioner.</li><li><strong>Fakturor och bokföringsmaterial:</strong> sju (7) år enligt bokföringslagen.</li><li><strong>Originalfiler för tryck:</strong> vanligtvis i upp till två (2) år för eventuella återbeställningar, om inget annat avtalats.</li><li><strong>Nyhetsbrevsregister:</strong> tills du avregistrerar dig.</li><li><strong>Förfrågningar som inte leder till uppdrag:</strong> rensas regelbundet.</li></ul>',
+    ],
+  },
+  {
+    id: 'dina-rattigheter',
+    title: '6. Dina rättigheter',
+    body: [
+      'Enligt dataskyddsförordningen (GDPR) har du följande rättigheter:',
+      '<ul class="list-disc pl-[24px] space-y-[8px]"><li><strong>Rätt till information och tillgång</strong> — du har rätt att veta vilka uppgifter vi behandlar om dig och få en kopia av dem.</li><li><strong>Rätt till rättelse</strong> — om något är felaktigt eller ofullständigt rättar vi det.</li><li><strong>Rätt till radering</strong> — du kan begära att vi raderar dina uppgifter, så länge vi inte har en rättslig skyldighet att spara dem (exempelvis bokföring).</li><li><strong>Rätt att invända</strong> — du kan invända mot behandling som sker med stöd av berättigat intresse.</li><li><strong>Rätt att återkalla samtycke</strong> — om behandlingen bygger på samtycke kan du återkalla det när som helst.</li><li><strong>Rätt till dataportabilitet</strong> — i vissa fall kan du få ut uppgifter i ett strukturerat format.</li><li><strong>Rätt att lämna klagomål</strong> — du kan vända dig till <a href="https://www.imy.se" target="_blank" rel="noopener" class="text-[#D9222A] hover:underline">Integritetsskyddsmyndigheten (IMY)</a> om du anser att vi behandlar dina uppgifter felaktigt.</li></ul>',
+      'För att utöva dina rättigheter, kontakta oss på <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline">tryckeri@norrmalmstryckeriet.se</a>.',
+    ],
+  },
+  {
+    id: 'cookies',
+    title: '7. Cookies',
+    body: [
+      'Webbplatsen norrmalmstryckeriet.se kan använda cookies för att förbättra din upplevelse, mäta besöksstatistik och optimera innehållet.',
+      'Cookies är små textfiler som lagras i din webbläsare. De flesta moderna webbläsare har inställningar som låter dig hantera, blockera eller radera cookies.',
+      'Vi använder huvudsakligen tekniska cookies som behövs för att webbplatsen ska fungera, samt eventuellt analyscookies för att förstå hur besökare använder sidan. Vi delar inte cookie-data med tredje part för marknadsföringsändamål.',
+    ],
+  },
+  {
+    id: 'sakerhet',
+    title: '8. Säkerhet',
+    body: [
+      'Vi arbetar med tekniska och organisatoriska säkerhetsåtgärder för att skydda dina personuppgifter mot förlust, obehörig åtkomst och ändring.',
+      'Vi begränsar tillgången till personuppgifter till medarbetare som behöver dem för att utföra sitt arbete. Originalfiler hanteras inom våra interna system och delas inte med utomstående utöver vad som beskrivs ovan.',
+    ],
+  },
+  {
+    id: 'andringar',
+    title: '9. Ändringar i denna policy',
+    body: [
+      'Vi kan komma att uppdatera denna integritetspolicy. Den senaste versionen finns alltid på den här sidan.',
+      'Större ändringar kommunicerar vi vid behov via e-post eller på vår webbplats.',
+    ],
+  },
+  {
+    id: 'kontakt',
+    title: '10. Frågor och kontakt',
+    body: [
+      'Har du frågor om hur vi behandlar dina personuppgifter eller hur du utövar dina rättigheter? Kontakta oss gärna:',
+      'E-post: <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline">tryckeri@norrmalmstryckeriet.se</a><br>Telefon: 08-96 01 35<br>Post: Norrmalmstryckeriet AB, Hammarbacken 4A, 191 49 Sollentuna',
+    ],
+  },
+];
+---
+
+<Layout
+  title="Integritetspolicy | Norrmalmstryckeriet"
+  description="Så behandlar Norrmalmstryckeriet personuppgifter enligt GDPR — ändamål, laglig grund, lagringstid, dina rättigheter och kontakt."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="page-section">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Integritetspolicy</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(2rem, 5vw + 0.25rem, 4.5rem); line-height: 1.05; letter-spacing: -0.03em; text-wrap: balance;" lang="sv">
+        Hur vi behandlar dina personuppgifter
+      </h1>
+      <p class="text-[16px] sm:text-[18px] md:text-[20px] leading-relaxed text-[#444] max-w-[760px] mb-[12px]" style="text-wrap: pretty;">
+        På Norrmalmstryckeriet värnar vi om din integritet. Den här policyn beskriver vilka personuppgifter vi behandlar, varför, hur länge och vilka rättigheter du har enligt dataskyddsförordningen (GDPR).
+      </p>
+      <p class="text-[13px] sm:text-[14px] text-[#888]">
+        Senast uppdaterad: 12 juni 2026
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ INNEHÅLLSFÖRTECKNING ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[920px]">
+      <div class="bg-[#F5F5F5] rounded-[20px] p-[28px] sm:p-[36px]">
+        <p class="section-label" style="margin-bottom: 16px;">Innehåll</p>
+        <ul class="grid sm:grid-cols-2 gap-x-[24px] gap-y-[8px] text-[14px] sm:text-[15px]">
+          {sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`} class="text-[#222] hover:text-[#D9222A] hover:underline transition-colors">{s.title}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HUVUDINNEHÅLL ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[820px]">
+      {sections.map((s) => (
+        <div id={s.id} class="mb-[40px] sm:mb-[56px] scroll-mt-[100px]">
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[24px]" style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+            {s.title}
+          </h2>
+          <div class="text-[15px] sm:text-[16px] md:text-[17px] leading-[1.7] text-[#333] space-y-[14px]" style="text-wrap: pretty;">
+            {s.body.map((p) => (
+              <p set:html={p} />
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ═══ SLUT-CTA ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <div class="bg-[#222] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] px-[24px] sm:px-[44px] md:px-[60px] lg:px-[80px] py-[48px] sm:py-[72px] md:py-[96px] grid lg:grid-cols-[1.3fr_1fr] gap-[32px] lg:gap-[60px] items-center">
+        <div>
+          <p class="section-label" style="color: rgba(255,255,255,0.6); margin-bottom: 16px;">Har du frågor?</p>
+          <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[24px]" style="font-size: clamp(1.75rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+            Kontakta oss gärna.
+          </h2>
+          <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
+            Har du frågor om hur vi hanterar dina personuppgifter, eller vill utöva någon av dina rättigheter — hör av dig.
+          </p>
+        </div>
+        <div class="flex flex-col gap-[12px]">
+          <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="btn-pill btn-red w-full justify-center">
+            Mejla oss<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full justify-center" style="background: white; color: #222;">
+            Kontakta oss<Fragment set:html={arrowSvg} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .page-container {
+    width: 100%;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .page-section {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  @media (min-width: 640px) {
+    .page-section { padding-top: 80px; padding-bottom: 80px; padding-left: 24px; padding-right: 24px; }
+  }
+  @media (min-width: 768px) {
+    .page-section { padding-top: 100px; padding-bottom: 100px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section { padding-top: 120px; padding-bottom: 120px; padding-left: 44px; padding-right: 44px; }
+  }
+
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  @media (min-width: 768px) {
+    .section-label { font-size: 12px; letter-spacing: 1.8px; margin-bottom: 24px; }
+  }
+</style>
