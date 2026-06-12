@@ -1,0 +1,588 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const effects = [
+  'Stoppar blicken, hjälper samtalet framåt',
+  'Take-away som gör uppföljningen enkel',
+  'Hela paketet packat och klart i tid',
+  'Roll-up, skylt, folder, broschyr, visitkort och mapp som system',
+];
+
+const scenarios = [
+  {
+    title: 'Stor branschmässa',
+    body: 'Du behöver synlighet i en miljö där många budskap konkurrerar — och material som besökaren tar med efter samtalet. Konsekvensen blir att roll-up, folder och visitkort behöver hänga ihop visuellt.',
+    rec: 'Roll-ups, skyltar, foldrar, broschyrer, visitkort och produktblad — packade och märkta per säljare.',
+  },
+  {
+    title: 'Kundevent eller kunddag',
+    body: 'Du behöver ett mer personligt material som signalerar professionalitet och gör det enkelt att följa upp. Konsekvensen blir att mappar, produktblad och QR-kort blir centrala.',
+    rec: 'Roll-up vid entrén, mapp med offert/presentation/bilagor, produktblad, visitkort och QR-kort till digital uppföljning.',
+  },
+  {
+    title: 'Seminarium eller konferens',
+    body: 'Du behöver program, vägvisning och material som hjälper deltagaren genom dagen. Konsekvensen blir att skyltar och presentationer ska samverka.',
+    rec: 'Program, bordsskyltar, vägvisningsskyltar i Kapa eller kartong och en roll-up vid registreringen.',
+  },
+  {
+    title: 'Produktlansering',
+    body: 'Du behöver en stark visuell idé som lyfter produkten och en tydlig CTA. Konsekvensen blir att backdrop, vepa och kampanjmaterial ska bära samma uttryck.',
+    rec: 'Backdrop eller montervägg, roll-ups, kampanjmaterial, produktblad och QR-kort till bokning eller demo.',
+  },
+  {
+    title: 'Showroom eller reception',
+    body: 'Du behöver material som håller över tid och representerar varumärket i en kontrollerad miljö. Konsekvensen blir att finish och hållbarhet är viktigt.',
+    rec: 'Roll-up med kvalitetsmaterial, skyltar i Kapa eller akryl, profilmaterial — gärna planerade för återanvändning.',
+  },
+  {
+    title: 'Säljbesök eller mindre möte',
+    body: 'Du behöver något att lämna efter dig som gör nästa kontakt enkel. Konsekvensen blir att mappar, broschyrer och visitkort blir kärnan.',
+    rec: 'Mapp med offert, broschyr, produktblad, visitkort — anpassat per kund eller säljare.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Synlighet & design',
+    intro: 'Stora ytor designas som affischer — inte som broschyrer. Stor rubrik, stark bild, luftig layout och tydlig hierarki.',
+    items: [
+      ['Roll-up', 'Skapar synlighet på avstånd och ramar in ytan på liten golvyta.'],
+      ['Vepa & backdrop', 'Större närvaro för scen, monter eller bakgrund.'],
+      ['Montervägg', 'Visuell yta som ramar in företaget och samtalen.'],
+      ['Skyltar', 'Visar budskap, vägleder eller förstärker varumärket.'],
+      ['Bordsskyltar', 'Skapar tydlighet vid monter, demo eller reception.'],
+    ],
+  },
+  {
+    title: 'Take-away & samtal',
+    intro: 'När samtalet är igång behöver besökaren något att ta med — material som inte upprepar montern utan kompletterar den.',
+    items: [
+      ['Folder', 'Snabb överblick — lätt att ta med och läsa senare.'],
+      ['Broschyr', 'Fördjupar erbjudande, tjänst eller produkt.'],
+      ['Produktblad', 'Fakta, specifikationer och nytta i kort form.'],
+      ['Mapp', 'Samlar offerter, presentationer och bilagor.'],
+      ['Visitkort', 'Gör uppföljningen enkel.'],
+    ],
+  },
+  {
+    title: 'Original, packning & leverans',
+    intro: 'Mässmaterial består av många delar — originalen, packningen och transporten ska fungera lika väl som trycket.',
+    items: [
+      ['Tryckfärdig PDF', 'Rätt slutformat, utfall och säker marginal per del.'],
+      ['Synlig yta', 'Kontrollera vad som faktiskt syns — särskilt på roll-ups.'],
+      ['QR-koder', 'Testas alltid i slutformat innan tryck.'],
+      ['Packning & märkning', 'Per säljare, per dag eller per monter — beroende på upplägg.'],
+      ['Leverans i tid', 'Bakåtplanerat från mässdatum med marginal för justeringar.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
+
+const faqs = [
+  { q: 'Vad kostar en roll-up?', a: 'Priset beror på format, kassett, material, tryck, antal och leveranstid. Skicka gärna original eller beskriv behovet så tar vi fram en offert.' },
+  { q: 'Vilket format har en roll-up?', a: 'Vanliga roll-ups ligger ofta runt 85 × 200 cm, men formatet varierar beroende på system och kassett. Det är viktigt att kontrollera både totalformat och synlig yta innan originalet görs.' },
+  { q: 'Vad ska en roll-up innehålla?', a: 'En roll-up bör ha en tydlig rubrik, stark visuell idé, kort budskap, tydlig avsändare och en enkel väg vidare, till exempel QR-kod eller webbadress.' },
+  { q: 'Kan ni hjälpa till med hela mässpaket?', a: 'Ja. Vi kan hjälpa till med roll-ups, skyltar, foldrar, broschyrer, produktblad, visitkort, mappar, packning och leverans — som ett sammanhållet system.' },
+  { q: 'Hur ska original till roll-up levereras?', a: 'Leverera helst en tryckfärdig PDF i rätt format med utfall, säker marginal och tryckbar bildkvalitet. Placera inte viktig information för långt ner eftersom kassetten kan påverka synlig yta.' },
+  { q: 'Kan ni packa material per säljare eller monter?', a: 'Ja. Vi kan hjälpa till att packa, märka och dela upp material per säljare, plats, dag eller mottagare.' },
+  { q: 'Kan roll-ups återanvändas?', a: 'Ja, om budskap, material och kassett planeras för återanvändning. Undvik datumstyrd text om materialet ska användas vid flera tillfällen.' },
+  { q: 'Är trycksaken Svanenmärkt om jag trycker hos er?', a: 'Norrmalmstryckeriet är ett Svanenmärkt tryckeri, men en enskild trycksak är inte automatiskt Svanenmärkt. Om en specifik trycksak ska bära Svanenmärket reder vi ut vad som gäller innan produktion.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
+---
+
+<Layout
+  title="Roll-ups och mässmaterial – tryck för mässa, event och kundmöten | Norrmalmstryckeriet"
+  description="Tryck roll-ups, skyltar, vepor, foldrar, broschyrer, visitkort och mässmaterial hos Norrmalmstryckeriet i Sollentuna. Vi hjälper med format, original, tryck, packning och leverans."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
+        <img
+          src="/images/hero/storformat-hero.svg"
+          alt="Roll-ups och mässmaterial från Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Mässmaterial som gör jobbet på plats
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          Roll-ups, skyltar, vepor, foldrar, broschyrer, visitkort och mappar — som ett system. Vi hjälper dig från idé och original till tryck, packning och leverans i tid.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686960135" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">Hela paketet</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Tryck, pack & leverans</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt tryckeri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative">
+      <img
+        src="/images/hero/storformat-hero.svg"
+        alt="Roll-ups och mässmaterial från Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[680px]" style="text-wrap: balance;">
+          Mässmaterial som gör jobbet på plats
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[680px]">
+          Roll-ups, skyltar, vepor, foldrar, broschyrer, visitkort och mappar — som ett system. Vi hjälper dig från idé och original till tryck, packning och leverans i tid.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686960135" class="btn-pill" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">Hela paketet</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Tryck, pack & leverans</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt tryckeri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR MÄSSMATERIAL SOM SYSTEM?" ═══ -->
+  <section class="page-section">
+    <div class="page-content">
+      <p class="section-label">Mässmaterial som system</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          Ibland behövs bara en roll-up. <em>Ibland behövs hela paketet.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            Roll-upen stoppar blicken. Foldern förklarar snabbt. Broschyren fördjupar. Visitkortet gör nästa steg enkelt. När varje del har en tydlig roll arbetar materialet tillsammans — och säljteamet får ett bättre verktyg.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/guider/massmaterial" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Läs guiden<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">Situation & paket</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Berätta vad och vilket event. Vi packar paketet.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
+        Olika situationer kräver olika material. En stor branschmässa, en kunddag och ett seminarium har helt olika behov.
+      </p>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Beskriv eventet — vi rekommenderar rätt delar, rätt material och en tidsplan som passar deadline.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[20px] sm:mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[16px] sm:pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ DESIGNA FÖR AVSTÅND ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[920px]">
+      <p class="section-label">Designa för avstånd</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px] sm:mb-[28px]" style="font-size: clamp(1.5rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;" lang="sv">
+        Roll-upen ska arbeta på tre avstånd.
+      </h2>
+      <p class="text-[15px] sm:text-[16px] md:text-[18px] leading-[1.7] text-[#333] mb-[28px] sm:mb-[36px]">
+        Stora ytor designas som affischer — inte som broschyrer. Stora ytor ska inte fyllas med små detaljer; de ska skapa snabb förståelse.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-[16px] sm:gap-[20px]">
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På långt håll</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Färg, form, bild</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Varumärke, huvudrubrik och visuell idé — det som syns på 10–15 m.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På mellanavstånd</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">Erbjudande, nytta</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Förklaring och kort huvudbudskap som får mottagaren att stanna upp.</p>
+        </div>
+        <div class="bg-white rounded-[16px] p-[24px] sm:p-[28px]">
+          <span class="text-[10px] sm:text-[11px] uppercase text-[#D9222A] font-semibold block mb-[6px]" style="letter-spacing: 1.2px;">På nära håll</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] text-[18px] sm:text-[20px] mb-[8px]">CTA, QR-kod</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Kontakt, QR-kod och nästa steg — när besökaren är framme.</p>
+        </div>
+      </div>
+      <p class="text-[14px] sm:text-[15px] md:text-[16px] text-[#333] mt-[24px] sm:mt-[32px] leading-[1.7]">
+        <strong class="text-[#222]">Tips:</strong> Placera aldrig viktig information längst ner på en roll-up. Den nedre delen kan hamna nära golvet eller delvis döljas av kassetten.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till klart mässpaket.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vilket event, vilka delar, hur många säljare och när allt ska vara på plats.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Roll-ups, skyltar, take-away, material, tryckmetod, packning och en tidsplan.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vi kontrollerar original, trycker, efterbehandlar, packar och levererar till rätt plats.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TIDSPLAN INFÖR MÄSSA ═══ -->
+  <section class="bg-[#F3F3F3] reveal">
+    <div class="page-section">
+      <div class="page-container max-w-[1400px]">
+        <p class="section-label">Tidsplan inför mässa eller event</p>
+        <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
+          <div class="md:max-w-[520px]">
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+              Mässor har fasta datum. Produktionen planeras baklänges.
+            </h2>
+          </div>
+          <div class="md:max-w-[480px] md:pt-[12px]">
+            <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+              <p>
+                Det ska finnas tid för original, korrektur, tryck, efterbehandling, packning, märkning och transport — med marginal för justeringar.
+              </p>
+              <p class="text-[#222] font-medium">
+                Ju tidigare vi får veta event, delar och deadline, desto enklare blir det att packa och leverera utan stress i slutet.
+              </p>
+            </div>
+            <div class="pt-[28px] sm:pt-[36px]">
+              <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Synlighet, samtal och uppföljning.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Vi hjälper dig planera hela mässpaketet — roll-ups, skyltar, foldrar, broschyrer, visitkort, mappar och produktblad som hänger ihop visuellt och praktiskt.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NEDLADDNINGS-CTA ═══ -->
+  <section class="pt-[16px] pb-[16px] sm:pt-[24px] sm:pb-[24px]">
+    <div class="page-container max-w-[1140px] px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+      <div class="bg-[#D9222A] rounded-[20px] sm:rounded-[28px] px-[24px] sm:px-[40px] md:px-[56px] py-[36px] sm:py-[48px] md:py-[56px] grid md:grid-cols-[1fr_auto] gap-[24px] md:gap-[40px] items-center">
+        <div>
+          <p class="!text-white/80 uppercase font-medium text-[10px] sm:text-[11px] mb-[10px]" style="letter-spacing: 1.5px;">Gratis nedladdning</p>
+          <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[8px] sm:mb-[10px]" style="font-size: clamp(1.25rem, 2.5vw, 1.75rem); line-height: 1.2; text-wrap: balance;">
+            Mässmaterial-checklista som PDF
+          </h3>
+          <p class="!text-white/90 text-[14px] sm:text-[15px] leading-relaxed max-w-[520px]">
+            Roller i mässpaketet, designtips, originalchecklista, packning och tidsplan — i ett paket.
+          </p>
+        </div>
+        <a href="/downloads/rollups-massmaterial-infographic.pdf" target="_blank" rel="noopener" class="btn-pill w-full md:w-auto justify-center md:justify-start whitespace-nowrap" style="background: #fff; color: #222;">
+          Ladda ner (PDF)<Fragment set:html={downloadSvg} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="font-[var(--font-heading)] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.25rem, 2.8vw, 2.5rem); line-height: 1.3; color: #222;">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[14px] sm:text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Vanliga frågor om roll-ups och mässmaterial.
+      </h2>
+      <p class="text-[14px] sm:text-[15px] text-[#555] mb-[28px] sm:mb-[40px] md:mb-[60px]">
+        Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+      </p>
+      <div id="faq-list">
+        {faqs.map((item) => (
+          <div class="border-b border-[#D5D8DC]">
+            <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
+              <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[1300px]">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[20px] sm:text-[26px] md:text-[32px] text-[#222] mb-[20px] sm:mb-[28px] leading-[1.2]">
+            Berätta om eventet.
+          </h3>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
+            Vilken mässa, kunddag, seminarium eller produktlansering? Berätta vilka delar du behöver och när allt ska vara på plats — vi rekommenderar paket och tidsplan.
+          </p>
+          <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline break-all">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
+            <input type="text" name="company" placeholder="Företag / organisation" class="form-input" />
+            <input type="email" name="email" placeholder="E-post" required class="form-input" />
+            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+            <textarea name="message" placeholder="Berätta om eventet — datum, plats, vilka delar..." rows="5" class="form-input resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ RELATERADE PRODUKTER ═══ -->
+  <section class="page-section pt-0">
+    <div class="page-container max-w-[1300px]">
+      <p class="section-label">Ingår ofta i mässpaketet</p>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[12px] sm:gap-[16px]">
+        <a href="/produkter/storformat" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Storformat</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Roll-up & vepa</p>
+        </a>
+        <a href="/produkter/affischer" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Affischer</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Stora ytor</p>
+        </a>
+        <a href="/produkter/foldrar" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Foldrar</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Take-away</p>
+        </a>
+        <a href="/produkter/broschyrer" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Broschyrer</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Fördjupning</p>
+        </a>
+        <a href="/produkter/visitkort" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Visitkort</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Uppföljning</p>
+        </a>
+        <a href="/produkter/mappar" class="bg-[#F5F5F5] rounded-[16px] p-[20px] sm:p-[24px] hover:bg-[#EBEBEB] transition-colors no-underline text-center">
+          <p class="font-[var(--font-heading)] text-[#222] text-[16px] sm:text-[18px] mb-[4px]">Mappar</p>
+          <p class="text-[12px] sm:text-[13px] text-[#666]">Samlar paketet</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 560px;
+    max-height: 92vh;
+    background: #000;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+  }
+  @media (min-width: 1920px) {
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+  }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  function initRollups() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        if (!answer) return;
+        const isOpen = answer.classList.contains('open');
+        if (isOpen) {
+          answer.classList.remove('open');
+          answer.style.maxHeight = '0';
+          plusIcon?.classList.remove('hidden');
+          minusIcon?.classList.add('hidden');
+        } else {
+          answer.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon?.classList.add('hidden');
+          minusIcon?.classList.remove('hidden');
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-answer').forEach((a) => {
+      (a as HTMLElement).style.maxHeight = '0';
+      (a as HTMLElement).style.overflow = 'hidden';
+      (a as HTMLElement).style.transition = 'max-height 0.25s ease';
+    });
+
+    const scenarioC = document.getElementById('scenario-carousel');
+    const sw = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('scenario-prev')?.addEventListener('click', () => { scenarioC?.scrollBy({ left: -sw, behavior: 'smooth' }); });
+    document.getElementById('scenario-next')?.addEventListener('click', () => { scenarioC?.scrollBy({ left: sw, behavior: 'smooth' }); });
+  }
+
+  initRollups();
+  document.addEventListener('astro:after-swap', initRollups);
+</script>

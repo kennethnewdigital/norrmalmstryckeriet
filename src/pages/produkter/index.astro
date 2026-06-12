@@ -66,6 +66,12 @@ const products = [
     slug: 'storformat',
     desc: 'Roll up, banderoll och stor affisch — material och format för mässa, butik och utomhus.',
   },
+  {
+    label: 'Roll-ups & mässmaterial',
+    icon: 'storformat-1.svg',
+    slug: 'rollups-massmaterial',
+    desc: 'Hela mässpaketet — roll-ups, skyltar, foldrar, broschyrer, visitkort och mappar som system.',
+  },
 ];
 
 const tjanster = [
@@ -224,6 +230,14 @@ const tjanster = [
           <img src="/images/icons/storformat-1.svg" alt="Storformat" class="w-[64px] h-[64px] mb-[16px]" />
           <span class="typo-card-title mb-[8px]">Storformat</span>
           <p class="text-[13px] leading-relaxed text-[#555]">Roll up, banderoll och stor affisch.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 10: Roll-ups & mässmaterial */}
+        <a href="/produkter/rollups-massmaterial" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/storformat-1.svg" alt="Roll-ups & mässmaterial" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Roll-ups & mässmaterial</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">Hela mässpaketet som system.</p>
           <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
         </a>
       </div>
