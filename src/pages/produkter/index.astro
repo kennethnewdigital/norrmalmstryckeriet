@@ -31,6 +31,12 @@ const products = [
     desc: 'För längre budskap, presentation och produktinfo. Häftning eller limbindning.',
   },
   {
+    label: 'Årsredovisningar & rapporter',
+    icon: 'bocker-1.svg',
+    slug: 'arsredovisningar-rapporter',
+    desc: 'Företag, BRF, föreningar och organisationer — stämma, möte, hållbarhet och projekt.',
+  },
+  {
     label: 'Mappar',
     icon: 'mappar-1.svg',
     slug: 'mappar',
@@ -171,7 +177,15 @@ const tjanster = [
           <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
         </a>
 
-        {/* Card 5: Mappar */}
+        {/* Card 5: Årsredovisningar & rapporter */}
+        <a href="/produkter/arsredovisningar-rapporter" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/bocker-1.svg" alt="Årsredovisningar och rapporter" class="w-[64px] h-[64px] mb-[16px]" />
+          <span class="typo-card-title mb-[8px]">Årsredovisningar & rapporter</span>
+          <p class="text-[13px] leading-relaxed text-[#555]">Företag, BRF, förening, hållbarhet och projekt.</p>
+          <span class="mt-auto self-end text-[#222] pt-[12px]"><Fragment set:html={plusSvg} /></span>
+        </a>
+
+        {/* Card 6: Mappar */}
         <a href="/produkter/mappar" class="bg-[#F5F5F5] rounded-[20px] p-[32px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
           <img src="/images/icons/mappar-1.svg" alt="Mappar" class="w-[64px] h-[64px] mb-[16px]" />
           <span class="typo-card-title mb-[8px]">Mappar</span>

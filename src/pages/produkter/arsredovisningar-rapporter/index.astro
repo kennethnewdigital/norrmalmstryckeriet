@@ -1,0 +1,539 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+const effects = [
+  'Bygger förtroende från första till sista sida',
+  'Passar företag, BRF, föreningar och organisationer',
+  'Klar i rätt tid till stämma, möte eller utskick',
+  'Tydlig, korrekt och trygg att lämna vidare',
+];
+
+const scenarios = [
+  {
+    title: 'Årsredovisning för företag',
+    body: 'Du behöver en formell årsredovisning som ska användas vid bolagsstämma, kontakt med ägare, investerare eller kunder. Konsekvensen blir att materialet ska kännas korrekt, läsbart och representera företaget på rätt sätt.',
+    rec: 'A4 eller 170 × 240 mm, klammerhäftad eller limbunden, kraftigare omslag och inlaga anpassad efter text, tabeller och bilder.',
+  },
+  {
+    title: 'BRF-årsredovisning & stämmomaterial',
+    body: 'Du behöver tryck inför föreningsstämman — årsredovisning, kallelse, dagordning, motioner och eventuella bilagor. Konsekvensen blir att tidsplan, format och distribution behöver fungera tillsammans.',
+    rec: 'A5 eller A4, klammerhäftning, lättare inlaga för smidigt utskick, kuvert och packning per medlemslista.',
+  },
+  {
+    title: 'Verksamhetsberättelse',
+    body: 'Du behöver en rapport som visar resultat och utveckling för medlemmar, styrelse, bidragsgivare eller intressenter. Konsekvensen blir att läsbarhet och struktur är centralt.',
+    rec: 'A4 eller 210 × 210 mm, obestruket eller silk papper, klammerhäftning eller limbindning beroende på sidantal.',
+  },
+  {
+    title: 'Hållbarhetsrapport',
+    body: 'Du behöver en tryckt rapport med text, bilder, diagram och tabeller som ska representera företagets hållbarhetsarbete. Konsekvensen blir att papper och färgåtergivning är extra viktiga.',
+    rec: 'A4 eller specialformat, miljöanpassat papper, bestruket eller mattbestruket för bildåtergivning, matt laminering på omslag.',
+  },
+  {
+    title: 'Projektrapport eller beslutsunderlag',
+    body: 'Du behöver presentera projekt, resultat, analys eller beslutsunderlag i ett samlat tryckt material. Konsekvensen blir att format och bindning behöver passa både läsning och arkivering.',
+    rec: 'A4, klammerhäftning eller limbindning, kraftigare omslag och tydlig sidnumrering — utgivet i rätt upplaga.',
+  },
+  {
+    title: 'Medlems- och föreningsrapport',
+    body: 'Du behöver en rapport som fungerar för medlemmar och samtidigt bygger förtroende externt. Konsekvensen blir att tonen, materialet och produktionen ska balansera tillgänglighet och formalitet.',
+    rec: 'A5 eller A4, lätt och behaglig inlaga, klammerhäftning, packning för utskick och en tidsplan kopplad till årsmöte.',
+  },
+];
+
+const expertise = [
+  {
+    title: 'Format & papper',
+    intro: 'Årsredovisningar och rapporter innehåller ofta tabeller, siffror, noter och ibland bilder. Format och papper ska göra det lätt att läsa och hantera.',
+    items: [
+      ['A4', 'Standard för rapporter med tabeller, ekonomi och formellt innehåll.'],
+      ['A5', 'Smidigt för BRF, medlemsutskick och distribution per post.'],
+      ['170 × 240 mm', 'Premiumkänsla och magasinlik form för årsrapporter.'],
+      ['Obestruket papper', 'Naturlig, taktil och lättläst — bra för text och siffror.'],
+      ['Bestruket papper', 'Skarpare bilder och tydligare diagram i hållbarhets- och årsrapporter.'],
+    ],
+  },
+  {
+    title: 'Bindning',
+    intro: 'Bindningen avgör hur materialet bläddras, sparas och upplevs. Vid klammer ska sidantalet gå jämnt upp i fyra; vid limbindning planeras rygg och omslag.',
+    items: [
+      ['Klammerhäftning', 'Mindre och medelstora årsredovisningar och rapporter.'],
+      ['Limbindning', 'Större rapporter, kataloger och mer boklik känsla.'],
+      ['Wire-O / spiral', 'Manualer, utbildningsmaterial och arbetsdokument som ska ligga plant.'],
+      ['Hålat material', 'Dokument som ska sättas i pärm eller arkiveras strukturerat.'],
+      ['Lösblad / packat', 'Stämmomaterial med kallelse, dagordning och bilagor i ett paket.'],
+    ],
+  },
+  {
+    title: 'Tryckmetod & original',
+    intro: 'Vid större upplagor passar offset; vid mindre och tidsstyrda produktioner passar digitaltryck. Originalkontrollen är extra viktig — siffror och noter måste stämma.',
+    items: [
+      ['Digitaltryck', 'BRF, mindre organisationer, tidsstyrda produktioner och versionering.'],
+      ['Offsettryck', 'Större upplagor, jämn färgåtergivning och bättre styckpris i volym.'],
+      ['Sidvis PDF', 'Levereras i läsordning — tryckeriet sköter utskjutningen.'],
+      ['Ryggbredd', 'Beräknas av sidantal och papper vid limbindning.'],
+      ['Korrektur', 'Extra noga vid siffror, noter, sidnumrering och kontaktuppgifter.'],
+    ],
+  },
+];
+
+const testimonial = {
+  quote: 'Norrmalmstryckeriet är en trygg och kunnig samarbetspartner som alltid levererar på topp, dessutom till vettiga priser.',
+  author: 'Björn Jansson',
+  role: 'Projektledare, Repro 8',
+};
+
+const faqs = [
+  { q: 'Vad kostar det att trycka en årsredovisning?', a: 'Priset beror på format, sidantal, upplaga, papper, bindning, färgtryck, efterbehandling och eventuell distribution. Skicka gärna en PDF eller beskrivning så kan vi ta fram en offert.' },
+  { q: 'Trycker ni årsredovisningar till BRF:er?', a: 'Ja. Vi hjälper BRF:er med årsredovisningar, stämmomaterial, kallelser, medlemsutskick, kuvert, packning och relaterade trycksaker.' },
+  { q: 'Vilket format passar bäst för årsredovisningar?', a: 'A4 passar bra för rapporter med mycket tabeller och siffror. A5 passar ofta bra för BRF:er, föreningar och material som ska delas ut eller skickas.' },
+  { q: 'Ska årsredovisningen klammerhäftas eller limbindas?', a: 'Klammerhäftning passar ofta mindre och medelstora sidantal. Limbindning passar större rapporter som ska få mer boklik känsla.' },
+  { q: 'Ska jag skicka PDF som uppslag eller singelsidor?', a: 'För årsredovisningar och rapporter är sidvis PDF i läsordning normalt bäst. Tryckeriet sköter utskjutningen inför tryck och bindning.' },
+  { q: 'Kan ni hjälpa till med rapporter som inte är årsredovisningar?', a: 'Ja. Vi trycker verksamhetsberättelser, hållbarhetsrapporter, projektrapporter, medlemsrapporter, manualer, beslutsunderlag och andra rapporter.' },
+  { q: 'Kan ni hjälpa till om vi har bråttom inför stämma eller möte?', a: 'Kontakta oss så tidigt som möjligt med sidantal, upplaga, format och deadline. Då kan vi rekommendera en lösning som passar tidsplanen.' },
+  { q: 'Är trycksaken Svanenmärkt om jag trycker hos er?', a: 'Norrmalmstryckeriet är ett Svanenmärkt tryckeri, men en enskild trycksak är inte automatiskt Svanenmärkt. Om en specifik trycksak ska bära Svanenmärket reder vi ut vad som gäller innan produktion.' },
+];
+
+const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+---
+
+<Layout
+  title="Trycka årsredovisningar och rapporter – företag, BRF och organisationer | Norrmalmstryckeriet"
+  description="Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper med format, papper, bindning, original och leverans."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <!-- MOBILE+TABLET HERO -->
+  <section class="lg:hidden">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
+        <img
+          src="/images/hero/bocker-hero.webp"
+          alt="Årsredovisningar och rapporter tryckta av Norrmalmstryckeriet"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
+        <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Förtroende från första till sista sida
+        </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px] sm:mb-[28px]">
+          Vi trycker årsredovisningar, BRF-material, verksamhetsberättelser och rapporter för företag, föreningar och organisationer. Tryggt från original till färdig leverans.
+        </p>
+        <div class="flex flex-col sm:flex-row sm:flex-wrap gap-[10px] sm:gap-[12px] mb-[32px] sm:mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill w-full sm:w-auto justify-center" style="background: #F3F3F3; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[24px] sm:gap-x-[40px] gap-y-[16px] pt-[8px]">
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">100+ år</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="font-[var(--font-heading)] text-[#222] leading-none text-[22px] sm:text-[26px]">BRF & företag</span>
+            <span class="text-[#666] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Stämma & rapport</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[30px] h-[31px] sm:w-[34px] sm:h-[35px]" />
+            <span class="text-[#222] mt-[6px] font-medium uppercase text-[10px]" style="letter-spacing: 1.4px;">Svanenmärkt tryckeri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESKTOP HERO -->
+  <section class="relative hidden lg:block">
+    <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative">
+      <img
+        src="/images/hero/bocker-hero.webp"
+        alt="Årsredovisningar och rapporter tryckta av Norrmalmstryckeriet"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
+      <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
+        <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
+          Tryckeri Stockholm • Sollentuna / Häggvik
+        </p>
+        <h1 class="typo-hero !text-white mb-[20px] max-w-[680px]" style="text-wrap: balance;">
+          Förtroende från första till sista sida
+        </h1>
+        <p class="!text-white/90 text-[16px] md:text-[18px] leading-relaxed mb-[28px] max-w-[680px]">
+          Vi trycker årsredovisningar, BRF-material, verksamhetsberättelser och rapporter för företag, föreningar och organisationer. Tryggt från original till färdig leverans.
+        </p>
+        <div class="flex flex-wrap items-center gap-[12px] mb-[40px]">
+          <a href="/offert" class="btn-pill btn-red">
+            Offertförfrågan<Fragment set:html={arrowSvg} />
+          </a>
+          <a href="tel:+4686210090" class="btn-pill" style="background: white; color: #222;">
+            Ring 08-96 01 35
+          </a>
+        </div>
+        <div class="flex flex-wrap items-end gap-x-[40px] lg:gap-x-[60px] gap-y-[16px]">
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">100+ år</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">År av erfarenhet</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <span class="!text-white font-[var(--font-heading)] leading-none text-[24px] lg:text-[30px]">BRF & företag</span>
+            <span class="!text-white/70 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Stämma & rapport</span>
+          </div>
+          <div class="flex flex-col items-start">
+            <img src="/images/certifications/svanen-market.svg" alt="Svanenmärkt" class="w-[34px] h-[35px]" />
+            <span class="!text-white/85 mt-[8px] font-medium uppercase text-[10px]" style="letter-spacing: 1.5px;">Svanenmärkt tryckeri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "VARFÖR ÅRSREDOVISNING & RAPPORT?" ═══ -->
+  <section class="page-section">
+    <div class="page-content">
+      <p class="section-label">Varför trycka rapporten?</p>
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px] items-start">
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+          En årsredovisning är mer än ett dokument. <em>Den sammanfattar ett år.</em>
+        </h2>
+        <div class="md:pt-[12px]">
+          <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
+            Den visar ansvar, ekonomi, beslut, resultat och riktning. Den ska kännas tydlig, korrekt och professionell — och vara klar i tid.
+          </p>
+          <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
+            {effects.map((eff) => (
+              <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
+                <span class="shrink-0 mt-[9px] sm:mt-[10px] w-[6px] h-[6px] rounded-full bg-[#222]"></span>
+                <span>{eff}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-[10px] sm:gap-[12px]">
+            <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center">
+              Offertförfrågan<Fragment set:html={arrowSvg} />
+            </a>
+            <a href="/guider/arsredovisning" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+              Läs guiden<Fragment set:html={arrowSvg} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ "Vad vill du uppnå?" — sidoscroll-kort ═══ -->
+  <section class="page-section-no-px">
+    <div class="ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[28px] sm:mb-[40px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <p class="section-label" style="margin-bottom: 16px;">För vem och varför</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance; max-width: 1100px;" lang="sv">
+        Berätta situationen. Vi löser trycket.
+      </h2>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px] mb-[4px] sm:mb-[6px]">
+        En tryckt årsredovisning eller rapport kan vara många olika saker — formell, medlemsnära, varumärkesbärande eller verksam som beslutsunderlag.
+      </p>
+      <p class="text-[#555] text-[15px] sm:text-[16px] md:text-[18px] max-w-[800px]">
+        Det viktiga är att materialet känns tryggt att lämna vidare. Berätta för vem och när — vi rekommenderar utförandet.
+      </p>
+    </div>
+    <div id="scenario-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {scenarios.map((s) => (
+        <article class="shrink-0 w-[280px] sm:w-[320px] md:w-[380px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[32px] md:p-[43px] flex flex-col min-h-[400px] sm:min-h-[440px] md:min-h-[482px]">
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem); line-height: 1.15; hyphens: auto; word-wrap: break-word;" lang="sv">{s.title}</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#444] mb-[20px] sm:mb-[24px]">{s.body}</p>
+          <div class="mt-auto pt-[16px] sm:pt-[20px] border-t border-[#C8C8C8]">
+            <p class="text-[13px] sm:text-[14px] leading-relaxed text-[#222]">
+              <strong class="font-bold">Vår rekommendation:</strong> {s.rec}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[16px] sm:mt-[24px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="scenario-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#888] hover:bg-[#222] hover:text-white transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="scenario-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#222] flex items-center justify-center text-white hover:bg-[#000] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ═══ HUR VI JOBBAR ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="section-label" style="margin-bottom: 16px;">Hur vi jobbar</p>
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[40px] sm:mb-[56px] md:mb-[72px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Tre steg till rätt rapport.
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-[28px] sm:gap-[32px] md:gap-[48px] lg:gap-[60px]">
+        <div>
+          <span class="typo-process-number block">1.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du berättar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Sidantal, upplaga, deadline, mottagare och hur materialet ska användas — stämma, möte, utskick eller arkivering.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">2.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Vi rekommenderar</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Format, papper, omslag, inlaga, bindning, tryckmetod, kuvert och packning — med en tidsplan som passar deadline.</p>
+        </div>
+        <div>
+          <span class="typo-process-number block">3.</span>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[16px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Du godkänner</h3>
+          <p class="text-[14px] sm:text-[15px] leading-relaxed text-[#555]">Vi kontrollerar originalet vid behov, du godkänner — sedan trycker, efterbehandlar, packar och levererar vi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TIDSPLAN INFÖR STÄMMA ═══ -->
+  <section class="bg-[#F3F3F3] reveal">
+    <div class="page-section">
+      <div class="page-container max-w-[1400px]">
+        <p class="section-label">Tidsplan inför stämma eller möte</p>
+        <div class="grid md:grid-cols-[1fr_1fr] gap-[32px] md:gap-[60px] lg:gap-[120px] items-start">
+          <div class="md:max-w-[520px]">
+            <h2 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.75rem, 3.5vw, 3.5rem); line-height: 1.1; letter-spacing: -0.025em; hyphens: auto; text-wrap: balance;" lang="sv">
+              Årsredovisningar och rapporter har ofta tydliga deadlines.
+            </h2>
+          </div>
+          <div class="md:max-w-[480px] md:pt-[12px]">
+            <div class="space-y-[20px] sm:space-y-[24px] text-[16px] sm:text-[17px] leading-[1.65] text-[#444]" style="text-wrap: pretty;">
+              <p>
+                Det kan vara en bolagsstämma, föreningsstämma, styrelsepresentation, årsmöte, kundpresentation, rapportlansering eller ett medlemsutskick.
+              </p>
+              <p class="text-[#222] font-medium">
+                Ju tidigare vi får veta format, sidantal, upplaga och deadline, desto enklare blir det att föreslå en lösning som passar tidsplanen — och undvika stress i sista minuten.
+              </p>
+            </div>
+            <div class="pt-[28px] sm:pt-[36px]">
+              <a href="/kontakta-oss" class="btn-pill btn-dark w-full sm:w-auto justify-center">
+                Hjälp? Kontakta oss<Fragment set:html={arrowSvg} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VÅR EXPERTIS (mörk rundad) ═══ -->
+  <section class="py-[24px] sm:py-[32px] lg:py-[40px]">
+    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[44px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#222]">
+      <div class="px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[64px] sm:py-[80px] md:py-[100px] lg:py-[110px]">
+        <p class="!text-white/60 mb-[16px] sm:mb-[24px] uppercase font-medium text-[10px] sm:text-[12px]" style="letter-spacing: 1.5px;">Vår expertis</p>
+        <h2 class="font-[var(--font-heading)] !font-normal !text-white mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+          Format, bindning, papper och original.
+        </h2>
+        <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] mb-[40px] sm:mb-[60px] md:mb-[80px] max-w-[720px]">
+          Vi hjälper BRF:er, företag, föreningar och organisationer att producera årsredovisningar och rapporter som känns tydliga, professionella och trygga att lämna vidare.
+        </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[16px] sm:gap-[20px] lg:gap-[24px]">
+          {expertise.map((e) => (
+            <div class="bg-[#313131] rounded-[20px] sm:rounded-[25px] p-[24px] sm:p-[28px] lg:p-[39px]">
+              <h3 class="font-[var(--font-heading)] !font-normal !text-white mb-[14px] sm:mb-[20px]" style="font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem); line-height: 1.2;">{e.title}</h3>
+              <p class="!text-white/70 text-[14px] sm:text-[15px] leading-relaxed mb-[18px] sm:mb-[24px]">{e.intro}</p>
+              <div class="space-y-[12px] sm:space-y-[14px]">
+                {e.items.map(([term, desc]) => (
+                  <p class="text-[13px] sm:text-[14px] leading-relaxed !text-white/80">
+                    <strong class="!text-white font-bold">{term}</strong> – {desc}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDCITAT ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto text-center">
+      <p class="font-[var(--font-heading)] mb-[28px] sm:mb-[40px]" style="font-size: clamp(1.25rem, 2.8vw, 2.5rem); line-height: 1.3; color: #222;">
+        &ldquo;{testimonial.quote}&rdquo;
+      </p>
+      <div class="text-[14px] sm:text-[15px]">
+        <span class="font-bold text-[#222]">{testimonial.author}</span>
+        <span class="text-[#666]"> – {testimonial.role}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FAQ ═══ -->
+  <section class="page-section">
+    <div class="max-w-[1140px] mx-auto">
+      <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px] sm:mb-[20px]" style="font-size: clamp(1.75rem, 4vw, 4rem); line-height: 1.05; letter-spacing: -0.025em;">
+        Vanliga frågor om årsredovisningar och rapporter.
+      </h2>
+      <p class="text-[14px] sm:text-[15px] text-[#555] mb-[28px] sm:mb-[40px] md:mb-[60px]">
+        Har du fler frågor? Ring oss på <strong class="text-[#222]">08-96 01 35</strong> – vi svarar gärna.
+      </p>
+      <div id="faq-list">
+        {faqs.map((item) => (
+          <div class="border-b border-[#D5D8DC]">
+            <button class="faq-toggle w-full flex justify-between items-center py-[16px] sm:py-[20px] px-[6px] sm:px-[10px] text-left cursor-pointer gap-[12px]">
+              <span class="font-[var(--font-body)] font-bold text-[15px] sm:text-[16px] md:text-[18px] text-[#222]">{item.q}</span>
+              <span class="faq-icon shrink-0 w-[24px] h-[24px] sm:w-[28px] sm:h-[28px] flex items-center justify-center text-[#222]">
+                <svg class="faq-plus w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+                <svg class="faq-minus hidden w-[24px] h-[24px] sm:w-[28px] sm:h-[28px]" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12H124c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h264c6.6 0 12 5.4 12 12v56z"/></svg>
+              </span>
+            </button>
+            <div class="faq-answer text-[15px] sm:text-[16px] leading-[1.7] pb-[16px] sm:pb-[20px] px-[6px] sm:px-[10px] text-[#444]">
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HJÄLP? + FORMULÄR ═══ -->
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container max-w-[1300px]">
+      <div class="grid md:grid-cols-2 gap-[32px] md:gap-[60px] lg:gap-[80px]">
+        <div>
+          <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[24px]" style="font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
+          <h3 class="font-[var(--font-heading)] !font-normal text-[20px] sm:text-[26px] md:text-[32px] text-[#222] mb-[20px] sm:mb-[28px] leading-[1.2]">
+            Berätta om din rapport.
+          </h3>
+          <p class="text-[15px] sm:text-[16px] leading-relaxed text-[#444] mb-[24px] sm:mb-[36px] max-w-[480px]">
+            Årsredovisning, BRF-stämmomaterial, verksamhetsberättelse, hållbarhetsrapport eller projektrapport? Berätta sidantal, upplaga och deadline — vi rekommenderar format, papper och bindning.
+          </p>
+          <div class="space-y-[8px] text-[14px] sm:text-[15px] text-[#222]">
+            <p><strong class="font-bold">Telefon:</strong> 08-96 01 35</p>
+            <p><strong class="font-bold">E-post:</strong> <a href="mailto:tryckeri@norrmalmstryckeriet.se" class="text-[#D9222A] hover:underline break-all">tryckeri@norrmalmstryckeriet.se</a></p>
+            <p><strong class="font-bold">Besök:</strong> Hammarbacken 4A, Sollentuna (15 min från city)</p>
+          </div>
+        </div>
+        <div>
+          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
+            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
+            <input type="text" name="company" placeholder="Företag / BRF / förening" class="form-input" />
+            <input type="email" name="email" placeholder="E-post" required class="form-input" />
+            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+            <textarea name="message" placeholder="Berätta kort om rapporten — sidantal, upplaga, deadline..." rows="5" class="form-input resize-none"></textarea>
+            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ KUNDREFERENSER ═══ -->
+  <section class="py-[48px] sm:py-[64px] md:py-[80px]">
+    <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[16px] sm:mb-[20px]">Kundreferenser.</h3>
+    <div id="ref-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+      {[
+        { name: 'Memira', href: '/kundreferenser/memira', image: '/images/references/memira.webp' },
+        { name: 'Sv. Curlingförbundet', href: '/kundreferenser/curlingforbundet', image: '/images/references/curling.webp' },
+        { name: 'Kyrkbyrån', href: '/kundreferenser/kyrkbyran', image: '/images/references/kyrkbyran.webp' },
+        { name: 'Odelius & Co', href: '/kundreferenser/odelius', image: '/images/references/odelius.webp' },
+        { name: 'Zetatrade', href: '/kundreferenser/zetatrade', image: '/images/references/zetatrade.webp' },
+      ].map((ref) => (
+        <a href={ref.href} class="shrink-0 w-[280px] sm:w-[400px] md:w-[600px] h-[200px] sm:h-[280px] md:h-[350px] rounded-[16px] overflow-hidden relative block group">
+          <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 flex items-end justify-between">
+            <span class="typo-ref-name text-white">{ref.name}</span>
+            <span class="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+              <svg width="44" height="44" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+    <div class="flex justify-end gap-[8px] mt-[12px] sm:mt-[16px] mr-[16px] sm:mr-[24px] md:mr-[32px] lg:mr-[44px]">
+      <button id="ref-prev" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="ref-next" class="w-[40px] h-[40px] sm:w-[44px] sm:h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="16" height="16" class="sm:w-[18px] sm:h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero-box {
+    aspect-ratio: 1.4 / 1;
+    min-height: 560px;
+    max-height: 92vh;
+    background: #000;
+  }
+  @media (min-width: 1024px) {
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+  }
+  @media (min-width: 1440px) {
+    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+  }
+  @media (min-width: 1920px) {
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+  }
+
+  .page-section-no-px {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  @media (min-width: 640px) {
+    .page-section-no-px { padding-top: 56px; padding-bottom: 56px; }
+  }
+  @media (min-width: 768px) {
+    .page-section-no-px { padding-top: 72px; padding-bottom: 72px; }
+  }
+  @media (min-width: 1024px) {
+    .page-section-no-px { padding-top: 88px; padding-bottom: 88px; }
+  }
+</style>
+
+<script>
+  function initArsRapport() {
+    document.querySelectorAll('.faq-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const answer = btn.nextElementSibling as HTMLElement;
+        const plusIcon = btn.querySelector('.faq-plus') as HTMLElement;
+        const minusIcon = btn.querySelector('.faq-minus') as HTMLElement;
+        if (!answer) return;
+        const isOpen = answer.classList.contains('open');
+        if (isOpen) {
+          answer.classList.remove('open');
+          answer.style.maxHeight = '0';
+          plusIcon?.classList.remove('hidden');
+          minusIcon?.classList.add('hidden');
+        } else {
+          answer.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          plusIcon?.classList.add('hidden');
+          minusIcon?.classList.remove('hidden');
+        }
+      });
+    });
+
+    document.querySelectorAll('.faq-answer').forEach((a) => {
+      (a as HTMLElement).style.maxHeight = '0';
+      (a as HTMLElement).style.overflow = 'hidden';
+      (a as HTMLElement).style.transition = 'max-height 0.25s ease';
+    });
+
+    const scenarioC = document.getElementById('scenario-carousel');
+    const sw = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 296);
+    document.getElementById('scenario-prev')?.addEventListener('click', () => { scenarioC?.scrollBy({ left: -sw, behavior: 'smooth' }); });
+    document.getElementById('scenario-next')?.addEventListener('click', () => { scenarioC?.scrollBy({ left: sw, behavior: 'smooth' }); });
+
+    const refC = document.getElementById('ref-carousel');
+    const rw = window.matchMedia('(min-width: 768px)').matches ? 620 : (window.matchMedia('(min-width: 640px)').matches ? 420 : 296);
+    document.getElementById('ref-prev')?.addEventListener('click', () => { refC?.scrollBy({ left: -rw, behavior: 'smooth' }); });
+    document.getElementById('ref-next')?.addEventListener('click', () => { refC?.scrollBy({ left: rw, behavior: 'smooth' }); });
+  }
+
+  initArsRapport();
+  document.addEventListener('astro:after-swap', initArsRapport);
+</script>
