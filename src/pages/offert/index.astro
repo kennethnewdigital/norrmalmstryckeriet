@@ -151,23 +151,44 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
             <div>
               <label for="product" class="block text-[14px] font-medium text-[#222] mb-[6px]">Vad vill du trycka? <span class="text-[#888] font-normal">(välj eller skriv fritt nedan)</span></label>
               <select id="product" name="product" class="form-input">
-                <option value="">Välj produkt…</option>
-                <option value="blad">Blad / reklamblad / flyers</option>
-                <option value="foldrar">Foldrar</option>
-                <option value="broschyrer">Broschyrer</option>
-                <option value="mappar">Mappar</option>
-                <option value="affischer">Affischer</option>
-                <option value="kuvert">Kuvert</option>
-                <option value="bocker">Böcker</option>
-                <option value="storformat">Storformat</option>
-                <option value="visitkort">Visitkort</option>
+                <option value="">Välj produkt eller tjänst…</option>
+                <optgroup label="Produkter">
+                  <option value="arsredovisningar-rapporter">Årsredovisningar & rapporter</option>
+                  <option value="rollups-massmaterial">Roll-ups & mässmaterial</option>
+                  <option value="broschyrer">Broschyrer</option>
+                  <option value="foldrar">Foldrar</option>
+                  <option value="blad">Blad / reklamblad / flyers</option>
+                  <option value="visitkort">Visitkort</option>
+                  <option value="mappar">Mappar</option>
+                  <option value="kuvert">Kuvert</option>
+                  <option value="bocker">Böcker</option>
+                  <option value="affischer">Affischer</option>
+                  <option value="storformat">Storformat</option>
+                </optgroup>
+                <optgroup label="Tjänster">
+                  <option value="digitaltryck">Digitaltryck / mindre upplaga</option>
+                  <option value="offsettryck">Offsettryck / större upplaga</option>
+                  <option value="filkontroll">Filkontroll / hjälp med original</option>
+                  <option value="utskick">Utskick / kuvertering / packning</option>
+                </optgroup>
                 <option value="annat">Annat</option>
               </select>
             </div>
 
+            <div class="grid sm:grid-cols-2 gap-[12px] sm:gap-[16px]">
+              <div>
+                <label for="upplaga" class="block text-[14px] font-medium text-[#222] mb-[6px]">Upplaga <span class="text-[#888] font-normal">(valfritt)</span></label>
+                <input type="text" id="upplaga" name="upplaga" placeholder="t.ex. 500 ex" class="form-input" />
+              </div>
+              <div>
+                <label for="deadline" class="block text-[14px] font-medium text-[#222] mb-[6px]">Deadline / när behövs det? <span class="text-[#888] font-normal">(viktigt vid stämma/mässa)</span></label>
+                <input type="text" id="deadline" name="deadline" placeholder="t.ex. 15 mars eller v. 12" class="form-input" />
+              </div>
+            </div>
+
             <div>
               <label for="message" class="block text-[14px] font-medium text-[#222] mb-[6px]">Beskriv ditt projekt <span class="text-[#D9222A]">*</span></label>
-              <textarea id="message" name="message" rows="6" required placeholder="Beskriv format, sidantal, upplaga, papper, leveranstid och annat som påverkar offerten…" class="form-input resize-none"></textarea>
+              <textarea id="message" name="message" rows="6" required placeholder="Beskriv format, sidantal, papper, efterbehandling, distribution och annat som påverkar offerten…" class="form-input resize-none"></textarea>
             </div>
 
             <div>

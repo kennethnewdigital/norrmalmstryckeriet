@@ -13,11 +13,11 @@ const faqTabs = [
     tab: 'Tryckmetoder – Offset & Digitaltryck',
     qs: [
       { q: 'Vad är offsettryck och när passar det bäst?', a: 'När du trycker stora upplagor – en katalog, broschyr eller årsredovisning – och vill att färgerna ska bli exakt rätt varje gång, då är offsettryck rätt val. Metoden ger hög kvalitet, jämn färgåtergivning och ett lägre styckpris vid större volymer.' },
-      { q: 'När ska man välja digitaltryck?', a: 'Digitaltryck är din bästa vän vid kortare upplagor, snabba leveranser och personaliserat innehåll. Du slipper startkostnader för tryckplåtar och kan anpassa varje exemplar med variabeldata.' },
+      { q: 'När ska man välja digitaltryck?', a: 'Digitaltryck passar ofta vid kortare upplagor, snabba produktioner och versionerat material. Inga tryckplåtar behöver framställas, vilket gör startsträckan kort — och varje exemplar kan anpassas med variabeldata.' },
       { q: 'Hur hanterar ni filer och färghantering?', a: 'Vi tar emot filer i alla vanliga format – PDF, InDesign, Illustrator och fler. Vår prepress-avdelning granskar alla filer före tryck och kontrollerar upplösning, färgprofiler och beskärningar. Vi använder ICC-profiler för exakt färgåtergivning.' },
       { q: 'Finns det kvalitetsskillnader mellan offset och digitaltryck?', a: 'Offset ger generellt den mest exakta färgåtergivningen, särskilt vid stora upplagor. Digitaltryck har kommit mycket nära offset i kvalitet och erbjuder fördelar som variabeldata och snabbare leverans.' },
       { q: 'Hur väljer jag rätt tryckmetod?', a: 'Det beror på upplaga, budget, leveranstid och produkt. Generellt: digitaltryck för korta upplagor (1–500 ex) och offsettryck för större (500+ ex). Vi hjälper dig gärna att välja rätt.' },
-      { q: 'Vad är hybridtryck?', a: 'Hybridtryck kombinerar offset och digitaltryck i samma produkt. Till exempel kan du trycka en basupplaga i offset och sedan personalisera med digitaltryck. Det ger bästa av två världar.' },
+      { q: 'Kan ni kombinera offsettryck och digitaltryck i samma projekt?', a: 'Ja. I vissa projekt kan en basproduktion göras i offset och kompletteras med digitaltryck för mindre upplagor, versioner eller personanpassade delar. Vi rekommenderar metod efter syfte, upplaga och tidsplan.' },
       { q: 'Kan ni hantera specialfärger som Pantone?', a: 'Absolut. Vi arbetar med Pantone-färger för exakt färgmatchning, särskilt vid varumärkeskritiska projekt där färgerna måste stämma perfekt.' },
     ],
   },
@@ -32,14 +32,14 @@ const faqTabs = [
   {
     tab: 'Personlig tryckproduktion & variabeldata',
     qs: [
-      { q: 'Vad är variabeldata i tryck?', a: 'Tänk dig att varje trycksak pratar direkt med mottagaren. Med variabeldata kan varje exemplar ha eget namn, unika budskap, QR-kod eller bild. Det skapar närvaro och ökar responsen markant jämfört med generiska utskick.' },
+      { q: 'Vad är variabeldata i tryck?', a: 'Variabeldata gör det möjligt att anpassa namn, adress, QR-kod, kundnummer eller budskap per mottagare — utan att produktionen behöver stoppas mellan exemplar. Det används ofta för medlemsutskick, kallelser, direktreklam och kampanjer.' },
       { q: 'Kan ni personalisera hela trycksaker – inte bara namn?', a: 'Ja. Vi kan anpassa bilder, budskap, erbjudanden och layout per mottagare. Det ger en helt personlig upplevelse som både stärker varumärket och ökar engagemanget.' },
     ],
   },
   {
     tab: 'Leverans & Distribution',
     qs: [
-      { q: 'Vilka leveranstider erbjuder ni?', a: 'Normala leveranstider är 5–7 arbetsdagar för offsettryck och 2–3 arbetsdagar för digitaltryck. Vi erbjuder även expressproduktion vid behov. Kontakta oss för exakta tider för ditt projekt.' },
+      { q: 'Vilka leveranstider erbjuder ni?', a: 'Leveranstid beror på produkt, upplaga, material, efterbehandling och aktuell beläggning i produktionen. Berätta vad du vill ta fram och när du behöver det — vi rekommenderar en tidsplan som passar projektet.' },
       { q: 'Kan ni distribuera direkt till flera adresser?', a: 'Ja. Vi hanterar lager, plock och distribution till flera mottagare – oavsett om det är kontor, butiker eller slutkunder. Vi skräddarsyr logistiken efter dina behov.' },
       { q: 'Erbjuder ni lagring och print-on-demand?', a: 'Absolut. Vi lagrar ditt material hos oss och trycker och levererar vid behov. Perfekt för företag som vill ha flexibel tillgång utan att binda upp stora volymer.' },
     ],
@@ -54,14 +54,17 @@ const faqTabs = [
   {
     tab: 'Tryck & digital kommunikation',
     qs: [
-      { q: 'Hur effektiva är trycksaker jämfört med digitalt?', a: 'Studier visar att fysiska trycksaker skapar starkare minnesbilder och högre uppmärksamhet än digitala budskap. Tryckt material upplevs som mer trovärdigt och stannar kvar längre hos mottagaren.' },
+      { q: 'Hur effektiva är trycksaker jämfört med digitalt?', a: 'Tryckt material och digital kommunikation har olika styrkor. En trycksak är taktil, har lång livslängd och tappar inte uppmärksamhet i ett flöde. Den fungerar ofta bäst som komplement till digitala kanaler — i kombination med QR-koder, kampanjsidor och uppföljning.' },
       { q: 'Hur integrerar jag tryck med digital marknadsföring?', a: 'Trycksaker och digital marknadsföring kompletterar varandra utmärkt. Använd QR-koder, personliga URL:er eller augmented reality för att koppla tryck till digitala upplevelser och mäta resultat.' },
     ],
   },
 ];
 ---
 
-<Layout title="Norrmalmstryckeriet – Tryckeriet där passion möter precision.">
+<Layout
+  title="Tryckeri i Sollentuna & Stockholm – offset, digitaltryck och storformat | Norrmalmstryckeriet"
+  description="Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, BRF:er, föreningar och byråer med trycksaker — från original och papper till tryck, efterbehandling och leverans."
+>
 
   <!-- ═══ HERO ═══ -->
   <!-- MOBILE+TABLET HERO: bild överst, text under (upp till lg) -->
@@ -77,9 +80,20 @@ const faqTabs = [
       </div>
       <!-- Text under -->
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
-        <h1 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
-          Ditt lokala tryckeri i Stockholm.
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
+          Trycksaker som fungerar i verkligheten
         </h1>
+        <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px]">
+          Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, BRF:er, föreningar, organisationer och byråer att ta fram trycksaker med rätt original, rätt papper, rätt tryckmetod och rätt efterbehandling.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-[10px] sm:gap-[12px]">
+          <a href="/offert" class="btn-pill btn-red w-full sm:w-auto justify-center inline-flex">
+            Begär offert<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </a>
+          <a href="/kontakta-oss" class="btn-pill w-full sm:w-auto justify-center inline-flex" style="background: #F3F3F3; color: #222;">
+            Skicka original för kontroll
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -106,7 +120,7 @@ const faqTabs = [
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
       <div class="absolute bottom-[40px] left-[40px] right-[40px] xl:bottom-[60px] xl:left-[60px] xl:right-[60px] z-10">
         <h2 class="typo-hero !text-white">
-          Ditt lokala tryckeri i Stockholm.
+          Trycksaker som fungerar i verkligheten
         </h2>
       </div>
     </div>
@@ -146,16 +160,19 @@ const faqTabs = [
     <div class="lg:hidden">
       <div id="product-carousel" class="flex gap-[16px] sm:gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] pr-[16px] sm:pr-[24px] md:pr-[32px]">
         {[
-          { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg' },
-          { label: 'Foldrar', icon: 'foldrar.svg' },
-          { label: 'Broschyrer', icon: 'broschyrer-1.svg' },
-          { label: 'Mappar', icon: 'mappar-1.svg' },
-          { label: 'Affischer', icon: 'affischer-1.svg' },
-          { label: 'Kuvert', icon: 'kuvert-1.svg' },
-          { label: 'Böcker', icon: 'bocker-1.svg' },
-          { label: 'Storformat', icon: 'storformat-1.svg' },
+          { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg', slug: 'blad' },
+          { label: 'Foldrar', icon: 'foldrar.svg', slug: 'foldrar' },
+          { label: 'Broschyrer', icon: 'broschyrer-1.svg', slug: 'broschyrer' },
+          { label: 'Årsredovisningar\n& rapporter', icon: 'bocker-1.svg', slug: 'arsredovisningar-rapporter' },
+          { label: 'Mappar', icon: 'mappar-1.svg', slug: 'mappar' },
+          { label: 'Affischer', icon: 'affischer-1.svg', slug: 'affischer' },
+          { label: 'Kuvert', icon: 'kuvert-1.svg', slug: 'kuvert' },
+          { label: 'Böcker', icon: 'bocker-1.svg', slug: 'bocker' },
+          { label: 'Storformat', icon: 'storformat-1.svg', slug: 'storformat' },
+          { label: 'Roll-ups\n& mässmaterial', icon: 'storformat-1.svg', slug: 'rollups-massmaterial' },
+          { label: 'Visitkort', icon: 'blad-1.svg', slug: 'visitkort' },
         ].map((product) => (
-          <a href={`/produkter/${product.icon.replace('-1.svg', '').replace('.svg', '')}`} class="shrink-0 w-[260px] sm:w-[320px] md:w-[380px] min-h-[340px] sm:min-h-[395px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[34px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <a href={`/produkter/${product.slug}`} class="shrink-0 w-[260px] sm:w-[320px] md:w-[380px] min-h-[340px] sm:min-h-[395px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[34px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
             <img src={`/images/icons/${product.icon}`} alt={product.label} class="w-[72px] h-[72px] sm:w-[90px] sm:h-[90px] mb-[16px] sm:mb-[20px]" />
             <span class="typo-card-title whitespace-pre-line">{product.label}</span>
             <span class="mt-auto self-end text-[#222]">
@@ -250,6 +267,33 @@ flyers</span>
             <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
           </span>
         </a>
+
+        {/* Card 9: Årsredovisningar & rapporter */}
+        <a href="/produkter/arsredovisningar-rapporter" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/bocker-1.svg" alt="Årsredovisningar & rapporter" class="w-[64px] h-[64px] mb-[12px]" />
+          <span class="typo-card-title">Årsredovisningar<br/>& rapporter</span>
+          <span class="mt-auto self-end text-[#222]">
+            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+          </span>
+        </a>
+
+        {/* Card 10: Roll-ups & mässmaterial */}
+        <a href="/produkter/rollups-massmaterial" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/storformat-1.svg" alt="Roll-ups & mässmaterial" class="w-[64px] h-[64px] mb-[12px]" />
+          <span class="typo-card-title">Roll-ups<br/>& mässmaterial</span>
+          <span class="mt-auto self-end text-[#222]">
+            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+          </span>
+        </a>
+
+        {/* Card 11: Visitkort */}
+        <a href="/produkter/visitkort" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
+          <img src="/images/icons/blad-1.svg" alt="Visitkort" class="w-[64px] h-[64px] mb-[12px]" />
+          <span class="typo-card-title">Visitkort</span>
+          <span class="mt-auto self-end text-[#222]">
+            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
+          </span>
+        </a>
       </div>
     </div>
   </section>
@@ -258,7 +302,7 @@ flyers</span>
   <section class="py-[80px] md:py-[120px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <h3 class="typo-quote">
-        Om ditt budskapet är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
+        Om ditt budskap är viktigt, räcker det inte med att det blinkar förbi i ett flöde. <em>Viktiga budskap behöver trycksaker för att stanna kvar länge; på bord, väggar och i minnet.</em>
       </h3>
     </div>
   </section>
@@ -292,7 +336,7 @@ flyers</span>
   <section class="py-[80px] md:py-[120px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <h2 class="typo-section-title text-center mb-[60px] md:mb-[80px]">
-        Enkel process för ett grymt resultat.
+        En enkel process för ett tryggt resultat.
       </h2>
       <div class="grid md:grid-cols-3 gap-[20px]">
         <div>
@@ -308,7 +352,7 @@ flyers</span>
         <div>
           <span class="typo-process-number block">3.</span>
           <h4 class="typo-process-sub mb-[12px]">Tryck/leverans:</h4>
-          <p>När du godkänt korrektur sköter vi tryckningen med hjälp av våra högkvalitativa och miljövänliga processer. Därefter levererar vi dina trycksaker i rätt tid.</p>
+          <p>När korrekturet är godkänt går materialet vidare till produktion. Vi trycker, efterbehandlar, packar och levererar enligt överenskommen tidsplan — med Svanenmärkta rutiner och miljöanpassade processer i grunden.</p>
         </div>
       </div>
       <div class="mt-[40px]">
@@ -357,7 +401,7 @@ flyers</span>
   <!-- ═══ HJÄLP? CTA ═══ -->
   <section class="py-[80px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
-      <h1 class="text-[#222] mb-[30px]">Hjälp?</h1>
+      <h2 class="text-[#222] mb-[30px]" style="font-family: var(--font-heading); font-weight: normal; font-size: clamp(2.5rem, 7vw, 6.25rem); line-height: 1; letter-spacing: -0.04em;">Hjälp?</h2>
       <p class="mb-4 max-w-2xl leading-relaxed">
         Vi hjälper dig från första fil till leverans med smarta beslut, tydliga råd och kvalitet från tryckbord till leveranskartong.
       </p>
