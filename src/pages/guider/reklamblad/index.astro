@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -121,11 +122,20 @@ const beslut = [
   ['Hur ska det distribueras?', 'Styr format, vikt och eventuell kuvertering'],
   ['Vilken känsla ska avsändaren förmedla?', 'Styr papper, bildval, färg och finish'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Trycka blad och reklamblad – guide till format, papper och tryck",
+    description: "Lär dig vad du bör tänka på när du ska trycka blad eller reklamblad. Guide till format, papper, digitaltryck, offsettryck, original och efterbehandling.",
+    path: "/guider/reklamblad/",
+  })
+);
 ---
 
 <Layout
   title="Trycka blad och reklamblad – guide till format, papper och tryck | Norrmalmstryckeriet"
   description="Lär dig vad du bör tänka på när du ska trycka blad eller reklamblad. Guide till format, papper, digitaltryck, offsettryck, original och efterbehandling."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO (samma mönster som /produkter/blad/infografik) ═══ -->

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -89,11 +90,20 @@ const originalChecklista = [
   ['Ryggbredd', 'Beräknas efter slutligt sidantal och papper'],
   ['ISBN & streckkod', 'Placeras på baksidan om boken ska säljas eller distribueras'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Trycka böcker – guide till bokproduktion, papper, bindning och omslag",
+    description: "Lär dig vad du bör tänka på när du ska trycka böcker. Guide till format, sidantal, papper, mjukband, hårdband, omslag, original och tryckmetod.",
+    path: "/guider/bocker/",
+  })
+);
 ---
 
 <Layout
   title="Trycka böcker – guide till bokproduktion, papper, bindning och omslag | Norrmalmstryckeriet"
   description="Lär dig vad du bör tänka på när du ska trycka böcker. Guide till format, sidantal, papper, mjukband, hårdband, omslag, original och tryckmetod."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

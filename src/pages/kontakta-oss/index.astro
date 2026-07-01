@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { contactPageSchema, graph } from '../../lib/schema';
 
 const team = [
   {
@@ -52,11 +53,14 @@ const team = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(contactPageSchema({ path: '/kontakta-oss/' }));
 ---
 
 <Layout
   title="Kontakta oss – Norrmalmstryckeriet | Tryckeri i Stockholm"
   description="Ring 08-96 01 35 eller maila tryckeri@norrmalmstryckeriet.se. Besök oss på Hammarbacken 4A i Häggvik, 15 min från Stockholm city."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { faqPageSchema, graph } from '../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const plusSvg = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>`;
@@ -53,11 +54,14 @@ const faqs = [
     a: 'Börja med rätt upplaga, ett korrekt original och en tydlig plan för hur trycksaken ska användas och distribueras. Vi hjälper gärna till att kontrollera fil, format, papper och metod innan produktion.',
   },
 ];
+
+const pageSchemas = graph(faqPageSchema(faqs));
 ---
 
 <Layout
   title="Svanenmärkt tryckeri i Sollentuna – tryck hos Norrmalmstryckeriet"
   description="Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi arbetar strukturerat med material, kemikalier, energi och återvinning — och hjälper dig välja rätt papper, upplaga, tryckmetod och efterbehandling."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO (enda H1 i DOM — responsiv layout via CSS) ═══ -->

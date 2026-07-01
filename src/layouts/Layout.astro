@@ -6,12 +6,120 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  schemaJson?: string;
+  noindex?: boolean;
+  breadcrumbs?: Array<{ name: string; href: string }>;
 }
 
 const {
   title,
   description = 'Norrmalmstryckeriet – Närproducerade trycksaker i Stockholm. Visitkort, broschyrer, foldrar, affischer och mycket mer.',
+  ogImage = '/images/hero/hero-tryckpress.webp',
+  ogType = 'website',
+  schemaJson,
+  noindex = false,
+  breadcrumbs,
 } = Astro.props;
+
+const SITE_URL = 'https://norrmalmstryckeriet.se';
+const pathname = Astro.url.pathname.replace(/\/index\.html$/, '/');
+const canonical = new URL(pathname, SITE_URL).href;
+const ogImageAbsolute = new URL(ogImage, SITE_URL).href;
+
+const SLUG_NAMES: Record<string, string> = {
+  produkter: 'Produkter',
+  guider: 'Guider',
+  miljo: 'Miljö',
+  'om-oss': 'Om oss',
+  historia: 'Historia',
+  'kontakta-oss': 'Kontakta oss',
+  offert: 'Offert',
+  kundreferenser: 'Kundreferenser',
+  nyheter: 'Nyheter',
+  integritetspolicy: 'Integritetspolicy',
+  visitkort: 'Visitkort',
+  broschyrer: 'Broschyrer',
+  foldrar: 'Foldrar',
+  affischer: 'Affischer',
+  kuvert: 'Kuvert',
+  blad: 'Blad',
+  mappar: 'Mappar',
+  bocker: 'Böcker',
+  storformat: 'Storformat',
+  'arsredovisningar-rapporter': 'Årsredovisningar & rapporter',
+  'rollups-massmaterial': 'Roll-ups & mässmaterial',
+  papper: 'Papper & materialval',
+  reklamblad: 'Reklamblad',
+  massmaterial: 'Roll-ups & mässmaterial',
+  offsettryck: 'Offsettryck',
+  digitaltryck: 'Digitaltryck',
+  industritryck: 'Industritryck & planprint',
+  arsredovisning: 'Årsredovisning',
+  filhantering: 'Filhantering',
+  infografik: 'Infografik',
+};
+
+const pathSegments = pathname.split('/').filter(Boolean);
+let breadcrumbItems = breadcrumbs;
+if (!breadcrumbItems && pathSegments.length > 0) {
+  breadcrumbItems = pathSegments.map((seg, i) => ({
+    name: SLUG_NAMES[seg] ?? seg.charAt(0).toUpperCase() + seg.slice(1).replace(/-/g, ' '),
+    href: '/' + pathSegments.slice(0, i + 1).join('/') + '/',
+  }));
+}
+
+let breadcrumbSchema: object | null = null;
+if (breadcrumbItems && breadcrumbItems.length > 0) {
+  breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Hem',
+        item: SITE_URL + '/',
+      },
+      ...breadcrumbItems.map((b, i) => ({
+        '@type': 'ListItem',
+        position: i + 2,
+        name: b.name,
+        item: new URL(b.href, SITE_URL).href,
+      })),
+    ],
+  };
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness', 'PrintShop'],
+  '@id': SITE_URL + '/#organization',
+  name: 'Norrmalmstryckeriet',
+  legalName: 'AB Norrmalmstryckeriet',
+  url: SITE_URL,
+  logo: SITE_URL + '/favicon.svg',
+  image: SITE_URL + '/images/hero/hero-tryckpress.webp',
+  telephone: '+46-8-96-01-35',
+  email: 'tryckeri@norrmalmstryckeriet.se',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Hammarbacken 4A',
+    postalCode: '191 49',
+    addressLocality: 'Sollentuna',
+    addressRegion: 'Stockholms län',
+    addressCountry: 'SE',
+  },
+  vatID: 'SE556088168101',
+  slogan: 'Ditt tryckeri i Stockholm',
+  areaServed: [
+    { '@type': 'Place', name: 'Sollentuna' },
+    { '@type': 'Place', name: 'Häggvik' },
+    { '@type': 'Place', name: 'Stockholm' },
+    { '@type': 'Place', name: 'Norrort' },
+  ],
+};
 ---
 
 <!doctype html>
@@ -20,11 +128,34 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Norrmalmstryckeriet" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:locale" content="sv_SE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
     <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)}></script>
+    {breadcrumbSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    )}
+    {schemaJson && (
+      <script type="application/ld+json" set:html={schemaJson}></script>
+    )}
   </head>
   <body>
     <Header />

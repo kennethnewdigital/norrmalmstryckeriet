@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -90,11 +91,20 @@ const originalChecklista = [
   ['Korrektur', 'Kontrollera text, färg, sidnummer och kontaktuppgifter'],
   ['Efterbehandling', 'Ange falsning, perforering, stansning eller annan bearbetning'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Offsettryck – guide till stora upplagor, papper och kvalitet",
+    description: "Lär dig när offsettryck passar bäst. Guide till stora upplagor, papper, färg, CTP, prepress, efterbehandling och tryckekonomi.",
+    path: "/guider/offsettryck/",
+  })
+);
 ---
 
 <Layout
   title="Offsettryck – guide till stora upplagor, papper och kvalitet | Norrmalmstryckeriet"
   description="Lär dig när offsettryck passar bäst. Guide till stora upplagor, papper, färg, CTP, prepress, efterbehandling och tryckekonomi."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

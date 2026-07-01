@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Gör kontaktuppgifter enkla att spara',
@@ -101,11 +102,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Trycka visitkort med rätt papper och finish",
+    description: "Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter.",
+    path: "/produkter/visitkort/",
+  })
+);
 ---
 
 <Layout
   title="Trycka visitkort med rätt papper och finish | Norrmalmstryckeriet"
   description="Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

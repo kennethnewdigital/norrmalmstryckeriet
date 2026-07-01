@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -84,11 +85,20 @@ const originalChecklista = [
   ['Omslag', 'Ange om omslag och inlaga har olika papper'],
   ['Ryggbredd', 'Beräknas vid limbindning utifrån sidantal och papper'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Trycka broschyrer – guide till sidantal, papper, bindning och tryck",
+    description: "Lär dig vad du bör tänka på när du ska trycka broschyrer. Guide till klammerhäftning, limbindning, papper, sidantal, original och tryckmetod.",
+    path: "/guider/broschyrer/",
+  })
+);
 ---
 
 <Layout
   title="Trycka broschyrer – guide till sidantal, papper, bindning och tryck | Norrmalmstryckeriet"
   description="Lär dig vad du bör tänka på när du ska trycka broschyrer. Guide till klammerhäftning, limbindning, papper, sidantal, original och tryckmetod."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

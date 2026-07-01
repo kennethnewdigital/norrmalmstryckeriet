@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { websiteSchema, faqPageSchema, graph } from '../lib/schema';
 
 const faqTabs = [
   {
@@ -59,11 +60,14 @@ const faqTabs = [
     ],
   },
 ];
+const allFaqs = faqTabs.flatMap((t) => t.qs);
+const pageSchemas = graph(websiteSchema(), faqPageSchema(allFaqs));
 ---
 
 <Layout
   title="Tryckeri i Sollentuna & Stockholm – offset, digitaltryck och storformat | Norrmalmstryckeriet"
   description="Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, BRF:er, föreningar och byråer med trycksaker — från original och papper till tryck, efterbehandling och leverans."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->
@@ -81,7 +85,7 @@ const faqTabs = [
       <!-- Text under -->
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
         <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[16px] sm:mb-[20px]" style="font-size: clamp(1.875rem, 5vw + 0.5rem, 3.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;" lang="sv">
-          Trycksaker som fungerar i verkligheten
+          Ditt tryckeri i Stockholm
         </h1>
         <p class="text-[#444] text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed mb-[24px]">
           Norrmalmstryckeriet är ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper företag, BRF:er, föreningar, organisationer och byråer att ta fram trycksaker med rätt original, rätt papper, rätt tryckmetod och rätt efterbehandling.
@@ -120,7 +124,7 @@ const faqTabs = [
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
       <div class="absolute bottom-[40px] left-[40px] right-[40px] xl:bottom-[60px] xl:left-[60px] xl:right-[60px] z-10">
         <h2 class="typo-hero !text-white">
-          Trycksaker som fungerar i verkligheten
+          Ditt tryckeri i Stockholm
         </h2>
       </div>
     </div>

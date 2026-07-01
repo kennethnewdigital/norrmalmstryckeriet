@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Samlar dokument i ett professionellt format',
@@ -93,11 +94,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Trycka mappar och presentationsmappar",
+    description: "Tryck mappar för offert, avtal, säljmöte och mässa. Vi hjälper dig välja format, tryck, fickor, stansning och finish.",
+    path: "/produkter/mappar/",
+  })
+);
 ---
 
 <Layout
   title="Trycka mappar och presentationsmappar | Norrmalmstryckeriet"
   description="Tryck mappar för offert, avtal, säljmöte och mässa. Vi hjälper dig välja format, tryck, fickor, stansning och finish."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

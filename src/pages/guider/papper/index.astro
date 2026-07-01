@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -96,11 +97,20 @@ const produktPapper = [
   ['Böcker', 'Boktypen styr — text, bild eller jubileum'],
   ['Storformat', 'Material efter miljö och montering — PP, vinyl, Kapa, Re-board'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Välja papper till tryck – guide till gramvikt, yta och material",
+    description: "Lär dig välja rätt papper till trycksaker. Guide till bestruket, obestruket, gramvikt, bulk, opacitet, färg, tryckmetod och efterbehandling.",
+    path: "/guider/papper/",
+  })
+);
 ---
 
 <Layout
   title="Välja papper till tryck – guide till gramvikt, yta och material | Norrmalmstryckeriet"
   description="Lär dig välja rätt papper till trycksaker. Guide till bestruket, obestruket, gramvikt, bulk, opacitet, färg, tryckmetod och efterbehandling."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

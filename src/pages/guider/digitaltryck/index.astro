@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { articleSchema, graph } from '../../../lib/schema';
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
 const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>`;
@@ -101,11 +102,20 @@ const originalChecklista = [
   ['QR-koder', 'Testa funktion och storlek i slutformat'],
   ['PDF', 'Exportera enligt tryckeriets instruktioner'],
 ];
+
+const pageSchemas = graph(
+  articleSchema({
+    headline: "Digitaltryck – guide till mindre upplagor, snabb produktion och versionering",
+    description: "Lär dig när digitaltryck passar bäst. Guide till mindre upplagor, papper, original, versionering, variabeldata, efterbehandling och tryck.",
+    path: "/guider/digitaltryck/",
+  })
+);
 ---
 
 <Layout
   title="Digitaltryck – guide till mindre upplagor, snabb produktion och versionering | Norrmalmstryckeriet"
   description="Lär dig när digitaltryck passar bäst. Guide till mindre upplagor, papper, original, versionering, variabeldata, efterbehandling och tryck."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

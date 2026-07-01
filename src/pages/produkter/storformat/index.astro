@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Syns tydligt i fysisk miljö',
@@ -95,11 +96,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Storformat tryck",
+    description: "Tryck storformat för mässa, entré, butik och event. Vi hjälper dig välja roll up, banderoll, affisch, material och format.",
+    path: "/produkter/storformat/",
+  })
+);
 ---
 
 <Layout
   title="Storformat tryck – roll up, banderoll och affisch | Norrmalmstryckeriet"
   description="Tryck storformat för mässa, entré, butik och event. Vi hjälper dig välja roll up, banderoll, affisch, material och format."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

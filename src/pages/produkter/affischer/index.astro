@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Fångar uppmärksamhet på plats',
@@ -94,11 +95,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Trycka affischer",
+    description: "Tryck affischer för event, butik, kampanj och information. Vi hjälper dig välja format, papper, material och tryckmetod.",
+    path: "/produkter/affischer/",
+  })
+);
 ---
 
 <Layout
   title="Trycka affischer – A3, 50x70 och 70x100 | Norrmalmstryckeriet"
   description="Tryck affischer för event, butik, kampanj och information. Vi hjälper dig välja format, papper, material och tryckmetod."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

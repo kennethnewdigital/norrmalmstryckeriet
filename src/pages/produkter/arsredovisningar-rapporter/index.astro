@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Bygger förtroende från första till sista sida',
@@ -95,11 +96,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Trycka årsredovisningar och rapporter",
+    description: "Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper med format, papper, bindning, original och leverans.",
+    path: "/produkter/arsredovisningar-rapporter/",
+  })
+);
 ---
 
 <Layout
   title="Trycka årsredovisningar och rapporter – företag, BRF och organisationer | Norrmalmstryckeriet"
   description="Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper med format, papper, bindning, original och leverans."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

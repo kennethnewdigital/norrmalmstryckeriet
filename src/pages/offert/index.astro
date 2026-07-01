@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../lib/schema';
 
 const team = [
   {
@@ -52,11 +53,21 @@ const team = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: 'Offertförfrågan för trycksaker',
+    description: 'Skicka in en offertförfrågan för broschyrer, foldrar, visitkort, mappar, årsredovisningar, kuvert, storformat och mer. Vi hjälper med format, papper, tryckmetod och efterbehandling.',
+    path: '/offert/',
+    serviceType: 'Offert och rådgivning för tryckproduktion',
+  })
+);
 ---
 
 <Layout
   title="Offertförfrågan – tryck blad, broschyrer, böcker och mer | Norrmalmstryckeriet"
   description="Fyll i formuläret eller ring 08-96 01 35. Vi hjälper dig välja format, papper, tryckmetod och finish – och återkommer med en tydlig offert."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->

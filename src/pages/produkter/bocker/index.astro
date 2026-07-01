@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Samlar mycket innehåll i hållbar form',
@@ -95,11 +96,20 @@ const faqs = [
 ];
 
 const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>`;
+
+const pageSchemas = graph(
+  serviceSchema({
+    name: "Trycka böcker, rapporter och kataloger",
+    description: "Tryck böcker, rapporter, kataloger och utbildningsmaterial. Vi hjälper dig välja format, papper, omslag, inlaga och bindning.",
+    path: "/produkter/bocker/",
+  })
+);
 ---
 
 <Layout
   title="Trycka böcker, rapporter och kataloger | Norrmalmstryckeriet"
   description="Tryck böcker, rapporter, kataloger och utbildningsmaterial. Vi hjälper dig välja format, papper, omslag, inlaga och bindning."
+  schemaJson={pageSchemas}
 >
 
   <!-- ═══ HERO ═══ -->
