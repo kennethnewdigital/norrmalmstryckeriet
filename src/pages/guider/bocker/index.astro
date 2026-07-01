@@ -6,8 +6,8 @@ const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
 
 // Beslutsmodell — sidoscroll-kort (8 steg)
 const steps = [
-  { no: '01', title: 'Börja med bokens uppgift', body: 'En jubileumsbok, manual, fotobok eller rapport ser olika ut — för att de gör olika saker. Börja med vad boken ska användas till, och vilken känsla den ska bära.' },
-  { no: '02', title: 'Välj format', body: 'A5 för manualer och text. 170×240 för faktaböcker. 210×210 för fotoböcker. A4 för utbildningsmaterial. Eget format för profilböcker.' },
+  { no: '01', title: 'Börja med bokens uppgift', body: 'En jubileumsbok, manual, katalog eller rapport ser olika ut — för att de gör olika saker. Börja med vad boken ska användas till, och vilken känsla den ska bära.' },
+  { no: '02', title: 'Välj format', body: 'A5 för manualer och text. 170×240 för faktaböcker. 210×210 för kvadratiska bildrika böcker. A4 för utbildningsmaterial. Eget format för profilböcker.' },
   { no: '03', title: 'Bestäm sidantal & papper', body: 'Sidantal och papperstjocklek styr ryggbredd, vikt och känsla. Två böcker med samma sidantal kan kännas helt olika beroende på pappersval.' },
   { no: '04', title: 'Välj bindning', body: 'Klammerhäftning för tunnare häften. Limbindning för mjukband. Trådbindning för hållbarhet. Hårdband när boken ska kännas påkostad. Wire-O för manualer som ska ligga plant.' },
   { no: '05', title: 'Planera omslaget', body: 'Mjukt omslag eller hård pärm. Matt eller blank laminering, soft touch, prägling, foliering eller skyddsomslag — omslaget bär bokens första intryck.' },
@@ -24,7 +24,7 @@ const expertise = [
     items: [
       ['A5 & 148 × 210 mm', 'Smidiga textformat — romaner, rapporter, manualer.'],
       ['170 × 240 mm', 'Faktaböcker och mer premiumkänsla.'],
-      ['210 × 210 mm', 'Fotoböcker och jubileumsböcker.'],
+      ['210 × 210 mm', 'Kvadratiska bildrika böcker, kataloger och jubileumsböcker.'],
       ['Obestruket papper', 'Textböcker, naturlig och taktil känsla.'],
       ['Bestruket papper', 'Fotoböcker och bildrika böcker — skarpare återgivning.'],
     ],
@@ -68,7 +68,7 @@ const termer = [
 // Boktyper
 const boktyper = [
   ['Jubileumsbok', 'Samlar historia, bilder och berättelser i en värdig form'],
-  ['Fotobok', 'Ger bilder en fysisk och mer bestående presentation'],
+  ['Katalog', 'Presenterar produkter, sortiment och urval i en varaktig form'],
   ['Rapport', 'Gör omfattande innehåll mer läsbart och lätt att spara'],
   ['Manual', 'Praktiskt material som ska användas över tid'],
   ['Utbildningsmaterial', 'Instruktioner, övningar och referenser i en form'],
@@ -92,7 +92,7 @@ const originalChecklista = [
 ---
 
 <Layout
-  title="Trycka böcker – guide till boktryck, papper, bindning och omslag | Norrmalmstryckeriet"
+  title="Trycka böcker – guide till bokproduktion, papper, bindning och omslag | Norrmalmstryckeriet"
   description="Lär dig vad du bör tänka på när du ska trycka böcker. Guide till format, sidantal, papper, mjukband, hårdband, omslag, original och tryckmetod."
 >
 
@@ -150,7 +150,7 @@ const originalChecklista = [
         </h2>
         <div class="md:pt-[12px]">
           <p class="text-[16px] sm:text-[17px] md:text-[18px] leading-relaxed text-[#222] mb-[24px] sm:mb-[28px]">
-            Jubileum, manual, rapport, fotobok eller roman — varje bok har olika krav på format, papper, bindning och omslag. Guiden hjälper dig välja rätt lösning innan tryck.
+            Jubileum, manual, rapport, katalog eller roman — varje bok har olika krav på format, papper, bindning och omslag. Guiden hjälper dig välja rätt lösning innan tryck.
           </p>
           <ul class="space-y-[10px] mb-[28px] sm:mb-[36px]">
             <li class="flex items-start gap-[10px] text-[15px] sm:text-[16px] leading-relaxed text-[#222]">
@@ -429,12 +429,12 @@ const originalChecklista = [
             Berätta vad boken ska bli — vi hjälper med resten.
           </h2>
           <p class="!text-white/70 text-[15px] sm:text-[16px] md:text-[18px] leading-relaxed" style="text-wrap: pretty;">
-            Jubileumsbok, manual, rapport, fotobok eller roman. Skicka din idé, skiss eller färdiga PDF — vi går igenom format, papper, bindning, omslag, original, tryckmetod och en tydlig offert.
+            Jubileumsbok, manual, rapport, katalog eller roman. Skicka din idé, skiss eller färdiga PDF — vi går igenom format, papper, bindning, omslag, original, tryckmetod och en tydlig offert.
           </p>
         </div>
         <div class="flex flex-col gap-[12px]">
           <a href="/offert#formular" class="btn-pill btn-red w-full justify-center">
-            Begär offert på boktryck<Fragment set:html={arrowSvg} />
+            Begär offert på bokproduktion<Fragment set:html={arrowSvg} />
           </a>
           <a href="/produkter/bocker/infografik" class="btn-pill w-full justify-center" style="background: white; color: #222;">
             Ladda ner guiden (PDF)<Fragment set:html={downloadSvg} />
