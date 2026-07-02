@@ -106,11 +106,14 @@ const organizationSchema = {
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Hammarbacken 4A',
-    postalCode: '191 49',
+    postalCode: '191 24',
+    postOfficeBoxNumber: 'Box 416',
     addressLocality: 'Sollentuna',
     addressRegion: 'Stockholms län',
     addressCountry: 'SE',
   },
+  // TODO: verifiera VAT-ID med Mats/bokföring innan lansering
+  // Härledd från orgnr 556088-1681 enligt svensk konvention (SE + orgnr + 01)
   vatID: 'SE556088168101',
   slogan: 'Ditt tryckeri i Stockholm',
   areaServed: [

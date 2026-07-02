@@ -29,7 +29,7 @@ export function articleSchema(opts: {
   datePublished?: string;
   dateModified?: string;
 }) {
-  return {
+  const base: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: opts.headline,
@@ -38,9 +38,10 @@ export function articleSchema(opts: {
     mainEntityOfPage: SITE_URL + opts.path,
     author: { '@id': ORG_ID },
     publisher: { '@id': ORG_ID },
-    datePublished: opts.datePublished ?? '2026-06-01',
-    dateModified: opts.dateModified ?? '2026-07-01',
   };
+  if (opts.datePublished) base.datePublished = opts.datePublished;
+  if (opts.dateModified) base.dateModified = opts.dateModified;
+  return base;
 }
 
 export function faqPageSchema(items: Array<{ q: string; a: string }>) {
