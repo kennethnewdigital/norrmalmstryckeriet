@@ -167,14 +167,11 @@ const pageSchemas = graph(websiteSchema(), faqPageSchema(allFaqs));
           { label: 'Blad,\nreklamblad,\nflyers', icon: 'blad-1.svg', slug: 'blad' },
           { label: 'Foldrar', icon: 'foldrar.svg', slug: 'foldrar' },
           { label: 'Broschyrer', icon: 'broschyrer-1.svg', slug: 'broschyrer' },
-          { label: 'Årsredovisningar\n& rapporter', icon: 'bocker-1.svg', slug: 'arsredovisningar-rapporter' },
           { label: 'Mappar', icon: 'mappar-1.svg', slug: 'mappar' },
           { label: 'Affischer', icon: 'affischer-1.svg', slug: 'affischer' },
           { label: 'Kuvert', icon: 'kuvert-1.svg', slug: 'kuvert' },
           { label: 'Böcker', icon: 'bocker-1.svg', slug: 'bocker' },
           { label: 'Storformat', icon: 'storformat-1.svg', slug: 'storformat' },
-          { label: 'Roll-ups\n& mässmaterial', icon: 'storformat-1.svg', slug: 'rollups-massmaterial' },
-          { label: 'Visitkort', icon: 'blad-1.svg', slug: 'visitkort' },
         ].map((product) => (
           <a href={`/produkter/${product.slug}`} class="shrink-0 w-[260px] sm:w-[320px] md:w-[380px] min-h-[340px] sm:min-h-[395px] bg-[#F5F5F5] rounded-[16px] p-[24px] sm:p-[34px] flex flex-col items-center text-center group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
             <img src={`/images/icons/${product.icon}`} alt={product.label} class="w-[72px] h-[72px] sm:w-[90px] sm:h-[90px] mb-[16px] sm:mb-[20px]" />
@@ -267,33 +264,6 @@ flyers</span>
         <a href="/produkter/storformat" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
           <img src="/images/icons/storformat-1.svg" alt="Storformat" class="w-[64px] h-[64px] mb-[12px]" />
           <span class="typo-card-title">Storformat</span>
-          <span class="mt-auto self-end text-[#222]">
-            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-          </span>
-        </a>
-
-        {/* Card 9: Årsredovisningar & rapporter */}
-        <a href="/produkter/arsredovisningar-rapporter" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
-          <img src="/images/icons/bocker-1.svg" alt="Årsredovisningar & rapporter" class="w-[64px] h-[64px] mb-[12px]" />
-          <span class="typo-card-title">Årsredovisningar<br/>& rapporter</span>
-          <span class="mt-auto self-end text-[#222]">
-            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-          </span>
-        </a>
-
-        {/* Card 10: Roll-ups & mässmaterial */}
-        <a href="/produkter/rollups-massmaterial" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
-          <img src="/images/icons/storformat-1.svg" alt="Roll-ups & mässmaterial" class="w-[64px] h-[64px] mb-[12px]" />
-          <span class="typo-card-title">Roll-ups<br/>& mässmaterial</span>
-          <span class="mt-auto self-end text-[#222]">
-            <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
-          </span>
-        </a>
-
-        {/* Card 11: Visitkort */}
-        <a href="/produkter/visitkort" class="bg-[#F5F5F5] rounded-[20px] p-[28px] flex flex-col group hover:bg-[#EBEBEB] transition-colors duration-200 no-underline relative">
-          <img src="/images/icons/blad-1.svg" alt="Visitkort" class="w-[64px] h-[64px] mb-[12px]" />
-          <span class="typo-card-title">Visitkort</span>
           <span class="mt-auto self-end text-[#222]">
             <svg width="32" height="32" viewBox="0 0 512 512" fill="currentColor"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm144 276c0 6.6-5.4 12-12 12h-92v92c0 6.6-5.4 12-12 12h-56c-6.6 0-12-5.4-12-12v-92h-92c-6.6 0-12-5.4-12-12v-56c0-6.6 5.4-12 12-12h92v-92c0-6.6 5.4-12 12-12h56c6.6 0 12 5.4 12 12v92h92c6.6 0 12 5.4 12 12v56z"/></svg>
           </span>
