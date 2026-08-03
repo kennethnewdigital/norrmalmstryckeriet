@@ -492,10 +492,12 @@ reklamblad</span>
     .hero-box-index { aspect-ratio: 2.2 / 1; max-height: 90vh; }
   }
 
-  /* Carousel-vänster som matchar page-container's vänster edge (centrerad max-w-[1440px] med 44px padding) */
+  /* Carousel-vänster som matchar page-container's vänster edge.
+     page-section: padding 44px lg. page-container: max-w-[1440px] mx-auto centrerad inuti section-content.
+     På viewport ≥ 1528 (1440 + 88) blir page-container centrerad → left = 44 + (section-content - 1440)/2 = 50vw - 720. */
   @media (min-width: 1024px) {
     .carousel-align-left {
-      padding-left: max(44px, calc(50vw - 676px));
+      padding-left: max(44px, calc(50vw - 720px));
     }
   }
 </style>
@@ -551,25 +553,27 @@ reklamblad</span>
       });
     });
 
-    // === Scroll ett kort i taget (gap = 20px, produktscroll 16-20px) ===
-    function scrollOneCard(carousel: HTMLElement | null, direction: 1 | -1, gap = 20) {
+    // === Scroll ETT helt kort i taget (mäter faktisk gap från computedStyle) ===
+    function scrollOneCard(carousel: HTMLElement | null, direction: 1 | -1) {
       if (!carousel) return;
       const firstCard = carousel.querySelector<HTMLElement>(':scope > a');
-      const step = firstCard ? firstCard.offsetWidth + gap : 400;
+      if (!firstCard) return;
+      const gap = parseFloat(window.getComputedStyle(carousel).columnGap) || 0;
+      const step = firstCard.offsetWidth + gap;
       carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
     }
 
     const productCarousel = document.getElementById('product-carousel');
-    document.getElementById('carousel-prev')?.addEventListener('click', () => scrollOneCard(productCarousel, -1, 16));
-    document.getElementById('carousel-next')?.addEventListener('click', () => scrollOneCard(productCarousel, 1, 16));
+    document.getElementById('carousel-prev')?.addEventListener('click', () => scrollOneCard(productCarousel, -1));
+    document.getElementById('carousel-next')?.addEventListener('click', () => scrollOneCard(productCarousel, 1));
 
     const refCarousel = document.getElementById('ref-carousel');
-    document.getElementById('ref-prev')?.addEventListener('click', () => scrollOneCard(refCarousel, -1, 20));
-    document.getElementById('ref-next')?.addEventListener('click', () => scrollOneCard(refCarousel, 1, 20));
+    document.getElementById('ref-prev')?.addEventListener('click', () => scrollOneCard(refCarousel, -1));
+    document.getElementById('ref-next')?.addEventListener('click', () => scrollOneCard(refCarousel, 1));
 
     const guideCarousel = document.getElementById('guide-carousel');
-    document.getElementById('guide-prev')?.addEventListener('click', () => scrollOneCard(guideCarousel, -1, 20));
-    document.getElementById('guide-next')?.addEventListener('click', () => scrollOneCard(guideCarousel, 1, 20));
+    document.getElementById('guide-prev')?.addEventListener('click', () => scrollOneCard(guideCarousel, -1));
+    document.getElementById('guide-next')?.addEventListener('click', () => scrollOneCard(guideCarousel, 1));
   }
 
   initHomepageV2();
