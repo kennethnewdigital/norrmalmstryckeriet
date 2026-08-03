@@ -279,9 +279,9 @@ reklamblad</span>
 
   <!-- ═══ KUNDREFERENSER (flyttat upp — bevis före processen) ═══ -->
   <section class="py-[60px] md:py-[80px]">
-    <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[34px] mb-[24px]">
-      <p class="section-label mb-[8px]">Kundcase</p>
-      <h3 class="typo-carousel-heading">Så här har vi hjälpt andra.</h3>
+    <div class="lg:max-w-[1440px] lg:mx-auto lg:px-[44px] mb-[24px]">
+      <p class="section-label ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-0 mb-[8px]">Kundcase</p>
+      <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-0">Så här har vi hjälpt andra.</h3>
     </div>
     <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[34px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[34px]">
       {kundref.map((ref) => (
@@ -400,7 +400,7 @@ reklamblad</span>
     </div>
   </section>
 
-  <!-- ═══ KÖPSTÖDJANDE GUIDES (kortare "Nyheter"-sektion, bara köpstödjande) ═══ -->
+  <!-- ═══ KÖPSTÖDJANDE GUIDES (kort — läsvärt innan du trycker) ═══ -->
   <section class="py-[80px]">
     <div class="max-w-[1140px] mx-auto px-[34px]">
       <p class="section-label mb-[12px]">Guider som hjälper dig framåt</p>
@@ -424,6 +424,42 @@ reklamblad</span>
           </p>
           <span class="link-arrow mt-[16px] inline-flex">
             Läs guiden<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ NYHETER (röd sektion — ovanför footer) ═══ -->
+  <section class="mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[34px] mb-[40px] rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden">
+    <div class="max-w-[1140px] mx-auto px-[34px] py-[60px] md:py-[80px]">
+      <h3 class="typo-carousel-heading !text-white mb-[40px]">Nyheter.</h3>
+      <div class="grid md:grid-cols-3 gap-[20px]">
+        <a href="/nyheter/trycksaker-digital-varld" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/QR_CODE_BROSCHURE.webp" alt="Varför trycksaker fortfarande fungerar i en digital värld" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Varför trycksaker fortfarande fungerar i en digital värld.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+        <a href="/nyheter/digital-stress-tryckt-media" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Stressfri-med-tatkilt-media.webp" alt="Digital stress och tryckt medias återkomst" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Digital stress och tryckt medias återkomst.</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+          </span>
+        </a>
+        <a href="/nyheter/nya-mojligheter-investering" class="group no-underline">
+          <div class="rounded-[6px] overflow-hidden aspect-[4/3] mb-[20px]">
+            <img src="/images/news/Roland_pop_art.webp" alt="Nya möjligheter med vår senaste investering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <h4 class="typo-news-title !text-white mb-[12px]">Nya möjligheter med vår senaste investering!</h4>
+          <span class="text-white/80 font-[var(--font-body)] text-[16px] font-medium group-hover:text-white transition-colors">
+            Läs hela artikeln här<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </span>
         </a>
       </div>
