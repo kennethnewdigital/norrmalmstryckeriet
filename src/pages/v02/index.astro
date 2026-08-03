@@ -401,33 +401,40 @@ reklamblad</span>
     </div>
   </section>
 
-  <!-- ═══ KÖPSTÖDJANDE GUIDES (kort — läsvärt innan du trycker) ═══ -->
-  <section class="page-section">
-    <div class="page-container">
-      <p class="section-label mb-[12px]">Guider som hjälper dig framåt</p>
-      <h3 class="typo-carousel-heading mb-[40px]">Läsvärt innan du trycker.</h3>
-      <div class="grid md:grid-cols-2 gap-[24px]">
-        <a href="/guider/papper" class="group no-underline block bg-[#F3F3F3] rounded-[20px] p-[32px] hover:bg-[#EBEBEB] transition-colors">
+  <!-- ═══ KÖPSTÖDJANDE GUIDES (scroll-kort med utfall höger) ═══ -->
+  <section class="page-section !pb-0">
+    <div class="page-container mb-[24px]">
+      <p class="section-label mb-[8px]">Guider som hjälper dig framåt</p>
+      <h3 class="typo-carousel-heading">Läsvärt innan du trycker.</h3>
+    </div>
+    <div id="guide-carousel" class="carousel-align-left flex gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px]">
+      {[
+        { title: 'Så väljer du papper till en broschyr', desc: 'Papperets känsla, färg och tjocklek påverkar både resultatet och priset. Så här tänker vi.', href: '/guider/papper' },
+        { title: 'Så förbereder du en fil för tryck', desc: 'Format, utfall, färgprofil och tryckfärdig PDF – vi går igenom vad som krävs för att filen ska funka.', href: '/guider' },
+        { title: 'Digitaltryck eller offset — vilket ska jag välja?', desc: 'Upplaga, tidsplan, papper och färgkrav styr valet. Vi rekommenderar utifrån ditt projekt.', href: '/guider/digitaltryck' },
+        { title: 'Guide: broschyrer & kataloger', desc: 'Sidantal, papper, omslag, bindning och original — så bygger du en broschyr som håller.', href: '/guider/broschyrer' },
+        { title: 'Guide: årsredovisning steg för steg', desc: 'Format, bindning, papper, original och tidsplan för företag, BRF och organisationer.', href: '/guider/arsredovisning' },
+        { title: 'Roll-ups & mässmaterial — vad behöver du?', desc: 'Ett komplett mässpaket: roll-up, skyltar, foldrar, broschyrer och visitkort som ett system.', href: '/guider/massmaterial' },
+      ].map((guide) => (
+        <a href={guide.href} class="shrink-0 w-[320px] sm:w-[380px] md:w-[420px] bg-[#F3F3F3] rounded-[20px] p-[28px] sm:p-[32px] group hover:bg-[#EBEBEB] transition-colors no-underline flex flex-col">
           <p class="section-label mb-[8px]">Guide</p>
-          <h4 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Så väljer du papper till en broschyr</h4>
-          <p class="text-[15px] leading-relaxed text-[#555]">
-            Papperets känsla, färg och tjocklek påverkar både resultatet och priset. Så här tänker vi.
+          <h4 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">{guide.title}</h4>
+          <p class="text-[15px] leading-relaxed text-[#555] mb-[20px]">
+            {guide.desc}
           </p>
-          <span class="link-arrow mt-[16px] inline-flex">
+          <span class="link-arrow mt-auto inline-flex">
             Läs guiden<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </span>
         </a>
-        <a href="/guider" class="group no-underline block bg-[#F3F3F3] rounded-[20px] p-[32px] hover:bg-[#EBEBEB] transition-colors">
-          <p class="section-label mb-[8px]">Guide</p>
-          <h4 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[12px]" style="font-size: clamp(1.25rem, 2vw, 1.625rem); line-height: 1.2;">Så förbereder du en fil för tryck</h4>
-          <p class="text-[15px] leading-relaxed text-[#555]">
-            Format, utfall, färgprofil och tryckfärdig PDF – vi går igenom vad som krävs för att filen ska funka.
-          </p>
-          <span class="link-arrow mt-[16px] inline-flex">
-            Läs guiden<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-          </span>
-        </a>
-      </div>
+      ))}
+    </div>
+    <div class="page-container flex justify-end gap-2 mt-4 mb-[80px]">
+      <button id="guide-prev" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-gray-300 hover:text-[#222] transition-colors cursor-pointer" aria-label="Föregående">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button id="guide-next" class="w-[44px] h-[44px] rounded-full bg-[#F5F5F5] flex items-center justify-center text-[#222] hover:bg-[#E5E5E5] transition-colors cursor-pointer" aria-label="Nästa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
   </section>
 
@@ -544,23 +551,25 @@ reklamblad</span>
       });
     });
 
-    // === Product Carousel ===
-    const carousel = document.getElementById('product-carousel');
-    document.getElementById('carousel-prev')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: -400, behavior: 'smooth' });
-    });
-    document.getElementById('carousel-next')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: 400, behavior: 'smooth' });
-    });
+    // === Scroll ett kort i taget (gap = 20px, produktscroll 16-20px) ===
+    function scrollOneCard(carousel: HTMLElement | null, direction: 1 | -1, gap = 20) {
+      if (!carousel) return;
+      const firstCard = carousel.querySelector<HTMLElement>(':scope > a');
+      const step = firstCard ? firstCard.offsetWidth + gap : 400;
+      carousel.scrollBy({ left: direction * step, behavior: 'smooth' });
+    }
 
-    // === Reference Carousel ===
+    const productCarousel = document.getElementById('product-carousel');
+    document.getElementById('carousel-prev')?.addEventListener('click', () => scrollOneCard(productCarousel, -1, 16));
+    document.getElementById('carousel-next')?.addEventListener('click', () => scrollOneCard(productCarousel, 1, 16));
+
     const refCarousel = document.getElementById('ref-carousel');
-    document.getElementById('ref-prev')?.addEventListener('click', () => {
-      refCarousel?.scrollBy({ left: -480, behavior: 'smooth' });
-    });
-    document.getElementById('ref-next')?.addEventListener('click', () => {
-      refCarousel?.scrollBy({ left: 480, behavior: 'smooth' });
-    });
+    document.getElementById('ref-prev')?.addEventListener('click', () => scrollOneCard(refCarousel, -1, 20));
+    document.getElementById('ref-next')?.addEventListener('click', () => scrollOneCard(refCarousel, 1, 20));
+
+    const guideCarousel = document.getElementById('guide-carousel');
+    document.getElementById('guide-prev')?.addEventListener('click', () => scrollOneCard(guideCarousel, -1, 20));
+    document.getElementById('guide-next')?.addEventListener('click', () => scrollOneCard(guideCarousel, 1, 20));
   }
 
   initHomepageV2();
