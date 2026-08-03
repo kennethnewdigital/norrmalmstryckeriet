@@ -122,9 +122,9 @@ const kundref = [
     </div>
   </section>
 
-  <!-- ═══ LOGO BAR med intro-text ═══ -->
-  <section class="pt-[40px] pb-[20px] max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
-    <p class="text-center text-[14px] sm:text-[15px] text-[#666] mb-[24px] font-[var(--font-body)]">
+  <!-- ═══ LOGO BAR med intro-text (matchar hero-padding) ═══ -->
+  <section class="pt-[40px] pb-[20px] mx-[16px] sm:mx-[24px] md:mx-[32px] lg:mx-[34px] xl:mx-[44px]">
+    <p class="text-left text-[14px] sm:text-[15px] text-[#666] mb-[24px] font-[var(--font-body)]">
       Företag och organisationer som har valt oss för sin trycksaksproduktion
     </p>
     <div class="overflow-hidden">
@@ -279,12 +279,11 @@ reklamblad</span>
 
   <!-- ═══ KUNDREFERENSER (flyttat upp — bevis före processen) ═══ -->
   <section class="py-[60px] md:py-[80px]">
-    <div class="lg:max-w-[1440px] lg:mx-auto lg:px-[44px] mb-[24px]">
-      <p class="section-label ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-0 mb-[8px]">Kundcase</p>
-      <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-0">Så här har vi hjälpt andra.</h3>
+    <div class="mb-[24px]">
+      <p class="section-label ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px] mb-[8px]">Kundcase</p>
+      <h3 class="typo-carousel-heading ml-[16px] sm:ml-[24px] md:ml-[32px] lg:ml-[44px]">Så här har vi hjälpt andra.</h3>
     </div>
-    <div class="lg:max-w-[1440px] lg:mx-auto">
-    <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px] pr-[16px] sm:pr-[24px] md:pr-[32px] lg:pr-[44px]">
+    <div id="ref-carousel" class="flex gap-[20px] overflow-x-auto scrollbar-hide pl-[16px] sm:pl-[24px] md:pl-[32px] lg:pl-[44px]">
       {kundref.map((ref) => (
         <a href={ref.href} class="shrink-0 w-[600px] h-[350px] rounded-[16px] overflow-hidden relative block group">
           <img src={ref.image} alt={ref.name} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" style="object-position: center 25%;" />
@@ -306,12 +305,11 @@ reklamblad</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
       </button>
     </div>
-    </div>
   </section>
 
   <!-- ═══ PROCESS — nya rubriker, telefon-CTA i slutet ═══ -->
-  <section class="py-[80px] md:py-[120px] bg-[#F3F3F3]">
-    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+  <section class="page-section bg-[#F3F3F3]">
+    <div class="page-container">
       <p class="section-label mb-[12px]">Från beställning till leverans</p>
       <h2 class="typo-section-title mb-[60px] md:mb-[80px]">
         En enkel process för ett tryggt resultat.
@@ -351,7 +349,8 @@ reklamblad</span>
   </section>
 
   <!-- ═══ FAQ — 6 köpfrågor (utan tabs) ═══ -->
-  <section class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] py-[80px] md:py-[120px]">
+  <section class="page-section">
+    <div class="page-container">
     <p class="section-label mb-[12px]">Vanliga frågor</p>
     <h2 class="typo-section-title mb-[40px]">Det kunder oftast vill veta.</h2>
     <div>
@@ -376,8 +375,8 @@ reklamblad</span>
   </section>
 
   <!-- ═══ HJÄLPSEKTION — final CTA ═══ -->
-  <section class="py-[80px] md:py-[120px] bg-[#222]">
-    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+  <section class="page-section bg-[#222]">
+    <div class="page-container">
       <p class="section-label !text-white/60 mb-[12px]">Fråga oss först</p>
       <h2 class="!text-white mb-[24px]" style="font-family: var(--font-heading); font-weight: normal; font-size: clamp(2rem, 5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.025em; text-wrap: balance;">
         Osäker på fil, papper eller format?
@@ -403,8 +402,8 @@ reklamblad</span>
   </section>
 
   <!-- ═══ KÖPSTÖDJANDE GUIDES (kort — läsvärt innan du trycker) ═══ -->
-  <section class="py-[80px]">
-    <div class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px]">
+  <section class="page-section">
+    <div class="page-container">
       <p class="section-label mb-[12px]">Guider som hjälper dig framåt</p>
       <h3 class="typo-carousel-heading mb-[40px]">Läsvärt innan du trycker.</h3>
       <div class="grid md:grid-cols-2 gap-[24px]">
@@ -433,7 +432,8 @@ reklamblad</span>
   </section>
 
   <!-- ═══ NYHETER (röd sektion — ovanför footer) ═══ -->
-  <section class="max-w-[1440px] mx-auto px-[16px] sm:px-[24px] md:px-[32px] lg:px-[44px] mb-[40px]">
+  <section class="page-section !pt-0">
+    <div class="page-container">
     <div class="rounded-[24px] sm:rounded-[36px] lg:rounded-[50px] bg-[#D9222A] overflow-hidden px-[24px] sm:px-[32px] md:px-[44px] lg:px-[60px] py-[60px] md:py-[80px]">
       <h3 class="typo-carousel-heading !text-white mb-[40px]">Nyheter.</h3>
       <div class="grid md:grid-cols-3 gap-[20px]">
@@ -465,6 +465,7 @@ reklamblad</span>
           </span>
         </a>
       </div>
+    </div>
     </div>
   </section>
 
