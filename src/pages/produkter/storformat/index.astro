@@ -116,8 +116,17 @@ const pageSchemas = graph(
   <!-- MOBILE+TABLET HERO -->
   <section class="lg:hidden">
     <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
-      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#161a2e]">
-        <img src="/images/hero/storformat-hero.svg" alt="Storformat från Norrmalmstryckeriet" class="w-full h-full object-cover" />
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[16/9] mb-[24px] sm:mb-[32px] bg-[#F3F3F3]">
+        <img
+          src="/images/hero/storformat-hero.webp"
+          alt="Storformat och stora affischer tryckta av Norrmalmstryckeriet — vepor, skyltar och storformatsutskrifter från Svanenmärkt tryckeri i Sollentuna, Stockholm"
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-center"
+        />
       </div>
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
         <p class="text-[#888] mb-[12px] sm:mb-[16px] uppercase font-medium text-[10px] sm:text-[11px]" style="letter-spacing:1.5px; line-height:1;">
@@ -158,7 +167,16 @@ const pageSchemas = graph(
   <!-- DESKTOP HERO -->
   <section class="relative hidden lg:block">
     <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#161a2e]">
-      <img src="/images/hero/storformat-hero.svg" alt="Storformat från Norrmalmstryckeriet" class="absolute inset-0 w-full h-full object-cover" />
+      <img
+        src="/images/hero/storformat-hero.webp"
+        alt="Storformat och stora affischer tryckta av Norrmalmstryckeriet — vepor, skyltar och storformatsutskrifter från Svanenmärkt tryckeri i Sollentuna, Stockholm"
+        width="1672"
+        height="941"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+      />
       <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
       <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
         <p class="!text-white/85 mb-[16px] uppercase font-medium text-[12px]" style="letter-spacing:1.8px; line-height:1;">
@@ -433,19 +451,19 @@ const pageSchemas = graph(
 
 <style>
   .hero-box {
-    aspect-ratio: 1.4 / 1;
+    aspect-ratio: 16 / 9;
     min-height: 560px;
     max-height: 92vh;
     background: #161a2e;
   }
   @media (min-width: 1024px) {
-    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+    .hero-box { aspect-ratio: 16 / 9; min-height: 620px; max-height: 90vh; }
   }
   @media (min-width: 1440px) {
-    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+    .hero-box { aspect-ratio: 16 / 9; max-height: 88vh; }
   }
   @media (min-width: 1920px) {
-    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+    .hero-box { aspect-ratio: 16 / 9; max-height: 90vh; }
   }
 
   .page-section-no-px {
