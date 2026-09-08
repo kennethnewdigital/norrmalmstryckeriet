@@ -99,16 +99,17 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
 const pageSchemas = graph(
   serviceSchema({
-    name: "Trycka årsredovisningar och rapporter",
-    description: "Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper med format, papper, bindning, original och leverans.",
+    name: "Trycka årsredovisningar, BRF-material och rapporter",
+    description: "Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper företag, BRF:er, föreningar och organisationer med format, papper, bindning, original och leverans till stämma eller möte.",
     path: "/produkter/arsredovisningar-rapporter/",
   })
 );
 ---
 
 <Layout
-  title="Trycka årsredovisningar och rapporter – företag, BRF och organisationer | Norrmalmstryckeriet"
-  description="Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos ett Svanenmärkt tryckeri i Sollentuna. Vi hjälper med format, papper, bindning, original och leverans."
+  title="Trycka årsredovisningar och rapporter i Stockholm — företag, BRF och föreningar | Norrmalmstryckeriet"
+  description="Boktryck av årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig med format, papper, bindning, original och leverans i tid till stämma eller möte."
+  ogImage="/images/hero/arsredovisningar-hero.webp"
   schemaJson={pageSchemas}
 >
 
@@ -116,11 +117,16 @@ const pageSchemas = graph(
   <!-- MOBILE+TABLET HERO -->
   <section class="lg:hidden">
     <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
-      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[16/9] mb-[24px] sm:mb-[32px] bg-[#F3F3F3]">
         <img
-          src="/images/hero/bocker-hero.webp"
-          alt="Årsredovisningar och rapporter tryckta av Norrmalmstryckeriet"
-          class="w-full h-full object-cover"
+          src="/images/hero/arsredovisningar-hero.webp"
+          alt="Tryckta årsredovisningar och rapporter från Norrmalmstryckeriet — Svanenmärkt tryckeri i Sollentuna, Stockholm för företag, BRF och föreningar"
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-center"
         />
       </div>
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
@@ -163,9 +169,14 @@ const pageSchemas = graph(
   <section class="relative hidden lg:block">
     <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative">
       <img
-        src="/images/hero/bocker-hero.webp"
-        alt="Årsredovisningar och rapporter tryckta av Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full object-cover"
+        src="/images/hero/arsredovisningar-hero.webp"
+        alt="Tryckta årsredovisningar och rapporter från Norrmalmstryckeriet — Svanenmärkt tryckeri i Sollentuna, Stockholm för företag, BRF och föreningar"
+        width="1672"
+        height="941"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10 pointer-events-none"></div>
       <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
@@ -474,19 +485,19 @@ const pageSchemas = graph(
 
 <style>
   .hero-box {
-    aspect-ratio: 1.4 / 1;
+    aspect-ratio: 16 / 9;
     min-height: 560px;
     max-height: 92vh;
     background: #000;
   }
   @media (min-width: 1024px) {
-    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
+    .hero-box { aspect-ratio: 16 / 9; min-height: 620px; max-height: 90vh; }
   }
   @media (min-width: 1440px) {
-    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
+    .hero-box { aspect-ratio: 16 / 9; max-height: 88vh; }
   }
   @media (min-width: 1920px) {
-    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
+    .hero-box { aspect-ratio: 16 / 9; max-height: 90vh; }
   }
 
   .page-section-no-px {
