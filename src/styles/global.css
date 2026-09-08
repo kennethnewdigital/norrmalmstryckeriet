@@ -142,6 +142,9 @@ h6 {
   font-size: clamp(1.875rem, 5vw + 0.25rem, 4.5rem);
   letter-spacing: -0.03em;
   line-height: 1.05;
+  /* Subtil text-shadow så att vi kan hålla overlay-gradienten lätt utan
+     att tappa läsbarhet mot varierande bildpartier */
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 @media (min-width: 1440px) {
   .typo-hero { font-size: clamp(4.5rem, 5vw + 0.25rem, 6rem); }
