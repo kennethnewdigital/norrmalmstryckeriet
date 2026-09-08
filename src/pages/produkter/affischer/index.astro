@@ -115,7 +115,7 @@ const pageSchemas = graph(
   <!-- MOBILE+TABLET HERO -->
   <section class="lg:hidden">
     <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
-      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[16/9] mb-[24px] sm:mb-[32px] bg-[#F3F3F3]">
+      <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#F3F3F3]">
         <img
           src="/images/hero/affischer-hero.webp"
           alt="Affischer och storformat i olika storlekar tryckta av Norrmalmstryckeriet — Svanenmärkt tryckeri i Sollentuna, Stockholm"
@@ -525,13 +525,13 @@ const pageSchemas = graph(
     background: #1f1a2e;
   }
   @media (min-width: 1024px) {
-    .hero-box { aspect-ratio: 16 / 9; min-height: 620px; max-height: 90vh; }
+    .hero-box { aspect-ratio: 1.75 / 1; min-height: 680px; max-height: 90vh; }
   }
   @media (min-width: 1440px) {
-    .hero-box { aspect-ratio: 16 / 9; max-height: 88vh; }
+    .hero-box { aspect-ratio: 2 / 1; max-height: 88vh; }
   }
   @media (min-width: 1920px) {
-    .hero-box { aspect-ratio: 16 / 9; max-height: 90vh; }
+    .hero-box { aspect-ratio: 2.2 / 1; max-height: 90vh; }
   }
 
   .page-section-no-px {
