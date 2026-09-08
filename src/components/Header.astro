@@ -316,12 +316,12 @@ const omOss = [
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
-  /* Dropdown panel — samma frostade glas-effekt som headern */
+  /* Dropdown panel — luftig frostad glas-effekt (best practice: lägre alpha + starkare blur) */
   .cpo-frost-panel {
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: saturate(180%) blur(28px);
+    -webkit-backdrop-filter: saturate(180%) blur(28px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
 
   /* When scrolled, becomes more solid */
