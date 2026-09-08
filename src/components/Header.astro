@@ -316,12 +316,20 @@ const omOss = [
     border-bottom: 1px solid rgba(0, 0, 0, 0.04);
   }
 
-  /* Dropdown panel — luftig frostad glas-effekt (best practice: lägre alpha + starkare blur) */
+  /* Dropdown panel — Apple "Liquid Glass" / visionOS-material
+     Signaturingredienser: hög saturation (colors pop), stark blur,
+     moderat alpha (~0.62), specular-highlight på ovankant (glasljus),
+     mjuk drop shadow + tight contact shadow. */
   .cpo-frost-panel {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: saturate(180%) blur(28px);
-    -webkit-backdrop-filter: saturate(180%) blur(28px);
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: saturate(200%) blur(40px);
+    -webkit-backdrop-filter: saturate(200%) blur(40px);
     border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 24px 60px -12px rgba(0, 0, 0, 0.18),
+      0 6px 16px -4px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.78),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.03);
   }
 
   /* When scrolled, becomes more solid */
