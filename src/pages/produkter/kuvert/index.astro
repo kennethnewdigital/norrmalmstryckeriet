@@ -100,15 +100,16 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 const pageSchemas = graph(
   serviceSchema({
     name: "Trycka kuvert med logotyp och färgtryck",
-    description: "Tryck kuvert för kundbrev, utskick och kampanjer. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod.",
+    description: "Tryck kuvert för kundbrev, utskick och kampanjer hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod.",
     path: "/produkter/kuvert/",
   })
 );
 ---
 
 <Layout
-  title="Trycka kuvert med logotyp och färgtryck | Norrmalmstryckeriet"
-  description="Tryck kuvert för kundbrev, utskick och kampanjer. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod."
+  title="Trycka kuvert i Stockholm — C5, C4, fönster och färgtryck | Norrmalmstryckeriet"
+  description="Tryck kuvert för kundbrev, utskick och kampanjer hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod."
+  ogImage="/images/hero/kuvert-hero.webp"
   schemaJson={pageSchemas}
 >
 
@@ -118,9 +119,14 @@ const pageSchemas = graph(
     <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
       <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#1a1f2e]">
         <img
-          src="/images/hero/kuvert-hero.svg"
-          alt="Kuvert från Norrmalmstryckeriet"
-          class="w-full h-full object-cover"
+          src="/images/hero/kuvert-hero.webp"
+          alt="Tryckta kuvert med logotyp och färgtryck från Norrmalmstryckeriet — C5, C4, fönster och adressering hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+          width="1243"
+          height="725"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-center"
         />
       </div>
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
@@ -163,9 +169,14 @@ const pageSchemas = graph(
   <section class="relative hidden lg:block">
     <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#1a1f2e]">
       <img
-        src="/images/hero/kuvert-hero.svg"
-        alt="Kuvert från Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full object-cover"
+        src="/images/hero/kuvert-hero.webp"
+        alt="Tryckta kuvert med logotyp och färgtryck från Norrmalmstryckeriet — C5, C4, fönster och adressering hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+        width="1243"
+        height="725"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/12 to-transparent pointer-events-none"></div>
       <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
