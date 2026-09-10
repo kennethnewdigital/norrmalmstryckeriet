@@ -110,16 +110,17 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
 const pageSchemas = graph(
   serviceSchema({
-    name: "Trycka reklamblad, blad och flyers",
-    description: "Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring. Vi hjälper dig välja format, papper och finish.",
+    name: "Trycka reklamblad, flyers och blad",
+    description: "Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper och finish.",
     path: "/produkter/blad/",
   })
 );
 ---
 
 <Layout
-  title="Trycka reklamblad, blad och flyers | Norrmalmstryckeriet"
-  description="Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring. Vi hjälper dig välja format, papper och finish."
+  title="Trycka reklamblad, flyers och blad i Stockholm — format, papper och finish | Norrmalmstryckeriet"
+  description="Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper och finish."
+  ogImage="/images/hero/blad-hero.webp"
   schemaJson={pageSchemas}
 >
 
@@ -131,8 +132,13 @@ const pageSchemas = graph(
       <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px]">
         <img
           src="/images/hero/blad-hero.webp"
-          alt="Reklamblad och flyers från Norrmalmstryckeriet"
-          class="w-full h-full object-cover"
+          alt="Tryckta reklamblad och flyers från Norrmalmstryckeriet — kampanj-, mäss- och utskicksmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+          width="1536"
+          height="1024"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-center"
         />
       </div>
       <!-- Text under -->
@@ -180,8 +186,13 @@ const pageSchemas = graph(
     >
       <img
         src="/images/hero/blad-hero.webp"
-        alt="Reklamblad och flyers från Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full object-cover"
+        alt="Tryckta reklamblad och flyers från Norrmalmstryckeriet — kampanj-, mäss- och utskicksmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+        width="1536"
+        height="1024"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/12 to-transparent pointer-events-none"></div>
       <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
