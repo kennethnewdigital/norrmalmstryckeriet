@@ -98,16 +98,17 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
 
 const pageSchemas = graph(
   serviceSchema({
-    name: "Trycka foldrar",
-    description: "Tryck foldrar för mässa, utskick, presentation och säljmaterial. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck.",
+    name: "Trycka foldrar — falsning, format och pappersval",
+    description: "Tryck foldrar för mässa, utskick, presentation och säljmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck.",
     path: "/produkter/foldrar/",
   })
 );
 ---
 
 <Layout
-  title="Trycka foldrar – rådgivning, format och falsning | Norrmalmstryckeriet"
-  description="Tryck foldrar för mässa, utskick, presentation och säljmaterial. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck."
+  title="Trycka foldrar i Stockholm — format, falsning och pappersval | Norrmalmstryckeriet"
+  description="Tryck foldrar för mässa, utskick, presentation och säljmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck."
+  ogImage="/images/hero/foldrar-hero.webp"
   schemaJson={pageSchemas}
 >
 
@@ -117,9 +118,14 @@ const pageSchemas = graph(
     <div class="mx-[16px] sm:mx-[24px] md:mx-[32px] mt-[16px] sm:mt-[24px]">
       <div class="rounded-[20px] sm:rounded-[28px] overflow-hidden aspect-[4/3] sm:aspect-[16/9] md:aspect-[2/1] mb-[24px] sm:mb-[32px] bg-[#1a1a2e]">
         <img
-          src="/images/hero/foldrar-hero.svg"
-          alt="Foldrar från Norrmalmstryckeriet"
-          class="w-full h-full object-cover"
+          src="/images/hero/foldrar-hero.webp"
+          alt="Tryckta foldrar från Norrmalmstryckeriet — falsning, format och pappersval hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-center"
         />
       </div>
       <div class="px-[4px] sm:px-[8px] md:px-[16px] max-w-[760px]">
@@ -162,9 +168,14 @@ const pageSchemas = graph(
   <section class="relative hidden lg:block">
     <div class="hero-box mx-[34px] mt-[24px] rounded-[50px] overflow-hidden relative bg-[#1a1a2e]">
       <img
-        src="/images/hero/foldrar-hero.svg"
-        alt="Foldrar från Norrmalmstryckeriet"
-        class="absolute inset-0 w-full h-full object-cover"
+        src="/images/hero/foldrar-hero.webp"
+        alt="Tryckta foldrar från Norrmalmstryckeriet — falsning, format och pappersval hos Svanenmärkt tryckeri i Sollentuna, Stockholm"
+        width="1672"
+        height="941"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover object-center"
       />
       <div class="absolute inset-0 bg-gradient-to-r from-black/45 via-black/12 to-transparent pointer-events-none"></div>
       <div class="absolute top-1/2 -translate-y-1/2 left-[40px] right-[40px] lg:left-[60px] lg:right-[60px] z-10">
