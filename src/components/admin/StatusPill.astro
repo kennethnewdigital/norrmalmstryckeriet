@@ -1,0 +1,10 @@
+---
+const { status } = Astro.props as { status: 'ny' | 'hanterad' | 'arkiverad' };
+const map = {
+  ny: { text: 'Ny', bg: '#FEE2E2', color: '#B91C1C' },
+  hanterad: { text: 'Hanterad', bg: '#DCFCE7', color: '#166534' },
+  arkiverad: { text: 'Arkiverad', bg: '#F1F5F9', color: '#475569' },
+} as const;
+const s = map[status] ?? map.ny;
+---
+<span style={`display:inline-block;padding:3px 10px;border-radius:999px;background:${s.bg};color:${s.color};font-size:12px;font-weight:500;`}>{s.text}</span>

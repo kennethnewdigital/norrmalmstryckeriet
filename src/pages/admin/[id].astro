@@ -1,0 +1,91 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import { getAdminFromRequest } from '../../lib/auth';
+import { getOffert } from '../../lib/offert';
+
+const admin = await getAdminFromRequest(Astro.cookies);
+if (!admin) return Astro.redirect('/admin/login');
+
+const id = String(Astro.params.id);
+const o = await getOffert(id);
+if (!o) return Astro.redirect('/admin');
+
+const fields: Array<[string, string | undefined]> = [
+  ['Namn', o.namn],
+  ['Företag', o.foretag],
+  ['E-post', o.epost],
+  ['Telefon', o.telefon],
+  ['Produkt', o.produkt],
+  ['Upplaga', o.upplaga],
+  ['Deadline', o.deadline],
+  ['Fillänk', o.filLank],
+];
+---
+
+<Layout title={`Offert ${o.id} — Admin | Norrmalmstryckeriet`} noindex={true}>
+  <section class="page-section">
+    <div class="page-container max-w-[900px]">
+      <a href="/admin" class="text-[14px] text-[#666] hover:text-[#222]">← Tillbaka</a>
+
+      <div class="mt-[16px] mb-[24px] flex flex-wrap justify-between items-end gap-[16px]">
+        <div>
+          <p class="section-label mb-[8px]">{new Date(o.ts).toLocaleString('sv-SE')}</p>
+          <h1 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.1;">{o.namn}{o.foretag ? ` · ${o.foretag}` : ''}</h1>
+        </div>
+        <div class="flex flex-wrap gap-[8px]">
+          <button data-status="ny" class="status-btn px-[14px] py-[8px] rounded-full border border-[#E5E5E5] text-[13px] hover:bg-[#F5F5F5]">Markera ny</button>
+          <button data-status="hanterad" class="status-btn px-[14px] py-[8px] rounded-full border border-[#166534] bg-[#DCFCE7] text-[#166534] text-[13px] font-medium">Markera hanterad</button>
+          <button data-status="arkiverad" class="status-btn px-[14px] py-[8px] rounded-full border border-[#E5E5E5] text-[13px] hover:bg-[#F5F5F5]">Arkivera</button>
+        </div>
+      </div>
+
+      <div class="rounded-[16px] border border-[#E5E5E5] bg-white p-[24px] mb-[16px]">
+        <table class="w-full text-[14px]">
+          {fields.filter(([, v]) => v).map(([k, v]) => (
+            <tr class="border-b border-[#F0F0F0] last:border-0">
+              <td class="py-[10px] pr-[16px] text-[#888] text-[13px] whitespace-nowrap align-top">{k}</td>
+              <td class="py-[10px] text-[#222]">{v}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
+
+      {o.meddelande && (
+        <div class="rounded-[16px] border border-[#E5E5E5] bg-white p-[24px] mb-[16px]">
+          <p class="text-[13px] text-[#888] mb-[8px]">Meddelande</p>
+          <p class="text-[15px] text-[#222] leading-relaxed whitespace-pre-wrap">{o.meddelande}</p>
+        </div>
+      )}
+
+      <div class="flex gap-[12px] mt-[24px]">
+        <a href={`mailto:${o.epost}?subject=Din offertförfrågan (${o.id})`} class="btn-pill btn-red inline-flex">Svara via mejl</a>
+        {o.telefon && <a href={`tel:${o.telefon.replace(/\s+/g, '')}`} class="btn-pill inline-flex" style="background:#F3F3F3;color:#222;">Ring {o.telefon}</a>}
+      </div>
+
+      <p id="status-msg" class="mt-[16px] text-[13px] text-[#166534]"></p>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ id }}>
+  document.querySelectorAll('.status-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const status = btn.getAttribute('data-status');
+      const r = await fetch(`/api/admin/offert/${id}/status`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      const d = await r.json();
+      const msg = document.getElementById('status-msg');
+      if (d.ok) {
+        msg.textContent = `Status uppdaterad: ${status}`;
+        msg.style.color = '#166534';
+      } else {
+        msg.textContent = d.error || 'Fel';
+        msg.style.color = '#D9222A';
+      }
+    });
+  });
+</script>

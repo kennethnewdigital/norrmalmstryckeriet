@@ -1,0 +1,8 @@
+---
+const { label, value, tone } = Astro.props as { label: string; value: number; tone?: 'red' };
+const color = tone === 'red' ? '#D9222A' : '#222';
+---
+<div class="rounded-[14px] border border-[#E5E5E5] p-[16px] bg-white">
+  <p class="text-[11px] uppercase font-medium text-[#888]" style="letter-spacing:1.2px;">{label}</p>
+  <p class="font-[var(--font-heading)] !font-normal mt-[4px]" style={`font-size:28px;line-height:1;color:${color};`}>{value}</p>
+</div>

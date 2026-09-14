@@ -113,9 +113,8 @@ const pageSchemas = graph(
           <form
             id="offert-form"
             class="space-y-[14px] sm:space-y-[16px] bg-white rounded-[16px] p-[24px] sm:p-[32px] md:p-[40px] border border-[#E5E5E5]"
-            action="#"
+            action="/api/offert"
             method="post"
-            enctype="multipart/form-data"
           >
             <!-- Företag eller Privatperson -->
             <fieldset class="space-y-[10px]">
@@ -203,8 +202,8 @@ const pageSchemas = graph(
             </div>
 
             <div>
-              <label for="files" class="block text-[14px] font-medium text-[#222] mb-[6px]">Bifoga filer <span class="text-[#888] font-normal">(PDF, EPS, JPG, PNG, SVG, GIF — max 20 MB per fil)</span></label>
-              <input type="file" id="files" name="files" multiple accept=".pdf,.eps,.jpg,.jpeg,.png,.svg,.gif" class="form-input !p-[10px] file:mr-3 file:px-[14px] file:py-[8px] file:rounded-[6px] file:border-0 file:bg-[#F3F3F3] file:text-[#222] file:cursor-pointer file:font-medium hover:file:bg-[#E5E5E5]" />
+              <label for="filLank" class="block text-[14px] font-medium text-[#222] mb-[6px]">Fillänk <span class="text-[#888] font-normal">(stora filer via <a href="https://wetransfer.com" target="_blank" rel="noopener" class="underline">WeTransfer</a> eller <a href="https://sprend.com" target="_blank" rel="noopener" class="underline">Sprend</a> — klistra in länken här)</span></label>
+              <input type="url" id="filLank" name="filLank" placeholder="https://we.tl/… eller https://sprend.com/…" class="form-input" />
             </div>
 
             <div class="flex items-start gap-[10px] mt-[8px]">
@@ -214,10 +213,19 @@ const pageSchemas = graph(
               </label>
             </div>
 
-            <button type="submit" class="btn-pill btn-red w-full justify-center mt-[12px] sm:mt-[16px]">
+            <button type="submit" id="offert-submit" class="btn-pill btn-red w-full justify-center mt-[12px] sm:mt-[16px]">
               Skicka offertförfrågan<Fragment set:html={arrowSvg} />
             </button>
+
+            <p id="offert-status" class="text-[14px] mt-[10px]" role="status" aria-live="polite"></p>
           </form>
+
+          <div id="offert-success" class="hidden bg-[#F0FDF4] border border-[#BBF7D0] rounded-[16px] p-[24px] sm:p-[32px] md:p-[40px]">
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#166534] mb-[8px]" style="font-size:clamp(1.5rem,3vw,2rem);line-height:1.2;">Tack — vi har tagit emot din förfrågan</h3>
+            <p class="text-[#166534] text-[15px] leading-relaxed mb-[8px]">Du får en bekräftelse på mejl inom kort. Vi återkommer så snart vi kan.</p>
+            <p class="text-[#166534] text-[14px]">Ärendenummer: <strong id="offert-id"></strong></p>
+            <p class="text-[#166534] text-[14px] mt-[16px]">Behöver du komma i kontakt tidigare? <strong>Ring 08-96 01 35</strong>.</p>
+          </div>
         </div>
 
       </div>
@@ -501,6 +509,58 @@ flyers</span>
     document.getElementById('team-next')?.addEventListener('click', () => {
       teamCarousel?.scrollBy({ left: teamWidth, behavior: 'smooth' });
     });
+
+    // === Offertformulär: fetch → visa bekräftelse-kort ===
+    const form = document.getElementById('offert-form') as HTMLFormElement | null;
+    const status = document.getElementById('offert-status');
+    const success = document.getElementById('offert-success');
+    const submitBtn = document.getElementById('offert-submit') as HTMLButtonElement | null;
+    const idOut = document.getElementById('offert-id');
+
+    if (form && !form.dataset.wired) {
+      form.dataset.wired = '1';
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!status || !submitBtn) return;
+        status.textContent = '';
+        status.style.color = '#D9222A';
+
+        const gdpr = (form.querySelector('input[name="gdpr"]') as HTMLInputElement | null);
+        if (gdpr && !gdpr.checked) {
+          status.textContent = 'Godkänn integritetspolicyn för att fortsätta.';
+          return;
+        }
+
+        const fd = new FormData(form);
+        const data: Record<string, string> = {};
+        for (const [k, v] of fd.entries()) {
+          if (typeof v === 'string') data[k] = v;
+        }
+        data.gdpr = gdpr?.checked ? 'true' : '';
+
+        submitBtn.disabled = true;
+        const original = submitBtn.textContent;
+        submitBtn.innerHTML = 'Skickar…';
+
+        try {
+          const r = await fetch('/api/offert', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const j = await r.json();
+          if (!r.ok || !j.ok) throw new Error(j?.error || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
+          form.classList.add('hidden');
+          success?.classList.remove('hidden');
+          if (idOut) idOut.textContent = j.id || '';
+          success?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } catch (err) {
+          status.textContent = (err as Error).message;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = original || 'Skicka offertförfrågan';
+        }
+      });
+    }
   }
   initOffert();
   document.addEventListener('astro:after-swap', initOffert);

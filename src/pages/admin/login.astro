@@ -1,0 +1,96 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+import { getAdminFromRequest } from '../../lib/auth';
+
+const admin = await getAdminFromRequest(Astro.cookies);
+if (admin) return Astro.redirect('/admin');
+---
+
+<Layout title="Logga in — Norrmalmstryckeriet admin" noindex={true}>
+  <section class="min-h-[80vh] flex items-center justify-center px-[16px] py-[80px]">
+    <div class="w-full max-w-[420px]">
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[8px]" style="font-size:clamp(1.75rem,3vw,2.25rem);line-height:1.1;">Admin</h1>
+      <p class="text-[#666] mb-[32px] text-[15px]">Ange din e-post så mejlar vi en engångskod.</p>
+
+      <form id="req-form" class="space-y-[14px]">
+        <input type="email" name="email" id="email" required placeholder="din@epost.se" class="w-full px-[16px] py-[14px] rounded-[10px] border border-[#D5D8DC] text-[15px] focus:outline-none focus:border-[#222]" />
+        <button type="submit" class="w-full py-[14px] rounded-full bg-[#D9222A] text-white font-medium">Skicka kod</button>
+      </form>
+
+      <form id="ver-form" class="space-y-[14px] hidden">
+        <p class="text-[#333] text-[14px]">Ange 6-siffrig kod som skickats till <strong id="ver-email"></strong>.</p>
+        <input type="text" name="code" id="code" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="123 456" class="w-full px-[16px] py-[14px] rounded-[10px] border border-[#D5D8DC] text-[18px] tracking-[6px] text-center focus:outline-none focus:border-[#222]" />
+        <button type="submit" class="w-full py-[14px] rounded-full bg-[#D9222A] text-white font-medium">Logga in</button>
+        <button type="button" id="back-btn" class="w-full py-[10px] text-[13px] text-[#666]">Ange annan e-post</button>
+      </form>
+
+      <p id="status" class="mt-[16px] text-[14px] text-[#D9222A]"></p>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const reqForm = document.getElementById('req-form') as HTMLFormElement;
+  const verForm = document.getElementById('ver-form') as HTMLFormElement;
+  const status = document.getElementById('status')!;
+  const verEmail = document.getElementById('ver-email')!;
+  const backBtn = document.getElementById('back-btn')!;
+  let email = '';
+
+  reqForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    email = (document.getElementById('email') as HTMLInputElement).value.trim();
+    const btn = reqForm.querySelector('button')! as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Skickar…';
+    try {
+      const r = await fetch('/api/admin/login/request-code', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'Något gick fel.');
+      verEmail.textContent = email;
+      reqForm.classList.add('hidden');
+      verForm.classList.remove('hidden');
+      (document.getElementById('code') as HTMLInputElement).focus();
+    } catch (err) {
+      status.textContent = (err as Error).message;
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Skicka kod';
+    }
+  });
+
+  verForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = '';
+    const code = (document.getElementById('code') as HTMLInputElement).value.trim();
+    const btn = verForm.querySelector('button[type=submit]')! as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Loggar in…';
+    try {
+      const r = await fetch('/api/admin/login/verify-code', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email, code }),
+      });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'Fel kod.');
+      window.location.href = '/admin';
+    } catch (err) {
+      status.textContent = (err as Error).message;
+      btn.disabled = false;
+      btn.textContent = 'Logga in';
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    verForm.classList.add('hidden');
+    reqForm.classList.remove('hidden');
+    status.textContent = '';
+  });
+</script>
