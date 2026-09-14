@@ -28,11 +28,17 @@ export const kv = {
   async get<T = unknown>(key: string): Promise<T | null> {
     const r = await fetchKv(`/get/${encodeURIComponent(key)}`);
     if (r.result == null) return null;
-    try {
-      return JSON.parse(r.result) as T;
-    } catch {
-      return r.result as T;
+    const raw = String(r.result);
+    // Bara parsa som JSON om det ser ut som object/array — annars returnera raw sträng
+    // (annars parsas "864007" som talet 864007 och bryter kod-jämförelser)
+    if (raw.startsWith('{') || raw.startsWith('[')) {
+      try {
+        return JSON.parse(raw) as T;
+      } catch {
+        return raw as T;
+      }
     }
+    return raw as T;
   },
   async set<T = unknown>(key: string, value: T, opts?: { ex?: number }): Promise<void> {
     const payload = typeof value === 'string' ? value : JSON.stringify(value);
