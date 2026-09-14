@@ -39,13 +39,13 @@ export const kv = {
     // Upstash REST: pipeline-format ["SET", key, value, "EX", ttl]
     const args: (string | number)[] = ['SET', key, payload];
     if (opts?.ex) args.push('EX', opts.ex);
-    await fetchKv('/', { method: 'POST', body: JSON.stringify([args]) });
+    await fetchKv('/pipeline', { method: 'POST', body: JSON.stringify([args]) });
   },
   async del(key: string): Promise<void> {
-    await fetchKv('/', { method: 'POST', body: JSON.stringify([['DEL', key]]) });
+    await fetchKv('/pipeline', { method: 'POST', body: JSON.stringify([['DEL', key]]) });
   },
   async lpush(key: string, value: string): Promise<void> {
-    await fetchKv('/', { method: 'POST', body: JSON.stringify([['LPUSH', key, value]]) });
+    await fetchKv('/pipeline', { method: 'POST', body: JSON.stringify([['LPUSH', key, value]]) });
   },
   async lrange(key: string, start: number, stop: number): Promise<string[]> {
     const r = await fetchKv(`/lrange/${encodeURIComponent(key)}/${start}/${stop}`);
