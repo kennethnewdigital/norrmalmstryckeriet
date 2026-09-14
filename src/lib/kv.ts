@@ -36,20 +36,16 @@ export const kv = {
   },
   async set<T = unknown>(key: string, value: T, opts?: { ex?: number }): Promise<void> {
     const payload = typeof value === 'string' ? value : JSON.stringify(value);
-    const query = opts?.ex ? `?EX=${opts.ex}` : '';
-    await fetchKv(`/set/${encodeURIComponent(key)}${query}`, {
-      method: 'POST',
-      body: JSON.stringify([payload]),
-    });
+    // Upstash REST: pipeline-format ["SET", key, value, "EX", ttl]
+    const args: (string | number)[] = ['SET', key, payload];
+    if (opts?.ex) args.push('EX', opts.ex);
+    await fetchKv('/', { method: 'POST', body: JSON.stringify([args]) });
   },
   async del(key: string): Promise<void> {
-    await fetchKv(`/del/${encodeURIComponent(key)}`, { method: 'POST' });
+    await fetchKv('/', { method: 'POST', body: JSON.stringify([['DEL', key]]) });
   },
   async lpush(key: string, value: string): Promise<void> {
-    await fetchKv(`/lpush/${encodeURIComponent(key)}`, {
-      method: 'POST',
-      body: JSON.stringify([value]),
-    });
+    await fetchKv('/', { method: 'POST', body: JSON.stringify([['LPUSH', key, value]]) });
   },
   async lrange(key: string, start: number, stop: number): Promise<string[]> {
     const r = await fetchKv(`/lrange/${encodeURIComponent(key)}/${start}/${stop}`);
