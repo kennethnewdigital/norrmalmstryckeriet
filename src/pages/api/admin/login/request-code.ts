@@ -32,17 +32,23 @@ export const POST: APIRoute = async ({ request }) => {
     const code = makeCode();
     await kv.set(`admin:code:${email}`, code, { ex: CODE_TTL });
 
-    await sendMail({
-      to: email,
-      subject: `Inloggningskod: ${code}`,
-      html: `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:480px;">
-        <h2 style="font-weight:400;font-size:20px;color:#222;">Norrmalmstryckeriet admin</h2>
-        <p style="color:#333;font-size:15px;">Din inloggningskod:</p>
-        <p style="font-size:32px;letter-spacing:6px;font-weight:600;color:#222;margin:16px 0;">${code}</p>
-        <p style="color:#666;font-size:13px;">Koden är giltig i 10 minuter. Om du inte begärde den — ignorera detta mejl.</p>
-      </div>`,
-      text: `Din inloggningskod: ${code}\n(Giltig i 10 min)`,
-    });
+    try {
+      await sendMail({
+        to: email,
+        subject: `Inloggningskod: ${code}`,
+        html: `<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:480px;">
+          <h2 style="font-weight:400;font-size:20px;color:#222;">Norrmalmstryckeriet admin</h2>
+          <p style="color:#333;font-size:15px;">Din inloggningskod:</p>
+          <p style="font-size:32px;letter-spacing:6px;font-weight:600;color:#222;margin:16px 0;">${code}</p>
+          <p style="color:#666;font-size:13px;">Koden är giltig i 10 minuter. Om du inte begärde den — ignorera detta mejl.</p>
+        </div>`,
+        text: `Din inloggningskod: ${code}\n(Giltig i 10 min)`,
+      });
+    } catch (mailErr) {
+      // Mail failed (t.ex. Resend inte konfigurerad ännu). Koden finns
+      // ändå i KV — vi låter flödet fortsätta så admin kan hantera manuellt.
+      console.error('Failed to send admin code:', mailErr);
+    }
 
     return json({ ok: true });
   } catch (err) {
