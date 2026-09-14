@@ -63,7 +63,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       await sendMail({
         to: OFFERT_TO,
         reply_to: offert.epost,
-        subject: `Ny offertförfrågan från ${offert.namn}${offert.foretag ? ` (${offert.foretag})` : ''}`,
+        subject: `Ärende ${offert.id} — Ny offertförfrågan från ${offert.namn}${offert.foretag ? ` (${offert.foretag})` : ''}`,
         html: renderOffertEmail(offert),
         text: renderOffertText(offert),
       });
@@ -124,18 +124,25 @@ function renderOffertEmail(o: Offert): string {
     .join('');
   return `
     <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:640px;">
+      <div style="background:#F3F4F6;border-left:4px solid #D9222A;padding:16px 20px;margin:0 0 20px 0;">
+        <p style="margin:0;color:#666;font-size:12px;text-transform:uppercase;letter-spacing:1.2px;font-weight:500;">Ärendenummer</p>
+        <p style="margin:4px 0 0 0;color:#222;font-size:22px;font-weight:600;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">${escapeHtml(o.id)}</p>
+        <p style="margin:6px 0 0 0;color:#666;font-size:13px;">${new Date(o.ts).toLocaleString('sv-SE')}</p>
+      </div>
       <h2 style="font-weight:400;font-size:22px;margin:0 0 20px 0;color:#222;">Ny offertförfrågan</h2>
-      <p style="color:#555;font-size:14px;margin:0 0 16px 0;">ID: ${escapeHtml(o.id)} · ${new Date(o.ts).toLocaleString('sv-SE')}</p>
       <table style="border-collapse:collapse;width:100%;">${rowsHtml}</table>
       <hr style="border:0;border-top:1px solid #eee;margin:24px 0;" />
-      <p style="color:#888;font-size:12px;">Svara direkt på detta mejl för att kontakta kunden.</p>
+      <p style="color:#888;font-size:12px;">Svara direkt på detta mejl för att kontakta kunden. Ange gärna ärendenumret <strong>${escapeHtml(o.id)}</strong> i konversationen.</p>
     </div>`;
 }
 
 function renderOffertText(o: Offert): string {
-  return `Ny offertförfrågan (${o.id})
+  return `═══════════════════════════════════
+ÄRENDENUMMER: ${o.id}
 Datum: ${new Date(o.ts).toLocaleString('sv-SE')}
+═══════════════════════════════════
 
+Källa: ${o.source ?? 'offert'}
 Namn: ${o.namn}
 Företag: ${o.foretag ?? '-'}
 E-post: ${o.epost}
