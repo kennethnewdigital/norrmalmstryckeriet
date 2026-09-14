@@ -12,6 +12,7 @@ export type Offert = {
   deadline?: string;
   meddelande?: string;
   filLank?: string;
+  source?: string; // t.ex. "offert" eller "produkt-mappar"
   ip?: string;
   ua?: string;
   status: 'ny' | 'hanterad' | 'arkiverad';

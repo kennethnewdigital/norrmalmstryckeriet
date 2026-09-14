@@ -48,6 +48,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       deadline: str(form.deadline),
       meddelande,
       filLank: str(form.filLank),
+      source: str(form.source) || 'offert',
       ip: clientAddress || '',
       ua: request.headers.get('user-agent') || '',
       status: 'ny',
@@ -103,6 +104,7 @@ function json(data: unknown, status = 200) {
 
 function renderOffertEmail(o: Offert): string {
   const rows: Array<[string, string | undefined]> = [
+    ['Källa', o.source],
     ['Namn', o.namn],
     ['Företag', o.foretag],
     ['E-post', o.epost],

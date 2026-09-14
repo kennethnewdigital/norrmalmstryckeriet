@@ -1,0 +1,74 @@
+---
+const { product } = Astro.props as { product: string };
+---
+
+<form class="quick-form space-y-[10px] sm:space-y-[12px]" action="/api/offert" method="post" data-product={product}>
+  <input type="hidden" name="product" value={product} />
+  <input type="hidden" name="source" value={`produkt-${product}`} />
+  <input type="text" name="firstname" placeholder="Ditt namn" required class="form-input" />
+  <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
+  <input type="email" name="email" placeholder="E-post" required class="form-input" />
+  <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
+  <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="5" required class="form-input resize-none"></textarea>
+  <label class="flex items-start gap-[8px] text-[12px] sm:text-[13px] text-[#555] cursor-pointer">
+    <input type="checkbox" name="gdpr" required class="mt-[4px] w-[14px] h-[14px] accent-[#D9222A]" />
+    <span>Jag godkänner att Norrmalmstryckeriet behandlar mina uppgifter enligt <a href="/integritetspolicy" class="underline hover:text-[#222]">integritetspolicyn</a>.</span>
+  </label>
+  <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
+    Skicka meddelande
+  </button>
+  <p class="quick-form-status text-[13px] mt-[6px]" role="status" aria-live="polite"></p>
+</form>
+
+<div class="quick-form-success hidden bg-[#F0FDF4] border border-[#BBF7D0] rounded-[12px] p-[20px]">
+  <h4 class="font-[var(--font-heading)] !font-normal text-[#166534] mb-[6px]" style="font-size:18px;line-height:1.2;">Tack — vi hör av oss</h4>
+  <p class="text-[#166534] text-[14px]">Du får en bekräftelse på mejl inom kort. Behöver du komma i kontakt snabbare: ring <strong>08-96 01 35</strong>.</p>
+</div>
+
+<script>
+  function initQuickForms() {
+    document.querySelectorAll('form.quick-form').forEach((formEl) => {
+      const form = formEl as HTMLFormElement;
+      if (form.dataset.wired) return;
+      form.dataset.wired = '1';
+      const status = form.querySelector('.quick-form-status') as HTMLElement | null;
+      const successBox = form.parentElement?.querySelector('.quick-form-success') as HTMLElement | null;
+      const submitBtn = form.querySelector('button[type=submit]') as HTMLButtonElement | null;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!status || !submitBtn) return;
+        status.textContent = '';
+        status.style.color = '#D9222A';
+
+        const fd = new FormData(form);
+        const data: Record<string, string> = {};
+        for (const [k, v] of fd.entries()) if (typeof v === 'string') data[k] = v;
+        const gdprEl = form.querySelector('input[name="gdpr"]') as HTMLInputElement | null;
+        data.gdpr = gdprEl?.checked ? 'true' : '';
+
+        submitBtn.disabled = true;
+        const orig = submitBtn.textContent;
+        submitBtn.textContent = 'Skickar…';
+
+        try {
+          const r = await fetch('/api/offert', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          const j = await r.json();
+          if (!r.ok || !j.ok) throw new Error(j?.error || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
+          form.classList.add('hidden');
+          successBox?.classList.remove('hidden');
+        } catch (err) {
+          status.textContent = (err as Error).message;
+          submitBtn.disabled = false;
+          submitBtn.textContent = orig || 'Skicka meddelande';
+        }
+      });
+    });
+  }
+  initQuickForms();
+  document.addEventListener('astro:after-swap', initQuickForms);
+</script>

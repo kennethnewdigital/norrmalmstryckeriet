@@ -1,5 +1,6 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import QuickContactForm from '../../../components/QuickContactForm.astro';
 import { serviceSchema, graph } from '../../../lib/schema';
 
 const effects = [
@@ -432,16 +433,7 @@ const pageSchemas = graph(
           </div>
         </div>
         <div>
-          <form class="space-y-[10px] sm:space-y-[12px]" action="#" method="post">
-            <input type="text" name="name" placeholder="Ditt namn" required class="form-input" />
-            <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
-            <input type="email" name="email" placeholder="E-post" required class="form-input" />
-            <input type="tel" name="phone" placeholder="Telefon" class="form-input" />
-            <textarea name="message" placeholder="Berätta kort om ditt projekt..." rows="5" class="form-input resize-none"></textarea>
-            <button type="submit" class="btn-pill mt-[8px] w-full sm:w-auto justify-center" style="background: white; color: #222;">
-              Skicka meddelande
-            </button>
-          </form>
+          <QuickContactForm product="storformat" />
         </div>
       </div>
     </div>

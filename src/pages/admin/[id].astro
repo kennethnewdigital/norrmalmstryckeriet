@@ -12,6 +12,7 @@ const o = await getOffert(id);
 if (!o) return Astro.redirect('/admin');
 
 const fields: Array<[string, string | undefined]> = [
+  ['Källa', o.source || 'offert'],
   ['Namn', o.namn],
   ['Företag', o.foretag],
   ['E-post', o.epost],
