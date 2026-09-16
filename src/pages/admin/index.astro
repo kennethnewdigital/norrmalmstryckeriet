@@ -10,6 +10,7 @@ const admin = await getAdminFromRequest(Astro.cookies);
 if (!admin) return Astro.redirect('/admin/login');
 
 const items = await listOffert(500);
+const deletedId = Astro.url.searchParams.get('deleted');
 const nya = items.filter((i) => i.status === 'ny').length;
 const hanterade = items.filter((i) => i.status === 'hanterad').length;
 const arkiverade = items.filter((i) => i.status === 'arkiverad').length;
@@ -35,6 +36,12 @@ function fmt(ts: number) {
           <button class="text-[14px] text-[#666] underline">Logga ut</button>
         </form>
       </div>
+
+      {deletedId && (
+        <div class="mb-[16px] p-[12px] rounded-[10px] bg-[#F0FDF4] border border-[#BBF7D0] text-[#166534] text-[14px]">
+          Ärende <strong style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{deletedId}</strong> har raderats.
+        </div>
+      )}
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-[12px] mb-[24px]">
         <Stat label="Totalt" value={items.length} />

@@ -53,6 +53,9 @@ export const kv = {
   async lpush(key: string, value: string): Promise<void> {
     await fetchKv('/pipeline', { method: 'POST', body: JSON.stringify([['LPUSH', key, value]]) });
   },
+  async lrem(key: string, count: number, value: string): Promise<void> {
+    await fetchKv('/pipeline', { method: 'POST', body: JSON.stringify([['LREM', key, count, value]]) });
+  },
   async lrange(key: string, start: number, stop: number): Promise<string[]> {
     const r = await fetchKv(`/lrange/${encodeURIComponent(key)}/${start}/${stop}`);
     return (r.result || []) as string[];

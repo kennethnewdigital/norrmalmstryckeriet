@@ -42,6 +42,11 @@ export async function updateOffertStatus(id: string, status: Offert['status']): 
   await kv.set(OFFERT_KEY(id), { ...cur, status });
 }
 
+export async function deleteOffert(id: string): Promise<void> {
+  await kv.del(OFFERT_KEY(id));
+  await kv.lrem(LIST_KEY, 0, id); // ta bort alla förekomster av id ur listan
+}
+
 export function generateId(): string {
   const d = new Date();
   const y = d.getFullYear();

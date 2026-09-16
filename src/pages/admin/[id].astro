@@ -64,12 +64,20 @@ const fields: Array<[string, string | undefined]> = [
         </div>
       )}
 
-      <div class="flex gap-[12px] mt-[24px]">
+      <div class="flex flex-wrap gap-[12px] mt-[24px]">
         <a href={`mailto:${o.epost}?subject=Din offertförfrågan (${o.id})`} class="btn-pill btn-red inline-flex">Svara via mejl</a>
         {o.telefon && <a href={`tel:${o.telefon.replace(/\s+/g, '')}`} class="btn-pill inline-flex" style="background:#F3F3F3;color:#222;">Ring {o.telefon}</a>}
       </div>
 
       <p id="status-msg" class="mt-[16px] text-[13px] text-[#166534]"></p>
+
+      <div class="mt-[48px] pt-[24px] border-t border-[#EEE]">
+        <p class="text-[12px] uppercase font-medium text-[#888] mb-[10px]" style="letter-spacing:1.2px;">Farlig zon</p>
+        <button id="delete-btn" class="inline-flex items-center gap-[8px] px-[14px] py-[8px] rounded-full border border-[#DC2626] text-[#DC2626] text-[13px] font-medium bg-white hover:bg-[#FEF2F2]">
+          🗑 Radera ärendet permanent
+        </button>
+        <p class="mt-[8px] text-[12px] text-[#888]">Detta kan inte ångras — ärendet försvinner både från listan och databasen.</p>
+      </div>
     </div>
   </section>
 </Layout>
@@ -93,5 +101,22 @@ const fields: Array<[string, string | undefined]> = [
         msg.style.color = '#D9222A';
       }
     });
+  });
+
+  const delBtn = document.getElementById('delete-btn');
+  delBtn?.addEventListener('click', async () => {
+    if (!confirm(`Radera ärende ${id}?\n\nDetta kan INTE ångras. Ärendet försvinner permanent.`)) return;
+    delBtn.disabled = true;
+    delBtn.textContent = 'Raderar…';
+    try {
+      const r = await fetch(`/api/admin/offert/${id}/delete`, { method: 'POST' });
+      const d = await r.json();
+      if (!d.ok) throw new Error(d.error || 'Fel');
+      window.location.href = '/admin?deleted=' + encodeURIComponent(id);
+    } catch (err) {
+      delBtn.disabled = false;
+      delBtn.textContent = '🗑 Radera ärendet permanent';
+      alert('Kunde inte radera: ' + (err.message || 'okänt fel'));
+    }
   });
 </script>
