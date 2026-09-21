@@ -1,0 +1,90 @@
+---
+export const prerender = true;
+import Layout from '../../layouts/Layout.astro';
+
+const GADS_ID = import.meta.env.PUBLIC_GADS_CONVERSION_ID;
+const GADS_LABEL = import.meta.env.PUBLIC_GADS_CONVERSION_LABEL;
+const CONV_SEND_TO = GADS_ID && GADS_LABEL ? `${GADS_ID}/${GADS_LABEL}` : '';
+---
+
+<Layout
+  title="Tack för din förfrågan — Norrmalmstryckeriet"
+  description="Vi har tagit emot din offertförfrågan och återkommer snart."
+  noindex={true}
+>
+  <section class="page-section">
+    <div class="page-container max-w-[860px]">
+      <p class="section-label mb-[12px]">Bekräftelse</p>
+      <h1 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[20px]" style="font-size:clamp(2rem,5vw + 0.25rem,4.5rem);line-height:1.05;letter-spacing:-0.03em;text-wrap:balance;" lang="sv">
+        Tack — vi har tagit emot din förfrågan
+      </h1>
+
+      <p class="text-[#333] text-[17px] sm:text-[18px] leading-[1.65] mb-[16px] max-w-[680px]">
+        Vi återkommer inom ett arbetsdygn med en offert. Behöver du komma i kontakt tidigare är det bara att ringa.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-[12px] mt-[24px] sm:mt-[32px] mb-[48px]">
+        <a href="tel:+4686960135" class="btn-pill btn-red inline-flex">
+          <strong>Ring 08-96 01 35</strong>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+
+      <div class="border-t border-[#E5E5E5] pt-[32px]">
+        <p class="section-label mb-[12px]">Under tiden</p>
+        <h2 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[24px]" style="font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.15;letter-spacing:-0.02em;">
+          Utforska produkter och guider
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-[16px]">
+          <a href="/produkter" class="group block rounded-[16px] border border-[#E5E5E5] bg-white p-[24px] hover:bg-[#FAFAFA] no-underline transition-colors">
+            <p class="section-label mb-[8px]">Produkter & tjänster</p>
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[6px]" style="font-size:20px;line-height:1.2;">Se allt vi trycker</h3>
+            <p class="text-[14px] text-[#555] leading-relaxed">Broschyrer, foldrar, mappar, årsredovisningar, storformat och mer.</p>
+            <span class="mt-[12px] inline-flex text-[#D9222A] text-[14px] font-medium">Öppna →</span>
+          </a>
+          <a href="/guider" class="group block rounded-[16px] border border-[#E5E5E5] bg-white p-[24px] hover:bg-[#FAFAFA] no-underline transition-colors">
+            <p class="section-label mb-[8px]">Guider</p>
+            <h3 class="font-[var(--font-heading)] !font-normal text-[#222] mb-[6px]" style="font-size:20px;line-height:1.2;">Läs innan du trycker</h3>
+            <p class="text-[14px] text-[#555] leading-relaxed">Papper, tryckmetod, filhantering, format — allt som påverkar resultatet.</p>
+            <span class="mt-[12px] inline-flex text-[#D9222A] text-[14px] font-medium">Öppna →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ CONV_SEND_TO }}>
+  // Fyra Google Ads-konvertering en gång per inskick.
+  // Kräver ?fresh=1 i URL (satts av formuläret vid lyckad POST).
+  // Efter avfyrning tas parametern bort via history.replaceState så en
+  // omladdning inte triggar konverteringen igen.
+  (function fireConversion() {
+    if (!CONV_SEND_TO) return;
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.get('fresh') !== '1') return;
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', 'conversion', {
+        send_to: CONV_SEND_TO,
+        event_callback: () => {
+          try {
+            url.searchParams.delete('fresh');
+            window.history.replaceState(null, '', url.pathname + (url.search || ''));
+          } catch (_) {}
+        },
+      });
+      // Fallback: rensa param även om callback aldrig kommer (blockerad script)
+      setTimeout(() => {
+        try {
+          const u = new URL(window.location.href);
+          if (u.searchParams.has('fresh')) {
+            u.searchParams.delete('fresh');
+            window.history.replaceState(null, '', u.pathname + (u.search || ''));
+          }
+        } catch (_) {}
+      }, 1500);
+    } catch (_) {}
+  })();
+</script>

@@ -550,10 +550,9 @@ flyers</span>
           });
           const j = await r.json();
           if (!r.ok || !j.ok) throw new Error(j?.error || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
-          form.classList.add('hidden');
-          success?.classList.remove('hidden');
-          if (idOut) idOut.textContent = j.id || '';
-          success?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Redirect till tacksidan där konverteringen avfyras
+          window.location.href = '/tack-offert/?fresh=1';
+          return;
         } catch (err) {
           status.textContent = (err as Error).message;
           submitBtn.disabled = false;

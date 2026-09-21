@@ -24,6 +24,8 @@ const {
 } = Astro.props;
 
 const SITE_URL = 'https://norrmalmstryckeriet.se';
+// Google Ads-konvertering (PUBLIC_-prefix så bundlas i klient)
+const GADS_ID = import.meta.env.PUBLIC_GADS_CONVERSION_ID;
 const pathname = Astro.url.pathname.replace(/\/index\.html$/, '/');
 const canonical = new URL(pathname, SITE_URL).href;
 const ogImageAbsolute = new URL(ogImage, SITE_URL).href;
@@ -131,6 +133,27 @@ const organizationSchema = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+
+    {GADS_ID && (
+      <>
+        {/* Google Ads (gtag.js) — Consent Mode v2 med denied defaults */}
+        <script is:inline set:html={`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500,
+          });
+          gtag('js', new Date());
+          gtag('config', '${GADS_ID}');
+        `} />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GADS_ID}`}></script>
+      </>
+    )}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
