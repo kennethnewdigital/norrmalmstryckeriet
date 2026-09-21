@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://norrmalmstryckeriet.se',
+  site: 'https://www.norrmalmstryckeriet.se',
   output: 'server',
   adapter: vercel({
     webAnalytics: { enabled: false },

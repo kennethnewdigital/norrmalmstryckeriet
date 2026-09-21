@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://norrmalmstryckeriet.se';
+export const SITE_URL = 'https://www.norrmalmstryckeriet.se';
 export const ORG_ID = SITE_URL + '/#organization';
 
 export function serviceSchema(opts: {
