@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /api/
+Disallow: /tack-offert/
 
-Sitemap: https://norrmalmstryckeriet.se/sitemap-index.xml
+Sitemap: https://www.norrmalmstryckeriet.se/sitemap-index.xml

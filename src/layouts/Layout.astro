@@ -26,7 +26,10 @@ const {
 const SITE_URL = 'https://www.norrmalmstryckeriet.se';
 // Google Ads-konvertering (PUBLIC_-prefix så bundlas i klient)
 const GADS_ID = import.meta.env.PUBLIC_GADS_CONVERSION_ID;
-const pathname = Astro.url.pathname.replace(/\/index\.html$/, '/');
+// Normalisera pathname: ta bort index.html och säkerställ trailing slash
+// så canonical matchar sitemap-URL:erna (Astro-sitemap default = trailing slash).
+const rawPath = Astro.url.pathname.replace(/\/index\.html$/, '/');
+const pathname = rawPath === '/' || rawPath.endsWith('/') ? rawPath : rawPath + '/';
 const canonical = new URL(pathname, SITE_URL).href;
 const ogImageAbsolute = new URL(ogImage, SITE_URL).href;
 

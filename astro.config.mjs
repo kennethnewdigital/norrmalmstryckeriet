@@ -13,7 +13,14 @@ export default defineConfig({
     webAnalytics: { enabled: false },
     imageService: false,
   }),
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) =>
+        !page.includes('/admin') &&
+        !page.includes('/api/') &&
+        !page.includes('/tack-offert'),
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
