@@ -76,7 +76,7 @@ const omOss = [
       <!-- Produkter -->
       <div class="dropdown-trigger relative">
         <a
-          href="/produkter"
+          href="/produkter/"
           class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
         >
           Produkter och tjänster
@@ -96,7 +96,7 @@ const omOss = [
             ))}
             <div class="border-t border-[#E5E5E5]/60 mt-[12px] pt-[10px]">
               <a
-                href="/produkter"
+                href="/produkter/"
                 class="flex items-center justify-between px-[16px] py-[10px] rounded-[10px] text-[14px] font-medium text-[#222] hover:bg-[#F5F5F5] transition-colors"
               >
                 <span>Alla produkter och tjänster</span>
@@ -110,7 +110,7 @@ const omOss = [
       <!-- Guider (mega-menu, 2 kolumner — ingen scroll) -->
       <div class="dropdown-trigger relative">
         <a
-          href="/guider"
+          href="/guider/"
           class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
         >
           Guider
@@ -144,7 +144,7 @@ const omOss = [
             </div>
             <div class="border-t border-[#E5E5E5]/60 mt-[12px] pt-[10px]">
               <a
-                href="/guider"
+                href="/guider/"
                 class="flex items-center justify-between px-[16px] py-[10px] rounded-[10px] text-[14px] font-medium text-[#222] hover:bg-[#F5F5F5] transition-colors"
               >
                 <span>Alla guider</span>
@@ -158,7 +158,7 @@ const omOss = [
       <!-- Kundreferenser -->
       <div class="dropdown-trigger relative">
         <a
-          href="/kundreferenser"
+          href="/kundreferenser/"
           class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
         >
           Kundreferenser
@@ -176,7 +176,7 @@ const omOss = [
             ))}
             <div class="border-t border-[#E5E5E5]/60 mt-[8px] pt-[8px]">
               <a
-                href="/kundreferenser"
+                href="/kundreferenser/"
                 class="flex items-center justify-between px-[16px] py-[10px] rounded-[10px] text-[14px] font-medium text-[#222] hover:bg-[#F5F5F5] transition-colors"
               >
                 <span>Alla kundreferenser</span>
@@ -190,7 +190,7 @@ const omOss = [
       <!-- Om oss -->
       <div class="dropdown-trigger relative">
         <a
-          href="/om-oss"
+          href="/om-oss/"
           class="nav-link inline-flex items-center px-[14px] py-[8px] rounded-full text-[14px] font-medium text-[#222] hover:bg-[#F3F3F3] transition-colors"
         >
           Om oss
@@ -214,13 +214,13 @@ const omOss = [
     <!-- Right side CTAs -->
     <div class="flex items-center gap-[8px]">
       <a
-        href="/kontakta-oss"
+        href="/kontakta-oss/"
         class="px-[14px] py-[8px] text-[14px] font-medium text-[#222] hover:opacity-70 transition-opacity inline-flex items-center"
       >
         Kontakta oss
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[4px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
       </a>
-      <a href="/offert#formular" class="btn-pill btn-red" style="padding: 10px 18px; font-size: 14px;">
+      <a href="/offert/#formular" class="btn-pill btn-red" style="padding: 10px 18px; font-size: 14px;">
         Begär offert
         <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-[4px]"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
       </a>
@@ -267,13 +267,13 @@ const omOss = [
   class="lg:hidden fixed top-[48px] left-0 right-0 bg-white z-[98] shadow-lg translate-y-[-100%] opacity-0 pointer-events-none transition-all duration-300"
 >
   <nav class="flex flex-col px-[30px] py-6 gap-4 max-h-[calc(100vh-48px)] overflow-y-auto">
-    <a href="/produkter" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Produkter och tjänster</a>
+    <a href="/produkter/" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Produkter och tjänster</a>
     <div class="pl-4 flex flex-col gap-3 -mt-1">
       {products.map((p) => (
         <a href={p.href} class="font-[var(--font-ui)] text-[15px] text-[#444]">{p.label}</a>
       ))}
     </div>
-    <a href="/guider" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Guider</a>
+    <a href="/guider/" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Guider</a>
     <div class="pl-4 flex flex-col gap-3 -mt-1">
       <p class="text-[11px] uppercase text-[#888] font-semibold" style="letter-spacing: 1.2px;">Produktguider</p>
       {guiderProdukter.map((g) => (
@@ -284,14 +284,14 @@ const omOss = [
         <a href={g.href} class="font-[var(--font-ui)] text-[15px] text-[#444]">{g.label}</a>
       ))}
     </div>
-    <a href="/kundreferenser" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Kundreferenser</a>
-    <a href="/om-oss" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Om oss</a>
+    <a href="/kundreferenser/" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Kundreferenser</a>
+    <a href="/om-oss/" class="font-[var(--font-ui)] text-[16px] font-medium text-[#222]">Om oss</a>
     <hr class="border-[var(--color-divider)]" />
-    <a href="/kontakta-oss" class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center">
+    <a href="/kontakta-oss/" class="font-[var(--font-ui)] text-[16px] font-medium text-black inline-flex items-center">
       Kontakta oss
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
-    <a href="/offert#formular" class="btn-pill btn-red w-fit">
+    <a href="/offert/#formular" class="btn-pill btn-red w-fit">
       Begär offert
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="inline-block ml-1"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
     </a>
