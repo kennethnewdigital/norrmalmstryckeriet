@@ -56,9 +56,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
           <form
             id="mappar-infografik-form"
             class="space-y-[12px] sm:space-y-[14px]"
-            action="/downloads/mappar-infographic.pdf"
-            method="get"
-            target="_blank"
+            action="/api/download-lead"
+            method="post"
+            data-download-form
+            data-guide="mappar-infographic"
+            data-source="/produkter/mappar/infografik/"
           >
             <div>
               <label for="name" class="block text-[14px] font-medium text-[#222] mb-[6px]">Ditt namn <span class="text-[#D9222A]">*</span></label>
@@ -91,6 +93,11 @@ const arrowSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" st
               Ladda ner infografik (PDF)<Fragment set:html={arrowSvg} />
             </button>
           </form>
+          <div class="download-success hidden bg-[#F0FDF4] border border-[#BBF7D0] rounded-[12px] p-[20px] mt-[16px]">
+            <h4 class="font-[var(--font-heading)] !font-normal text-[#166534] mb-[6px]" style="font-size:18px;line-height:1.2;">Tack — guiden är på väg</h4>
+            <p class="text-[#166534] text-[14px] mb-[12px]">Vi har mejlat guiden till dig. Du kan också öppna den direkt här:</p>
+            <a class="download-success-link btn-pill btn-red inline-flex" target="_blank" rel="noopener">Öppna guiden (PDF)</a>
+          </div>
         </div>
       </div>
     </div>

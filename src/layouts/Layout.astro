@@ -300,5 +300,76 @@ const organizationSchema = {
         document.addEventListener('astro:after-swap', initReveal);
       })();
     </script>
+
+    <!-- Download-form wiring (lead-capture → /api/download-lead) -->
+    <script is:inline>
+      (function () {
+        function initDownloadForms() {
+          document.querySelectorAll('form[data-download-form]').forEach(function (form) {
+            if (form.dataset.wired) return;
+            form.dataset.wired = '1';
+
+            var guide = form.getAttribute('data-guide') || '';
+            var source = form.getAttribute('data-source') || location.pathname;
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var successBox = form.parentElement && form.parentElement.querySelector('.download-success');
+
+            form.addEventListener('submit', function (e) {
+              e.preventDefault();
+              if (!submitBtn) return;
+
+              var fd = new FormData(form);
+              var data = { guide: guide, source: source };
+              fd.forEach(function (v, k) { if (typeof v === 'string') data[k] = v; });
+              var newsEl = form.querySelector('input[name="newsletter"]');
+              data.newsletter = newsEl && newsEl.checked ? 'true' : '';
+
+              var origText = submitBtn.textContent;
+              submitBtn.disabled = true;
+              submitBtn.textContent = 'Skickar…';
+
+              fetch('/api/download-lead', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(data),
+              })
+                .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+                .then(function (res) {
+                  if (!res.ok || !res.j.ok) throw new Error((res.j && res.j.error) || 'Något gick fel');
+                  // Göm formuläret, visa success + nedladdningslänk
+                  form.style.display = 'none';
+                  if (successBox) {
+                    var link = successBox.querySelector('.download-success-link');
+                    if (link) link.setAttribute('href', res.j.downloadUrl);
+                    successBox.classList.remove('hidden');
+                    successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                  // Trigga nedladdning direkt
+                  if (res.j.downloadUrl) {
+                    var a = document.createElement('a');
+                    a.href = res.j.downloadUrl;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                  }
+                })
+                .catch(function (err) {
+                  submitBtn.disabled = false;
+                  submitBtn.textContent = origText;
+                  alert(err.message || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
+                });
+            });
+          });
+        }
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initDownloadForms);
+        } else {
+          initDownloadForms();
+        }
+        document.addEventListener('astro:after-swap', initDownloadForms);
+      })();
+    </script>
   </body>
 </html>

@@ -37,6 +37,12 @@ function fmt(ts: number) {
         </form>
       </div>
 
+      <!-- Flik-navigation -->
+      <div class="mb-[24px] border-b border-[#E5E5E5] flex gap-[4px]">
+        <a href="/admin/" class="px-[16px] py-[10px] text-[14px] text-[#222] font-medium border-b-2 border-[#D9222A]">Offertförfrågningar</a>
+        <a href="/admin/leads/" class="px-[16px] py-[10px] text-[14px] text-[#666] hover:text-[#222] border-b-2 border-transparent">Nedladdnings-leads</a>
+      </div>
+
       {deletedId && (
         <div class="mb-[16px] p-[12px] rounded-[10px] bg-[#F0FDF4] border border-[#BBF7D0] text-[#166534] text-[14px]">
           Ärende <strong style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{deletedId}</strong> har raderats.

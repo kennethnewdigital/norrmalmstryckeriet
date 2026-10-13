@@ -1,0 +1,103 @@
+---
+export const prerender = false;
+import Layout from '../../../layouts/Layout.astro';
+import { getAdminFromRequest } from '../../../lib/auth';
+import { getLead } from '../../../lib/leads';
+
+const admin = await getAdminFromRequest(Astro.cookies);
+if (!admin) return Astro.redirect('/admin/login');
+
+const id = String(Astro.params.id);
+const l = await getLead(id);
+if (!l) return Astro.redirect('/admin/leads/');
+
+const fields: Array<[string, string | undefined]> = [
+  ['Namn', l.namn],
+  ['Företag', l.foretag],
+  ['E-post', l.epost],
+  ['Roll', l.roll],
+  ['Guide', l.guideTitle],
+  ['Nyhetsbrev', l.newsletter ? 'JA — vill ha utskick' : 'Nej'],
+  ['Från sida', l.source],
+];
+
+const siteUrl = 'https://www.norrmalmstryckeriet.se';
+const mailtoHref = `mailto:${l.epost}?subject=${encodeURIComponent(`Angående ${l.guideTitle} — Lead ${l.id}`)}&body=${encodeURIComponent(`Hej ${l.namn.split(' ')[0]},\n\n\n\n---\nDu laddade ner "${l.guideTitle}" från norrmalmstryckeriet.se\n`)}`;
+---
+
+<Layout title={`Lead ${l.id} — Admin | Norrmalmstryckeriet`} noindex={true}>
+  <section class="page-section">
+    <div class="page-container max-w-[900px]">
+      <a href="/admin/leads/" class="text-[14px] text-[#666] hover:text-[#222]">← Tillbaka</a>
+
+      <div class="mt-[16px] mb-[16px] rounded-[12px] bg-[#F3F4F6] p-[16px] border-l-[4px] border-[#D9222A]">
+        <p class="text-[11px] uppercase font-medium text-[#666]" style="letter-spacing:1.2px;">Lead-id</p>
+        <p class="text-[#222] mt-[2px]" style="font-size:22px;font-weight:600;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;">{l.id}</p>
+        <p class="text-[13px] text-[#666] mt-[2px]">{new Date(l.ts).toLocaleString('sv-SE')}</p>
+      </div>
+
+      <div class="mb-[24px] flex flex-wrap justify-between items-end gap-[16px]">
+        <h1 class="font-[var(--font-heading)] !font-normal text-[#222]" style="font-size:clamp(1.5rem,3vw,2.25rem);line-height:1.1;">{l.namn}{l.foretag ? ` · ${l.foretag}` : ''}</h1>
+        <div class="flex gap-[8px]">
+          <a href={mailtoHref} class="btn-pill btn-red">Svara kunden</a>
+          <a href={`${siteUrl}${l.pdfPath}`} target="_blank" rel="noopener" class="btn-pill" style="background:#F3F3F3;color:#222;">Öppna PDF</a>
+        </div>
+      </div>
+
+      <div class="rounded-[16px] border border-[#E5E5E5] p-[20px] mb-[24px]">
+        <table class="w-full">
+          {fields.filter(([, v]) => v).map(([k, v]) => (
+            <tr>
+              <td class="py-[8px] pr-[16px] text-[13px] text-[#666] whitespace-nowrap align-top" style="letter-spacing:0.3px;">{k}</td>
+              <td class="py-[8px] text-[14px] text-[#222]">{v}</td>
+            </tr>
+          ))}
+        </table>
+      </div>
+
+      <div class="rounded-[16px] bg-[#FAFAFA] border border-[#E5E5E5] p-[20px] mb-[24px]">
+        <p class="text-[11px] uppercase font-medium text-[#666] mb-[12px]" style="letter-spacing:1.2px;">Status</p>
+        <div class="flex flex-wrap gap-[8px]" data-lead-status={l.id}>
+          {(['ny', 'kontaktad', 'arkiverad'] as const).map((s) => (
+            <button type="button" data-status={s} class={`px-[14px] py-[8px] rounded-full text-[13px] cursor-pointer transition-colors ${l.status === s ? 'bg-[#222] text-white' : 'bg-white border border-[#D5D8DC] text-[#222] hover:bg-[#F3F3F3]'}`}>
+              {s === 'ny' ? 'Ny' : s === 'kontaktad' ? 'Kontaktad' : 'Arkiverad'}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-[16px] border border-[#FECACA] bg-[#FEF2F2] p-[20px]">
+        <p class="text-[13px] font-semibold text-[#991B1B] mb-[6px]">Farlig zon</p>
+        <p class="text-[13px] text-[#7F1D1D] mb-[12px]">Radera leaden permanent. Kan inte ångras.</p>
+        <button type="button" id="delete-lead" data-id={l.id} class="px-[14px] py-[8px] rounded-full bg-[#991B1B] text-white text-[13px]">
+          Radera lead
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ leadId: l.id }}>
+  // Status-knappar
+  const statusBar = document.querySelector(`[data-lead-status="${leadId}"]`);
+  statusBar?.querySelectorAll('button[data-status]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const status = btn.getAttribute('data-status');
+      const r = await fetch(`/api/admin/leads/${leadId}/status`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ status }),
+      });
+      if (r.ok) location.reload();
+      else alert('Kunde inte uppdatera status');
+    });
+  });
+
+  // Radera
+  document.getElementById('delete-lead')?.addEventListener('click', async () => {
+    if (!confirm(`Radera lead ${leadId}? Kan inte ångras.`)) return;
+    const r = await fetch(`/api/admin/leads/${leadId}/delete`, { method: 'POST' });
+    if (r.ok) location.href = `/admin/leads/?deleted=${leadId}`;
+    else alert('Kunde inte radera');
+  });
+</script>
