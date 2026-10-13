@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    { "source": "/guide/allt-du-behover-veta-om-planprint", "destination": "/guider/industritryck/", "permanent": true },
+    { "source": "/guide/allt-du-behover-veta-om-planprint/", "destination": "/guider/industritryck/", "permanent": true },
+    { "source": "/kontakt", "destination": "/kontakta-oss/", "permanent": true },
+    { "source": "/kontakt/", "destination": "/kontakta-oss/", "permanent": true },
+    { "source": "/om-oss/historik", "destination": "/historia/", "permanent": true },
+    { "source": "/om-oss/historik/", "destination": "/historia/", "permanent": true },
+    { "source": "/om-oss/integritetspolicy", "destination": "/integritetspolicy/", "permanent": true },
+    { "source": "/om-oss/integritetspolicy/", "destination": "/integritetspolicy/", "permanent": true },
+    { "source": "/produkter/affisch", "destination": "/produkter/affischer/", "permanent": true },
+    { "source": "/produkter/affisch/", "destination": "/produkter/affischer/", "permanent": true },
+    { "source": "/produkter/mapp", "destination": "/produkter/mappar/", "permanent": true },
+    { "source": "/produkter/mapp/", "destination": "/produkter/mappar/", "permanent": true }
+  ]
+}
