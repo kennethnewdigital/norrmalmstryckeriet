@@ -22,7 +22,10 @@ const fields: Array<[string, string | undefined]> = [
 ];
 
 const siteUrl = 'https://www.norrmalmstryckeriet.se';
-const mailtoHref = `mailto:${l.epost}?subject=${encodeURIComponent(`Angående ${l.guideTitle} — Lead ${l.id}`)}&body=${encodeURIComponent(`Hej ${l.namn.split(' ')[0]},\n\n\n\n---\nDu laddade ner "${l.guideTitle}" från norrmalmstryckeriet.se\n`)}`;
+const firstName = l.namn.split(' ')[0];
+const mailSubject = 'Angående ' + l.guideTitle + ' — Lead ' + l.id;
+const mailBody = 'Hej ' + firstName + ',\n\n\n\n---\nDu laddade ner ' + l.guideTitle + ' från norrmalmstryckeriet.se\n';
+const mailtoHref = 'mailto:' + l.epost + '?subject=' + encodeURIComponent(mailSubject) + '&body=' + encodeURIComponent(mailBody);
 ---
 
 <Layout title={`Lead ${l.id} — Admin | Norrmalmstryckeriet`} noindex={true}>
