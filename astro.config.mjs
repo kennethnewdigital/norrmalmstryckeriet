@@ -10,7 +10,7 @@ export default defineConfig({
   site: 'https://www.norrmalmstryckeriet.se',
   output: 'server',
   adapter: vercel({
-    webAnalytics: { enabled: false },
+    webAnalytics: { enabled: true },
     imageService: false,
   }),
   integrations: [
