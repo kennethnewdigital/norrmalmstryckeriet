@@ -550,6 +550,13 @@ flyers</span>
           });
           const j = await r.json();
           if (!r.ok || !j.ok) throw new Error(j?.error || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
+          // Server-bekräftat lead_id + produktkategori till tacksidan via
+          // sessionStorage (ej URL, så inget hamnar i history/referer/GA).
+          try {
+            if (j.id) sessionStorage.setItem('quote_lead_id', String(j.id));
+            const prod = (data.product || data.produkt || '').toString().trim();
+            sessionStorage.setItem('quote_product_category', prod || 'not_selected');
+          } catch (_) {}
           // Redirect till tacksidan där konverteringen avfyras
           window.location.href = '/tack-offert/?fresh=1';
           return;

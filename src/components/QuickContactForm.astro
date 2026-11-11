@@ -59,6 +59,11 @@ const { product } = Astro.props as { product: string };
           });
           const j = await r.json();
           if (!r.ok || !j.ok) throw new Error(j?.error || 'Något gick fel. Ring 08-96 01 35 så hjälper vi dig direkt.');
+          try {
+            if (j.id) sessionStorage.setItem('quote_lead_id', String(j.id));
+            const prod = (data.product || data.produkt || '').toString().trim();
+            sessionStorage.setItem('quote_product_category', prod || 'not_selected');
+          } catch (_) {}
           window.location.href = '/tack-offert/?fresh=1';
           return;
         } catch (err) {

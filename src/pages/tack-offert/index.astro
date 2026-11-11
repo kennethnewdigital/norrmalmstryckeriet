@@ -56,27 +56,23 @@ const CONV_SEND_TO = GADS_ID && GADS_LABEL ? `${GADS_ID}/${GADS_LABEL}` : '';
 </Layout>
 
 <script define:vars={{ CONV_SEND_TO }}>
-  // Fyra Google Ads-konvertering en gång per inskick.
-  // Kräver ?fresh=1 i URL (satts av formuläret vid lyckad POST).
-  // Efter avfyrning tas parametern bort via history.replaceState så en
-  // omladdning inte triggar konverteringen igen.
-  (function fireConversion() {
-    if (!CONV_SEND_TO) return;
+  // Offert-konverteringsmätning enligt spec 2026-11-11:
+  // - Fyra generate_lead i dataLayer + Google Ads-konverteringen via gtag.
+  // - Endast efter server-bekräftat inskick (fresh=1 + lead_id finns).
+  // - Exakt en konvertering per lead_id (sessionStorage-spärr).
+  // - Reload av tacksidan triggar inget mer (fresh-param rensas).
+  // - Ingen PII i dataLayer: endast lead_id (server-genererat heltal)
+  //   och product_category (slug, t.ex. "broschyrer").
+  (function fireQuoteConversion() {
     try {
       const url = new URL(window.location.href);
       if (url.searchParams.get('fresh') !== '1') return;
-      if (typeof window.gtag !== 'function') return;
-      window.gtag('event', 'conversion', {
-        send_to: CONV_SEND_TO,
-        event_callback: () => {
-          try {
-            url.searchParams.delete('fresh');
-            window.history.replaceState(null, '', url.pathname + (url.search || ''));
-          } catch (_) {}
-        },
-      });
-      // Fallback: rensa param även om callback aldrig kommer (blockerad script)
-      setTimeout(() => {
+
+      const leadId = sessionStorage.getItem('quote_lead_id') || '';
+      const productCategory = sessionStorage.getItem('quote_product_category') || 'not_selected';
+
+      // Rensa fresh-param direkt så reload inte triggar igen oavsett utfall
+      const cleanUrl = () => {
         try {
           const u = new URL(window.location.href);
           if (u.searchParams.has('fresh')) {
@@ -84,7 +80,40 @@ const CONV_SEND_TO = GADS_ID && GADS_LABEL ? `${GADS_ID}/${GADS_LABEL}` : '';
             window.history.replaceState(null, '', u.pathname + (u.search || ''));
           }
         } catch (_) {}
-      }, 1500);
+      };
+
+      // Utan server-bekräftat leadId (sessionStorage blockad e.d.) spårar
+      // vi inte — spec:en kräver dubblettspärr per lead_id.
+      if (!leadId) { cleanUrl(); return; }
+
+      // Klient-spärr: samma leadId får inte räknas två gånger
+      const trackedKey = 'quote-tracked:' + leadId;
+      if (sessionStorage.getItem(trackedKey)) { cleanUrl(); return; }
+      sessionStorage.setItem(trackedKey, '1');
+
+      // dataLayer-event för GTM och framtida integrations
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'generate_lead',
+        lead_type: 'quote_request',
+        product_category: productCategory,
+        lead_id: leadId,
+      });
+
+      // Google Ads-konvertering direkt via gtag (om env-varsen satta)
+      if (CONV_SEND_TO && typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: CONV_SEND_TO,
+          transaction_id: leadId, // Google Ads de-duplikering på transaction_id
+        });
+      }
+
+      // Städa engångsvärden så de inte läcker till nästa session
+      try {
+        sessionStorage.removeItem('quote_lead_id');
+        sessionStorage.removeItem('quote_product_category');
+      } catch (_) {}
+      cleanUrl();
     } catch (_) {}
   })();
 </script>
