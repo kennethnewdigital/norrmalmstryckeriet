@@ -1,65 +1,934 @@
 {
   "redirects": [
-    { "source": "/guide/allt-du-behover-veta-om-planprint", "destination": "/guider/industritryck/", "permanent": true },
-    { "source": "/guide/allt-du-behover-veta-om-planprint/", "destination": "/guider/industritryck/", "permanent": true },
-    { "source": "/kontakt", "destination": "/kontakta-oss/", "permanent": true },
-    { "source": "/kontakt/", "destination": "/kontakta-oss/", "permanent": true },
-    { "source": "/om-oss/historik", "destination": "/historia/", "permanent": true },
-    { "source": "/om-oss/historik/", "destination": "/historia/", "permanent": true },
-    { "source": "/om-oss/integritetspolicy", "destination": "/integritetspolicy/", "permanent": true },
-    { "source": "/om-oss/integritetspolicy/", "destination": "/integritetspolicy/", "permanent": true },
-    { "source": "/produkter/affisch", "destination": "/produkter/affischer/", "permanent": true },
-    { "source": "/produkter/affisch/", "destination": "/produkter/affischer/", "permanent": true },
-    { "source": "/produkter/mapp", "destination": "/produkter/mappar/", "permanent": true },
-    { "source": "/produkter/mapp/", "destination": "/produkter/mappar/", "permanent": true },
-
-    { "source": "/broschyrer", "destination": "/produkter/broschyrer/", "permanent": true },
-    { "source": "/broschyrer/", "destination": "/produkter/broschyrer/", "permanent": true },
-    { "source": "/foldrar", "destination": "/produkter/foldrar/", "permanent": true },
-    { "source": "/foldrar/", "destination": "/produkter/foldrar/", "permanent": true },
-    { "source": "/visitkort", "destination": "/produkter/visitkort/", "permanent": true },
-    { "source": "/visitkort/", "destination": "/produkter/visitkort/", "permanent": true },
-    { "source": "/kuvert", "destination": "/produkter/kuvert/", "permanent": true },
-    { "source": "/kuvert/", "destination": "/produkter/kuvert/", "permanent": true },
-    { "source": "/mappar", "destination": "/produkter/mappar/", "permanent": true },
-    { "source": "/mappar/", "destination": "/produkter/mappar/", "permanent": true },
-    { "source": "/bocker", "destination": "/produkter/bocker/", "permanent": true },
-    { "source": "/bocker/", "destination": "/produkter/bocker/", "permanent": true },
-    { "source": "/affischer", "destination": "/produkter/affischer/", "permanent": true },
-    { "source": "/affischer/", "destination": "/produkter/affischer/", "permanent": true },
-    { "source": "/storformat", "destination": "/produkter/storformat/", "permanent": true },
-    { "source": "/storformat/", "destination": "/produkter/storformat/", "permanent": true },
-    { "source": "/blad", "destination": "/produkter/blad/", "permanent": true },
-    { "source": "/blad/", "destination": "/produkter/blad/", "permanent": true },
-    { "source": "/arsredovisningar-rapporter", "destination": "/produkter/arsredovisningar-rapporter/", "permanent": true },
-    { "source": "/arsredovisningar-rapporter/", "destination": "/produkter/arsredovisningar-rapporter/", "permanent": true },
-    { "source": "/arsredovisningar", "destination": "/produkter/arsredovisningar-rapporter/", "permanent": true },
-    { "source": "/arsredovisningar/", "destination": "/produkter/arsredovisningar-rapporter/", "permanent": true },
-    { "source": "/rollups", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/rollups/", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/roll-ups", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/roll-ups/", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/massmaterial", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/massmaterial/", "destination": "/produkter/rollups-massmaterial/", "permanent": true },
-    { "source": "/digitaltryck", "destination": "/guider/digitaltryck/", "permanent": true },
-    { "source": "/digitaltryck/", "destination": "/guider/digitaltryck/", "permanent": true },
-    { "source": "/offsettryck", "destination": "/guider/offsettryck/", "permanent": true },
-    { "source": "/offsettryck/", "destination": "/guider/offsettryck/", "permanent": true },
-    { "source": "/filkontroll", "destination": "/offert/", "permanent": true },
-    { "source": "/filkontroll/", "destination": "/offert/", "permanent": true },
-    { "source": "/utskick", "destination": "/offert/", "permanent": true },
-    { "source": "/utskick/", "destination": "/offert/", "permanent": true }
+    {
+      "source": "/guide/allt-du-behover-veta-om-planprint",
+      "destination": "/guider/industritryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-planprint/",
+      "destination": "/guider/industritryck/",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt",
+      "destination": "/kontakta-oss/",
+      "permanent": true
+    },
+    {
+      "source": "/kontakt/",
+      "destination": "/kontakta-oss/",
+      "permanent": true
+    },
+    {
+      "source": "/om-oss/historik",
+      "destination": "/historia/",
+      "permanent": true
+    },
+    {
+      "source": "/om-oss/historik/",
+      "destination": "/historia/",
+      "permanent": true
+    },
+    {
+      "source": "/om-oss/integritetspolicy",
+      "destination": "/integritetspolicy/",
+      "permanent": true
+    },
+    {
+      "source": "/om-oss/integritetspolicy/",
+      "destination": "/integritetspolicy/",
+      "permanent": true
+    },
+    {
+      "source": "/produkter/affisch",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkter/affisch/",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkter/mapp",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkter/mapp/",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/broschyrer",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/broschyrer/",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/foldrar",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/foldrar/",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/visitkort",
+      "destination": "/produkter/visitkort/",
+      "permanent": true
+    },
+    {
+      "source": "/visitkort/",
+      "destination": "/produkter/visitkort/",
+      "permanent": true
+    },
+    {
+      "source": "/kuvert",
+      "destination": "/produkter/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/kuvert/",
+      "destination": "/produkter/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/mappar",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/mappar/",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/bocker",
+      "destination": "/produkter/bocker/",
+      "permanent": true
+    },
+    {
+      "source": "/bocker/",
+      "destination": "/produkter/bocker/",
+      "permanent": true
+    },
+    {
+      "source": "/affischer",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/affischer/",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/storformat",
+      "destination": "/produkter/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/storformat/",
+      "destination": "/produkter/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/blad",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/blad/",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/arsredovisningar-rapporter",
+      "destination": "/produkter/arsredovisningar-rapporter/",
+      "permanent": true
+    },
+    {
+      "source": "/arsredovisningar-rapporter/",
+      "destination": "/produkter/arsredovisningar-rapporter/",
+      "permanent": true
+    },
+    {
+      "source": "/arsredovisningar",
+      "destination": "/produkter/arsredovisningar-rapporter/",
+      "permanent": true
+    },
+    {
+      "source": "/arsredovisningar/",
+      "destination": "/produkter/arsredovisningar-rapporter/",
+      "permanent": true
+    },
+    {
+      "source": "/rollups",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/rollups/",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/roll-ups",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/roll-ups/",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/massmaterial",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/massmaterial/",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/digitaltryck",
+      "destination": "/guider/digitaltryck/",
+      "permanent": true
+    },
+    {
+      "source": "/digitaltryck/",
+      "destination": "/guider/digitaltryck/",
+      "permanent": true
+    },
+    {
+      "source": "/offsettryck",
+      "destination": "/guider/offsettryck/",
+      "permanent": true
+    },
+    {
+      "source": "/offsettryck/",
+      "destination": "/guider/offsettryck/",
+      "permanent": true
+    },
+    {
+      "source": "/filkontroll",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/filkontroll/",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/utskick",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/utskick/",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-affischer/",
+      "destination": "/guider/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-affischer",
+      "destination": "/guider/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-broschyrer",
+      "destination": "/guider/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-broschyrer/",
+      "destination": "/guider/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-foldrar/",
+      "destination": "/guider/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-foldrar",
+      "destination": "/guider/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-kuvert",
+      "destination": "/guider/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-kuvert/",
+      "destination": "/guider/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-reklamblad/",
+      "destination": "/guider/reklamblad/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-reklamblad",
+      "destination": "/guider/reklamblad/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-storformat/",
+      "destination": "/guider/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/allt-du-behover-veta-om-storformat",
+      "destination": "/guider/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/filhantering-och-installningar/",
+      "destination": "/guider/papper/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/filhantering-och-installningar",
+      "destination": "/guider/papper/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/industritryck-och-planprint",
+      "destination": "/guider/industritryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/industritryck-och-planprint/",
+      "destination": "/guider/industritryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/offsettryck-det-utmarkta-valet-vid-stora-upplagor/",
+      "destination": "/guider/offsettryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/offsettryck-det-utmarkta-valet-vid-stora-upplagor",
+      "destination": "/guider/offsettryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/stansmallar-for-mappar",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/stansmallar-for-mappar/",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/stora-variationsmojligheter-med-digitaltryck",
+      "destination": "/guider/digitaltryck/",
+      "permanent": true
+    },
+    {
+      "source": "/guide/stora-variationsmojligheter-med-digitaltryck/",
+      "destination": "/guider/digitaltryck/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/12s-a4-liten-upplaga/",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/12s-a4-liten-upplaga",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/12s-a4-stor-upplaga",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/12s-a4-stor-upplaga/",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a4-liten-upplaga",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a4-liten-upplaga/",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a5-liten-upplaga",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a5-liten-upplaga/",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a5-stor-upplaga",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/4s-a5-stor-upplaga/",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/8s-a5-liten-upplaga",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/8s-a5-liten-upplaga/",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-dubbelsidig-liten-upplaga",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-dubbelsidig-liten-upplaga/",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-enkelsidigt-tryck-liten-upplaga",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-enkelsidigt-tryck-liten-upplaga/",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-enkelsidigt-tryck-storre-upplaga",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-farg-enkelsidigt-tryck-storre-upplaga/",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-mapp-44",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/a4-mapp-44/",
+      "destination": "/produkter/mappar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch-700x1000-mm-farg",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch-700x1000-mm-farg/",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch-a3-farg/",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch-a3-farg",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/affisch/",
+      "destination": "/produkter/affischer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/banderoll",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/banderoll/",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/kuvert-c5",
+      "destination": "/produkter/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/kuvert-c5/",
+      "destination": "/produkter/kuvert/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/roll-up",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt_guide/roll-up/",
+      "destination": "/produkter/rollups-massmaterial/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/blad/",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/blad",
+      "destination": "/produkter/blad/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/broschyrer/",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/broschyrer",
+      "destination": "/produkter/broschyrer/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/foldrar",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/foldrar/",
+      "destination": "/produkter/foldrar/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/storformat/",
+      "destination": "/produkter/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/produkt-kategori/storformat",
+      "destination": "/produkter/storformat/",
+      "permanent": true
+    },
+    {
+      "source": "/13-tips-for-tryck-och-digital-kommunikation",
+      "destination": "/nyheter/13-tips-tryck-vs-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/13-tips-for-tryck-och-digital-kommunikation/",
+      "destination": "/nyheter/13-tips-tryck-vs-digital/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-stress-och-tryckt-medias-aterkomst/",
+      "destination": "/nyheter/digital-stress-tryckt-media/",
+      "permanent": true
+    },
+    {
+      "source": "/digital-stress-och-tryckt-medias-aterkomst",
+      "destination": "/nyheter/digital-stress-tryckt-media/",
+      "permanent": true
+    },
+    {
+      "source": "/hemligheten-avslojad-norrmalmstryckeriet-trycker-pengar",
+      "destination": "/nyheter/hemligheten-avslojad-trycker-pengar/",
+      "permanent": true
+    },
+    {
+      "source": "/hemligheten-avslojad-norrmalmstryckeriet-trycker-pengar/",
+      "destination": "/nyheter/hemligheten-avslojad-trycker-pengar/",
+      "permanent": true
+    },
+    {
+      "source": "/hur-foretag-kan-utveckla-en-effektiv-marknadsavdelning",
+      "destination": "/nyheter/effektiv-marknadsavdelning/",
+      "permanent": true
+    },
+    {
+      "source": "/hur-foretag-kan-utveckla-en-effektiv-marknadsavdelning/",
+      "destination": "/nyheter/effektiv-marknadsavdelning/",
+      "permanent": true
+    },
+    {
+      "source": "/hur-foretag-kan-utveckla-en-effektiv-marknadsavdelning/feed",
+      "destination": "/nyheter/effektiv-marknadsavdelning/",
+      "permanent": true
+    },
+    {
+      "source": "/hur-foretag-kan-utveckla-en-effektiv-marknadsavdelning/feed/",
+      "destination": "/nyheter/effektiv-marknadsavdelning/",
+      "permanent": true
+    },
+    {
+      "source": "/konst-moter-offset-tryck",
+      "destination": "/nyheter/konst-moter-offset-tryck/",
+      "permanent": true
+    },
+    {
+      "source": "/konst-moter-offset-tryck/",
+      "destination": "/nyheter/konst-moter-offset-tryck/",
+      "permanent": true
+    },
+    {
+      "source": "/ladda-ner-var-nya-tryckguide",
+      "destination": "/nyheter/ladda-ner-var-nya-tryckguide/",
+      "permanent": true
+    },
+    {
+      "source": "/ladda-ner-var-nya-tryckguide/",
+      "destination": "/nyheter/ladda-ner-var-nya-tryckguide/",
+      "permanent": true
+    },
+    {
+      "source": "/narproducerade-trycksaker-med-miljofokus/",
+      "destination": "/miljo/",
+      "permanent": true
+    },
+    {
+      "source": "/narproducerade-trycksaker-med-miljofokus",
+      "destination": "/miljo/",
+      "permanent": true
+    },
+    {
+      "source": "/norrmalmstryckeriet-tar-effektivitet-precision-och-passion-till-nya-hojder",
+      "destination": "/nyheter/effektivitet-precision-passion-nya-hojder/",
+      "permanent": true
+    },
+    {
+      "source": "/norrmalmstryckeriet-tar-effektivitet-precision-och-passion-till-nya-hojder/",
+      "destination": "/nyheter/effektivitet-precision-passion-nya-hojder/",
+      "permanent": true
+    },
+    {
+      "source": "/norrmalmstryckeriet-valkomnar-jureskog-invest-ab-som-ny-kund",
+      "destination": "/nyheter/norrmalmstryckeriet-valkomnar-jureskog-invest/",
+      "permanent": true
+    },
+    {
+      "source": "/norrmalmstryckeriet-valkomnar-jureskog-invest-ab-som-ny-kund/",
+      "destination": "/nyheter/norrmalmstryckeriet-valkomnar-jureskog-invest/",
+      "permanent": true
+    },
+    {
+      "source": "/nya-mojligheter-med-var-senaste-investering/",
+      "destination": "/nyheter/nya-mojligheter-investering/",
+      "permanent": true
+    },
+    {
+      "source": "/nya-mojligheter-med-var-senaste-investering",
+      "destination": "/nyheter/nya-mojligheter-investering/",
+      "permanent": true
+    },
+    {
+      "source": "/psykologin-bakom-upplevt-varde-pa-visitkort",
+      "destination": "/nyheter/psykologin-bakom-upplevt-varde-pa-visitkort/",
+      "permanent": true
+    },
+    {
+      "source": "/psykologin-bakom-upplevt-varde-pa-visitkort/",
+      "destination": "/nyheter/psykologin-bakom-upplevt-varde-pa-visitkort/",
+      "permanent": true
+    },
+    {
+      "source": "/varfor-trycksaker-fortfarande-fungerar-i-en-digital-varld/",
+      "destination": "/nyheter/trycksaker-digital-varld/",
+      "permanent": true
+    },
+    {
+      "source": "/varfor-trycksaker-fortfarande-fungerar-i-en-digital-varld",
+      "destination": "/nyheter/trycksaker-digital-varld/",
+      "permanent": true
+    },
+    {
+      "source": "/varmt-valkommen-vida-vi-valkomnar-vida-som-ny-kund/",
+      "destination": "/nyheter/varmt-valkommen-vida/",
+      "permanent": true
+    },
+    {
+      "source": "/varmt-valkommen-vida-vi-valkomnar-vida-som-ny-kund",
+      "destination": "/nyheter/varmt-valkommen-vida/",
+      "permanent": true
+    },
+    {
+      "source": "/vi-valkomnar-essity-som-ny-kund",
+      "destination": "/nyheter/vi-valkomnar-essity/",
+      "permanent": true
+    },
+    {
+      "source": "/vi-valkomnar-essity-som-ny-kund/",
+      "destination": "/nyheter/vi-valkomnar-essity/",
+      "permanent": true
+    },
+    {
+      "source": "/valkommen-stefan",
+      "destination": "/nyheter/valkommen-stefan/",
+      "permanent": true
+    },
+    {
+      "source": "/valkommen-stefan/",
+      "destination": "/nyheter/valkommen-stefan/",
+      "permanent": true
+    },
+    {
+      "source": "/varfor-valja-trycksaker",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/varfor-valja-trycksaker/",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/odelius-co",
+      "destination": "/kundreferenser/odelius/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/odelius-co/",
+      "destination": "/kundreferenser/odelius/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/svenska-curlingforbundet/",
+      "destination": "/kundreferenser/curlingforbundet/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/svenska-curlingforbundet",
+      "destination": "/kundreferenser/curlingforbundet/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/zetatrade-ab",
+      "destination": "/kundreferenser/zetatrade/",
+      "permanent": true
+    },
+    {
+      "source": "/kundreferenser/zetatrade-ab/",
+      "destination": "/kundreferenser/zetatrade/",
+      "permanent": true
+    },
+    {
+      "source": "/kundcitat/gomorron-reklambyra",
+      "destination": "/kundreferenser/",
+      "permanent": true
+    },
+    {
+      "source": "/kundcitat/gomorron-reklambyra/",
+      "destination": "/kundreferenser/",
+      "permanent": true
+    },
+    {
+      "source": "/kundcitat/repro-8/",
+      "destination": "/kundreferenser/",
+      "permanent": true
+    },
+    {
+      "source": "/kundcitat/repro-8",
+      "destination": "/kundreferenser/",
+      "permanent": true
+    },
+    {
+      "source": "/historik/",
+      "destination": "/historia/",
+      "permanent": true
+    },
+    {
+      "source": "/historik",
+      "destination": "/historia/",
+      "permanent": true
+    },
+    {
+      "source": "/offertforfragan/",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/offertforfragan",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/kostnadsfri-konsultation/",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/kostnadsfri-konsultation",
+      "destination": "/offert/",
+      "permanent": true
+    },
+    {
+      "source": "/produktvaljare",
+      "destination": "/produkter/",
+      "permanent": true
+    },
+    {
+      "source": "/produktvaljare/",
+      "destination": "/produkter/",
+      "permanent": true
+    },
+    {
+      "source": "/tryckguide/",
+      "destination": "/guider/",
+      "permanent": true
+    },
+    {
+      "source": "/tryckguide",
+      "destination": "/guider/",
+      "permanent": true
+    },
+    {
+      "source": "/newsletter",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/newsletter/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tryckt-version-av-nyhetsbrevet/",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/tryckt-version-av-nyhetsbrevet",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/avanmalan/",
+      "destination": "/integritetspolicy/",
+      "permanent": true
+    },
+    {
+      "source": "/avanmalan",
+      "destination": "/integritetspolicy/",
+      "permanent": true
+    },
+    {
+      "source": "/kreators-kampanj/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/kreators-kampanj",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/category/nyheter",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/category/nyheter/",
+      "destination": "/nyheter/",
+      "permanent": true
+    },
+    {
+      "source": "/e-floating-buttons/kontakta-oss/",
+      "destination": "/kontakta-oss/",
+      "permanent": true
+    },
+    {
+      "source": "/e-floating-buttons/kontakta-oss",
+      "destination": "/kontakta-oss/",
+      "permanent": true
+    },
+    {
+      "source": "/infografik",
+      "destination": "/guider/",
+      "permanent": true
+    },
+    {
+      "source": "/infografik/",
+      "destination": "/guider/",
+      "permanent": true
+    },
+    {
+      "source": "/start-duplicate/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/start-duplicate",
+      "destination": "/",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.vercel-scripts.com https://*.vercel-insights.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel-scripts.com https://www.google.com https://googleads.g.doubleclick.net; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests" }
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.vercel-scripts.com https://*.vercel-insights.com https://www.google.com https://www.googleadservices.com https://googleads.g.doubleclick.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.vercel-insights.com https://vitals.vercel-insights.com https://*.vercel-scripts.com https://www.google.com https://googleads.g.doubleclick.net; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com https://td.doubleclick.net; media-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+        }
       ]
     }
   ]
