@@ -116,6 +116,8 @@ const pageSchemas = graph(
             method="post"
           >
             <input type="hidden" name="source" value="offert" />
+            <input type="hidden" name="gclid" value="" />
+            <input type="hidden" name="click_id_type" value="" />
             <!-- Företag eller Privatperson -->
             <fieldset class="space-y-[10px]">
               <legend class="block text-[14px] font-medium text-[#222] mb-[6px]">Jag är <span class="text-[#D9222A]">*</span></legend>
@@ -491,6 +493,8 @@ flyers</span>
 </style>
 
 <script>
+  import { applyClickIdToForm } from '../../lib/clickid';
+
   function initOffert() {
     const carousel = document.getElementById('product-carousel');
     const cardWidth = window.matchMedia('(min-width: 768px)').matches ? 400 : (window.matchMedia('(min-width: 640px)').matches ? 340 : 276);
@@ -530,6 +534,8 @@ flyers</span>
           status.textContent = 'Godkänn integritetspolicyn för att fortsätta.';
           return;
         }
+
+        applyClickIdToForm(form);
 
         const fd = new FormData(form);
         const data: Record<string, string> = {};

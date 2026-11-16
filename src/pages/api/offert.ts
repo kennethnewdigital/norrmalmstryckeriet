@@ -49,6 +49,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       meddelande,
       filLank: str(form.filLank),
       source: str(form.source) || 'offert',
+      gclid: str(form.gclid, 200),
+      clickIdType: clickIdType(form.click_id_type),
       ip: clientAddress || '',
       ua: request.headers.get('user-agent') || '',
       status: 'ny',
@@ -95,6 +97,11 @@ function str(v: unknown, max = 500): string | undefined {
   return s ? s.slice(0, max) : undefined;
 }
 
+function clickIdType(v: unknown): Offert['clickIdType'] {
+  const s = String(v ?? '').trim();
+  return s === 'gclid' || s === 'wbraid' || s === 'gbraid' ? s : undefined;
+}
+
 function json(data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -105,6 +112,7 @@ function json(data: unknown, status = 200) {
 function renderOffertEmail(o: Offert): string {
   const rows: Array<[string, string | undefined]> = [
     ['Källa', o.source],
+    ['Kom från', o.gclid ? 'Google Ads-annons' : undefined],
     ['Namn', o.namn],
     ['Företag', o.foretag],
     ['E-post', o.epost],
@@ -143,6 +151,7 @@ Datum: ${new Date(o.ts).toLocaleString('sv-SE')}
 ═══════════════════════════════════
 
 Källa: ${o.source ?? 'offert'}
+Kom från: ${o.gclid ? 'Google Ads-annons' : 'ej annons'}
 Namn: ${o.namn}
 Företag: ${o.foretag ?? '-'}
 E-post: ${o.epost}

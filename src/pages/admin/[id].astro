@@ -13,6 +13,7 @@ if (!o) return Astro.redirect('/admin');
 
 const fields: Array<[string, string | undefined]> = [
   ['Källa', o.source || 'offert'],
+  ['Kom från', o.gclid ? `Google Ads-annons (${o.clickIdType || 'gclid'})` : 'Ej annons'],
   ['Namn', o.namn],
   ['Företag', o.foretag],
   ['E-post', o.epost],

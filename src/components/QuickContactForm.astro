@@ -5,6 +5,8 @@ const { product } = Astro.props as { product: string };
 <form class="quick-form space-y-[10px] sm:space-y-[12px]" action="/api/offert" method="post" data-product={product}>
   <input type="hidden" name="product" value={product} />
   <input type="hidden" name="source" value={`produkt-${product}`} />
+  <input type="hidden" name="gclid" value="" />
+  <input type="hidden" name="click_id_type" value="" />
   <input type="text" name="firstname" placeholder="Ditt namn" required class="form-input" />
   <input type="text" name="company" placeholder="Företagsnamn" class="form-input" />
   <input type="email" name="email" placeholder="E-post" required class="form-input" />
@@ -26,6 +28,8 @@ const { product } = Astro.props as { product: string };
 </div>
 
 <script>
+  import { applyClickIdToForm } from '../lib/clickid';
+
   function initQuickForms() {
     document.querySelectorAll('form.quick-form').forEach((formEl) => {
       const form = formEl as HTMLFormElement;
@@ -40,6 +44,8 @@ const { product } = Astro.props as { product: string };
         if (!status || !submitBtn) return;
         status.textContent = '';
         status.style.color = '#D9222A';
+
+        applyClickIdToForm(form);
 
         const fd = new FormData(form);
         const data: Record<string, string> = {};

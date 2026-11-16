@@ -13,10 +13,19 @@ export type Offert = {
   meddelande?: string;
   filLank?: string;
   source?: string; // t.ex. "offert" eller "produkt-mappar"
+  // Google Ads klick-id. Finns bara när besökaren kom via en annons.
+  // Används för offline-konverteringsimport — se api/admin/google-ads.csv.
+  gclid?: string;
+  clickIdType?: 'gclid' | 'wbraid' | 'gbraid';
   ip?: string;
   ua?: string;
   status: 'ny' | 'hanterad' | 'arkiverad';
 };
+
+/** True om förfrågan går att spåra tillbaka till ett annonsklick. */
+export function isAdLead(o: Offert): boolean {
+  return Boolean(o.gclid);
+}
 
 const LIST_KEY = 'offert:list';
 const OFFERT_KEY = (id: string) => `offert:${id}`;
