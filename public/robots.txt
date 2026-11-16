@@ -5,4 +5,12 @@ Disallow: /admin
 Disallow: /api/
 Disallow: /tack-offert/
 
+# Legacy WordPress-paths — finns inte, bara crawl-brus
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /wp-json/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+
 Sitemap: https://www.norrmalmstryckeriet.se/sitemap-index.xml
