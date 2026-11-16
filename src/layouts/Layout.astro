@@ -372,5 +372,13 @@ const organizationSchema = {
         document.addEventListener('astro:after-swap', initDownloadForms);
       })();
     </script>
+
+    {/* Fånga Google Ads klick-id (gclid) så offertförfrågningar kan
+        attribueras till annonsen. Ingen cookie — se src/lib/clickid.ts. */}
+    <script>
+      import { captureClickId } from '../lib/clickid';
+      captureClickId();
+      document.addEventListener('astro:after-swap', () => captureClickId());
+    </script>
   </body>
 </html>

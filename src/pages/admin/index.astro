@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 import Stat from '../../components/admin/Stat.astro';
 import StatusPill from '../../components/admin/StatusPill.astro';
 import { getAdminFromRequest } from '../../lib/auth';
-import { listOffert } from '../../lib/offert';
+import { listOffert, isAdLead } from '../../lib/offert';
 
 const admin = await getAdminFromRequest(Astro.cookies);
 if (!admin) return Astro.redirect('/admin/login');
@@ -18,6 +18,10 @@ const arkiverade = items.filter((i) => i.status === 'arkiverad').length;
 // Unika källor för export-filter
 const sources = Array.from(new Set(items.map((i) => i.source || 'offert'))).sort();
 const sourceCount = (src: string) => items.filter((i) => (i.source || 'offert') === src).length;
+
+// Förfrågningar som går att attribuera till ett annonsklick de senaste 30 dagarna
+const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+const adLeadCount = items.filter((i) => isAdLead(i) && i.ts >= Date.now() - THIRTY_DAYS).length;
 
 function fmt(ts: number) {
   return new Date(ts).toLocaleString('sv-SE', { dateStyle: 'short', timeStyle: 'short' });
@@ -69,6 +73,20 @@ function fmt(ts: number) {
               </a>
             ))}
           </div>
+
+          <p class="text-[11px] uppercase font-medium text-[#666] mt-[18px] mb-[10px]" style="letter-spacing:1.2px;">Google Ads</p>
+          <div class="flex flex-wrap gap-[8px] items-center">
+            <a href="/api/admin/google-ads.csv?days=30" class="inline-flex items-center gap-[6px] px-[14px] py-[8px] rounded-full border border-[#D5D8DC] text-[#222] text-[13px] no-underline hover:bg-white">
+              📥 Konverteringar, 30 dagar ({adLeadCount})
+            </a>
+            <a href="/api/admin/google-ads.csv" class="inline-flex items-center gap-[6px] px-[14px] py-[8px] rounded-full border border-[#D5D8DC] text-[#222] text-[13px] no-underline hover:bg-white">
+              Alla annonsleads
+            </a>
+          </div>
+          <p class="text-[12px] text-[#666] mt-[8px] leading-[1.5]">
+            Laddas upp i Google Ads under Mål → Konverteringar → Uppladdningar. Innehåller bara
+            förfrågningar som kom via ett annonsklick.
+          </p>
         </div>
       )}
 

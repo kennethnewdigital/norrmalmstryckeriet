@@ -8,6 +8,7 @@ const COLUMNS: Array<[string, (o: Offert) => string]> = [
   ['Ärendenummer', (o) => o.id],
   ['Datum', (o) => new Date(o.ts).toISOString()],
   ['Källa', (o) => o.source || 'offert'],
+  ['Kom från annons', (o) => (o.gclid ? 'ja' : 'nej')],
   ['Status', (o) => o.status],
   ['Namn', (o) => o.namn],
   ['Företag', (o) => o.foretag || ''],
