@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Fångar uppmärksamhet på plats',
@@ -102,12 +102,13 @@ const pageSchemas = graph(
     name: "Trycka affischer",
     description: "Tryck affischer för event, butik, kampanj och information. Vi hjälper dig välja format, papper, material och tryckmetod.",
     path: "/produkter/affischer/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka affischer – A3, 50x70 och 70x100 | Norrmalmstryckeriet"
+  title="Trycka affischer – A3, 50×70 & 70×100 | Norrmalmstryckeriet"
   description="Tryck affischer för event, butik, kampanj och information. Vi hjälper dig välja format, papper, material och tryckmetod."
   schemaJson={pageSchemas}
 >

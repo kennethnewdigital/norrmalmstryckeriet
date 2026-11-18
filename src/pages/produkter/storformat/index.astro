@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Syns tydligt i fysisk miljö',
@@ -103,12 +103,13 @@ const pageSchemas = graph(
     name: "Storformat tryck",
     description: "Tryck storformat för mässa, entré, butik och event. Vi hjälper dig välja roll up, banderoll, affisch, material och format.",
     path: "/produkter/storformat/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Storformat tryck – roll up, banderoll och affisch | Norrmalmstryckeriet"
+  title="Trycka storformat i Stockholm | Norrmalmstryckeriet"
   description="Tryck storformat för mässa, entré, butik och event. Vi hjälper dig välja roll up, banderoll, affisch, material och format."
   schemaJson={pageSchemas}
 >

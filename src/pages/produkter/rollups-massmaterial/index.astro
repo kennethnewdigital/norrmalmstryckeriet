@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Stoppar blicken, hjälper samtalet framåt',
@@ -101,16 +101,17 @@ const downloadSvg = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none"
 
 const pageSchemas = graph(
   serviceSchema({
-    name: "Roll",
+    name: "Roll-ups och mässmaterial",
     description: "Tryck roll-ups, skyltar, vepor, foldrar, broschyrer, visitkort och mässmaterial hos Norrmalmstryckeriet i Sollentuna. Vi hjälper med format, original, tryck, packning och leverans.",
     path: "/produkter/rollups-massmaterial/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Roll-ups och mässmaterial – tryck för mässa, event och kundmöten | Norrmalmstryckeriet"
-  description="Tryck roll-ups, skyltar, vepor, foldrar, broschyrer, visitkort och mässmaterial hos Norrmalmstryckeriet i Sollentuna. Vi hjälper med format, original, tryck, packning och leverans."
+  title="Roll-ups & mässmaterial för event | Norrmalmstryckeriet"
+  description="Tryck roll-ups, skyltar, vepor och mässmaterial för event och mässa. Svanenmärkt tryckeri i Stockholm – format, original, packning och leverans."
   schemaJson={pageSchemas}
 >
 

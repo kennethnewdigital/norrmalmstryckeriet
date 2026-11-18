@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Mer plats för innehåll och bilder',
@@ -102,13 +102,14 @@ const pageSchemas = graph(
     name: "Trycka foldrar — falsning, format och pappersval",
     description: "Tryck foldrar för mässa, utskick, presentation och säljmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck.",
     path: "/produkter/foldrar/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka foldrar i Stockholm — format, falsning och pappersval | Norrmalmstryckeriet"
-  description="Tryck foldrar för mässa, utskick, presentation och säljmaterial hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper, falsning, digitaltryck eller offsettryck."
+  title="Trycka foldrar – falsning & papper | Norrmalmstryckeriet"
+  description="Tryck foldrar för mässa, utskick, presentation och säljmaterial. Svanenmärkt tryckeri i Stockholm – vi hjälper med format, papper och falsning."
   ogImage="/images/hero/foldrar-hero.webp"
   schemaJson={pageSchemas}
 >

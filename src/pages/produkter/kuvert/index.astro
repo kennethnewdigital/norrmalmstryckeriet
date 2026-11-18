@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Gör utskicket mer igenkännbart',
@@ -103,12 +103,13 @@ const pageSchemas = graph(
     name: "Trycka kuvert med logotyp och färgtryck",
     description: "Tryck kuvert för kundbrev, utskick och kampanjer hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod.",
     path: "/produkter/kuvert/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka kuvert i Stockholm — C5, C4, fönster och färgtryck | Norrmalmstryckeriet"
+  title="Trycka kuvert – C5, C4 & fönsterkuvert | Norrmalmstryckeriet"
   description="Tryck kuvert för kundbrev, utskick och kampanjer hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja C5, C4, fönster, papper, färg och tryckmetod."
   ogImage="/images/hero/kuvert-hero.webp"
   schemaJson={pageSchemas}

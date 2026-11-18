@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Gör kontaktuppgifter enkla att spara',
@@ -109,12 +109,13 @@ const pageSchemas = graph(
     name: "Trycka visitkort med rätt papper och finish",
     description: "Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter.",
     path: "/produkter/visitkort/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka visitkort med rätt papper och finish | Norrmalmstryckeriet"
+  title="Trycka visitkort – papper & finish | Norrmalmstryckeriet"
   description="Tryck visitkort för företag, team, mässa och kundmöten. Vi hjälper dig välja papper, tryck, design, upplaga och specialeffekter."
   schemaJson={pageSchemas}
 >

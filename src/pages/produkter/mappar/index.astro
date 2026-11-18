@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Samlar dokument i ett professionellt format',
@@ -101,13 +101,14 @@ const pageSchemas = graph(
     name: "Trycka mappar och presentationsmappar",
     description: "Tryck mappar för offert, avtal, säljmöte och mässa hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, tryck, fickor, stansning och finish.",
     path: "/produkter/mappar/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka mappar och presentationsmappar i Stockholm — stansning, fickor och finish | Norrmalmstryckeriet"
-  description="Tryck mappar för offert, avtal, säljmöte och mässa hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, tryck, fickor, stansning och finish."
+  title="Trycka mappar & presentationsmappar | Norrmalmstryckeriet"
+  description="Tryck mappar och presentationsmappar för offert, avtal och säljmöte. Svanenmärkt tryckeri i Stockholm – format, tryck, fickor och stansning."
   ogImage="/images/hero/mappar-hero.webp"
   schemaJson={pageSchemas}
 >

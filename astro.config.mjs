@@ -19,7 +19,8 @@ export default defineConfig({
       filter: (page) =>
         !page.includes('/admin') &&
         !page.includes('/api/') &&
-        !page.includes('/tack-offert'),
+        !page.includes('/tack-offert') &&
+        !page.includes('/v02'),
     }),
   ],
   vite: {

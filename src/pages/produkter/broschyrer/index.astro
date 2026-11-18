@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Mer plats för förklaring och bild',
@@ -102,12 +102,13 @@ const pageSchemas = graph(
     name: "Trycka broschyrer",
     description: "Tryck broschyrer för företag, produkt, kampanj och utbildning. Vi hjälper dig välja format, sidantal, papper, tryckmetod och bindning.",
     path: "/produkter/broschyrer/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka broschyrer – format, papper och bindning | Norrmalmstryckeriet"
+  title="Trycka broschyrer i Stockholm | Norrmalmstryckeriet"
   description="Tryck broschyrer för företag, produkt, kampanj och utbildning. Vi hjälper dig välja format, sidantal, papper, tryckmetod och bindning."
   schemaJson={pageSchemas}
 >

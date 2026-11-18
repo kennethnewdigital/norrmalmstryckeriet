@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Tydligt budskap i ett enkelt format',
@@ -114,13 +114,14 @@ const pageSchemas = graph(
     name: "Trycka reklamblad, flyers och blad",
     description: "Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper och finish.",
     path: "/produkter/blad/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka reklamblad, flyers och blad i Stockholm — format, papper och finish | Norrmalmstryckeriet"
-  description="Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang, utskick och lokal marknadsföring hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper och finish."
+  title="Trycka blad, reklamblad & flyers | Norrmalmstryckeriet"
+  description="Tryck blad, reklamblad och flyers för kampanj, mässa, restaurang och utskick. Svanenmärkt tryckeri i Stockholm hjälper med format, papper och finish."
   ogImage="/images/hero/blad-hero.webp"
   schemaJson={pageSchemas}
 >

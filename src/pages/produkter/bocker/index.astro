@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Samlar mycket innehåll i hållbar form',
@@ -103,13 +103,14 @@ const pageSchemas = graph(
     name: "Bokproduktion — trycka böcker, rapporter och kataloger",
     description: "Bokproduktion hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig välja format, papper, omslag, inlaga och bindning för böcker, jubileumsböcker, rapporter, kataloger och utbildningsmaterial.",
     path: "/produkter/bocker/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka böcker och rapporter — bokproduktion i Stockholm | Norrmalmstryckeriet"
-  description="Boktryck och bokproduktion hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper med format, papper, omslag, bindning, original och leverans — för böcker, jubileumsböcker, rapporter, kataloger och utbildningsmaterial."
+  title="Trycka böcker – bokproduktion | Norrmalmstryckeriet"
+  description="Bokproduktion hos Svanenmärkt tryckeri i Stockholm – för böcker, jubileumsböcker, rapporter, kataloger och utbildningsmaterial. Format, papper, bindning."
   ogImage="/images/hero/bocker-hero.webp"
   schemaJson={pageSchemas}
 >

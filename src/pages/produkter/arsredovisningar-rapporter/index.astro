@@ -1,7 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import QuickContactForm from '../../../components/QuickContactForm.astro';
-import { serviceSchema, graph } from '../../../lib/schema';
+import { serviceSchema, faqPageSchema, graph } from '../../../lib/schema';
 
 const effects = [
   'Bygger förtroende från första till sista sida',
@@ -103,13 +103,14 @@ const pageSchemas = graph(
     name: "Trycka årsredovisningar, BRF-material och rapporter",
     description: "Tryck årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper företag, BRF:er, föreningar och organisationer med format, papper, bindning, original och leverans till stämma eller möte.",
     path: "/produkter/arsredovisningar-rapporter/",
-  })
+  }),
+  faqPageSchema(faqs)
 );
 ---
 
 <Layout
-  title="Trycka årsredovisningar och rapporter i Stockholm — företag, BRF och föreningar | Norrmalmstryckeriet"
-  description="Boktryck av årsredovisningar, BRF-material, verksamhetsberättelser och rapporter hos Svanenmärkt tryckeri i Sollentuna, Stockholm. Vi hjälper dig med format, papper, bindning, original och leverans i tid till stämma eller möte."
+  title="Trycka årsredovisningar & rapporter | Norrmalmstryckeriet"
+  description="Tryck årsredovisningar och rapporter för företag, BRF och föreningar. Svanenmärkt tryckeri i Stockholm – vi levererar i tid till stämma och möte."
   ogImage="/images/hero/arsredovisningar-hero.webp"
   schemaJson={pageSchemas}
 >
